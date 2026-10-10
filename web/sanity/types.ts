@@ -15,13 +15,58 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
-export type NotFoundPage = {
+export type SiteSettings = {
   _id: string;
-  _type: "notFoundPage";
+  _type: "siteSettings";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  closing?: Closing;
+  companyRegNo?: string;
+  year?: string;
+  email?: string;
+  legalForm?: string;
+  address?: string;
+  vatStatus?: string;
+  bankCountry?: string;
+  dayRate?: number;
+  monthlyRetainer?: string;
+  agencyDiscount?: string;
+  insurance?: string;
+  bookingUrl?: string;
+  briefRecipient?: string;
+};
+
+export type JobListing = {
+  _id: string;
+  _type: "jobListing";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  text?: string;
+  status?: "open" | "pipeline" | "closed";
+  order: number;
+};
+
+export type Post = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  category?: "Delivery" | "Scope" | "AI" | "Working together" | "Measurement";
+  excerpt: string;
+  publishedAt?: string;
+  body?: RichBody;
+  offer?: {
+    title?: string;
+    text?: string;
+    href?: string;
+    cta?: string;
+  };
+  closing?: string;
   seo?: Seo;
 };
 
@@ -45,406 +90,6 @@ export type Seo = {
   };
 };
 
-export type EngagementPanel = {
-  _id: string;
-  _type: "engagementPanel";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  lines?: Array<{
-    cells?: Array<string>;
-    _type: "panelLine";
-    _key: string;
-  }>;
-};
-
-export type DetailTemplates = {
-  _id: string;
-  _type: "detailTemplates";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  caseCard?: {
-    eyebrow?: string;
-    problemLabel?: string;
-    whatWeDidLabel?: string;
-    measuredLabel?: string;
-    clientLine?: string;
-    pageLink?: string;
-    askLink?: string;
-  };
-  servicePage?: {
-    heroEyebrow?: string;
-    heroMeta?: string;
-    stepsAside?: string;
-    othersTitle?: string;
-    othersAside?: string;
-    closingEyebrow?: string;
-  };
-  industryPage?: {
-    heroEyebrow?: string;
-    recordTitle?: string;
-    recordAside?: string;
-    asksTitle?: string;
-    asksSub?: string;
-    servicesTitle?: string;
-    servicesLink?: string;
-    othersTitle?: string;
-    closingEyebrow?: string;
-  };
-  industriesIndexRow?: {
-    count?: string;
-  };
-  casePage?: {
-    heroEyebrow?: string;
-    shapeTitle?: string;
-    clientNote?: string;
-    shapeLabel?: string;
-    domainLabel?: string;
-    clientLabel?: string;
-    clientValue?: string;
-    askLine?: string;
-    missingMetricValue?: string;
-    missingMetricLabel?: string;
-    moreTitle?: string;
-    moreLink?: string;
-    closingEyebrow?: string;
-    closingTitle?: string;
-  };
-  notePage?: {
-    heroEyebrow?: string;
-    byline?: string;
-    tocTitle?: string;
-    offerTitle?: string;
-    nextTitle?: string;
-  };
-  legalPage?: {
-    contentsTitle?: string;
-  };
-};
-
-export type Navigation = {
-  _id: string;
-  _type: "navigation";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  primary?: Array<{
-    label: string;
-    link?: Link;
-    children?: Array<{
-      label: string;
-      desc?: string;
-      link: Link;
-      _type: "navLink";
-      _key: string;
-    }>;
-    menuFooter?: Array<
-      {
-        _key: string;
-      } & Cta
-    >;
-    _type: "navItem";
-    _key: string;
-  }>;
-  cta?: Cta;
-  footer?: Array<{
-    title: string;
-    links?: Array<{
-      label: string;
-      desc?: string;
-      link: Link;
-      _type: "navLink";
-      _key: string;
-    }>;
-    _type: "footerColumn";
-    _key: string;
-  }>;
-};
-
-export type Cta = {
-  _type: "cta";
-  label: string;
-  link: Link;
-  variant?: "lime" | "outline" | "link" | "chip";
-};
-
-export type HomePageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "homePage";
-};
-
-export type ServicesIndexPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "servicesIndexPage";
-};
-
-export type IndustriesIndexPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "industriesIndexPage";
-};
-
-export type WorkIndexPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "workIndexPage";
-};
-
-export type NotesIndexPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "notesIndexPage";
-};
-
-export type ApproachPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "approachPage";
-};
-
-export type RatesPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "ratesPage";
-};
-
-export type BookPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "bookPage";
-};
-
-export type BriefPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "briefPage";
-};
-
-export type ComparePageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "comparePage";
-};
-
-export type WorkingWithUsPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "workingWithUsPage";
-};
-
-export type AiTransformationPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "aiTransformationPage";
-};
-
-export type AgenticFlowPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "agenticFlowPage";
-};
-
-export type AgenciesPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "agenciesPage";
-};
-
-export type JoinPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "joinPage";
-};
-
-export type PrivacyPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "privacyPage";
-};
-
-export type TermsPageReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "termsPage";
-};
-
-export type ServiceReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "service";
-};
-
-export type IndustryReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "industry";
-};
-
-export type CaseStudyReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "caseStudy";
-};
-
-export type PostReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "post";
-};
-
-export type Link = {
-  _type: "link";
-  kind: "internal" | "external";
-  internal?:
-    | HomePageReference
-    | ServicesIndexPageReference
-    | IndustriesIndexPageReference
-    | WorkIndexPageReference
-    | NotesIndexPageReference
-    | ApproachPageReference
-    | RatesPageReference
-    | BookPageReference
-    | BriefPageReference
-    | ComparePageReference
-    | WorkingWithUsPageReference
-    | AiTransformationPageReference
-    | AgenticFlowPageReference
-    | AgenciesPageReference
-    | JoinPageReference
-    | PrivacyPageReference
-    | TermsPageReference
-    | ServiceReference
-    | IndustryReference
-    | CaseStudyReference
-    | PostReference;
-  anchor?: string;
-  href?: string;
-};
-
-export type SiteSettings = {
-  _id: string;
-  _type: "siteSettings";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  companyRegNo?: string;
-  year?: string;
-  email?: string;
-  legalForm?: string;
-  address?: string;
-  vatStatus?: string;
-  bankCountry?: string;
-  dayRate?: number;
-  monthlyRetainer?: string;
-  agencyDiscount?: string;
-  insurance?: string;
-  bookingUrl?: string;
-  briefRecipient?: string;
-  footer?: {
-    tagline?: string;
-    legalLeft?: string;
-    legalRight?: string;
-  };
-  defaultClosing?: {
-    eyebrow?: string;
-    title?: string;
-    sub?: string;
-    emailLine?: string;
-  };
-  capabilities?: {
-    title?: string;
-    aside?: string;
-    rowOne?: Array<string>;
-    rowTwo?: Array<string>;
-    note?: string;
-  };
-};
-
-export type EngagementMode = {
-  _type: "engagementMode";
-  anchor?: string;
-  head?: SectionHead;
-  getsTitle?: string;
-  gets?: Array<string>;
-  goodForTitle?: string;
-  goodFor?: Array<string>;
-  priceLabel?: string;
-  priceTitle?: string;
-  priceDetail?: string;
-  link?: Cta;
-};
-
-export type LegalSection = {
-  _type: "legalSection";
-  heading: string;
-  body?: RichBody;
-};
-
-export type Role = {
-  _type: "role";
-  title: string;
-  text?: string;
-  status?: string;
-};
-
-export type Estimator = {
-  _type: "estimator";
-  title?: string;
-  sub?: string;
-  engineersLabel?: string;
-  monthsLabel?: string;
-  note?: RichInline;
-  daysLabel?: string;
-  totalLabel?: string;
-  footnotes?: Array<string>;
-};
-
-export type RateCard = {
-  _type: "rateCard";
-  name: string;
-  price?: string;
-  unit?: string;
-  meta?: string;
-  items?: Array<string>;
-  button?: Cta;
-  highlight?: boolean;
-};
-
-export type FlowStage = {
-  _type: "flowStage";
-  stage: string;
-  agent?: string;
-  input?: string;
-  output?: string;
-  guardrail?: string;
-  humanGate?: boolean;
-  humanNote?: string;
-};
-
 export type RichBody = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -463,6 +108,45 @@ export type RichBody = Array<{
   _type: "block";
   _key: string;
 }>;
+
+export type Slug = {
+  _type: "slug";
+  current: string;
+  source?: string;
+};
+
+export type CaseStudy = {
+  _id: string;
+  _type: "caseStudy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  domain?: string;
+  problem?: string;
+  whatWeDid?: string;
+  measured?: RichInline;
+  stack?: Array<string>;
+  shape?: string;
+  order: number;
+  featured?: boolean;
+  featuredOrder?: number;
+  filterDomain?: "payments" | "retail" | "health" | "ai" | "iot";
+  metric?: {
+    value?: string;
+    label?: string;
+    before?: number;
+    after?: number;
+    beforeLabel?: string;
+    afterLabel?: string;
+    evidence?: string;
+  };
+  hasPage?: boolean;
+  slug: Slug;
+  source?: string;
+  clientName?: string;
+  seo?: Seo;
+};
 
 export type RichInline = Array<{
   children?: Array<{
@@ -483,742 +167,6 @@ export type RichInline = Array<{
   _key: string;
 }>;
 
-export type Closing = {
-  _type: "closing";
-  eyebrow?: string;
-  title: string;
-  sub?: string;
-  buttons?: Array<
-    {
-      _key: string;
-    } & Cta
-  >;
-  showEmail?: boolean;
-};
-
-export type PageHero = {
-  _type: "pageHero";
-  eyebrow?: string;
-  title: string;
-  sub?: string;
-  buttons?: Array<
-    {
-      _key: string;
-    } & Cta
-  >;
-  facts?: Array<
-    {
-      _key: string;
-    } & Fact
-  >;
-};
-
-export type FaqSection = {
-  _type: "faqSection";
-  title?: string;
-  items?: Array<
-    {
-      _key: string;
-    } & FaqItem
-  >;
-};
-
-export type LabelValueSection = {
-  _type: "labelValueSection";
-  head?: SectionHead;
-  rows?: Array<
-    {
-      _key: string;
-    } & LabelValue
-  >;
-};
-
-export type StepsSection = {
-  _type: "stepsSection";
-  head?: SectionHead;
-  steps?: Array<
-    {
-      _key: string;
-    } & Step
-  >;
-};
-
-export type ListSection = {
-  _type: "listSection";
-  head?: SectionHead;
-  items?: Array<string>;
-};
-
-export type TitleTextSection = {
-  _type: "titleTextSection";
-  head?: SectionHead;
-  items?: Array<
-    {
-      _key: string;
-    } & TitleText
-  >;
-};
-
-export type SectionHead = {
-  _type: "sectionHead";
-  eyebrow?: string;
-  title?: string;
-  sub?: string;
-  aside?: string;
-};
-
-export type FaqItem = {
-  _type: "faqItem";
-  question: string;
-  answer: string;
-};
-
-export type Step = {
-  _type: "step";
-  when: string;
-  title?: string;
-  text?: string;
-};
-
-export type LabelValue = {
-  _type: "labelValue";
-  label: string;
-  value?: string;
-};
-
-export type TitleText = {
-  _type: "titleText";
-  title: string;
-  text?: string;
-};
-
-export type Fact = {
-  _type: "fact";
-  value: string;
-  label?: string;
-};
-
-export type Post = {
-  _id: string;
-  _type: "post";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  slug: Slug;
-  category?: "Delivery" | "Scope" | "AI" | "Working together" | "Measurement";
-  excerpt: string;
-  publishedAt?: string;
-  body?: RichBody;
-  offer?: {
-    title?: string;
-    text?: string;
-    link?: Link;
-    cta?: string;
-  };
-  closing?: string;
-  seo?: Seo;
-};
-
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
-};
-
-export type Industry = {
-  _id: string;
-  _type: "industry";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  n: number;
-  name: string;
-  slug: Slug;
-  short?: string;
-  title?: string;
-  sub?: string;
-  facts?: Array<
-    {
-      _key: string;
-    } & Fact
-  >;
-  record?: Array<
-    {
-      _key: string;
-    } & CaseStudyReference
-  >;
-  fullCards?: number;
-  asks?: Array<
-    {
-      _key: string;
-    } & TitleText
-  >;
-  services?: Array<{
-    service: ServiceReference;
-    text?: string;
-    _type: "serviceFit";
-    _key: string;
-  }>;
-  close?: string;
-  seo?: Seo;
-};
-
-export type Service = {
-  _id: string;
-  _type: "service";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  n: number;
-  name: string;
-  slug: Slug;
-  oneLiner?: string;
-  description?: string;
-  tiles?: Array<{
-    title: string;
-    text?: string;
-    _type: "tile";
-    _key: string;
-  }>;
-  goodFor?: Array<string>;
-  stack?: Array<string>;
-  shape?: string;
-  pageTitle?: string;
-  gets?: Array<string>;
-  sayNoWhen?: Array<string>;
-  steps?: Array<
-    {
-      _key: string;
-    } & Step
-  >;
-  record?: Array<
-    {
-      _key: string;
-    } & CaseStudyReference
-  >;
-  faq?: Array<
-    {
-      _key: string;
-    } & FaqItem
-  >;
-  closing?: string;
-  seo?: Seo;
-};
-
-export type TermsPage = {
-  _id: string;
-  _type: "termsPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  sections?: Array<
-    {
-      _key: string;
-    } & LegalSection
-  >;
-  footnote?: string;
-  seo?: Seo;
-};
-
-export type PrivacyPage = {
-  _id: string;
-  _type: "privacyPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  sections?: Array<
-    {
-      _key: string;
-    } & LegalSection
-  >;
-  footnote?: string;
-  seo?: Seo;
-};
-
-export type JoinPage = {
-  _id: string;
-  _type: "joinPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  work?: TitleTextSection;
-  vetting?: TitleTextSection;
-  roles?: {
-    head?: SectionHead;
-    roles?: Array<
-      {
-        _key: string;
-      } & Role
-    >;
-    payLine?: string;
-  };
-  faq?: FaqSection;
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type AgenciesPage = {
-  _id: string;
-  _type: "agenciesPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  how?: TitleTextSection;
-  gets?: ListSection;
-  sayNo?: ListSection;
-  faq?: FaqSection;
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type AgenticFlowPage = {
-  _id: string;
-  _type: "agenticFlowPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  flow?: {
-    head?: SectionHead;
-    stages?: Array<
-      {
-        _key: string;
-      } & FlowStage
-    >;
-    labels?: {
-      stage?: string;
-      input?: string;
-      output?: string;
-      guardrail?: string;
-      whoDecides?: string;
-      personSigns?: string;
-      noGate?: string;
-      runsAlone?: string;
-      briefIn?: string;
-      prOut?: string;
-    };
-  };
-  agents?: {
-    head?: SectionHead;
-    does?: Array<string>;
-    neverTitle?: string;
-    neverAside?: string;
-    never?: Array<string>;
-  };
-  tooling?: {
-    head?: SectionHead;
-    tools?: Array<string>;
-    whereLabel?: string;
-    where?: Array<string>;
-    links?: Array<
-      {
-        _key: string;
-      } & Cta
-    >;
-  };
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type AiTransformationPage = {
-  _id: string;
-  _type: "aiTransformationPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  offer?: {
-    head?: SectionHead;
-    gets?: Array<string>;
-    priced?: RichInline;
-    goodForTitle?: string;
-    goodFor?: Array<string>;
-    sayNoTitle?: string;
-    sayNo?: Array<string>;
-  };
-  pipeline?: TitleTextSection;
-  weeks?: StepsSection;
-  measures?: TitleTextSection;
-  record?: {
-    head?: SectionHead;
-    cases?: Array<
-      {
-        _key: string;
-      } & CaseStudyReference
-    >;
-    allLink?: Cta;
-  };
-  faq?: FaqSection;
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type WorkingWithUsPage = {
-  _id: string;
-  _type: "workingWithUsPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  checks?: TitleTextSection;
-  asks?: TitleTextSection;
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type ComparePage = {
-  _id: string;
-  _type: "comparePage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  table?: {
-    head?: SectionHead;
-    columns?: Array<string>;
-    rows?: Array<{
-      label: string;
-      cells?: Array<string>;
-      _type: "compareRow";
-      _key: string;
-    }>;
-  };
-  estimator?: Estimator;
-  faq?: FaqSection;
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type BriefPage = {
-  _id: string;
-  _type: "briefPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: {
-    eyebrow?: string;
-    title: string;
-    sub?: string;
-  };
-  steps?: Array<
-    {
-      _key: string;
-    } & TitleText
-  >;
-  note?: RichInline;
-  form?: {
-    title?: string;
-    duration?: string;
-    fieldPlaceholders?: Array<string>;
-    problemLabel?: string;
-    whenLabel?: string;
-    whenOptions?: Array<string>;
-    budgetLabel?: string;
-    submit?: string;
-    receivedLabel?: string;
-    receivedTitle?: string;
-    receivedText?: string;
-    checklist?: Array<string>;
-  };
-  strip?: Array<string>;
-  seo?: Seo;
-};
-
-export type BookPage = {
-  _id: string;
-  _type: "bookPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: {
-    eyebrow?: string;
-    title: string;
-    sub?: string;
-  };
-  steps?: Array<
-    {
-      _key: string;
-    } & TitleText
-  >;
-  note?: RichInline;
-  calendar?: {
-    title?: string;
-    timezone?: string;
-    prompt?: string;
-    fieldPlaceholders?: Array<string>;
-    submit?: string;
-    bookedLabel?: string;
-    bookedTitle?: string;
-    bookedText?: string;
-    checklist?: Array<string>;
-  };
-  strip?: Array<string>;
-  seo?: Seo;
-};
-
-export type RatesPage = {
-  _id: string;
-  _type: "ratesPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  cards?: Array<
-    {
-      _key: string;
-    } & RateCard
-  >;
-  estimator?: Estimator;
-  terms?: LabelValueSection;
-  faq?: FaqSection;
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type ApproachPage = {
-  _id: string;
-  _type: "approachPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  staffing?: TitleTextSection;
-  agentic?: {
-    head?: SectionHead;
-    tags?: Array<string>;
-    links?: Array<
-      {
-        _key: string;
-      } & Cta
-    >;
-    items?: Array<
-      {
-        _key: string;
-      } & TitleText
-    >;
-  };
-  hours?: {
-    head?: SectionHead;
-    zones?: Array<string>;
-    paragraphs?: Array<string>;
-  };
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type NotesIndexPage = {
-  _id: string;
-  _type: "notesIndexPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  list?: {
-    head?: SectionHead;
-    readLabel?: string;
-    draftLabel?: string;
-  };
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type WorkIndexPage = {
-  _id: string;
-  _type: "workIndexPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  selected?: {
-    head?: SectionHead;
-    cases?: Array<
-      {
-        _key: string;
-      } & CaseStudyReference
-    >;
-    restTitle?: string;
-    restAside?: string;
-  };
-  reporting?: {
-    head?: SectionHead;
-    points?: Array<string>;
-  };
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type IndustriesIndexPage = {
-  _id: string;
-  _type: "industriesIndexPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  list?: {
-    head?: SectionHead;
-  };
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type ServicesIndexPage = {
-  _id: string;
-  _type: "servicesIndexPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: PageHero;
-  modes?: Array<
-    {
-      _key: string;
-    } & EngagementMode
-  >;
-  detail?: {
-    head?: SectionHead;
-  };
-  inside?: TitleTextSection;
-  howItRuns?: {
-    head?: SectionHead;
-    link?: Cta;
-    steps?: Array<
-      {
-        _key: string;
-      } & Step
-    >;
-  };
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type HomePage = {
-  _id: string;
-  _type: "homePage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hero?: {
-    eyebrow?: string;
-    title: string;
-    sub?: string;
-    buttons?: Array<
-      {
-        _key: string;
-      } & Cta
-    >;
-    facts?: Array<string>;
-    beats?: Array<
-      {
-        _key: string;
-      } & Step
-    >;
-    scrollHint?: string;
-  };
-  domains?: Array<{
-    name: string;
-    text?: string;
-    lead?: CaseStudyReference;
-    _type: "domain";
-    _key: string;
-  }>;
-  services?: {
-    head?: SectionHead;
-    scrollHint?: string;
-    detailsLabel?: string;
-    goodForLabel?: string;
-    stackLabel?: string;
-    engagementLabel?: string;
-    fromLabel?: string;
-    closingLabel?: string;
-    closingLinks?: Array<
-      {
-        _key: string;
-      } & Cta
-    >;
-  };
-  caseIndex?: {
-    head?: SectionHead;
-    cases?: Array<
-      {
-        _key: string;
-      } & CaseStudyReference
-    >;
-    filters?: Array<{
-      key: "all" | "payments" | "retail" | "health" | "ai" | "iot";
-      label: string;
-      _type: "filterChip";
-      _key: string;
-    }>;
-    problemLabel?: string;
-    whatWeDidLabel?: string;
-    measuredLabel?: string;
-    pageLink?: string;
-    askLink?: string;
-    allLink?: Cta;
-  };
-  midCta?: {
-    text?: string;
-    button?: Cta;
-  };
-  why?: TitleTextSection;
-  record?: {
-    head?: SectionHead;
-    link?: Cta;
-    stats?: Array<
-      {
-        _key: string;
-      } & Fact
-    >;
-    strip?: Array<string>;
-  };
-  notes?: {
-    head?: SectionHead;
-    countLine?: string;
-    latestLabel?: string;
-    readLabel?: string;
-    moreTitle?: string;
-    allLink?: Cta;
-  };
-  closing?: Closing;
-  seo?: Seo;
-};
-
-export type CaseStudy = {
-  _id: string;
-  _type: "caseStudy";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  domain?: string;
-  problem?: string;
-  whatWeDid?: string;
-  measured?: RichInline;
-  stack?: Array<string>;
-  shape?: string;
-  metric?: {
-    value?: string;
-    label?: string;
-    before?: number;
-    after?: number;
-    beforeLabel?: string;
-    afterLabel?: string;
-    evidence?: string;
-  };
-  filterDomain?: "payments" | "retail" | "health" | "ai" | "iot";
-  featured?: boolean;
-  order?: number;
-  hasPage?: boolean;
-  slug: Slug;
-  source?: string;
-  clientName?: string;
-  seo?: Seo;
-};
-
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
   top: number;
@@ -1233,6 +181,11 @@ export type SanityImageHotspot = {
   y: number;
   height: number;
   width: number;
+};
+
+export type Link = {
+  _type: "link";
+  href: string;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -1333,81 +286,18 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | NotFoundPage
+  | SiteSettings
+  | JobListing
+  | Post
   | SanityImageAssetReference
   | Seo
-  | EngagementPanel
-  | DetailTemplates
-  | Navigation
-  | Cta
-  | HomePageReference
-  | ServicesIndexPageReference
-  | IndustriesIndexPageReference
-  | WorkIndexPageReference
-  | NotesIndexPageReference
-  | ApproachPageReference
-  | RatesPageReference
-  | BookPageReference
-  | BriefPageReference
-  | ComparePageReference
-  | WorkingWithUsPageReference
-  | AiTransformationPageReference
-  | AgenticFlowPageReference
-  | AgenciesPageReference
-  | JoinPageReference
-  | PrivacyPageReference
-  | TermsPageReference
-  | ServiceReference
-  | IndustryReference
-  | CaseStudyReference
-  | PostReference
-  | Link
-  | SiteSettings
-  | EngagementMode
-  | LegalSection
-  | Role
-  | Estimator
-  | RateCard
-  | FlowStage
   | RichBody
-  | RichInline
-  | Closing
-  | PageHero
-  | FaqSection
-  | LabelValueSection
-  | StepsSection
-  | ListSection
-  | TitleTextSection
-  | SectionHead
-  | FaqItem
-  | Step
-  | LabelValue
-  | TitleText
-  | Fact
-  | Post
   | Slug
-  | Industry
-  | Service
-  | TermsPage
-  | PrivacyPage
-  | JoinPage
-  | AgenciesPage
-  | AgenticFlowPage
-  | AiTransformationPage
-  | WorkingWithUsPage
-  | ComparePage
-  | BriefPage
-  | BookPage
-  | RatesPage
-  | ApproachPage
-  | NotesIndexPage
-  | WorkIndexPage
-  | IndustriesIndexPage
-  | ServicesIndexPage
-  | HomePage
   | CaseStudy
+  | RichInline
   | SanityImageCrop
   | SanityImageHotspot
+  | Link
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -1418,49 +308,201 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: ../web/sanity/queries.ts
-// Variable: PHASE4_QUERY
-// Query: {  "approach": *[_type == "approachPage" && _id == "approachPage"][0]{ hero{ eyebrow, title, sub }, closing{ eyebrow, title, sub } },  "settings": *[_type == "siteSettings" && _id == "siteSettings"][0]{ companyRegNo, year, email, dayRate, footer, defaultClosing },  "cases": *[_type == "homePage" && _id == "homePage"][0].caseIndex.cases[]->{ _id, title, source }}
-export type PHASE4_QUERY_RESULT = {
-  approach: {
-    hero: {
-      eyebrow: string | null;
-      title: string;
-      sub: string | null;
-    } | null;
-    closing: {
-      eyebrow: string | null;
-      title: string;
-      sub: string | null;
-    } | null;
+// Variable: SETTINGS_QUERY
+// Query: *[_type == "siteSettings" && _id == "siteSettings"][0]{  companyRegNo, year, email, legalForm, address, vatStatus, bankCountry, dayRate, monthlyRetainer, agencyDiscount, insurance, bookingUrl}
+export type SETTINGS_QUERY_RESULT = {
+  companyRegNo: string | null;
+  year: string | null;
+  email: string | null;
+  legalForm: string | null;
+  address: string | null;
+  vatStatus: string | null;
+  bankCountry: string | null;
+  dayRate: number | null;
+  monthlyRetainer: string | null;
+  agencyDiscount: string | null;
+  insurance: string | null;
+  bookingUrl: string | null;
+} | null;
+
+// Source: ../web/sanity/queries.ts
+// Variable: CASES_BY_KEY_QUERY
+// Query: *[_type == "caseStudy" && source in $keys]{  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric}
+export type CASES_BY_KEY_QUERY_RESULT = Array<{
+  _id: string;
+  title: string;
+  slug: string;
+  source: string | null;
+  domain: string | null;
+  problem: string | null;
+  whatWeDid: string | null;
+  measured: RichInline | null;
+  stack: Array<string> | null;
+  shape: string | null;
+  order: number;
+  hasPage: boolean | null;
+  metric: {
+    value?: string;
+    label?: string;
+    before?: number;
+    after?: number;
+    beforeLabel?: string;
+    afterLabel?: string;
+    evidence?: string;
   } | null;
-  settings: {
-    companyRegNo: string | null;
-    year: string | null;
-    email: string | null;
-    dayRate: number | null;
-    footer: {
-      tagline?: string;
-      legalLeft?: string;
-      legalRight?: string;
-    } | null;
-    defaultClosing: {
-      eyebrow?: string;
-      title?: string;
-      sub?: string;
-      emailLine?: string;
-    } | null;
+}>;
+
+// Source: ../web/sanity/queries.ts
+// Variable: CASES_FEATURED_QUERY
+// Query: *[_type == "caseStudy" && featured == true] | order(featuredOrder asc){  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, filterDomain}
+export type CASES_FEATURED_QUERY_RESULT = Array<{
+  _id: string;
+  title: string;
+  slug: string;
+  source: string | null;
+  domain: string | null;
+  problem: string | null;
+  whatWeDid: string | null;
+  measured: RichInline | null;
+  stack: Array<string> | null;
+  shape: string | null;
+  order: number;
+  hasPage: boolean | null;
+  metric: {
+    value?: string;
+    label?: string;
+    before?: number;
+    after?: number;
+    beforeLabel?: string;
+    afterLabel?: string;
+    evidence?: string;
   } | null;
-  cases: Array<{
-    _id: string;
-    title: string;
-    source: string | null;
-  }> | null;
-};
+  filterDomain: "ai" | "health" | "iot" | "payments" | "retail" | null;
+}>;
+
+// Source: ../web/sanity/queries.ts
+// Variable: CASES_ALL_QUERY
+// Query: *[_type == "caseStudy"] | order(order asc){  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric}
+export type CASES_ALL_QUERY_RESULT = Array<{
+  _id: string;
+  title: string;
+  slug: string;
+  source: string | null;
+  domain: string | null;
+  problem: string | null;
+  whatWeDid: string | null;
+  measured: RichInline | null;
+  stack: Array<string> | null;
+  shape: string | null;
+  order: number;
+  hasPage: boolean | null;
+  metric: {
+    value?: string;
+    label?: string;
+    before?: number;
+    after?: number;
+    beforeLabel?: string;
+    afterLabel?: string;
+    evidence?: string;
+  } | null;
+}>;
+
+// Source: ../web/sanity/queries.ts
+// Variable: CASE_BY_SLUG_QUERY
+// Query: *[_type == "caseStudy" && hasPage == true && slug.current == $slug][0]{  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, seo}
+export type CASE_BY_SLUG_QUERY_RESULT = {
+  _id: string;
+  title: string;
+  slug: string;
+  source: string | null;
+  domain: string | null;
+  problem: string | null;
+  whatWeDid: string | null;
+  measured: RichInline | null;
+  stack: Array<string> | null;
+  shape: string | null;
+  order: number;
+  hasPage: boolean | null;
+  metric: {
+    value?: string;
+    label?: string;
+    before?: number;
+    after?: number;
+    beforeLabel?: string;
+    afterLabel?: string;
+    evidence?: string;
+  } | null;
+  seo: Seo | null;
+} | null;
+
+// Source: ../web/sanity/queries.ts
+// Variable: CASE_SLUGS_QUERY
+// Query: *[_type == "caseStudy" && hasPage == true].slug.current
+export type CASE_SLUGS_QUERY_RESULT = Array<string>;
+
+// Source: ../web/sanity/queries.ts
+// Variable: POSTS_QUERY
+// Query: *[_type == "post"] | order(defined(publishedAt) desc, publishedAt desc){  _id, title, "slug": slug.current, category, excerpt, publishedAt}
+export type POSTS_QUERY_RESULT = Array<{
+  _id: string;
+  title: string;
+  slug: string;
+  category:
+    "AI" | "Delivery" | "Measurement" | "Scope" | "Working together" | null;
+  excerpt: string;
+  publishedAt: string | null;
+}>;
+
+// Source: ../web/sanity/queries.ts
+// Variable: POST_BY_SLUG_QUERY
+// Query: *[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{  _id, title, "slug": slug.current, category, excerpt, publishedAt, body, offer, closing, seo}
+export type POST_BY_SLUG_QUERY_RESULT = {
+  _id: string;
+  title: string;
+  slug: string;
+  category:
+    "AI" | "Delivery" | "Measurement" | "Scope" | "Working together" | null;
+  excerpt: string;
+  publishedAt: string | null;
+  body: RichBody | null;
+  offer: {
+    title?: string;
+    text?: string;
+    href?: string;
+    cta?: string;
+  } | null;
+  closing: string | null;
+  seo: Seo | null;
+} | null;
+
+// Source: ../web/sanity/queries.ts
+// Variable: POST_SLUGS_QUERY
+// Query: *[_type == "post" && defined(publishedAt)].slug.current
+export type POST_SLUGS_QUERY_RESULT = Array<string>;
+
+// Source: ../web/sanity/queries.ts
+// Variable: JOBS_QUERY
+// Query: *[_type == "jobListing" && status != "closed"] | order(order asc){  _id, title, text, status}
+export type JOBS_QUERY_RESULT = Array<{
+  _id: string;
+  title: string;
+  text: string | null;
+  status: "closed" | "open" | "pipeline" | null;
+}>;
 
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    '{\n  "approach": *[_type == "approachPage" && _id == "approachPage"][0]{ hero{ eyebrow, title, sub }, closing{ eyebrow, title, sub } },\n  "settings": *[_type == "siteSettings" && _id == "siteSettings"][0]{ companyRegNo, year, email, dayRate, footer, defaultClosing },\n  "cases": *[_type == "homePage" && _id == "homePage"][0].caseIndex.cases[]->{ _id, title, source }\n}': PHASE4_QUERY_RESULT;
+    '*[_type == "siteSettings" && _id == "siteSettings"][0]{\n  companyRegNo, year, email, legalForm, address, vatStatus, bankCountry, dayRate, monthlyRetainer, agencyDiscount, insurance, bookingUrl\n}': SETTINGS_QUERY_RESULT;
+    '*[_type == "caseStudy" && source in $keys]{\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric\n}': CASES_BY_KEY_QUERY_RESULT;
+    '*[_type == "caseStudy" && featured == true] | order(featuredOrder asc){\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, filterDomain\n}': CASES_FEATURED_QUERY_RESULT;
+    '*[_type == "caseStudy"] | order(order asc){\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric\n}': CASES_ALL_QUERY_RESULT;
+    '*[_type == "caseStudy" && hasPage == true && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, seo\n}': CASE_BY_SLUG_QUERY_RESULT;
+    '*[_type == "caseStudy" && hasPage == true].slug.current': CASE_SLUGS_QUERY_RESULT;
+    '*[_type == "post"] | order(defined(publishedAt) desc, publishedAt desc){\n  _id, title, "slug": slug.current, category, excerpt, publishedAt\n}': POSTS_QUERY_RESULT;
+    '*[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, category, excerpt, publishedAt, body, offer, closing, seo\n}': POST_BY_SLUG_QUERY_RESULT;
+    '*[_type == "post" && defined(publishedAt)].slug.current': POST_SLUGS_QUERY_RESULT;
+    '*[_type == "jobListing" && status != "closed"] | order(order asc){\n  _id, title, text, status\n}': JOBS_QUERY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too

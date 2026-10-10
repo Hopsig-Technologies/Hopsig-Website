@@ -8,8 +8,9 @@
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "check:content": "python scripts/check_bundle.py",
-    "shot": "node scripts/shot.mjs"
+    "check:content": "node --no-warnings scripts/content_corpus.mjs && node scripts/seed.mjs && python scripts/check_bundle.py",
+    "shot": "node scripts/shot.mjs",
+    "placeholders": "node --no-warnings scripts/content_corpus.mjs && node scripts/placeholders.mjs"
   },
   "devDependencies": {
     "pixelmatch": "^8.0.0",

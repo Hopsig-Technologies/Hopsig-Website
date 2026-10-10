@@ -1,4 +1,4 @@
-"""Phase 3 gate: the seeded dataset has what the site expects.
+"""Dataset gate: the seeded dataset has what the site expects.
 
     python scripts/verify_dataset.py [dataset]      # default: development
 
@@ -16,17 +16,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT = 'e1ib49ry'
 API = '2025-02-19'
 PLACEHOLDER = re.compile(r'\[[A-Z][^\]\n<>"]{0,60}\]')
-SINGLETONS = ['siteSettings', 'navigation', 'detailTemplates', 'engagementPanel', 'homePage', 'servicesIndexPage',
-              'industriesIndexPage', 'workIndexPage', 'notesIndexPage', 'approachPage', 'ratesPage', 'bookPage',
-              'briefPage', 'comparePage', 'workingWithUsPage', 'aiTransformationPage', 'agenticFlowPage',
-              'agenciesPage', 'joinPage', 'privacyPage', 'termsPage', 'notFoundPage']
-# Tokens that only ever lived in prototype build notes, which are not seeded.
-BUILD_NOTE_ONLY = {'[FORM ENDPOINT]', '[INBOX]'}
+KEPT = ['caseStudy', 'post', 'jobListing', 'siteSettings']
 NOT_COPY = {'clientName', 'source', 'evidence', '_id', '_type', '_key', '_ref', '_rev', '_createdAt', '_updatedAt'}
 
 
-def query(dataset, groq):
-    url = f'https://{PROJECT}.apicdn.sanity.io/v{API}/data/query/{dataset}?' + urllib.parse.urlencode({'query': groq})
+def query(dataset, groq, params=None):
+    qs = {'query': groq}
+    for k, v in (params or {}).items():
+        qs['$' + k] = json.dumps(v)
+    url = f'https://{PROJECT}.apicdn.sanity.io/v{API}/data/query/{dataset}?' + urllib.parse.urlencode(qs)
     with urllib.request.urlopen(url, timeout=60) as r:
         return json.load(r)['result']
 
@@ -40,16 +38,16 @@ def expect(cond, msg):
         failures.append(msg)
 
 
-def strings(o, out, path=''):
+def strings(o, out):
     if isinstance(o, str):
-        out.append((path, o))
+        out.append(o)
     elif isinstance(o, list):
         for x in o:
-            strings(x, out, path)
+            strings(x, out)
     elif isinstance(o, dict):
         for k, v in o.items():
             if k not in NOT_COPY:
-                strings(v, out, k)
+                strings(v, out)
 
 
 def main():
@@ -57,31 +55,36 @@ def main():
     print(f'dataset: {dataset}')
     counts = query(dataset, '''{
       "cases": count(*[_type == "caseStudy"]),
-      "featured": count(*[_type == "caseStudy" && featured]),
-      "pages": count(*[_type == "caseStudy" && hasPage]),
+      "featured": count(*[_type == "caseStudy" && featured == true]),
+      "pages": count(*[_type == "caseStudy" && hasPage == true]),
       "published": count(*[_type == "post" && defined(publishedAt)]),
       "posts": count(*[_type == "post"]),
-      "services": count(*[_type == "service"]),
-      "industries": count(*[_type == "industry"])
-    }''')
+      "jobs": count(*[_type == "jobListing"]),
+      "gone": count(*[!(_type in $kept) && !(_type match "sanity.*") && !(_type match "system.*")]),
+      "settings": defined(*[_id == "siteSettings"][0])
+    }''', {'kept': KEPT})
     expect(counts['cases'] == 32, f"32 case studies ({counts['cases']})")
     expect(counts['featured'] == 8, f"8 featured ({counts['featured']})")
     expect(counts['pages'] == 3, f"3 with a page ({counts['pages']})")
     expect(counts['posts'] == 6 and counts['published'] == 2, f"6 notes, 2 published ({counts['posts']}, {counts['published']})")
-    expect(counts['services'] == 8, f"8 services ({counts['services']})")
-    expect(counts['industries'] == 6, f"6 industries ({counts['industries']})")
+    expect(counts['jobs'] == 5, f"5 roles ({counts['jobs']})")
+    expect(counts['gone'] == 0, f"no documents of removed types ({counts['gone']})")
+    expect(counts['settings'] is True, 'siteSettings exists')
 
-    # The two queries the site will run (CLAUDE.md), against the ordered lists from Phase 2.
-    home = query(dataset, '*[_id == "homePage"][0].caseIndex.cases[]->source')
+    # The orders the site renders, as seeded from the reference.
+    home = query(dataset, '*[_type == "caseStudy" && featured == true] | order(featuredOrder asc).source')
     expect(home == ['F0', 'F1', 'F3', 'F5', 'F4', 'C1', 'F17', 'C10'], f'home case index in reference order {home}')
-    work = query(dataset, '*[_id == "workIndexPage"][0].selected.cases[]->source')
-    expect(len(work) == 12, f'/work selected: 12 cards ({len(work)})')
+    work = query(dataset, '*[_type == "caseStudy"] | order(order asc)[0...12].source')
+    expect(work == ['F0', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'C1', 'C0', 'C4', 'C10'], f'/work first 12 in reference order')
+    orders = query(dataset, '*[_type == "caseStudy"].order')
+    expect(sorted(orders) == list(range(32)), 'case-study order is 0..31 with no gaps')
     notes = query(dataset, '*[_type == "post" && defined(publishedAt)] | order(publishedAt desc).slug.current')
     expect(notes == ['superintelligence-is-not-on-your-roadmap', 'the-sow-is-the-pitch'], f'published notes, newest first {notes}')
+    offers = query(dataset, '*[_type == "post" && defined(offer)].offer.href')
+    expect(all(isinstance(h, str) and h.startswith('/') for h in offers), f'note offers link by path {offers}')
 
-    docs = query(dataset, '*[!(_id in path("drafts.**")) && !(_type match "sanity.*") && !(_type match "system.*")]')
+    docs = query(dataset, '*[_type in $kept]', {'kept': KEPT})
     ids = {d['_id'] for d in docs}
-    expect(all(s in ids for s in SINGLETONS), f'all {len(SINGLETONS)} singletons exist')
     refs = set()
 
     def collect(o):
@@ -96,16 +99,21 @@ def main():
 
     collect(docs)
     dangling = sorted(refs - ids)
-    expect(not dangling, f'no dangling references ({len(refs)} targets checked){" " + str(dangling) if dangling else ""}')
+    expect(not dangling, f'no dangling references ({len(refs)} targets){" " + str(dangling) if dangling else ""}')
 
     found = set()
     for d in docs:
         out = []
         strings(d, out)
-        for _, s in out:
+        for s in out:
             found.update(PLACEHOLDER.findall(s))
-    expected = set(json.load(open(os.path.join(ROOT, 'content', 'placeholders.json'), encoding='utf-8'))) - BUILD_NOTE_ONLY
-    expect(found == expected, f'placeholders in the dataset match placeholders.json minus build-note tokens ({len(found)})'
+    expected = set()
+    for f in ('case-studies.json', 'posts.json'):
+        out = []
+        strings(json.load(open(os.path.join(ROOT, 'content', f), encoding='utf-8')), out)
+        for s in out:
+            expected.update(PLACEHOLDER.findall(s))
+    expect(found == expected, f'dataset placeholders match the seed input ({len(found)})'
            + (f' missing {sorted(expected - found)} extra {sorted(found - expected)}' if found != expected else ''))
 
     print(f'\n{len(failures)} failure(s)')

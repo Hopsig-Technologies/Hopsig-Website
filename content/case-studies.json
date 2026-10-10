@@ -32,7 +32,8 @@
   "filterDomain": "payments",
   "hasPage": true,
   "route": "/work/payments-platform",
-  "source": "F0"
+  "source": "F0",
+  "featuredOrder": 0
  },
  {
   "_type": "caseStudy",
@@ -64,7 +65,8 @@
   "filterDomain": "retail",
   "hasPage": false,
   "route": null,
-  "source": "F1"
+  "source": "F1",
+  "featuredOrder": 1
  },
  {
   "_type": "caseStudy",
@@ -122,7 +124,8 @@
   "filterDomain": "retail",
   "hasPage": false,
   "route": null,
-  "source": "F3"
+  "source": "F3",
+  "featuredOrder": 2
  },
  {
   "_type": "caseStudy",
@@ -153,7 +156,8 @@
   "filterDomain": "retail",
   "hasPage": false,
   "route": null,
-  "source": "F4"
+  "source": "F4",
+  "featuredOrder": 4
  },
  {
   "_type": "caseStudy",
@@ -188,7 +192,8 @@
   "filterDomain": "ai",
   "hasPage": false,
   "route": null,
-  "source": "F5"
+  "source": "F5",
+  "featuredOrder": 3
  },
  {
   "_type": "caseStudy",
@@ -252,6 +257,137 @@
  },
  {
   "_type": "caseStudy",
+  "_id": "preclinical-research-portal-for-global-labs",
+  "title": "Preclinical research portal for global labs",
+  "slug": {
+   "current": "preclinical-research-portal"
+  },
+  "domain": "Life sciences · data",
+  "problem": "Preclinical data was growing exponentially across labs and formats; nobody could compare it, let alone predict from it.",
+  "whatWeDid": "A compliant cloud architecture with custom ETL to harmonise heterogeneous lab data. Machine-learning models for predicting therapeutic response and model relevance. Dashboards and real-time visualisation for researchers.",
+  "measured": "<b>Data analysis time down 60%.</b> 100% of data visible across global teams. Predictive accuracy up.",
+  "stack": [
+   "Custom ETL",
+   "Python",
+   "ML models",
+   "Cloud architecture",
+   "Dashboards"
+  ],
+  "shape": "Data & AI",
+  "featured": true,
+  "order": 8,
+  "metric": {
+   "value": "60%",
+   "label": "less analysis time on preclinical data across global labs",
+   "before": 100,
+   "after": 40,
+   "beforeLabel": "Before",
+   "afterLabel": "After"
+  },
+  "filterDomain": "health",
+  "hasPage": true,
+  "route": "/work/preclinical-research-portal",
+  "source": "C1",
+  "featuredOrder": 5
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "surgical-imaging-platform-with-automated-analysis",
+  "title": "Surgical imaging platform with automated analysis",
+  "slug": {
+   "current": "surgical-imaging-platform-with-automated-analysis"
+  },
+  "domain": "Healthcare",
+  "problem": "Surgeons and clinicians needed one workflow for patient imaging, with analysis that did not wait for a human to open every file.",
+  "whatWeDid": "Two backends where each fits: Node.js/Express for workflow, Python/FastAPI for the models. Computer-vision analysis of medical images (OpenCV, TensorFlow). Role-based access and HIPAA-grade handling of patient data. PostgreSQL, imaging files on AWS S3, a real-time React front end.",
+  "measured": "Workflow time and review backlog, before and after — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: workflow efficiency up, data fully secured.",
+  "stack": [
+   "Node.js",
+   "Express",
+   "FastAPI",
+   "OpenCV",
+   "TensorFlow",
+   "PostgreSQL",
+   "AWS S3",
+   "React"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 9,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C0"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "omnichannel-loyalty-platform-on-microservices",
+  "title": "Omnichannel loyalty platform on microservices",
+  "slug": {
+   "current": "omnichannel-loyalty-platform-on-microservices"
+  },
+  "domain": "Retail · loyalty",
+  "problem": "A loyalty programme that had to take high transaction volumes across channels without slowing the checkout.",
+  "whatWeDid": "Microservices per loyalty function. Django REST Framework and React. AWS SQS/SNS for messaging, Celery for background work, Redis and Redshift caching for low-latency reads, OAuth for authentication, gRPC and GraphQL between services and clients.",
+  "measured": "High transaction volumes at low latency — <span class=\"phx\">[ADD p95 AND VOLUME]</span>.",
+  "stack": [
+   "Django REST",
+   "React",
+   "AWS SQS/SNS",
+   "Celery",
+   "Redis",
+   "Redshift",
+   "OAuth",
+   "gRPC",
+   "GraphQL"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 10,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C4"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "organic-revenue-engine-for-an-online-store",
+  "title": "Organic revenue engine for an online store",
+  "slug": {
+   "current": "organic-revenue-engine-for-an-online-store"
+  },
+  "domain": "E-commerce · growth",
+  "problem": "A WooCommerce/Shopify store with almost no organic sales.",
+  "whatWeDid": "Collection-based keyword targeting across product and category pages, AI-assisted content at scale, caching for fast checkout, and CRO on the checkout funnel.",
+  "measured": "<b>Monthly revenue from $2,000 to $12,000 in six months</b> — 6×, organic only.",
+  "stack": [
+   "WooCommerce",
+   "Shopify",
+   "Ahrefs",
+   "Semrush",
+   "WP Rocket"
+  ],
+  "shape": "Growth",
+  "featured": true,
+  "order": 11,
+  "metric": {
+   "value": "6×",
+   "label": "monthly revenue in six months, organic only",
+   "before": 2000,
+   "after": 12000,
+   "beforeLabel": "$2K",
+   "afterLabel": "$12K"
+  },
+  "filterDomain": "retail",
+  "hasPage": false,
+  "route": null,
+  "source": "C10",
+  "featuredOrder": 7
+ },
+ {
+  "_type": "caseStudy",
   "_id": "health-insurance-platform-under-supervision",
   "title": "Health-insurance platform under supervision",
   "slug": {
@@ -269,7 +405,7 @@
   ],
   "shape": "Built",
   "featured": false,
-  "order": 8,
+  "order": 12,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -295,7 +431,7 @@
   ],
   "shape": "Built",
   "featured": false,
-  "order": 9,
+  "order": 13,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -321,7 +457,7 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 10,
+  "order": 14,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -347,7 +483,7 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 11,
+  "order": 15,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -374,7 +510,7 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 12,
+  "order": 16,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -400,7 +536,7 @@
   ],
   "shape": "Embedded",
   "featured": false,
-  "order": 13,
+  "order": 17,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -426,7 +562,7 @@
   ],
   "shape": "Embedded",
   "featured": false,
-  "order": 14,
+  "order": 18,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -452,7 +588,7 @@
   ],
   "shape": "Built",
   "featured": false,
-  "order": 15,
+  "order": 19,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -478,7 +614,7 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 16,
+  "order": 20,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -503,7 +639,7 @@
   ],
   "shape": "Product",
   "featured": true,
-  "order": 17,
+  "order": 21,
   "metric": {
    "value": "200+",
    "label": "buildings on one real-time operational telemetry platform",
@@ -513,7 +649,8 @@
   "filterDomain": "iot",
   "hasPage": false,
   "route": null,
-  "source": "F17"
+  "source": "F17",
+  "featuredOrder": 6
  },
  {
   "_type": "caseStudy",
@@ -533,7 +670,7 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 18,
+  "order": 22,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -560,76 +697,12 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 19,
+  "order": 23,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
   "route": null,
   "source": "F19"
- },
- {
-  "_type": "caseStudy",
-  "_id": "surgical-imaging-platform-with-automated-analysis",
-  "title": "Surgical imaging platform with automated analysis",
-  "slug": {
-   "current": "surgical-imaging-platform-with-automated-analysis"
-  },
-  "domain": "Healthcare",
-  "problem": "Surgeons and clinicians needed one workflow for patient imaging, with analysis that did not wait for a human to open every file.",
-  "whatWeDid": "Two backends where each fits: Node.js/Express for workflow, Python/FastAPI for the models. Computer-vision analysis of medical images (OpenCV, TensorFlow). Role-based access and HIPAA-grade handling of patient data. PostgreSQL, imaging files on AWS S3, a real-time React front end.",
-  "measured": "Workflow time and review backlog, before and after — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: workflow efficiency up, data fully secured.",
-  "stack": [
-   "Node.js",
-   "Express",
-   "FastAPI",
-   "OpenCV",
-   "TensorFlow",
-   "PostgreSQL",
-   "AWS S3",
-   "React"
-  ],
-  "shape": "Built",
-  "featured": false,
-  "order": 100,
-  "metric": null,
-  "filterDomain": null,
-  "hasPage": false,
-  "route": null,
-  "source": "C0"
- },
- {
-  "_type": "caseStudy",
-  "_id": "preclinical-research-portal-for-global-labs",
-  "title": "Preclinical research portal for global labs",
-  "slug": {
-   "current": "preclinical-research-portal"
-  },
-  "domain": "Life sciences · data",
-  "problem": "Preclinical data was growing exponentially across labs and formats; nobody could compare it, let alone predict from it.",
-  "whatWeDid": "A compliant cloud architecture with custom ETL to harmonise heterogeneous lab data. Machine-learning models for predicting therapeutic response and model relevance. Dashboards and real-time visualisation for researchers.",
-  "measured": "<b>Data analysis time down 60%.</b> 100% of data visible across global teams. Predictive accuracy up.",
-  "stack": [
-   "Custom ETL",
-   "Python",
-   "ML models",
-   "Cloud architecture",
-   "Dashboards"
-  ],
-  "shape": "Data & AI",
-  "featured": true,
-  "order": 101,
-  "metric": {
-   "value": "60%",
-   "label": "less analysis time on preclinical data across global labs",
-   "before": 100,
-   "after": 40,
-   "beforeLabel": "Before",
-   "afterLabel": "After"
-  },
-  "filterDomain": "health",
-  "hasPage": true,
-  "route": "/work/preclinical-research-portal",
-  "source": "C1"
  },
  {
   "_type": "caseStudy",
@@ -651,7 +724,7 @@
   ],
   "shape": "Built",
   "featured": false,
-  "order": 102,
+  "order": 24,
   "metric": null,
   "filterDomain": null,
   "hasPage": true,
@@ -677,43 +750,12 @@
   ],
   "shape": "Built",
   "featured": false,
-  "order": 103,
+  "order": 25,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
   "route": null,
   "source": "C3"
- },
- {
-  "_type": "caseStudy",
-  "_id": "omnichannel-loyalty-platform-on-microservices",
-  "title": "Omnichannel loyalty platform on microservices",
-  "slug": {
-   "current": "omnichannel-loyalty-platform-on-microservices"
-  },
-  "domain": "Retail · loyalty",
-  "problem": "A loyalty programme that had to take high transaction volumes across channels without slowing the checkout.",
-  "whatWeDid": "Microservices per loyalty function. Django REST Framework and React. AWS SQS/SNS for messaging, Celery for background work, Redis and Redshift caching for low-latency reads, OAuth for authentication, gRPC and GraphQL between services and clients.",
-  "measured": "High transaction volumes at low latency — <span class=\"phx\">[ADD p95 AND VOLUME]</span>.",
-  "stack": [
-   "Django REST",
-   "React",
-   "AWS SQS/SNS",
-   "Celery",
-   "Redis",
-   "Redshift",
-   "OAuth",
-   "gRPC",
-   "GraphQL"
-  ],
-  "shape": "Built",
-  "featured": false,
-  "order": 104,
-  "metric": null,
-  "filterDomain": null,
-  "hasPage": false,
-  "route": null,
-  "source": "C4"
  },
  {
   "_type": "caseStudy",
@@ -735,7 +777,7 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 105,
+  "order": 26,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -763,7 +805,7 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 106,
+  "order": 27,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -788,7 +830,7 @@
   ],
   "shape": "Built",
   "featured": false,
-  "order": 107,
+  "order": 28,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -814,7 +856,7 @@
   ],
   "shape": "Built",
   "featured": false,
-  "order": 108,
+  "order": 29,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
@@ -839,46 +881,12 @@
   ],
   "shape": "Data & AI",
   "featured": false,
-  "order": 109,
+  "order": 30,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,
   "route": null,
   "source": "C9"
- },
- {
-  "_type": "caseStudy",
-  "_id": "organic-revenue-engine-for-an-online-store",
-  "title": "Organic revenue engine for an online store",
-  "slug": {
-   "current": "organic-revenue-engine-for-an-online-store"
-  },
-  "domain": "E-commerce · growth",
-  "problem": "A WooCommerce/Shopify store with almost no organic sales.",
-  "whatWeDid": "Collection-based keyword targeting across product and category pages, AI-assisted content at scale, caching for fast checkout, and CRO on the checkout funnel.",
-  "measured": "<b>Monthly revenue from $2,000 to $12,000 in six months</b> — 6×, organic only.",
-  "stack": [
-   "WooCommerce",
-   "Shopify",
-   "Ahrefs",
-   "Semrush",
-   "WP Rocket"
-  ],
-  "shape": "Growth",
-  "featured": true,
-  "order": 110,
-  "metric": {
-   "value": "6×",
-   "label": "monthly revenue in six months, organic only",
-   "before": 2000,
-   "after": 12000,
-   "beforeLabel": "$2K",
-   "afterLabel": "$12K"
-  },
-  "filterDomain": "retail",
-  "hasPage": false,
-  "route": null,
-  "source": "C10"
  },
  {
   "_type": "caseStudy",
@@ -900,7 +908,7 @@
   ],
   "shape": "Growth",
   "featured": false,
-  "order": 111,
+  "order": 31,
   "metric": null,
   "filterDomain": null,
   "hasPage": false,

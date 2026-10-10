@@ -1,13 +1,9 @@
-"""One-time extraction of page copy from reference/site/*.html into content/pages/*.json.
+"""Reference-page parser used by the checks (check_pages.py, check_links.py, check_bundle.py): the HTML tree,
+the route map and the page list.
 
-The reference HTML is the approved copy (the generator rewrites strings after rendering, and the
-build_ref step is not in the bundle), so this reads the HTML, not generator/site.py.
-
-    python scripts/extract_pages.py            # write content/pages/*.json
-    python scripts/extract_pages.py --raw P    # print the generic block tree for one page (debugging)
-
-Run scripts/check_pages.py afterwards: every visible string on each reference page must be accounted
-for in content/ (page JSON, collection JSON, navigation or site chrome).
+Its extraction entrypoint (reference HTML -> content/pages/*.json) ran once on 2026-10-10; those JSON files were
+then converted into the typed modules in web/content (scripts/convert_content.mjs, see git history) and deleted.
+Running `python scripts/extract_pages.py` again would recreate the intermediate JSON; there is no reason to.
 """
 import json
 import os

@@ -1,0 +1,32 @@
+[
+ {
+  "title": "Senior backend engineer",
+  "text": ".NET, Node.js or Python; owned a production system; comfortable in someone else's codebase",
+  "status": null,
+  "order": 0
+ },
+ {
+  "title": "Senior frontend engineer",
+  "text": "React or Angular, with the design-system discipline to keep three brands one product",
+  "status": null,
+  "order": 1
+ },
+ {
+  "title": "Data engineer",
+  "text": "Pipelines that run without you; warehouse, semantic layer, dashboards people open",
+  "status": null,
+  "order": 2
+ },
+ {
+  "title": "AI engineer",
+  "text": "Retrieval, evaluation harnesses, agents on Claude Code and MCP; a number before a demo",
+  "status": null,
+  "order": 3
+ },
+ {
+  "title": "Mobile engineer",
+  "text": "Kotlin, AOSP or cross-platform; store-ready, offline-first where it matters",
+  "status": null,
+  "order": 4
+ }
+]

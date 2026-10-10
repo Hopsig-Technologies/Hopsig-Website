@@ -1,19 +1,15 @@
-// Throwaway check page for Phase 1 (delete in Phase 6): a dark and a light surface and both buttons, matched against
-// the closing section of reference/site/approach.html. Copy comes from content/, never typed here.
+// Throwaway check page from Phase 1 (deleted in P1 when the real header, footer and closing arrive): a dark and a
+// light surface and both buttons, matched against the closing section of reference/site/approach.html.
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { Surface } from "@/components/Surface";
-import approach from "../../../content/pages/approachPage.json";
+import { approachPage, site, type Closing } from "@/content";
 
 export const metadata: Metadata = { title: "Phase 1 — tokens", robots: { index: false } };
 
-type Btn = { label: string; route: string; variant: string };
-type Closing = { eyebrow: string; title: string; sub: string; buttons: Btn[]; emailLine: string };
-
-const closing = approach.blocks.find((b) => b.kind === "closing") as unknown as Closing;
-const hero = approach.blocks.find((b) => b.kind === "hero") as unknown as { eyebrow: string; title: string; sub: string };
-
 export default function Phase1() {
+  const { hero } = approachPage;
+  const closing: Closing = approachPage.closing;
   return (
     <main>
       <Surface tone="d">
@@ -35,15 +31,15 @@ export default function Phase1() {
           <div className="relative flex flex-col items-center gap-[22px] px-[88px] py-[120px]">
             <div className="lab" style={{ color: "var(--acc)" }}>{closing.eyebrow}</div>
             <h2 className="m-0 max-w-[760px] text-[56px] font-semibold leading-[1.05] tracking-[-0.045em]">{closing.title}</h2>
-            <p className="m-0 max-w-[560px] text-[17px] leading-[29px] text-sub">{closing.sub}</p>
+            <p className="m-0 max-w-[560px] text-[17px] leading-[29px] text-sub">{closing.sub ?? site.defaultClosing.sub}</p>
             <div className="mt-2 flex items-center gap-3.5">
-              {closing.buttons.map((b) => (
-                <Button key={b.label} href={b.route} variant={b.variant === "lime" ? "lime" : "outline"} onBg>
+              {closing.buttons?.map((b) => (
+                <Button key={b.label} href={b.href} variant={b.variant === "lime" ? "lime" : "outline"} onBg>
                   {b.label}
                 </Button>
               ))}
             </div>
-            <span className="font-mono text-xs text-dim">{closing.emailLine}</span>
+            <span className="font-mono text-xs text-dim">{site.defaultClosing.emailLine}</span>
           </div>
         </section>
       </Surface>

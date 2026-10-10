@@ -149,9 +149,6 @@
  "[EMPLOYMENT MODEL]": [
   "/join"
  ],
- "[FORM ENDPOINT]": [
-  "/brief"
- ],
  "[HELLO@HOPSIG.COM]": [
   "/",
   "/404",
@@ -196,9 +193,6 @@
  ],
  "[IDTA / SCCs / ADEQUACY]": [
   "/privacy"
- ],
- "[INBOX]": [
-  "/brief"
  ],
  "[INSURER · COVER AMOUNT]": [
   "/working-with-us"

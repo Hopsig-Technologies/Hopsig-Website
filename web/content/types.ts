@@ -1,0 +1,387 @@
+/**
+ * Shapes of the static copy in web/content. Every content module ends with `satisfies <Type>` so a missing field,
+ * a wrong variant or a link to a route that does not exist fails `pnpm typecheck`.
+ *
+ * `Rich` strings may carry <b>, <i> and <a href="…"> and are rendered through web/lib/portable.ts; everything else
+ * is plain text where "\n" is a line break. Bracketed [PLACEHOLDERS] stay until the founders replace them (rule 1).
+ */
+import type { Href, IndustrySlug, ServiceSlug } from "./routes";
+
+export type Rich = string;
+/** A case study's record key (F0…F19, C0…C11): `caseStudy.source` in Sanity. */
+export type CaseKey = `F${number}` | `C${number}`;
+
+export type Cta = { label: string; href: Href; variant: "lime" | "outline" | "link" | "chip" };
+export type Fact = { value: string; label: string };
+export type TitleText = { title: string; text?: string };
+export type LabelValue = { label: string; value: string };
+export type Step = { when: string; title: string; text: string };
+export type FaqItem = { question: string; answer: string };
+
+export type SectionHead = { eyebrow?: string; title?: string; sub?: string; aside?: string };
+export type TitleTextSection = { head: SectionHead; items: TitleText[] };
+export type ListSection = { head: SectionHead; items: string[] };
+export type StepsSection = { head: SectionHead; steps: Step[] };
+export type LabelValueSection = { head: SectionHead; rows: LabelValue[] };
+export type FaqSection = { title: string; items: FaqItem[] };
+
+export type PageHero = { eyebrow?: string; title: string; sub?: string; buttons?: Cta[]; facts?: Fact[] };
+/** `sub` empty = the default closing intro from site.ts. */
+export type Closing = { eyebrow?: string; title: string; sub?: string; buttons?: Cta[]; showEmail: boolean };
+
+export type LegalBlock = { p: Rich } | { ul: Rich[] } | { ol: Rich[] };
+export type LegalSection = { heading: string; body: LegalBlock[] };
+
+// ---------------------------------------------------------------- site-wide
+
+export type Site = {
+  footer: { tagline: string; legalLeft: string; legalRight: string };
+  defaultClosing: { eyebrow: string; title: string; sub: string; emailLine: string };
+  /** The two scrolling rows on Home and Services. */
+  capabilities: { title: string; aside: string; rowOne: string[]; rowTwo: string[]; note: string };
+};
+
+export type NavLink = { label: string; desc?: string; href: Href };
+export type NavItem = { label: string; href: Href; children?: NavLink[]; menuFooter?: Cta[] };
+export type FooterColumn = { title: string; links: NavLink[] };
+export type Navigation = { primary: NavItem[]; cta: Cta; footer: FooterColumn[] };
+
+/** Words the detail templates put around collection data; {tokens} are filled from the document. */
+export type Templates = {
+  caseCard: {
+    eyebrow: string;
+    problemLabel: string;
+    whatWeDidLabel: string;
+    measuredLabel: string;
+    clientLine: string;
+    pageLink: string;
+    askLink: string;
+  };
+  servicePage: {
+    heroEyebrow: string;
+    heroMeta: string;
+    stepsAside: string;
+    othersTitle: string;
+    othersAside: string;
+    closingEyebrow: string;
+  };
+  industryPage: {
+    heroEyebrow: string;
+    recordTitle: string;
+    recordAside: string;
+    asksTitle: string;
+    asksSub: string;
+    servicesTitle: string;
+    servicesLink: string;
+    othersTitle: string;
+    closingEyebrow: string;
+  };
+  industriesIndexRow: { count: string };
+  casePage: {
+    heroEyebrow: string;
+    shapeTitle: string;
+    clientNote: string;
+    shapeLabel: string;
+    domainLabel: string;
+    clientLabel: string;
+    clientValue: string;
+    askLine: string;
+    missingMetricValue: string;
+    missingMetricLabel: string;
+    moreTitle: string;
+    moreLink: string;
+    closingEyebrow: string;
+    closingTitle: string;
+  };
+  notePage: { heroEyebrow: string; byline: string; tocTitle: string; offerTitle: string; nextTitle: string };
+  legalPage: { contentsTitle: string };
+};
+
+/** The animated engagement mock on /services (×3) and /work: lines of cells, as the reference shows them. */
+export type EngagementPanel = { lines: string[][] };
+
+// ---------------------------------------------------------------- collections kept in code
+
+export type Service = {
+  id: ServiceSlug;
+  n: number;
+  name: string;
+  oneLiner: string;
+  description: string;
+  tiles: { title: string; text: string }[];
+  goodFor: string[];
+  stack: string[];
+  shape: string;
+  pageTitle: string;
+  gets: string[];
+  sayNoWhen: string[];
+  steps: Step[];
+  /** "From the record" on the service page, by case-study key. */
+  record: CaseKey[];
+  faq: FaqItem[];
+  closing: string;
+};
+
+export type Industry = {
+  id: IndustrySlug;
+  n: number;
+  name: string;
+  short: string;
+  title: string;
+  sub: string;
+  facts: Fact[];
+  record: CaseKey[];
+  /** How many of `record` show as full cards; the rest are compact rows. */
+  fullCards: number;
+  asks: TitleText[];
+  services: { service: ServiceSlug; text: string }[];
+  close: string;
+};
+
+// ---------------------------------------------------------------- pages
+
+export type HomePage = {
+  hero: {
+    eyebrow: string;
+    title: string;
+    sub: string;
+    buttons: Cta[];
+    facts: string[];
+    beats: Step[];
+    scrollHint: string;
+  };
+  domains: { name: string; text: string; lead: CaseKey }[];
+  services: {
+    head: SectionHead;
+    scrollHint: string;
+    detailsLabel: string;
+    goodForLabel: string;
+    stackLabel: string;
+    engagementLabel: string;
+    fromLabel: string;
+    closingLabel: string;
+    closingLinks: Cta[];
+  };
+  /** The rows are the featured case studies from Sanity, in `featuredOrder`. */
+  caseIndex: {
+    head: SectionHead;
+    filters: { key: "all" | "payments" | "retail" | "health" | "ai" | "iot"; label: string }[];
+    problemLabel: string;
+    whatWeDidLabel: string;
+    measuredLabel: string;
+    pageLink: string;
+    askLink: string;
+    allLink: Cta;
+  };
+  midCta: { text: string; button: Cta };
+  why: TitleTextSection;
+  record: { head: SectionHead; link: Cta; stats: Fact[]; strip: string[] };
+  notes: {
+    head: SectionHead;
+    countLine: string;
+    latestLabel: string;
+    readLabel: string;
+    moreTitle: string;
+    allLink: Cta;
+  };
+  closing: Closing;
+};
+
+export type EngagementMode = {
+  anchor: string;
+  head: SectionHead;
+  getsTitle: string;
+  gets: string[];
+  goodForTitle: string;
+  goodFor: string[];
+  priceLabel: string;
+  priceTitle: string;
+  priceDetail: string;
+  link: Cta;
+};
+
+export type ServicesIndexPage = {
+  hero: PageHero;
+  modes: EngagementMode[];
+  detail: { head: SectionHead };
+  inside: TitleTextSection;
+  howItRuns: { head: SectionHead; link: Cta; steps: Step[] };
+  closing: Closing;
+};
+
+export type IndustriesIndexPage = { hero: PageHero; list: { head: SectionHead }; closing: Closing };
+
+/** The cards are every case study from Sanity by `order`; the first 12 render in full. */
+export type WorkIndexPage = {
+  hero: PageHero;
+  selected: { head: SectionHead; fullCards: number; restTitle: string; restAside: string };
+  reporting: { head: SectionHead; points: string[] };
+  closing: Closing;
+};
+
+export type NotesIndexPage = {
+  hero: PageHero;
+  list: { head: SectionHead; readLabel: string; draftLabel: string };
+  closing: Closing;
+};
+
+export type ApproachPage = {
+  hero: PageHero;
+  staffing: TitleTextSection;
+  agentic: { head: SectionHead; tags: string[]; links: Cta[]; items: TitleText[] };
+  hours: { head: SectionHead; zones: string[]; paragraphs: string[] };
+  closing: Closing;
+};
+
+export type RateCard = {
+  name: string;
+  price: string;
+  unit: string;
+  meta: string;
+  items: string[];
+  button?: Cta;
+  highlight?: boolean;
+};
+/** Engineers × months × 21 working days × day rate (Site settings); the outputs are computed. */
+export type Estimator = {
+  title: string;
+  sub: string;
+  engineersLabel: string;
+  monthsLabel: string;
+  note: Rich;
+  daysLabel: string;
+  totalLabel: string;
+  footnotes: string[];
+};
+
+export type RatesPage = {
+  hero: PageHero;
+  cards: RateCard[];
+  estimator: Estimator;
+  terms: LabelValueSection;
+  faq: FaqSection;
+  closing: Closing;
+};
+
+export type BookPage = {
+  hero: { eyebrow: string; title: string; sub: string };
+  steps: TitleText[];
+  note: Rich;
+  calendar: {
+    title: string;
+    timezone: string;
+    prompt: string;
+    fieldPlaceholders: string[];
+    submit: string;
+    bookedLabel: string;
+    bookedTitle: string;
+    bookedText: string;
+    checklist: string[];
+  };
+  strip: string[];
+};
+
+export type BriefPage = {
+  hero: { eyebrow: string; title: string; sub: string };
+  steps: TitleText[];
+  note: Rich;
+  form: {
+    title: string;
+    duration: string;
+    fieldPlaceholders: string[];
+    problemLabel: string;
+    whenLabel: string;
+    whenOptions: string[];
+    budgetLabel: string;
+    submit: string;
+    receivedLabel: string;
+    receivedTitle: string;
+    receivedText: string;
+    checklist: string[];
+  };
+  strip: string[];
+};
+
+export type ComparePage = {
+  hero: PageHero;
+  table: { head: SectionHead; columns: string[]; rows: { label: string; cells: string[] }[] };
+  estimator: Estimator;
+  faq: FaqSection;
+  closing: Closing;
+};
+
+export type WorkingWithUsPage = { hero: PageHero; checks: TitleTextSection; asks: TitleTextSection; closing: Closing };
+
+export type AiTransformationPage = {
+  hero: PageHero;
+  offer: {
+    head: SectionHead;
+    gets: string[];
+    priced: Rich;
+    goodForTitle: string;
+    goodFor: string[];
+    sayNoTitle: string;
+    sayNo: string[];
+  };
+  pipeline: TitleTextSection;
+  weeks: StepsSection;
+  measures: TitleTextSection;
+  record: { head: SectionHead; cases: CaseKey[]; allLink: Cta };
+  faq: FaqSection;
+  closing: Closing;
+};
+
+export type FlowStage = {
+  stage: string;
+  agent: string;
+  input: string;
+  output: string;
+  guardrail: string;
+  humanGate: boolean;
+  humanNote?: string;
+};
+export type AgenticFlowPage = {
+  hero: PageHero;
+  flow: {
+    head: SectionHead;
+    stages: FlowStage[];
+    labels: {
+      stage: string;
+      input: string;
+      output: string;
+      guardrail: string;
+      whoDecides: string;
+      personSigns: string;
+      noGate: string;
+      runsAlone: string;
+      briefIn: string;
+      prOut: string;
+    };
+  };
+  agents: { head: SectionHead; does: string[]; neverTitle: string; neverAside: string; never: string[] };
+  tooling: { head: SectionHead; tools: string[]; whereLabel: string; where: string[]; links: Cta[] };
+  closing: Closing;
+};
+
+export type AgenciesPage = {
+  hero: PageHero;
+  how: TitleTextSection;
+  gets: ListSection;
+  sayNo: ListSection;
+  faq: FaqSection;
+  closing: Closing;
+};
+
+/** The roles themselves come from Sanity (jobListing); a role with no status renders `statusPlaceholder`. */
+export type JoinPage = {
+  hero: PageHero;
+  work: TitleTextSection;
+  vetting: TitleTextSection;
+  roles: { head: SectionHead; statusPlaceholder: string; payLine: string };
+  faq: FaqSection;
+  closing: Closing;
+};
+
+export type LegalPage = { hero: PageHero; sections: LegalSection[]; footnote: string };
+
+export type NotFoundPage = { closing: Closing };

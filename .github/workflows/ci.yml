@@ -19,10 +19,8 @@ jobs:
         with:
           python-version: "3.13"
       - run: pnpm install --frozen-lockfile
-      - name: Content gate (Phase 0)
-        run: python scripts/check_bundle.py
-      - name: Seed builds and carries every string and link (Phase 3)
-        run: node scripts/seed.mjs && python scripts/check_links.py
+      - name: Content gate (every reference string and link is in web/content or the Sanity seed)
+        run: pnpm check:content
       - name: Generated Sanity types are current
         run: pnpm --filter studio typegen && git diff --exit-code web/sanity/types.ts
       - run: pnpm typecheck

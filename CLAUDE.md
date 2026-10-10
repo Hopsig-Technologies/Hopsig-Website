@@ -7,33 +7,26 @@ Five-second test, every page: a London head of engineering thinks "senior, will 
 
 ## What this repo is
 
-- `IMPLEMENTATION_PLAN.md` — the build order (phases 0–12) and the Sanity content model. Replaces `PROMPTS.md`.
+- `IMPLEMENTATION_PLAN.md` — the build order (P0–P9) and the content split. Replaces `PROMPTS.md`.
 - `reference/site/` — the approved prototype: 37 static HTML pages, desktop only (1440 wide), each self-contained. **This is the design source of truth**, except where a rule below overrides it. `reference/page-map.json` maps old artboard names to clean paths.
-- `content/` — every word and number on the site, as data. It seeds Sanity once (Phase 3); after that **Sanity is the source of truth** and these files are history.
-  - `case-studies.json`, `posts.json`, `services.json`, `industries.json`, `domains.json`, `flow-stages.json`, `work-filters.json`, `navigation.json` — collections and navigation.
-  - `pages/*.json` — the copy of every page singleton, extracted from the reference by `scripts/extract_pages.py`. Blocks are in page order; `{"from": "<collection>", "refs": [...]}` marks rows that render from a collection; `templateText` holds the words a template adds around the data; `buildNotes` are prototype notes that **must not render**.
-  - `pages/templates.json` — wording of the detail templates (service, industry, case, note), `{tokens}` filled from the document.
-  - `pages/siteSettings.json` — footer lines, default closing, and the site-wide values that are placeholders today.
-  - `pages/engagementPanel.json` — the animated engagement mock shown on `/services` (×3) and `/work`.
-  - `placeholders.json` — all 53 bracketed tokens and the routes they appear on.
-- `scripts/check_pages.py` — every visible string on every reference page must exist in `content/`. Run it after any change to `content/`; it must report 0.
-- `sanity/schema.ts` — the first draft of `caseStudy` and `post`; superseded by `studio/schemaTypes/` in Phase 2.
+- `web/` — the Next.js site (Vercel). **`web/content/` holds the copy of every static page as typed TypeScript modules** (`satisfies <Type>` against `web/content/types.ts`; internal hrefs are checked against `web/content/routes.ts`). Edit copy there; never type it into a component.
+- `studio/` — Sanity Studio, hosted at https://hopsig.sanity.studio. **Sanity holds only what changes without a developer:** case studies (`caseStudy`), notes (`post`), career listings (`jobListing`) and the site-wide values (`siteSettings`: company reg no, year, email, day rate, booking link …).
+- `content/` — seed input for Sanity only: `case-studies.json`, `posts.json`, `job-listings.json`, plus `routes.json` and `placeholders.json` used by the checks. (The page copy was extracted from the reference into `content/pages/*.json` and converted once into `web/content` on 2026-10-10 in the "P0 pivot" commit; git history has the extractor and converter.)
+- `scripts/` — the gates: `content_corpus.mjs` (strings/links of `web/content` → `audit/`), `seed.mjs` (→ `audit/seed.ndjson`), `check_bundle.py` (seed invariants + every reference string and link accounted for: `check_pages.py`, `check_links.py`), `verify_dataset.py` (live dataset), `prune_dataset.mjs`, `placeholders.mjs`, `shot.mjs` (screenshot diff).
 - `generator/` — the Python that produced the prototype. Read it when a mechanic in the HTML is unclear; never run it, and never take copy from it (it rewrites strings after rendering).
 
 ## Stack
 
-Next.js (App Router, TypeScript, static generation, on-demand revalidation) on **Vercel**, in `web/`. **Sanity Studio is a separate app** in `studio/`, deployed with `sanity deploy` (not embedded at `/studio`); datasets `development` and `production`. All copy comes from Sanity, including every static page. Tailwind is fine for layout; the tokens below are the only colours, sizes and radii. No component library, no animation library beyond what the prototype does by hand (IntersectionObserver reveals, `requestAnimationFrame` canvases). No third-party scripts except Google Fonts (loaded via `next/font`).
+Next.js 16 (App Router, TypeScript, static generation, on-demand revalidation) on **Vercel** (`hopsig-website`, root `web/`, auto-deploys `main`). **Sanity Studio 6 is a separate app** in `studio/`, deployed with `pnpm --filter studio deploy`; datasets `development` (now) and `production` (launch). Tailwind 4 is fine for layout; the tokens below are the only colours, sizes and radii. No component library, no animation library beyond what the prototype does by hand (IntersectionObserver reveals, `requestAnimationFrame` canvases). No third-party scripts except Google Fonts (loaded via `next/font`).
 
 Version notes (read `web/AGENTS.md`; the bundled docs in `web/node_modules/next/dist/docs/` win over memory):
-- Next 16 with `cacheComponents`: cache CMS reads with `'use cache'` + `cacheTag()` + `cacheLife()`; segment exports `revalidate` / `dynamic` / `fetchCache` throw. `revalidateTag(tag, 'max')` takes two arguments. `params` are async; use the generated `PageProps<'/x/[slug]'>` / `LayoutProps<'/'>` (run `next typegen`). `middleware.ts` is now `proxy.ts`. `generateStaticParams` must return at least one entry.
-- Fetching content (Phase 4): always `cachedSanity({query, ...mode})` from `web/sanity/lib/live.ts`, queries in `web/sanity/queries.ts` via `defineQuery` (run typegen after editing them). Singleton queries filter on `_type` **and** `_id` (`*[_type == "ratesPage" && _id == "ratesPage"][0]`) or the types come out as unions. Page pattern: `if ((await draftMode()).isEnabled) return <Suspense><Draft/></Suspense>; return <Content mode={PUBLISHED}/>` — see `web/app/phase4/page.tsx`; this keeps routes static (○ in the build output). Strings pass through `makeFill(siteSettings)` (`web/lib/tokens.ts`); URLs only through `web/lib/routes.ts`. Use `stegaClean` (from `next-sanity`) on any value used for logic, classes or URLs.
-- Publishing: a Sanity webhook ("Revalidate website (development)") posts to `/api/revalidate`, which checks the signature and revalidates the `sanity` tag, i.e. the whole site; changes are live in ~5 s with no deploy. Secrets (`SANITY_API_READ_TOKEN` viewer, `SANITY_REVALIDATE_SECRET`) live in Vercel and `web/.env.local`, never in the repo. CORS origins with credentials: `https://hopsig-website.vercel.app`, `http://localhost:3000`.
-- Seed (re-runnable, deterministic ids): `node scripts/seed.mjs` (writes `audit/seed.ndjson`, fails if any content string is missing) → `python scripts/check_links.py` → `pnpm --filter studio exec sanity dataset import ../audit/seed.ndjson --dataset development --replace` → `python scripts/verify_dataset.py`. `--replace` overwrites edits made in Studio: after the founders start editing, never re-seed a dataset they use.
-- Commands: `pnpm --filter studio typegen` (after any schema change; CI fails if `web/sanity/types.ts` is stale), `pnpm --filter studio deploy` (Studio at https://hopsig.sanity.studio), `pnpm dev` (web), `pnpm dev:studio`, `pnpm typecheck`, `pnpm lint`, `pnpm build`, `pnpm check:content`, `pnpm shot -- --name … --ref … --ref-sel … --url … --web-sel …`.
+- Next 16 with `cacheComponents`: cache CMS reads with `'use cache'` + `cacheTag()` + `cacheLife()`; segment exports `revalidate` / `dynamic` / `fetchCache` throw. `revalidateTag(tag, …)` takes two arguments. `params` are async; use the generated `PageProps<'/x/[slug]'>` / `LayoutProps<'/'>` (run `next typegen`). `middleware.ts` is now `proxy.ts`. `generateStaticParams` must return at least one entry.
+- Commands: `pnpm check:content` (the content gate; run after editing `web/content` or `content/`), `pnpm placeholders` (what is still bracketed), `pnpm --filter studio typegen` (after any schema or query change; CI fails if `web/sanity/types.ts` is stale), `pnpm --filter studio deploy`, `pnpm dev` (web), `pnpm dev:studio`, `pnpm typecheck`, `pnpm lint`, `pnpm build`, `pnpm shot -- --name … --ref … --ref-sel … --url … --web-sel …`.
+- Seed (collections only, deterministic ids): `node scripts/seed.mjs` → `pnpm --filter studio exec sanity dataset import ../audit/seed.ndjson --dataset development --replace` → `python scripts/verify_dataset.py`. `--replace` overwrites edits made in Studio: once the founders are editing a dataset, never re-seed it. `--with-settings` also writes an EMPTY `siteSettings`: never against a dataset whose settings are filled.
 
 ## Hard rules (from the brief; do not relax)
 
-1. **Never invent proof.** Every number on the site comes from the record (`content/`, then Sanity). Where the record has no number yet the copy carries a bracketed placeholder (`[ADD THE NUMBER]`, `[YOUR RATE]`, `[COMPANY REG NO.]`, `[YEAR]`, `[HELLO@HOPSIG.COM]`, …). Keep placeholders visible until the founders replace them. Do not fill one in from a guess, ever.
+1. **Never invent proof.** Every number on the site comes from the record (`web/content`, `content/`, Sanity). Where the record has no number yet the copy carries a bracketed placeholder (`[ADD THE NUMBER]`, `[YOUR RATE]`, `[COMPANY REG NO.]`, `[YEAR]`, `[HELLO@HOPSIG.COM]`, …). Keep placeholders visible until the founders replace them. Do not fill one in from a guess, ever.
 2. **Client names are withheld** on every case note. Do not add logos, names or testimonials.
 3. **Company voice, no people.** No founder names, photos, bios or "our team" sections anywhere. "We", "the people who would do the work", "the record".
 4. **Nothing from the banned list:** purple/blue gradient blobs, glassmorphism, neon, 3D shapes, circuit-board or "AI brain" imagery, stock photography, rounded friendly-SaaS styling, generic wordmarks, overpromising taglines, **card drop shadows**. Depth comes from borders and tone changes, never shadows. (`box-shadow: inset 0 0 0 1px` used as a border is fine.)
@@ -41,9 +34,10 @@ Version notes (read `web/AGENTS.md`; the bundled docs in `web/node_modules/next/
 6. Light surfaces use **Moss** as the accent, never Lime (Lime on Paper fails contrast). This includes hover: link hover is `--acc` darkened/underlined per tone, **never `#A9D437`** (the reference uses it globally; do not copy it).
 7. **No reading times, dates, bylines or newsletter pop-ups** on Notes. No cookie banner unless legally required for the analytics actually installed.
 8. Mobile is **not designed yet** (prototype is 1440 wide). Build responsive from the tokens and the desktop reference; keep the hierarchy, drop the side-by-side grids to single column below 900px, and do not invent new components to do it.
-9. **Build notes never ship.** The reference renders designer notes as visible text ("Build note: …", "Source: Sanity · caseStudy · …"). They are kept in `buildNotes` fields and are instructions, not copy.
+9. **Build notes never ship.** The reference renders designer notes as visible text ("Build note: …", "Source: Sanity · caseStudy · …"). They are not in the content and `check_pages.py` skips them; never reproduce them.
 10. **Content is visible with JS off.** `.rv` (and the home hero captions) start hidden only under `html.js`, set by an inline script in `<head>`; the reference hides them unconditionally — do not copy that.
 11. **Focus is visible everywhere**: one global `:focus-visible` ring (2px `var(--acc)`, offset 3px) on links, buttons, form fields and dropdown triggers. Never `outline: none` without a replacement.
+12. **Nothing from `web/content` reaches a client bundle.** `web/content/index.ts` is `server-only`; client components get the strings they need as props (so `[YOUR RATE]` is never in a shared JS chunk).
 
 ## Tokens
 
@@ -78,53 +72,53 @@ Seam between tones: 120px band of 1px dots on a 22px grid, masked to fade (`.sea
 | Hero ring | `index.html`, every page hero | Canvas dot field that forms an ellipse ("engagement ring") and reacts to the cursor; home version is a 240vh scroll sequence with five beats (Day 0 → Fortnightly). Respects `prefers-reduced-motion`. |
 | Reveal | everywhere, `.rv` | IntersectionObserver adds `.in` (opacity 0→1, translateY 14→0, .6s). A scroll "sweep" fallback catches rows missed on fast scroll. Hidden only under `html.js` (rule 10). |
 | Services file stack | `index.html` → "Eight things we do" | Nine sticky sheets (8 services + a closing sheet) with 46px tabs; each sheet docks under the previous; a docked sheet's tab turns Lime; the section after slides over the finished stack. See `generator/site.py` `core_services()` and `fSize()` in the JS. |
-| Case index (home) | `index.html` → "Where we have done this before" | The 8 featured case studies. Rows render from inline JSON `#caseData` (a trimmed shape, not the Sanity document); cursor-following "Measured" card (lerp .13, velocity tilt); in-place row expansion (`grid-template-rows 0fr→1fr`); domain filter chips from `work-filters.json`. |
-| Work page | `work/index.html` | **Not** the case index. All 32 case studies: 12 full cards ("Selected.") then "The rest of the record." (20 compact rows). No cursor card, no filters. Then the engagement panel and closing. |
-| Engagement panel | `services/index.html` (×3), `work/index.html` | Animated mock of an engagement (call → scope → people → measured → review). Copy in `content/pages/engagementPanel.json`. |
-| Notes journal | `index.html` → Notes, `notes/` | Feature + ledger; on home from inline JSON `#postData`. |
+| Case index (home) | `index.html` → "Where we have done this before" | The featured case studies from Sanity in `featuredOrder`. Cursor-following "Measured" card (lerp .13, velocity tilt); in-place row expansion (`grid-template-rows 0fr→1fr`); domain filter chips (`homePage.caseIndex.filters` ↔ `caseStudy.filterDomain`). |
+| Work page | `work/index.html` | **Not** the case index. Every case study by `order`: the first 12 as full cards ("Selected."), the rest as "The rest of the record." (compact rows). No cursor card, no filters. Then the engagement panel and closing. |
+| Engagement panel | `services/index.html` (×3), `work/index.html` | Animated mock of an engagement (call → scope → people → measured → review). Copy in `web/content/engagementPanel.ts`. |
+| Notes journal | `index.html` → Notes, `notes/` | Feature + ledger from the `post` query: published rows link, drafts are inert `[DRAFT]` rows. |
 | Facts row | service/industry/case heroes | 4 mono numbers with labels; 26px on index pages, 22px on detail pages. |
 | Ledger | many | `44px 260px 1fr` grid rows with mono index, title, text; hairline dividers. |
 | Steps | approach, service pages | Day 0 / Day 3 / Day 10 / Week 6 / Fortnightly beats. |
 | FAQ | service, industry, agentic | Disclosure rows, one open at a time. |
 | Estimator | `rates.html` `#est`, `why-not-just-hire.html` | Engineers (slider) × months (slider) × 21 working days × day rate. Until `siteSettings.dayRate` is set, the total reads "N × [YOUR RATE]". Keep its code page-local so `[YOUR RATE]` is not in a shared JS chunk. |
-| Calendar | `book.html` `#cal` | Visual only; wire to the real booking tool. |
-| Brief form | `brief.html` `#bf` | Visual only; posts to a Vercel route handler that emails; submissions are not stored in Sanity. |
-| Flow diagram | `agentic-flow.html` | SVG: six nodes from `flow-stages.json`, three "A PERSON SIGNS" gates in Lime; hovering a node highlights its table row and vice versa. |
+| Calendar | `book.html` `#cal` | Visual only; wire to `siteSettings.bookingUrl` when the tool is chosen. |
+| Brief form | `brief.html` `#bf` | Posts to a Vercel route handler that emails `siteSettings.briefRecipient`; submissions are not stored in Sanity. |
+| Flow diagram | `agentic-flow.html` | SVG: six nodes from `agenticFlowPage.flow.stages`, three "A PERSON SIGNS" gates in Lime; hovering a node highlights its table row and vice versa. |
 | Closing | every page | Ring canvas + eyebrow + 56px h2 + two buttons + email line. |
 
 Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `outline` (1px inset `--line`; transparent, or `--bg` in the closing). Mono 500 uppercase, letter-spacing 0.12em, radius 8; default 12px with 16×24 padding, `sm` 11px with 12×17 (header CTA). No shadows, no gradients.
 
 ## Content model
 
-Studio schema lives in `studio/schemaTypes/` (shared objects in `objects/basics.ts`, collections in `documents/`, singletons in `singletons/`). Singletons use `_id == _type` (e.g. `*[_id == "ratesPage"][0]`).
+**Static (code):** `web/content/pages/*.ts` (one module per page, fields in the page's section order), `services.ts` (8), `industries.ts` (6), `navigation.ts`, `site.ts` (footer lines, default closing, capabilities rows), `templates.ts` (the words detail templates put around collection data; `{tokens}` filled from the document), `engagementPanel.ts`. Types in `web/content/types.ts`; routes and slugs in `web/content/routes.ts`. Rich strings (`<b>`, `<i>`, `<a href>`) and legal bodies are converted at render by `web/lib/portable.ts` and rendered with `PortableText` from `next-sanity`, the same renderer as the Sanity content.
 
-**Site-wide tokens are substituted at render.** `siteSettings` holds the values behind `[COMPANY REG NO.]`, `[YEAR]`, `[HELLO@HOPSIG.COM]`, `[YOUR RATE]` and the other tokens listed in `studio/schemaTypes/singletons/site.ts` (`SITE_TOKENS`). The web app replaces each token in every rendered string when its setting is filled, and leaves the token visible when it is empty. Never substitute any other token.
+**Sanity (Studio at hopsig.sanity.studio, schema in `studio/schemaTypes/`):**
+- `caseStudy` — 32 docs. `order` = position on /work (0..31; the first 12 are full cards); `featured` + `featuredOrder` = the home case index (8); `source` = the record key (F0, C2 …) that `services.ts` / `industries.ts` / `aiTransformationPage.ts` name in their `record` lists (`casesByKey` in `web/lib/cases.ts`); `hasPage` ×3 render `/work/<slug>`; `measured` is Portable Text; `metric` drives the cursor card; `clientName` is never queried (rule 2).
+- `post` — 6 docs; 2 published (`publishedAt` set; the dates are stand-ins for ordering only), 4 drafts (`publishedAt` empty → inert `[DRAFT]` row). `body` is Portable Text (normal / h2 / blockquote / numbered / bullets; strong, em, link `{href}`); `offer` is the sticky aside with an `href` path.
+- `jobListing` — roles on /join: `title`, `text`, `status` (open / pipeline / closed; empty renders `[STATUS]`), `order`.
+- `siteSettings` — one doc (`_id == "siteSettings"`): the `SITE_TOKENS` values (`studio/schemaTypes/singletons/site.ts`, mirrored in `web/lib/tokens.ts`), `bookingUrl`, `briefRecipient`. **Site-wide tokens are substituted at render:** `makeFill(settings)` replaces `[COMPANY REG NO.]`, `[YEAR]`, `[HELLO@HOPSIG.COM]`, `[YOUR RATE]` … in every rendered string when the field is filled, and leaves the token visible when it is empty. Never substitute any other token.
+- Placeholder warnings: every text field warns (never errors) while it holds a `[TOKEN]`; the Studio's **Placeholders** tab lists the ones in Sanity. The static copy's tokens are in `pnpm placeholders`.
 
-Full model in `IMPLEMENTATION_PLAN.md`. The facts that matter while building:
+**Fetching (`web/sanity/lib/live.ts`, `web/lib/`):** always `cachedSanity({query, ...mode})` (the one `'use cache'` boundary, tag `sanity`); queries in `web/sanity/queries.ts` via `defineQuery` (singletons filter on `_type` **and** `_id`); wrap page content with `withMode(Content)` from `web/lib/mode.tsx` so routes prerender (○) and only draft mode renders drafts + stega; `getFill(mode)` from `web/lib/site.ts` for token substitution; `casesByKey(keys, mode)` for record lists; `stegaClean` (from `next-sanity`) on any value used for logic, classes or URLs. Every page fetches `siteSettings` (one shared cache entry).
 
-- `caseStudy` — 32 docs; 8 `featured` carry a `metric`; 3 have `hasPage: true`. `slug.current` is the **route slug** (`payments-platform`), `_id` the long title slug. `source` (`F0`, `C2`) is the key other files reference.
-- Home case index order is the order in `content/pages/homePage.json` refs (`F0 F1 F3 F5 F4 C1 F17 C10`), which is **not** `order asc` (`… F4 F5 F17 C1 …`). Settled in Phase 2: the home and /work lists are ordered reference arrays in Studio, seeded in the reference order.
-- `post` — 6 docs; 2 published (`publishedAt` set; the dates are stand-ins for ordering only), 4 drafts (`publishedAt: null`). GROQ: `*[_type == "post" && defined(publishedAt)] | order(publishedAt desc)`. Drafts render as inert rows marked `[DRAFT]`.
-- Services and industries `_id` equal their route slug.
-- `body` in posts is a flat block list (`p`, `h2`, `pq` pull-quote, `ol`) with `<b>`/`<i>` inline; convert to Portable Text on seed.
+**Publishing:** a Sanity webhook ("Revalidate website (development)", filter `_type in ["caseStudy","post","jobListing","siteSettings"]`) posts to `/api/revalidate`, which checks the signature and revalidates the `sanity` tag, i.e. the whole site; changes are live in ~5 s with no deploy. Secrets (`SANITY_API_READ_TOKEN` viewer, `SANITY_REVALIDATE_SECRET`) live in Vercel and `web/.env.local`, never in the repo. CORS origins with credentials: `https://hopsig-website.vercel.app`, `http://localhost:3000`.
 
 ## Routes
 
-37 routes in `content/routes.json`. Services and industries render from their documents (one template each); case notes and posts from Sanity; every other page from its singleton. `404.html` is the not-found page.
+37 routes in `content/routes.json` and `web/content/routes.ts`. Services and industries render from `services.ts` / `industries.ts` (one template each); case notes, notes and roles from Sanity; every other page from its module. `404.html` is the not-found page.
 
 ## Working rules for this codebase
 
-- Build one route at a time against its reference page; screenshot both at 1440 and compare, and run the text diff, before moving on.
-- Copy comes from Sanity (seeded from `content/`), never typed into a component. If a string must change, change it in Studio or the seed JSON, not the component.
+- Build one route at a time against its reference page; screenshot both at 1440 and compare (`pnpm shot`), and run the text diff, before moving on.
+- Copy comes from `web/content` (static) or Sanity (collections), never typed into a component. If a string must change, change the module or the document. Then `pnpm check:content`: every visible string and link on the 37 reference pages must still be accounted for (0 uncovered, 0 links missing) — a deliberate copy change is the only reason to update the reference comparison.
 - Keep JS small and feature-detected; every canvas and observer has a no-JS fallback (rule 10).
-- Placeholder check before any deploy: the bracketed tokens in the built HTML (pattern `\[[A-Z][^\]\n<>"]{0,60}\]`, which also catches `[INSURER · COVER AMOUNT]` and `[IDTA / SCCs / ADEQUACY]`) must equal the tokens still present in the production dataset — never fewer because something was "filled in". Expected differences from `content/placeholders.json`: `[FORM ENDPOINT]` and `[INBOX]` exist only in build notes and do not render.
+- Placeholder check before any deploy: `pnpm placeholders` must report every token in `content/placeholders.json` (51) as either still present or resolved in Site settings — never fewer because something was "filled in". (`[FORM ENDPOINT]` and `[INBOX]` existed only in a build note and are not in the list.)
 - Accessibility bar: contrast ≥ 4.5:1 for body, ≥ 3:1 for large text (the token pairs above pass); canvases `aria-hidden`; dropdowns keyboard-operable; focus visible (rule 11).
 
 ## Open questions (do not decide these in code)
 
-- `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]") and conflicts with rule 7. Keep it out of the build until the founders decide.
+- `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]", `templates.ts` → `notePage.heroEyebrow`) and conflicts with rule 7. Keep it out of the build until the founders decide.
 - The engagement panel shows illustrative initials ("A.K.", "S.R.", with years of experience) and illustrative numbers ("5 h 10 m → 18 m", "7 → 0", "14 / 14"). Rules 1 and 3 suggest they should be placeholders or removed; ask before building it.
 - Visible copy that describes the implementation: "Eight case notes, fetched from Sanity Studio." (home case index) and "… Fetched from Sanity Studio." (home notes). Probably prototype wording; ask before changing the copy.
-- The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel. Seeded verbatim; replace in Studio (e.g. with nothing: the rate comes from Site settings).
-- The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. Seeded verbatim; for counsel's review.
-- Home case-index order: now an explicit ordered list in Studio (`homePage.caseIndex.cases`), seeded in the reference order. The founders can reorder it there; `order` only sorts /work's "rest of the record".
+- The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel; the rate now comes from Site settings. Ask before rewording.
+- The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. For counsel's review.

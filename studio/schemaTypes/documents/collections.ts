@@ -1,5 +1,6 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {list, obj, str, strList, txt} from '../fields'
+import {defineField, defineType} from 'sanity'
+import {obj, str, strList, txt} from '../fields'
+import {hrefRule} from '../objects/basics'
 
 const FILTER_DOMAINS = [
   {title: 'Payments', value: 'payments'},
@@ -10,13 +11,7 @@ const FILTER_DOMAINS = [
 ]
 
 const slugField = (source: string, description: string) =>
-  defineField({
-    name: 'slug',
-    type: 'slug',
-    options: {source},
-    description,
-    validation: (rule) => rule.required(),
-  })
+  defineField({name: 'slug', type: 'slug', options: {source}, description, validation: (rule) => rule.required()})
 
 export const caseStudy = defineType({
   name: 'caseStudy',
@@ -24,7 +19,7 @@ export const caseStudy = defineType({
   type: 'document',
   groups: [
     {name: 'note', title: 'Case note', default: true},
-    {name: 'card', title: 'Work index card'},
+    {name: 'card', title: 'Lists & card'},
     {name: 'meta', title: 'Settings'},
   ],
   fields: [
@@ -40,6 +35,29 @@ export const caseStudy = defineType({
     }),
     strList('stack', {group: 'note'}),
     str('shape', {group: 'note', description: 'Engagement shape, e.g. "Built · product-led", "Embedded · 2 engineers".'}),
+    defineField({
+      name: 'order',
+      type: 'number',
+      group: 'card',
+      description: 'Position on /work (lowest first). The first 12 render as full cards, the rest as "the rest of the record".',
+      validation: (r) => r.required().integer().min(0),
+    }),
+    defineField({name: 'featured', type: 'boolean', initialValue: false, group: 'card', description: 'In the home case index (8 at present).'}),
+    defineField({
+      name: 'featuredOrder',
+      type: 'number',
+      group: 'card',
+      description: 'Position in the home case index (lowest first).',
+      hidden: ({document}) => !document?.featured,
+      validation: (r) => r.integer().min(0),
+    }),
+    defineField({
+      name: 'filterDomain',
+      type: 'string',
+      group: 'card',
+      options: {list: FILTER_DOMAINS},
+      description: 'Home case-index filter chip.',
+    }),
     defineField({
       name: 'metric',
       type: 'object',
@@ -59,15 +77,6 @@ export const caseStudy = defineType({
       ],
     }),
     defineField({
-      name: 'filterDomain',
-      type: 'string',
-      group: 'card',
-      options: {list: FILTER_DOMAINS},
-      description: 'Home case-index filter chip.',
-    }),
-    defineField({name: 'featured', type: 'boolean', initialValue: false, group: 'meta', description: 'In the home case index (8 at present).'}),
-    defineField({name: 'order', type: 'number', group: 'meta', description: 'Position on /work and in "the rest of the record".'}),
-    defineField({
       name: 'hasPage',
       type: 'boolean',
       initialValue: false,
@@ -75,7 +84,21 @@ export const caseStudy = defineType({
       description: 'Render /work/<slug>. Only when problem, what we did and measured are all written.',
     }),
     slugField('title', 'The URL: /work/<slug>. Short, e.g. "payments-platform".'),
-    defineField({name: 'source', type: 'string', readOnly: true, group: 'meta', description: 'Record key from the bundle (F0, C2…).'}),
+    defineField({
+      name: 'source',
+      title: 'Record key',
+      type: 'string',
+      group: 'meta',
+      description: "Key the site's service and industry pages use to pick this case study (F0, C2, …). Unique; leave as is unless a developer asks.",
+      validation: (r) =>
+        r.custom(async (value, context) => {
+          if (!value) return true
+          const id = context.document?._id?.replace(/^drafts\./, '')
+          const client = context.getClient({apiVersion: '2025-02-19'})
+          const n = await client.fetch<number>('count(*[_type == "caseStudy" && source == $v && !(_id in [$id, "drafts." + $id])])', {v: value, id})
+          return n === 0 || `Another case study already uses the key ${value}`
+        }),
+    }),
     defineField({
       name: 'clientName',
       type: 'string',
@@ -84,7 +107,10 @@ export const caseStudy = defineType({
     }),
     obj('seo', 'seo', {group: 'meta'}),
   ],
-  orderings: [{title: 'Order', name: 'order', by: [{field: 'order', direction: 'asc'}]}],
+  orderings: [
+    {title: 'Order (/work)', name: 'order', by: [{field: 'order', direction: 'asc'}]},
+    {title: 'Home order', name: 'featuredOrder', by: [{field: 'featuredOrder', direction: 'asc'}]},
+  ],
   preview: {
     select: {title: 'title', domain: 'domain', source: 'source', featured: 'featured', hasPage: 'hasPage'},
     prepare: ({title, domain, source, featured, hasPage}) => ({
@@ -117,7 +143,12 @@ export const post = defineType({
       name: 'offer',
       type: 'object',
       description: 'The sticky aside: the service or offer this note describes.',
-      fields: [str('title'), str('text'), defineField({name: 'link', type: 'link'}), str('cta', {initialValue: 'Read the offer'})],
+      fields: [
+        str('title'),
+        str('text'),
+        defineField({name: 'href', title: 'Path or URL', type: 'url', description: 'e.g. /services/custom-software', validation: hrefRule}),
+        str('cta', {initialValue: 'Read the offer'}),
+      ],
     }),
     str('closing', {description: 'Headline of the closing section for this note.'}),
     obj('seo', 'seo'),
@@ -129,109 +160,33 @@ export const post = defineType({
   },
 })
 
-export const service = defineType({
-  name: 'service',
-  title: 'Service',
+export const jobListing = defineType({
+  name: 'jobListing',
+  title: 'Role',
   type: 'document',
-  groups: [
-    {name: 'card', title: 'Card & file stack', default: true},
-    {name: 'page', title: 'Service page'},
-    {name: 'meta', title: 'Settings'},
-  ],
   fields: [
-    defineField({name: 'n', title: 'Number', type: 'number', group: 'meta', description: 'Order: 1–8. Shown as "Service 01".', validation: (r) => r.required().min(1)}),
-    str('name', {required: true, group: 'card'}),
-    slugField('name', 'The URL: /services/<slug>.'),
-    str('oneLiner', {group: 'card', description: 'Under the name in menus and the file stack.'}),
-    txt('description', {rows: 3, group: 'card'}),
+    str('title', {required: true}),
+    str('text', {description: 'One line under the title: the stack and what matters.'}),
     defineField({
-      name: 'tiles',
-      type: 'array',
-      group: 'card',
-      validation: (r) => r.max(3),
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'tile',
-          fields: [str('title', {required: true}), str('text')],
-          preview: {select: {title: 'title', subtitle: 'text'}},
-        }),
-      ],
+      name: 'status',
+      type: 'string',
+      options: {
+        layout: 'radio',
+        list: [
+          {title: 'Open', value: 'open'},
+          {title: 'Pipeline', value: 'pipeline'},
+          {title: 'Closed (not listed)', value: 'closed'},
+        ],
+      },
+      description: 'Empty = the site shows [STATUS]. Never guess (rule 1).',
     }),
-    strList('goodFor', {title: 'Good for', group: 'card'}),
-    strList('stack', {group: 'card', description: 'Only what we have shipped to production.'}),
-    str('shape', {group: 'card', description: 'Engagement, e.g. "Built · fixed scope per increment".'}),
-    txt('pageTitle', {group: 'page', description: 'The hero title on the service page. A new line is a line break.'}),
-    strList('gets', {title: 'What you get', group: 'page'}),
-    strList('sayNoWhen', {title: 'We will say no when', group: 'page'}),
-    list('steps', 'step', {group: 'page'}),
-    defineField({
-      name: 'record',
-      title: 'From the record',
-      type: 'array',
-      group: 'page',
-      of: [defineArrayMember({type: 'reference', to: [{type: 'caseStudy'}]})],
-      validation: (r) => r.unique(),
-    }),
-    list('faq', 'faqItem', {group: 'page'}),
-    str('closing', {group: 'page', description: 'Closing headline on the service page.'}),
-    obj('seo', 'seo', {group: 'meta'}),
+    defineField({name: 'order', type: 'number', description: 'Position on /join (lowest first).', validation: (r) => r.required().integer().min(0)}),
   ],
-  orderings: [{title: 'Number', name: 'n', by: [{field: 'n', direction: 'asc'}]}],
+  orderings: [{title: 'Order', name: 'order', by: [{field: 'order', direction: 'asc'}]}],
   preview: {
-    select: {title: 'name', n: 'n', subtitle: 'oneLiner'},
-    prepare: ({title, n, subtitle}) => ({title: `${String(n ?? '').padStart(2, '0')} · ${title}`, subtitle}),
+    select: {title: 'title', status: 'status'},
+    prepare: ({title, status}) => ({title, subtitle: status ?? '[STATUS]'}),
   },
 })
 
-export const industry = defineType({
-  name: 'industry',
-  title: 'Industry',
-  type: 'document',
-  fields: [
-    defineField({name: 'n', title: 'Number', type: 'number', validation: (r) => r.required().min(1)}),
-    str('name', {required: true}),
-    slugField('name', 'The URL: /industries/<slug>.'),
-    str('short', {description: 'Short name, e.g. "Fintech" (closing eyebrow).'}),
-    txt('title', {description: 'Hero title. A new line is a line break.'}),
-    txt('sub', {rows: 3}),
-    list('facts', 'fact', {max: 4}),
-    defineField({
-      name: 'record',
-      title: 'From the record',
-      type: 'array',
-      of: [defineArrayMember({type: 'reference', to: [{type: 'caseStudy'}]})],
-    }),
-    defineField({
-      name: 'fullCards',
-      title: 'Full cards',
-      type: 'number',
-      initialValue: 2,
-      description: 'How many of "From the record" show as full cards; the rest are compact rows.',
-      validation: (r) => r.min(0).integer(),
-    }),
-    list('asks', 'titleText', {title: 'What this industry asks for'}),
-    defineField({
-      name: 'services',
-      title: 'Services that fit',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'serviceFit',
-          fields: [
-            defineField({name: 'service', type: 'reference', to: [{type: 'service'}], validation: (r) => r.required()}),
-            str('text'),
-          ],
-          preview: {select: {title: 'service.name', subtitle: 'text'}},
-        }),
-      ],
-    }),
-    str('close', {title: 'Closing headline'}),
-    obj('seo', 'seo'),
-  ],
-  orderings: [{title: 'Number', name: 'n', by: [{field: 'n', direction: 'asc'}]}],
-  preview: {select: {title: 'name', subtitle: 'short'}},
-})
-
-export const collections = [caseStudy, post, service, industry]
+export const collections = [caseStudy, post, jobListing]
