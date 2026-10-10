@@ -2,6 +2,7 @@ import { site } from "@/content";
 import type { Fill } from "./Filled";
 import { Rv } from "./Reveal";
 import { HeadRow } from "./blocks";
+import { EngagementPanel } from "./EngagementPanel";
 
 /**
  * "What we work in." (services index, home): two rows of capability chips scrolling in opposite directions
@@ -38,15 +39,11 @@ export function Capabilities({ fill }: { fill: Fill }) {
   );
 }
 
-/**
- * The engagement panel slot (568×392) on /services and /work. The animated mock it holds is an open question
- * (CLAUDE.md: illustrative initials and numbers vs rules 1 and 3), so until the founders decide this renders the
- * empty frame only, keeping the layout.
- */
-export function EngagementPanelSlot() {
+/** The engagement panel in its revealed slot (services index, /work). */
+export function EngagementPanelSlot({ phase, fill }: { phase: 0 | 1 | 2 | 3 | 4; fill: Fill }) {
   return (
     <Rv>
-      <div className="panel-slot" aria-hidden="true" />
+      <EngagementPanel phase={phase} fill={fill} />
     </Rv>
   );
 }

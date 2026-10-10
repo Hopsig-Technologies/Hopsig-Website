@@ -76,7 +76,7 @@ Seam between tones: 120px band of 1px dots on a 22px grid, masked to fade (`.sea
 | Services file stack | `index.html` → "Eight things we do" | Nine sticky sheets (8 services + a closing sheet) with 46px tabs; each sheet docks under the previous; a docked sheet's tab turns Lime; the section after slides over the finished stack. See `generator/site.py` `core_services()` and `fSize()` in the JS. |
 | Case index (home) | `index.html` → "Where we have done this before" | The featured case studies from Sanity in `featuredOrder`. Cursor-following "Measured" card (lerp .13, velocity tilt); in-place row expansion (`grid-template-rows 0fr→1fr`); domain filter chips (`homePage.caseIndex.filters` ↔ `caseStudy.filterDomain`). |
 | Work page | `work/index.html` | **Not** the case index. Every case study by `order`: the first 12 as full cards ("Selected."), the rest as "The rest of the record." (compact rows). No cursor card, no filters. Then the engagement panel and closing. |
-| Engagement panel | `services/index.html` (×3), `work/index.html` | Animated mock of an engagement (call → scope → people → measured → review). Copy in `web/content/engagementPanel.ts`. |
+| Engagement panel | `services/index.html` (×3), `work/index.html` | One engagement in five scenes (call → scope → people → measured → review), static; each page shows one scene (`/services`: 2, 1, 3; `/work`: 3). `web/components/EngagementPanel.tsx`, copy in `web/content/engagementPanel.ts`; invented people and results are placeholders (deviations.json). |
 | Notes journal | `index.html` → Notes, `notes/` | Feature + ledger from the `post` query: published rows link, drafts are inert `[DRAFT]` rows. |
 | Facts row | service/industry/case heroes | 4 mono numbers with labels; 26px on index pages, 22px on detail pages. |
 | Ledger | many | `44px 260px 1fr` grid rows with mono index, title, text; hairline dividers. |
@@ -114,13 +114,13 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 - Build one route at a time against its reference page; screenshot both at 1440 and compare (`pnpm shot`), and run the text diff, before moving on.
 - Copy comes from `web/content` (static) or Sanity (collections), never typed into a component. If a string must change, change the module or the document. Then `pnpm check:content`: every visible string and link on the 37 reference pages must still be accounted for (0 uncovered, 0 links missing) — a deliberate copy change is the only reason to update the reference comparison.
 - Keep JS small and feature-detected; every canvas and observer has a no-JS fallback (rule 10).
+- **Deliberate differences from the reference** are recorded in `content/deviations.json` (reference string → replacement, with the owner's decision and date); `check_pages.py`, `text_diff.py` and `placeholders.mjs` accept exactly those and nothing else. Never add an entry without a decision. First entries: the engagement panel's invented people and results became placeholders (decided 2026-10-10).
 - Placeholder check before any deploy: `pnpm placeholders` must report every token in `content/placeholders.json` (51) as either still present or resolved in Site settings — never fewer because something was "filled in". (`[FORM ENDPOINT]` and `[INBOX]` existed only in a build note and are not in the list.)
 - Accessibility bar: contrast ≥ 4.5:1 for body, ≥ 3:1 for large text (the token pairs above pass); canvases `aria-hidden`; dropdowns keyboard-operable; focus visible (rule 11).
 
 ## Open questions (do not decide these in code)
 
 - `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]", `templates.ts` → `notePage.heroEyebrow`) and conflicts with rule 7. Keep it out of the build until the founders decide.
-- The engagement panel shows illustrative initials ("A.K.", "S.R.", with years of experience) and illustrative numbers ("5 h 10 m → 18 m", "7 → 0", "14 / 14"). Rules 1 and 3 suggest they should be placeholders or removed; ask before building it.
 - Visible copy that describes the implementation: "Eight case notes, fetched from Sanity Studio." (home case index) and "… Fetched from Sanity Studio." (home notes). Probably prototype wording; ask before changing the copy.
 - The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel; the rate now comes from Site settings. Ask before rewording.
 - The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. For counsel's review.

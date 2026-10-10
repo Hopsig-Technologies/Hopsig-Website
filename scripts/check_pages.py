@@ -103,10 +103,24 @@ def visible(path):
     return [x for x in clean if x and not DECOR.match(x) and not COMPUTED.match(x)]
 
 
+def deviations():
+    """content/deviations.json: reference strings deliberately replaced (owner decisions), normalised."""
+    path = os.path.join(ROOT, 'content', 'deviations.json')
+    if not os.path.exists(path):
+        return {'replaced': set(), 'now': set()}
+    d = json.load(open(path, encoding='utf-8'))
+    return {'replaced': {norm(r['reference']) for r in d['replaced']}, 'now': {norm(r['now']) for r in d['replaced']} | {norm(t) for t in d.get('added_placeholders', [])}}
+
+
+DEVIATIONS = None
+
+
 def covered(s, big):
+    global DEVIATIONS
+    DEVIATIONS = DEVIATIONS or deviations()
     s = re.sub(r'^— ', '', s)  # list items are rendered with a leading em dash
     s = re.sub(r' →$', '', s)  # links carry a trailing arrow the data does not
-    return s in big or any(p.fullmatch(s) for p in TEMPLATES)
+    return s in big or s in DEVIATIONS['replaced'] or any(p.fullmatch(s) for p in TEMPLATES)
 
 
 def template_patterns(all_strings):

@@ -6,7 +6,8 @@
 Both sides go through check_pages.visible (same normalisation: entities, whitespace, case, decoration, prototype
 build notes and computed estimator outputs skipped). Reports strings the reference shows that the build does not
 ("missing") and strings the build shows that the reference does not ("extra"), as a multiset, so a duplicated or
-dropped line is caught too. Exit 1 if anything is missing; extras are listed for review (site values filled from
+dropped line is caught too. Replacements recorded in content/deviations.json are
+accepted on both sides. Exit 1 if anything is missing; extras are listed for review (site values filled from
 Site settings legitimately differ).
 """
 import collections
@@ -41,8 +42,9 @@ def diff(base, route, ref=None):
     finally:
         os.unlink(f.name)
     want = texts(os.path.join(SITE, ref))
-    missing = want - built
-    extra = built - want
+    dev = check_pages.deviations()  # owner-approved replacements (content/deviations.json)
+    missing = collections.Counter({k: v for k, v in (want - built).items() if k not in dev['replaced']})
+    extra = collections.Counter({k: v for k, v in (built - want).items() if k not in dev['now']})
     print(f'{route}  vs  {ref}:  {sum(want.values())} reference strings, {len(missing)} missing, {len(extra)} extra')
     for s, n in sorted(missing.items()):
         print(f'   - {s[:120]}' + (f'  (×{n})' if n > 1 else ''))

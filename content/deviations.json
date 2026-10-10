@@ -1,0 +1,14 @@
+{
+ "_note": "Deliberate differences from the approved reference (reference/site). Each entry was decided by the owner; the checks (check_pages.py, text_diff.py, placeholders.mjs) accept exactly these and nothing else. Add an entry only with the decision and its date.",
+ "replaced": [
+  {"reference": "A.K.", "now": "[ENGINEER]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
+  {"reference": "S.R.", "now": "[ENGINEER]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
+  {"reference": "Backend · 11 yrs", "now": "Backend · [YEARS]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
+  {"reference": "Data · 9 yrs", "now": "Data · [YEARS]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
+  {"reference": "5 h 10 m", "now": "[BEFORE]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
+  {"reference": "18 m", "now": "[AFTER]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
+  {"reference": "14 / 14", "now": "[SHIPPED / PLANNED]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
+  {"reference": "on plan", "now": "[COST VS PLAN]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"}
+ ],
+ "added_placeholders": ["[ENGINEER]", "[YEARS]", "[BEFORE]", "[AFTER]", "[SHIPPED / PLANNED]", "[SLIPPED]", "[COST VS PLAN]"]
+}

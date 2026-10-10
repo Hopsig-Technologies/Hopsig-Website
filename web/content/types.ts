@@ -110,8 +110,17 @@ export type Templates = {
   legalPage: { contentsTitle: string };
 };
 
-/** The animated engagement mock on /services (×3) and /work: lines of cells, as the reference shows them. */
-export type EngagementPanel = { lines: string[][] };
+/** The engagement panel on /services (×3) and /work: one engagement in five scenes; each page shows one. */
+export type EngagementPanel = {
+  client: string;
+  phases: string[];
+  call: { meta: string; quote: string; options: string[]; chosen: number };
+  scope: { title: string; badge: string; rows: { label: string; value: string; strong: boolean }[]; note: string };
+  people: { engineers: { initials: string; role: string; note: string }[]; commits: { hash: string; message: string; when: string }[] };
+  measured: { title: string; sub: string; metrics: { label: string; before: string; after: string }[] };
+  review: { title: string; stats: LabelValue[]; actions: string[]; note: string };
+  terms: LabelValue[];
+};
 
 // ---------------------------------------------------------------- collections kept in code
 

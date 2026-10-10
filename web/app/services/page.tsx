@@ -24,7 +24,7 @@ async function ServicesContent({ mode }: { mode: FetchMode }) {
 
       <Surface tone="l" seam>
         <div className="wrap">
-          {page.modes.map((m) => (
+          {page.modes.map((m, i) => (
             <section key={m.anchor} id={m.anchor} className="svc">
               <Rv style={{ display: "flex", flexDirection: "column", gap: 22 }}>
                 <Eyebrow>{fill(m.head.eyebrow)}</Eyebrow>
@@ -48,7 +48,8 @@ async function ServicesContent({ mode }: { mode: FetchMode }) {
                 </div>
               </Rv>
               <div className="svc-ui">
-                <EngagementPanelSlot />
+                {/* Scenes the reference shows: Embedded → people in, Built → scope, Data & AI → measured. */}
+                <EngagementPanelSlot phase={([2, 1, 3] as const)[i]} fill={fill} />
                 <div className="price">
                   <div className="lab">{fill(m.priceLabel)}</div>
                   <div className="price-t">{fill(m.priceTitle)}</div>

@@ -32,7 +32,11 @@ const NOT_COPY = new Set(['clientName', 'source', 'evidence'])
 
 const dataset = process.argv[2] || 'development'
 const corpus = JSON.parse(readFileSync(resolve(ROOT, 'audit', 'content-corpus.json'), 'utf8'))
-const expected = Object.keys(JSON.parse(readFileSync(resolve(ROOT, 'content', 'placeholders.json'), 'utf8')))
+const expected = [
+  ...Object.keys(JSON.parse(readFileSync(resolve(ROOT, 'content', 'placeholders.json'), 'utf8'))),
+  // Placeholders the owner chose instead of invented reference content (content/deviations.json).
+  ...JSON.parse(readFileSync(resolve(ROOT, 'content', 'deviations.json'), 'utf8')).added_placeholders,
+]
 
 const q = (groq) => fetch(`https://${PROJECT}.apicdn.sanity.io/v${API}/data/query/${dataset}?query=${encodeURIComponent(groq)}`).then((r) => r.json()).then((r) => r.result)
 const docs = await q('*[_type in ["caseStudy", "post", "jobListing"]]')
