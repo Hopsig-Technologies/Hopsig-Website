@@ -12,6 +12,7 @@ import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 import "./chrome.css";
 import "./blocks.css";
+import "./sections.css";
 
 const grotesk = Space_Grotesk({
   subsets: ["latin"],

@@ -64,6 +64,19 @@ export type Templates = {
     othersTitle: string;
     othersAside: string;
     closingEyebrow: string;
+    pricedLabel: string;
+    pricedPrefix: string;
+    ratesLink: Cta;
+    getsTitle: string;
+    goodForLabel: string;
+    sayNoLabel: string;
+    stackLabel: string;
+    recordTitle: string;
+    recordLink: Cta;
+    stepsTitle: string;
+    faqTitle: string;
+    hereLabel: string;
+    buttons: Cta[];
   };
   industryPage: {
     heroEyebrow: string;

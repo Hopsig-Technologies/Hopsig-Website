@@ -86,9 +86,21 @@ export function FactsRow({ facts, fill, size = 22 }: { facts: Fact[]; fill: Fill
 }
 
 /** Title row: h2 on the left, a mono note on the right (e.g. "All times GMT"). */
-export function HeadRow({ head, fill, size = 44, style }: { head: SectionHead; fill: Fill; size?: 44 | 40; style?: CSSProperties }) {
+export function HeadRow({
+  head,
+  fill,
+  size = 44,
+  style,
+  className = "",
+}: {
+  head: SectionHead;
+  fill: Fill;
+  size?: 44 | 40 | 32;
+  style?: CSSProperties;
+  className?: string;
+}) {
   return (
-    <Rv className="head-row" style={style}>
+    <Rv className={`head-row ${className}`.trim()} style={style}>
       <H2 size={size}>{fill(head.title)}</H2>
       {head.aside ? <Eyebrow acc={false}>{fill(head.aside)}</Eyebrow> : null}
     </Rv>

@@ -48,7 +48,9 @@ Gate: shots of the header with each menu open vs `services/data-engineering.html
 `/approach`, `/working-with-us`: page hero with ring canvas, ledger, two-column section, facts row, closing.
 Gate: shots + text diff on both.
 
-### P3 — Services
+### P3 — Services — DONE 2026-10-10 (engagement panel pending a decision)
+
+`/services` and the eight `/services/[slug]` pages (static, from `services.ts`; record cards from Sanity via `casesByKey`, capped at four as the generator does). New shared pieces: `CaseCard`, `Rich` (Portable Text with fill + placeholder marking), `Faq` (one open at a time; answers visible with JS off), `Steps`, `BulletList`, `Capabilities` (the scrolling rows, reused on home), `tpl`. Text diff: all eight service pages 0 missing; `/services` 0 missing apart from the engagement panel's own strings. Full-page pixel diff: service pages 0.09–0.10%, `/services` 0.42% (the three empty panel slots). Fixed a site-wide font issue: the mono stack now names "IBM Plex Mono" directly, because next/font always appends a full-Unicode fallback face that drew → differently (improved every page). **The engagement panel renders as an empty frame of the right size until the founders decide on its illustrative initials and numbers (CLAUDE.md, Open questions).**
 
 `/services` (hero chips → anchors, three engagement modes with the engagement panel, the eight-services list, "inside every engagement", steps) and the eight `/services/[slug]` pages from `services.ts` (facts, gets, say-no, steps, FAQ, "From the record" via `casesByKey`).
 Gate: shots on three pages, text diff on all nine.

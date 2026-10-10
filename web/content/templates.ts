@@ -20,6 +20,23 @@ export const templates = {
     othersTitle: "The other seven.",
     othersAside: "All eight end in something running",
     closingEyebrow: "{name} · the call",
+    pricedLabel: "Priced",
+    pricedPrefix: "Priced:",
+    ratesLink: { label: "See rates →", href: "/rates", variant: "link" },
+    getsTitle: "What you get.",
+    goodForLabel: "Good for",
+    sayNoLabel: "We will say no when",
+    stackLabel: "Stack · only what we have shipped to production",
+    recordTitle: "From the record.",
+    recordLink: { label: "All case notes →", href: "/work", variant: "link" },
+    stepsTitle: "How it runs.",
+    faqTitle: "Questions we get about this.",
+    hereLabel: "here",
+    /** Hero and closing buttons on every service page. */
+    buttons: [
+      { label: "Book a consult", href: "/book", variant: "lime" },
+      { label: "See our work", href: "/work", variant: "outline" },
+    ],
   },
   industryPage: {
     heroEyebrow: "Industry · {name}",

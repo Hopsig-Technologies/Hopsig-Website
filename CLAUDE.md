@@ -60,7 +60,7 @@ Type: **Space Grotesk** 600 for headings (letter-spacing −0.045em to −0.05em
 Headline sizes: h1 84 (home) / 72 (page heroes) / 64 (book, brief); h2 56 (closing) / 44 (section) / 40 / 32; file-stack numerals 88 (mono 500).
 Full scale in use (px): 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24 26 30 32 34 36 40 42 44 48 56 64 72 84 88. Use these; do not "normalise" them to fewer.
 
-CSS baseline: `box-sizing: content-box` and `line-height: normal` everywhere (the reference's browser defaults; Tailwind's preflight is overridden in `web/app/globals.css`), so the reference's widths and paddings carry over unchanged. Component CSS lives in plain files (`web/app/chrome.css` for header/footer/closing), on the tone variables. The mono font is loaded with `adjustFontFallback: false` so glyphs Plex Mono lacks (→) fall back like the reference.
+CSS baseline: `box-sizing: content-box` and `line-height: normal` everywhere (the reference's browser defaults; Tailwind's preflight is overridden in `web/app/globals.css`), so the reference's widths and paddings carry over unchanged. Component CSS lives in plain files (`web/app/chrome.css` for header/footer/closing), on the tone variables. The mono stack is `"IBM Plex Mono", monospace` by name (not the next/font variable, which always appends a full-Unicode fallback face), so glyphs Plex Mono lacks (→) fall back to the system monospace like the reference.
 
 Radius: 2–3 (progress rails, bars), 6 (small controls: FAQ plus, chips), 8 (buttons, menu items, inputs), 12 (panels, cards, menus), 14 (file sheets). Container: max-width 1264 + 88px side padding. Header 72px, sticky, `rgba(14,17,22,.86)` + 8px backdrop blur, bottom hairline.
 

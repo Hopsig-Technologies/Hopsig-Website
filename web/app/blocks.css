@@ -83,23 +83,24 @@ a.more,
   color: var(--text);
 }
 
-/* ---------------------------------------------------------------- facts row */
+/* ---------------------------------------------------------------- facts row (service/industry heroes) */
 .facts {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 26px;
-  padding-top: 22px;
+  margin-top: 30px;
+  padding-top: 18px;
   border-top: 1px solid var(--line);
+  max-width: 900px;
 }
 .facts-v {
-  font-family: var(--font-mono);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
   color: var(--text);
-  letter-spacing: -0.02em;
 }
 .facts-l {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 13px;
   line-height: 20px;
   color: var(--dim);

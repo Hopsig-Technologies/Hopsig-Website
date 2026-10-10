@@ -38,7 +38,10 @@
   --color-acc: var(--acc);
 
   --font-sans: var(--font-grotesk), sans-serif;
-  --font-mono: var(--font-plex-mono), monospace;
+  /* Not var(--font-plex-mono): next/font always appends an "IBM Plex Mono Fallback" face covering all of Unicode,
+     which draws glyphs Plex Mono lacks (→) differently from the reference. The family name is the one next/font
+     registers; anything Plex Mono lacks falls straight to the system monospace, as in the reference. */
+  --font-mono: "IBM Plex Mono", monospace;
 }
 
 /* Tone system: every section sits in .tone-d or .tone-l. */

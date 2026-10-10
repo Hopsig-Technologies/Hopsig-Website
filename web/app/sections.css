@@ -1,0 +1,432 @@
+/* Larger reference blocks (components/sections.tsx, Faq.tsx): .list, .steps, case cards, .faq, the services grid. */
+
+.dimc {
+  color: var(--dim);
+}
+.lab-dim {
+  color: var(--dim);
+}
+
+/* ---------------------------------------------------------------- .list */
+.list {
+  display: flex;
+  flex-direction: column;
+}
+.list > div {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--hair);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--sub);
+}
+.list > div:last-child {
+  border-bottom: 1px solid var(--hair);
+}
+.list i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--acc);
+  margin-top: 5px;
+}
+.list.nolime i {
+  background: var(--line);
+}
+
+/* ---------------------------------------------------------------- .steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+.steps > div {
+  border-top: 2px solid var(--line);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.steps > div.on {
+  border-top-color: var(--acc);
+}
+.steps-t {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.steps-x {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--dim);
+}
+
+/* ---------------------------------------------------------------- case card */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.case-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 30px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.case-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.case-title {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+.case-foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.case-foot .more {
+  padding: 10px 0;
+}
+
+/* ---------------------------------------------------------------- .faq (answers collapse only when JS can open them) */
+.faq .item {
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+}
+.faq .item .t {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font: inherit;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--sub);
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.faq .item.on .t {
+  color: var(--text);
+}
+.faq .item .b {
+  color: var(--dim);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-top: 8px;
+}
+.js .faq .item .b {
+  max-height: 0;
+  overflow: hidden;
+  padding-top: 0;
+  transition: max-height 0.35s;
+}
+.js .faq .item.on .b {
+  max-height: 160px;
+  padding-top: 8px;
+}
+.faq .pl {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--dim);
+  flex: none;
+}
+.faq .item.on .pl {
+  border-color: var(--acc);
+  color: var(--acc);
+}
+
+/* ---------------------------------------------------------------- services grid ("The other seven.") */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 24px;
+  border-top: 1px solid var(--line);
+}
+.svc-grid > * {
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+.svc-grid > span {
+  color: var(--dim);
+}
+.svc-grid .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--acc);
+}
+.svc-grid > span .n {
+  color: var(--dim);
+}
+.svc-grid .t {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.svc-grid .a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--dim);
+}
+
+/* ---------------------------------------------------------------- service page body */
+.svc-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.svc-priced {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--dim);
+}
+.svc-priced .more {
+  padding: 0;
+}
+.dash-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+@media (max-width: 899px) {
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .case-grid,
+  .svc-intro {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .case-card {
+    padding: 24px 20px;
+  }
+  .svc-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------- services index */
+.svc {
+  display: grid;
+  grid-template-columns: 1fr 568px;
+  gap: 64px;
+  align-items: start;
+  padding: 100px 0;
+  border-top: 1px solid var(--hair);
+}
+.svc-ui {
+  position: sticky;
+  top: 112px;
+}
+.panel-slot {
+  width: 568px;
+  height: 392px;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+}
+.price {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 20px;
+}
+.price-t {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.price-x {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--sub);
+}
+.eight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  border-top: 1px solid var(--line);
+}
+.eight > a {
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 40px 1fr auto auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+.eight .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--acc);
+}
+.eight .t {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.eight .s {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.eight .a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--acc);
+}
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.tiles > div {
+  padding: 22px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tiles > div:nth-child(3n) {
+  border-right: 0;
+}
+.tiles > div:nth-child(n + 4) {
+  border-bottom: 0;
+}
+.tiles .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--dim);
+}
+.tiles .t {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.tiles .x {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--dim);
+}
+.mq {
+  overflow: hidden;
+  position: relative;
+  padding: 22px 0;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+.mq-row {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: mqa 40s linear infinite;
+}
+.mq-row.r {
+  animation-direction: reverse;
+}
+.mq-chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sub);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+@keyframes mqa {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mq-row {
+    animation: none;
+  }
+}
+@media (max-width: 899px) {
+  .svc {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .svc-ui {
+    position: static;
+  }
+  .panel-slot {
+    width: 100%;
+    height: 280px;
+  }
+  .eight,
+  .tiles {
+    grid-template-columns: 1fr;
+  }
+  .eight > a {
+    grid-template-columns: 32px 1fr auto;
+  }
+  .eight .s {
+    display: none;
+  }
+  .tiles > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
