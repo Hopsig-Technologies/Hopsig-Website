@@ -160,7 +160,9 @@ Check: Studio opens on the hosted URL; every singleton opens with empty fields; 
   - no unresolved references;
   - the Placeholders tool reports the tokens in `content/placeholders.json` (53) except `[FORM ENDPOINT]` and `[INBOX]`, which live only in build notes and are not seeded.
 
-### Phase 4 — Data layer in `web`
+### Phase 4 — Data layer in `web` — DONE 2026-10-10 (Presentation check pending, see below)
+
+Vercel project `hopsig-website` (Hobby, personal scope: move to a Pro team owned by Hopsig before launch), root `web/`, auto-deploys `main`. next-sanity 13: `defineLive({strict: true})` behind one `'use cache'` boundary; published pages are static (○), draft mode switches to drafts + stega. Webhook → `/api/revalidate` revalidates the whole site (single `sanity` tag, `{expire: 0}`); tested end to end on Vercel: a published change is visible in ~5 s. Viewer token + webhook secret created without passing through chat and stored in Vercel (all environments) and `web/.env.local`. Presentation tool in the Studio with locations for every document type. Still to confirm by a person in the browser: editing a draft in Presentation updates the preview before publishing. `production` dataset gets its own webhook in Phase 12.
 
 - `next-sanity` client, `defineLive` / `sanityFetch` with tags, GROQ queries in `web/sanity/queries.ts` (one per page, projections only of fields the page renders, typed via typegen).
 - Portable Text renderers for `richInline` and `richBody` (strong/em, h2, pull quote, ordered list), no other marks.

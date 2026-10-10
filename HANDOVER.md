@@ -29,7 +29,7 @@ These are not design questions; Claude Code will ask about them or stall on them
 - **Numbers marked `[ADD …]`** on case notes and industry facts. Either supply the measured figure or leave the placeholder; do not let it be filled in.
 - **Booking** — the calendar on `/book` is visual. Pick the tool (Cal.com, Calendly, SavvyCal) and Claude Code wires it.
 - **Brief form** — `/brief` posts to a Vercel route handler that emails `[HELLO@HOPSIG.COM]`; pick the email provider. Submissions are not stored in Sanity (the reference's build note says otherwise; the plan overrides it).
-- **Hosting and domain** — Vercel (decided). `hopsig.si`, if registered, is a 301 to `/ai-transformation`, nothing more.
+- **Hosting and domain** — Vercel (decided; project `hopsig-website`). It is on a personal Hobby scope now; Vercel's Hobby terms exclude commercial sites, so move it to a Hopsig Pro team before launch. `hopsig.si`, if registered, is a 301 to `/ai-transformation`, nothing more.
 - **Analytics** — none is specified. If you add any, the privacy page needs the matching paragraph and possibly a consent banner (EU visitors).
 - **Mobile** — the prototype is desktop only. Prompt 2 and prompt 10 cover responsive behaviour; review the 390px contact sheet when it arrives.
 
