@@ -37,11 +37,26 @@ export const metadata: Metadata = {
 // Marks <html class="js"> before paint so reveal styles only hide content when JS will reveal it (rule 10).
 const jsClass = `document.documentElement.classList.add('js')`;
 
+// Without JS (rule 10). React streams a large finished Suspense boundary out of order, even in a static
+// prerender: once a boundary passes ~12.8 KB (`progressiveChunkSize`, which Next does not expose) its HTML goes
+// into <div hidden id="S:n"> at the end of <body>, and an inline script moves it into place. Every big page's
+// <main> is such a boundary (Next wraps each page segment in one). With JS off that script never runs, so this
+// shows the segments and orders them between the page chrome: header, then the segments, then the footer.
+const noJs = `<style>
+body { display: flex; flex-direction: column; }
+.pg { display: contents; }
+.pg > footer { order: 2; }
+/* In Tailwind's base layer, where the preflight's [hidden] { display: none !important } lives: a layered
+   !important beats an unlayered one, so the override has to sit in the same layer and win on specificity. */
+@layer base { body > div[hidden][id^="S:"] { display: block !important; order: 1; } }
+</style>`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${grotesk.variable} ${plexMono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: jsClass }} />
+        <noscript dangerouslySetInnerHTML={{ __html: noJs }} />
       </head>
       <body>
         <JsClass />

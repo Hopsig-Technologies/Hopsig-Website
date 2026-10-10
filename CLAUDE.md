@@ -35,7 +35,7 @@ Version notes (read `web/AGENTS.md`; the bundled docs in `web/node_modules/next/
 7. **No reading times, dates, bylines or newsletter pop-ups** on Notes. No cookie banner unless legally required for the analytics actually installed.
 8. Mobile is **not designed yet** (prototype is 1440 wide). Build responsive from the tokens and the desktop reference; keep the hierarchy, drop the side-by-side grids to single column below 900px, and do not invent new components to do it.
 9. **Build notes never ship.** The reference renders designer notes as visible text ("Build note: …", "Source: Sanity · caseStudy · …"). They are not in the content and `check_pages.py` skips them; never reproduce them.
-10. **Content is visible with JS off.** `.rv` (and the home hero captions) start hidden only under `html.js`, set by an inline script in `<head>`; the reference hides them unconditionally — do not copy that.
+10. **Content is visible with JS off.** `.rv` (and the home hero captions) start hidden only under `html.js`, set by an inline script in `<head>`; the reference hides them unconditionally — do not copy that. Large pages also need the `<noscript>` stylesheet in `app/layout.tsx` (React streams a big `<main>` out of order into a hidden div); check with `node scripts/check_nojs.mjs` against a production build.
 11. **Focus is visible everywhere**: one global `:focus-visible` ring (2px `var(--acc)`, offset 3px) on links, buttons, form fields and dropdown triggers. Never `outline: none` without a replacement.
 12. **Nothing from `web/content` reaches a client bundle.** `web/content/index.ts` is `server-only`; client components get the strings they need as props (so `[YOUR RATE]` is never in a shared JS chunk).
 
