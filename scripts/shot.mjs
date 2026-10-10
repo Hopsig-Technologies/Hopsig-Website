@@ -31,7 +31,8 @@ const FREEZE = `
 
 async function grab(browser, url, selector, file, hover) {
   const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
-  await page.goto(url, { waitUntil: "networkidle" });
+  await page.goto(url, { waitUntil: "load" });
+  await page.waitForTimeout(800); // dev servers keep a connection open, so "networkidle" never arrives
   await page.addStyleTag({ content: FREEZE });
   await page.evaluate(() => document.fonts.ready);
   const el = page.locator(selector).first();

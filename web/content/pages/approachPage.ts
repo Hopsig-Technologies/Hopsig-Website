@@ -88,6 +88,12 @@ export const approachPage = {
       aside: "All times GMT",
     },
     zones: ["London · 09:00–17:00", "Lahore · 09:00–18:00 local", "Overlap · 4 h, every day"],
+    // London 09–17 GMT; Lahore 09–18 local = 04–13 GMT; overlap 09–13 GMT (reference bars).
+    bars: [
+      [9, 17],
+      [4, 13],
+      [9, 13],
+    ],
     paragraphs: [
       "Four hours is enough for a standup, a review and a pairing session, and it is the same four hours every day, so nobody is doing it at midnight. For US teams we shift the day: [OVERLAP WITH ET] hours with Eastern time.",
       "We are in Lahore, Pakistan. Delivery happens here, and the people who scope your work are the people who do it. Company details: [COMPANY REG NO.], established [YEAR].",

@@ -229,7 +229,8 @@ export type ApproachPage = {
   hero: PageHero;
   staffing: TitleTextSection;
   agentic: { head: SectionHead; tags: string[]; links: Cta[]; items: TitleText[] };
-  hours: { head: SectionHead; zones: string[]; paragraphs: string[] };
+  /** `bars`: each zone's working hours in GMT, [start, end] on a 0–24 scale (drawn as the bar). */
+  hours: { head: SectionHead; zones: string[]; bars: [number, number][]; paragraphs: string[] };
   closing: Closing;
 };
 

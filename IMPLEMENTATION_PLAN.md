@@ -41,7 +41,9 @@ Header (client component, navigation strings as props; dropdowns on hover/focus/
 Header from `navigation.ts` (three dropdowns: hover/focus-within open, tap toggles, Esc and outside click close, current page `.on`; tighten at 1300, drop "Technologies" at 1180, hamburger below 900 with the same tokens), Footer (`site.footer` lines through `getFill`), `Closing` (ring canvas; `sub` falls back to `site.defaultClosing`), `Rich` (PortableText with the site's marks and link), `withMode` in use, `text_diff.mjs`; delete `/phase1`.
 Gate: shots of the header with each menu open vs `services/data-engineering.html` and the closing vs `approach.html`; the route is ○ in the build output; in draft mode an edited email in Site settings shows in the footer.
 
-### P2 — First static pages
+### P2 — First static pages — DONE 2026-10-10
+
+`/approach` and `/working-with-us` from their content modules, on shared blocks (`web/components/blocks.tsx`: PageHero, FactsRow, HeadRow, Cards, Ledger, TwoCol, Tags, MoreLink; `Filled` marks leftover placeholders as `tok`/`phx`; `blocks.css`). Full-page diff vs the reference: 0.05% / 0.04% of pixels, same page heights; text diff 0 missing on both; both routes static (○). Reveal rewritten as a React-owned `Rv` component after the dev server showed hydration mismatches (a DOM-mutating observer added `in` before hydration); console clean, no element stuck hidden, nothing hidden with JS off. FactsRow styling is unverified until P3 (first page that shows it). The approach page's time-zone bars are data (`hours.bars`, GMT hours).
 
 `/approach`, `/working-with-us`: page hero with ring canvas, ledger, two-column section, facts row, closing.
 Gate: shots + text diff on both.

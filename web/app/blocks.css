@@ -1,0 +1,299 @@
+/* Shared page blocks (components/blocks.tsx): the reference's inline styles as classes, on the tone variables. */
+
+.tok {
+  color: var(--text);
+}
+.phx {
+  color: var(--acc);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.h2 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+a.more,
+.more {
+  display: inline-block;
+  padding: 10px 0;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+/* ---------------------------------------------------------------- page hero */
+.ph {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+.ph-c {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.ph-h1 {
+  margin: 0;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  max-width: 900px;
+}
+.ph-sub {
+  margin: 0;
+  max-width: 640px;
+  font-size: 19px;
+  line-height: 31px;
+  color: var(--sub);
+}
+.ph-btns {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+.chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.chip2 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+.chip2:hover {
+  border-color: var(--dim);
+  color: var(--text);
+}
+
+/* ---------------------------------------------------------------- facts row */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.facts-v {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.facts-l {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dim);
+}
+
+/* ---------------------------------------------------------------- sections */
+.head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+.cards3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.card3 {
+  border-top: 2px solid var(--line);
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card3.first {
+  border-top-color: var(--acc);
+}
+.card3-t {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.card3-x {
+  font-size: 15px;
+  line-height: 25px;
+  color: var(--dim);
+}
+.ledger {
+  border-top: 1px solid var(--line);
+}
+.ledger-row {
+  display: grid;
+  gap: 20px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+}
+.ledger-n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--acc);
+}
+.ledger-t {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.ledger-x {
+  font-size: 15px;
+  line-height: 24px;
+}
+.twocol {
+  display: grid;
+  align-items: start;
+}
+.twocol-l {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 100px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tags span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--sub);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 9px;
+}
+
+/* ---------------------------------------------------------------- hours bars (/approach) */
+.ov {
+  position: relative;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--hair);
+  overflow: hidden;
+}
+.ov i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px;
+}
+
+/* ---------------------------------------------------------------- below 900px: one column (CLAUDE.md rule 8) */
+@media (max-width: 899px) {
+  .ph {
+    padding: 96px 0 64px;
+  }
+  .ph-h1 {
+    font-size: 44px;
+  }
+  .ph-sub {
+    font-size: 17px;
+    line-height: 28px;
+  }
+  .ph-btns {
+    flex-wrap: wrap;
+  }
+  .facts,
+  .cards3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .head-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .h2 {
+    font-size: 32px !important;
+  }
+  .twocol {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .twocol-l {
+    position: static;
+  }
+  .ledger-row {
+    grid-template-columns: 32px 1fr !important;
+  }
+  .ledger-x {
+    grid-column: 2;
+  }
+}
+
+.body17 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 29px;
+  color: var(--sub);
+}
+.body16 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 27px;
+  color: var(--sub);
+}
+.hours {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hours-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+}
+.hours-scale {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+.hours-z {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--sub);
+}
+.hours-p {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  font-size: 15px;
+  line-height: 25px;
+  color: var(--dim);
+}
+@media (max-width: 899px) {
+  .hours-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .hours-p {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
