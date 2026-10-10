@@ -1,2 +1,6 @@
-// Phase 2 adds the document, singleton and object types from IMPLEMENTATION_PLAN.md.
-export const schemaTypes = []
+import {collections} from './documents/collections'
+import {basics} from './objects/basics'
+import {pageObjects, pages} from './singletons/pages'
+import {siteSingletons} from './singletons/site'
+
+export const schemaTypes = [...basics, ...pageObjects, ...collections, ...siteSingletons, ...pages]

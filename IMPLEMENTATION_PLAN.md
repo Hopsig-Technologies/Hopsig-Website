@@ -129,7 +129,9 @@ Next.js 16.4 (Turbopack, `cacheComponents` + `partialPrefetching` on), React 19.
 
 Check: throwaway page vs the closing section of `reference/site/approach.html` at 1440; build passes on Vercel preview.
 
-### Phase 2 — Studio schemas and structure
+### Phase 2 — Studio schemas and structure — DONE 2026-10-10
+
+83 schema types (18 shared objects, 6 page objects, 4 collections, 4 site singletons, 18 page singletons); `sanity schema validate` clean; Placeholders tab; singleton actions locked; typegen into `web/sanity/types.ts` with a CI drift check; deployed to https://hopsig.sanity.studio (appId in `sanity.cli.ts`). Changes from the plan below: site-wide tokens are filled once in Site settings and substituted at render (see CLAUDE.md); `homePage.caseIndex.cases` and `workIndexPage.selected.cases` are ordered reference lists, which settles the case-order question in favour of an explicit editor-controlled order; brief submissions are not a document type. No `orderable-document-list` plugin: services and industries order by `n`, case studies by `order`. Editors not yet invited.
 
 - All object, document and singleton types above, TypeScript, `defineType`/`defineField`, validation on required copy.
 - Desk structure: "Site" group (settings, navigation), "Pages" group (singletons in nav order), "Work" (case studies ordered by `order`, filter views for featured / hasPage), "Notes" (published / drafts), "Services", "Industries".

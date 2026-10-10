@@ -7,9 +7,12 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typegen": "sanity schema extract --enforce-required-fields --force && sanity typegen generate"
   },
   "dependencies": {
+    "@sanity/icons": "^5.2.3",
+    "@sanity/ui": "^4.4.0",
     "@sanity/vision": "^6.18.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
