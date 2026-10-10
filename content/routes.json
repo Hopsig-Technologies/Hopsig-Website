@@ -1,0 +1,187 @@
+[
+ {
+  "route": "/",
+  "reference": "reference/site/index.html",
+  "source": "SITE_Home"
+ },
+ {
+  "route": "/services",
+  "reference": "reference/site/services/index.html",
+  "source": "SITE_Services"
+ },
+ {
+  "route": "/services/custom-software",
+  "reference": "reference/site/services/custom-software.html",
+  "source": "SITE_S1_Custom"
+ },
+ {
+  "route": "/services/team-augmentation",
+  "reference": "reference/site/services/team-augmentation.html",
+  "source": "SITE_S2_Team"
+ },
+ {
+  "route": "/services/data-engineering",
+  "reference": "reference/site/services/data-engineering.html",
+  "source": "SITE_S3_Data"
+ },
+ {
+  "route": "/services/ai-machine-learning",
+  "reference": "reference/site/services/ai-machine-learning.html",
+  "source": "SITE_S4_AI"
+ },
+ {
+  "route": "/services/cloud-devops",
+  "reference": "reference/site/services/cloud-devops.html",
+  "source": "SITE_S5_Cloud"
+ },
+ {
+  "route": "/services/legacy-modernisation",
+  "reference": "reference/site/services/legacy-modernisation.html",
+  "source": "SITE_S6_Legacy"
+ },
+ {
+  "route": "/services/mobile",
+  "reference": "reference/site/services/mobile.html",
+  "source": "SITE_S7_Mobile"
+ },
+ {
+  "route": "/services/qa-test-automation",
+  "reference": "reference/site/services/qa-test-automation.html",
+  "source": "SITE_S8_QA"
+ },
+ {
+  "route": "/industries",
+  "reference": "reference/site/industries/index.html",
+  "source": "SITE_Industries"
+ },
+ {
+  "route": "/industries/fintech-payments",
+  "reference": "reference/site/industries/fintech-payments.html",
+  "source": "SITE_I1_Fintech"
+ },
+ {
+  "route": "/industries/retail-ecommerce",
+  "reference": "reference/site/industries/retail-ecommerce.html",
+  "source": "SITE_I2_Retail"
+ },
+ {
+  "route": "/industries/healthcare-life-sciences",
+  "reference": "reference/site/industries/healthcare-life-sciences.html",
+  "source": "SITE_I3_Health"
+ },
+ {
+  "route": "/industries/logistics-travel-marketplaces",
+  "reference": "reference/site/industries/logistics-travel-marketplaces.html",
+  "source": "SITE_I4_Logistics"
+ },
+ {
+  "route": "/industries/iot-signage-built-environment",
+  "reference": "reference/site/industries/iot-signage-built-environment.html",
+  "source": "SITE_I5_IoT"
+ },
+ {
+  "route": "/industries/saas-platforms-ai-products",
+  "reference": "reference/site/industries/saas-platforms-ai-products.html",
+  "source": "SITE_I6_SaaS"
+ },
+ {
+  "route": "/work",
+  "reference": "reference/site/work/index.html",
+  "source": "SITE_Work"
+ },
+ {
+  "route": "/work/payments-platform",
+  "reference": "reference/site/work/payments-platform.html",
+  "source": "SITE_Case_Payments"
+ },
+ {
+  "route": "/work/preclinical-research-portal",
+  "reference": "reference/site/work/preclinical-research-portal.html",
+  "source": "SITE_Case_Preclinical"
+ },
+ {
+  "route": "/work/freight-dispatch",
+  "reference": "reference/site/work/freight-dispatch.html",
+  "source": "SITE_Case_Freight"
+ },
+ {
+  "route": "/notes",
+  "reference": "reference/site/notes/index.html",
+  "source": "SITE_Notes"
+ },
+ {
+  "route": "/notes/superintelligence-is-not-on-your-roadmap",
+  "reference": "reference/site/notes/superintelligence-is-not-on-your-roadmap.html",
+  "source": "SITE_Note_Agents"
+ },
+ {
+  "route": "/notes/the-sow-is-the-pitch",
+  "reference": "reference/site/notes/the-sow-is-the-pitch.html",
+  "source": "SITE_Note_SOW"
+ },
+ {
+  "route": "/approach",
+  "reference": "reference/site/approach.html",
+  "source": "SITE_Approach"
+ },
+ {
+  "route": "/rates",
+  "reference": "reference/site/rates.html",
+  "source": "SITE_Rates"
+ },
+ {
+  "route": "/book",
+  "reference": "reference/site/book.html",
+  "source": "SITE_Book"
+ },
+ {
+  "route": "/brief",
+  "reference": "reference/site/brief.html",
+  "source": "SITE_Brief"
+ },
+ {
+  "route": "/why-not-just-hire",
+  "reference": "reference/site/why-not-just-hire.html",
+  "source": "SITE_Compare"
+ },
+ {
+  "route": "/working-with-us",
+  "reference": "reference/site/working-with-us.html",
+  "source": "SITE_Working"
+ },
+ {
+  "route": "/ai-transformation",
+  "reference": "reference/site/ai-transformation.html",
+  "source": "SITE_Agentic"
+ },
+ {
+  "route": "/agentic-flow",
+  "reference": "reference/site/agentic-flow.html",
+  "source": "SITE_Flow"
+ },
+ {
+  "route": "/for-agencies",
+  "reference": "reference/site/for-agencies.html",
+  "source": "SITE_Agencies"
+ },
+ {
+  "route": "/join",
+  "reference": "reference/site/join.html",
+  "source": "SITE_Join"
+ },
+ {
+  "route": "/privacy",
+  "reference": "reference/site/privacy.html",
+  "source": "SITE_Privacy"
+ },
+ {
+  "route": "/terms",
+  "reference": "reference/site/terms.html",
+  "source": "SITE_Terms"
+ },
+ {
+  "route": "/404",
+  "reference": "reference/site/404.html",
+  "source": "SITE_404"
+ }
+]

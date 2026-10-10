@@ -1,0 +1,26 @@
+[
+ {
+  "key": "all",
+  "label": "All"
+ },
+ {
+  "key": "payments",
+  "label": "Payments"
+ },
+ {
+  "key": "retail",
+  "label": "Retail & e-commerce"
+ },
+ {
+  "key": "health",
+  "label": "Healthcare & data"
+ },
+ {
+  "key": "ai",
+  "label": "AI & delivery"
+ },
+ {
+  "key": "iot",
+  "label": "IoT & platforms"
+ }
+]

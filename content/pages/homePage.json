@@ -1,0 +1,327 @@
+{
+ "route": "/",
+ "reference": "reference/site/index.html",
+ "docTitle": "Hopsig — You think it. We finish it.",
+ "blocks": [
+  {
+   "kind": "section",
+   "rows": [
+    [
+     "Fractional engineering, data & AI teams",
+     "You think it.\nWe finish it.",
+     "We integrate directly with your team to deliver high-stakes software and AI products from architecture to production launch."
+    ],
+    {
+     "button": {
+      "label": "Book a consult",
+      "route": "/book",
+      "variant": "lime"
+     }
+    },
+    [
+     "See our work"
+    ],
+    [
+     "Principal-level talent",
+     "10 days to deployment",
+     "Daily overlap with your team",
+     "Flexible terms"
+    ],
+    [
+     "Day 0",
+     "The call",
+     "You describe the problem. We say on the call whether we are right for it, and what it would cost."
+    ],
+    [
+     "Day 3",
+     "The scope",
+     "A two-page SOW: what is in, what is out, what it costs. Before you pay anything."
+    ],
+    [
+     "Day 10",
+     "People in",
+     "Access, first commit. You meet the engineers before they start, and they are in your standup from day one."
+    ],
+    [
+     "Week 6",
+     "First increment live",
+     "Working software in your environment, measured before we claim it improved."
+    ],
+    [
+     "Fortnightly",
+     "The review",
+     "Shipped, slipped, cost against plan. Continue, or hand over. Your call, every fortnight."
+    ],
+    [
+     "Scroll ↓ the engagement, in five beats"
+    ]
+   ],
+   "tone": "d",
+   "id": "hero"
+  },
+  {
+   "kind": "section",
+   "eyebrow": "Core services",
+   "title": "Eight things we do. All of them end in something running.",
+   "rows": [
+    {
+     "from": "services",
+     "refs": [
+      "custom-software",
+      "team-augmentation",
+      "data-engineering",
+      "ai-machine-learning",
+      "cloud-devops",
+      "legacy-modernisation",
+      "mobile",
+      "qa-test-automation"
+     ]
+    }
+   ],
+   "tone": "l",
+   "id": "svc",
+   "templateText": [
+    "Scroll — the sheets stack, the tabs stay",
+    "Details →",
+    "Good for",
+    "Stack · only what we have shipped to production",
+    "Engagement:",
+    "From [YOUR RATE] / day",
+    "08 of 08 · the file closes here",
+    "All services →",
+    "Rates →"
+   ]
+  },
+  {
+   "kind": "section",
+   "eyebrow": "Some of our work",
+   "title": "Where we have done this before.",
+   "aside": [
+    "Eight case notes, fetched from Sanity Studio. Hover a row for the number; open it for the note."
+   ],
+   "rows": [
+    {
+     "from": "case-studies",
+     "refs": [
+      "F0",
+      "F1",
+      "F3",
+      "F5",
+      "F4",
+      "C1",
+      "F17",
+      "C10"
+     ]
+    }
+   ],
+   "tone": "d",
+   "id": "cidx",
+   "templateText": [
+    "Problem",
+    "What we did",
+    "Measured",
+    "Read the case note →",
+    "Ask about this →",
+    "All 32 case notes →"
+   ]
+  },
+  {
+   "kind": "section",
+   "rows": [
+    [
+     "Start a new build, or put senior people on one that is already running."
+    ],
+    {
+     "button": {
+      "label": "Book a consult",
+      "route": "/book",
+      "variant": "lime"
+     }
+    }
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "section",
+   "title": "What we work in.",
+   "aside": [
+    "Only what we have shipped to production"
+   ],
+   "rows": [
+    [
+     "Backend services",
+     "Frontend",
+     "Data pipelines",
+     "Warehousing",
+     "Retrieval",
+     "Evaluation harnesses",
+     "Platform & CI",
+     "Observability",
+     "Payments",
+     "Auth & SSO",
+     "Search",
+     "Migrations",
+     "Backend services",
+     "Frontend",
+     "Data pipelines",
+     "Warehousing",
+     "Retrieval",
+     "Evaluation harnesses",
+     "Platform & CI",
+     "Observability",
+     "Payments",
+     "Auth & SSO",
+     "Search",
+     "Migrations"
+    ],
+    [
+     "Event streaming",
+     "Batch → incremental",
+     "API design",
+     "Mobile",
+     "Reporting",
+     "Model serving",
+     "Cost control",
+     "On-call runbooks",
+     "Data quality",
+     "Integrations",
+     "Access control",
+     "Load & scale",
+     "Event streaming",
+     "Batch → incremental",
+     "API design",
+     "Mobile",
+     "Reporting",
+     "Model serving",
+     "Cost control",
+     "On-call runbooks",
+     "Data quality",
+     "Integrations",
+     "Access control",
+     "Load & scale"
+    ],
+    [
+     "Not on the list? We will say so on the call, rather than learn it on your time."
+    ]
+   ],
+   "tone": "l"
+  },
+  {
+   "kind": "section",
+   "title": "Why Hopsig.",
+   "rows": [
+    [
+     "Senior only",
+     "Shipped to production for years, not months. No juniors on your account, ever."
+    ],
+    [
+     "Scope before money",
+     "A written SOW three days after the call, before you pay."
+    ],
+    [
+     "Agentic delivery",
+     "Our own SDLC on Claude Code: planning, review, tests and docs automated, a person in the loop when it matters."
+    ],
+    [
+     "Easy to leave",
+     "Thirty days’ notice, either side, no argument."
+    ],
+    [
+     "Measured",
+     "We measure it before we claim it improved."
+    ]
+   ],
+   "tone": "l"
+  },
+  {
+   "kind": "section",
+   "eyebrow": "The record",
+   "title": "Shipping to production since 2019.",
+   "sub": "Payments, regulated healthcare, retail at scale, agentic delivery. Every system on the Work page was built, run or measured by us. Client names are withheld until the call; the numbers are not.",
+   "aside": [
+    "See the record →"
+   ],
+   "rows": [
+    [
+     "150+",
+     "merchants and 100K+ transactions, four months after an embedded payments platform launched"
+    ],
+    [
+     "5×",
+     "repeat transactions from a loyalty engine built for enterprise retail"
+    ],
+    [
+     "98%",
+     "detection accuracy from a computer-vision product working on field photographs"
+    ],
+    [
+     "60%",
+     "less analysis time on preclinical data harmonised across global labs"
+    ],
+    [
+     "Established [YEAR]",
+     "Lahore, Pakistan",
+     "In production since 2019",
+     "Built for teams in the UK, US and EU",
+     "[COMPANY REG NO.]"
+    ]
+   ],
+   "tone": "d",
+   "id": "record"
+  },
+  {
+   "kind": "section",
+   "eyebrow": "Notes",
+   "title": "Things we would say on the call anyway.",
+   "aside": [
+    "Short and opinionated, written by the people doing the work. Fetched from Sanity Studio."
+   ],
+   "rows": [
+    {
+     "from": "posts",
+     "refs": [
+      "superintelligence-is-not-on-your-roadmap",
+      "the-sow-is-the-pitch",
+      "eval-harness-before-the-demo",
+      "what-a-person-still-signs",
+      "four-hours-is-enough",
+      "the-number-before-the-claim"
+     ]
+    }
+   ],
+   "tone": "l",
+   "id": "notes",
+   "templateText": [
+    "6 notes · no newsletter, no pop-up",
+    "Latest",
+    "Read the note →",
+    "Everything else we have written",
+    "All notes →"
+   ]
+  },
+  {
+   "kind": "closing",
+   "eyebrow": "Fortnightly · your call",
+   "title": "Thirty minutes, and you will know whether we can help.",
+   "sub": "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "emailLine": "Or email [HELLO@HOPSIG.COM] — reply within one working day.",
+   "tone": "l"
+  }
+ ],
+ "buildNotes": [
+  "Build note: rows render from *[_type == \"caseStudy\" && featured] | order(order asc) via @sanity/client; the inline JSON below mirrors that response, so the swap is one fetch.",
+  "Build note: the feature and the ledger render from *[_type == \"post\" && defined(publishedAt)] | order(publishedAt desc)[0...5]{title, slug, excerpt, category, publishedAt}; dates come from the document at build time, so none are shown here."
+ ]
+}

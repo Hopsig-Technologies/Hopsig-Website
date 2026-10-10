@@ -1,0 +1,910 @@
+[
+ {
+  "_type": "caseStudy",
+  "_id": "embedded-payments-and-stored-value-wallet-platform",
+  "title": "Embedded payments and stored-value wallet platform",
+  "slug": {
+   "current": "payments-platform"
+  },
+  "domain": "Fintech · payments",
+  "problem": "Merchants needed to take card, wallet and BNPL payments behind one integration, and onboarding could not depend on a manual review queue.",
+  "whatWeDid": "Built from zero: self-serve onboarding with automated KYC document verification, KYC-verified adult and child wallets, subscription billing, PCI-DSS compliance, and fraud and anomaly detection across payments and reward balances. Checkout conversion was the metric; payment-method mix decided what got built next.",
+  "measured": "<b>0 → 150+ merchants and 100K+ transactions in four months</b> of launch.",
+  "stack": [
+   "Payments",
+   "KYC automation",
+   "PCI-DSS",
+   "BNPL",
+   "Wallets",
+   "Subscription billing"
+  ],
+  "shape": "Built · product-led",
+  "featured": true,
+  "order": 0,
+  "metric": {
+   "value": "150+",
+   "label": "merchants and 100K+ transactions, four months after launch",
+   "before": 0,
+   "after": 150,
+   "beforeLabel": "Launch",
+   "afterLabel": "Month 4"
+  },
+  "filterDomain": "payments",
+  "hasPage": true,
+  "route": "/work/payments-platform",
+  "source": "F0"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "loyalty-and-retention-engine-for-enterprise-retailers",
+  "title": "Loyalty and retention engine for enterprise retailers",
+  "slug": {
+   "current": "loyalty-and-retention-engine-for-enterprise-retailers"
+  },
+  "domain": "Retail · loyalty",
+  "problem": "Enterprise retailers, including a Gulf property group, wanted repeat purchase without reward fraud eating the margin.",
+  "whatWeDid": "Reward rules, tiers and gamification with fraud-risk mitigation designed in, across enterprise programmes on several continents.",
+  "measured": "<b>Up to 5× increase in repeat transactions.</b>",
+  "stack": [
+   "Loyalty",
+   "Fraud detection",
+   "Enterprise rollout"
+  ],
+  "shape": "Built",
+  "featured": true,
+  "order": 1,
+  "metric": {
+   "value": "5×",
+   "label": "repeat transactions across enterprise loyalty programmes",
+   "before": 100,
+   "after": 500,
+   "beforeLabel": "Before",
+   "afterLabel": "After"
+  },
+  "filterDomain": "retail",
+  "hasPage": false,
+  "route": null,
+  "source": "F1"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "storefront-and-growth-product",
+  "title": "Storefront and growth product",
+  "slug": {
+   "current": "storefront-and-growth-product"
+  },
+  "domain": "E-commerce · growth",
+  "problem": "A storefront that acquired customers but did not keep them.",
+  "whatWeDid": "A/B and multivariate testing on the journey from first visit to repeat order; funnel instrumentation so every change was validated rather than asserted.",
+  "measured": "<b>75% more repeat customers in two months</b>, alongside <b>40% monthly acquisition growth</b>.",
+  "stack": [
+   "Experimentation",
+   "A/B testing",
+   "Funnel instrumentation",
+   "Mixpanel",
+   "Amplitude"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 2,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F2"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "personalisation-and-image-search-engine",
+  "title": "Personalisation and image-search engine",
+  "slug": {
+   "current": "personalisation-and-image-search-engine"
+  },
+  "domain": "Retail · AI",
+  "problem": "Recommendations and visual search that had to prove their return in the client’s numbers, not in a demo.",
+  "whatWeDid": "Recommendation and image-search models with evaluation before release, production monitoring, retraining and version rollout owned end to end.",
+  "measured": "<b>Up to 261× client ROI.</b> Shipped an image-search model into production.",
+  "stack": [
+   "Recommendation systems",
+   "Image search",
+   "Evaluation gates",
+   "Model monitoring"
+  ],
+  "shape": "Data & AI",
+  "featured": true,
+  "order": 3,
+  "metric": {
+   "value": "261×",
+   "label": "client ROI, upper bound, from recommendation and image search",
+   "before": null,
+   "after": null
+  },
+  "filterDomain": "retail",
+  "hasPage": false,
+  "route": null,
+  "source": "F3"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "inventory-pos-and-quick-commerce-at-scale",
+  "title": "Inventory, POS and quick-commerce at scale",
+  "slug": {
+   "current": "inventory-pos-and-quick-commerce-at-scale"
+  },
+  "domain": "Retail · omnichannel",
+  "problem": "Retailers across MENAP needed one stock position, a point of sale that worked in every store, and a mobile channel.",
+  "whatWeDid": "Distributed inventory across retailers, a cloud POS, and a quick-commerce mobile app that powered a network reaching millions of small businesses.",
+  "measured": "<b>Distributed inventory for 60+ retailers; cloud POS in 100+ locations; a mobile channel reaching 10M SMEs across MENAP.</b>",
+  "stack": [
+   "Inventory",
+   "Cloud POS",
+   "Mobile commerce",
+   "Multi-country"
+  ],
+  "shape": "Built",
+  "featured": true,
+  "order": 4,
+  "metric": {
+   "value": "100+",
+   "label": "cloud POS locations; distributed inventory for 60+ retailers",
+   "before": null,
+   "after": null
+  },
+  "filterDomain": "retail",
+  "hasPage": false,
+  "route": null,
+  "source": "F4"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "agentic-software-delivery-framework-on-claude-code",
+  "title": "Agentic software-delivery framework on Claude Code",
+  "slug": {
+   "current": "agentic-software-delivery-framework-on-claude-code"
+  },
+  "domain": "AI · delivery",
+  "problem": "An engineering practice wanted to deliver faster without losing review, tests and documentation along the way.",
+  "whatWeDid": "An end-to-end pipeline on Claude Code: project planning, automated epic and story population with progress tracking, autonomous story implementation, a dedicated solutions-architect agent, guardrail enforcement, automated code review and test generation, living documentation, and human-in-the-loop escalation pushed to mobile when a decision needs a person.",
+  "measured": "<b>Rolled out to 10 engineers and now the practice’s default path for new work.</b> Two Android apps scoped at five developers were shipped by one, on the original timeline.",
+  "stack": [
+   "Claude Code",
+   "MCP servers",
+   "Agent orchestration",
+   "Guardrails",
+   "Automated review",
+   "Jira"
+  ],
+  "shape": "Data & AI",
+  "featured": true,
+  "order": 5,
+  "metric": {
+   "value": "10",
+   "label": "engineers on the agentic path; two apps scoped at five developers, shipped by one",
+   "before": 5,
+   "after": 1,
+   "beforeLabel": "Scoped",
+   "afterLabel": "Needed"
+  },
+  "filterDomain": "ai",
+  "hasPage": false,
+  "route": null,
+  "source": "F5"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "multi-tenant-digital-signage-platform-one-engineer",
+  "title": "Multi-tenant digital signage platform, one engineer",
+  "slug": {
+   "current": "multi-tenant-digital-signage-platform-one-engineer"
+  },
+  "domain": "Digital signage · SaaS",
+  "problem": "A company needed its own signage product: tenants, a CMS, a player it controlled, and devices that keep working offline.",
+  "whatWeDid": "Multi-tenant backend and CMS, a custom Android (AOSP) player, offline-first device sync over MQTT, an MCP-based AI concierge, credit-based AI monetisation and a white-label reseller tier, on a lean deployment stack. Architected and built by one engineer.",
+  "measured": "<b>Live in production with its first tenant, one of Lahore’s fastest-growing restaurant chains.</b>",
+  "stack": [
+   "Multi-tenant",
+   "AOSP",
+   "EMQX / MQTT",
+   "MCP",
+   "Vercel",
+   "Railway",
+   "Neon",
+   "Cloudflare R2"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 6,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F6"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "signage-platform-across-four-continents",
+  "title": "Signage platform across four continents",
+  "slug": {
+   "current": "signage-platform-across-four-continents"
+  },
+  "domain": "Digital signage · enterprise",
+  "problem": "A UK signage business operating across Australia, the US, China and APAC needed a platform its display-manufacturer partners could plug into.",
+  "whatWeDid": ".NET 6 microservices and Angular on AWS (EKS, ECR, RDS, CloudWatch) with Docker-based CI/CD. Scheduled sync integrations with SharePoint, Power BI and partner sources. Production infrastructure stabilised under sustained memory pressure ahead of a database end-of-support migration.",
+  "measured": "Shipped and running across four regions; partner integrations for three major display manufacturers — <span class=\"phx\">[ADD UPTIME / DEVICES]</span>.",
+  "stack": [
+   ".NET 6",
+   "Angular",
+   "AWS EKS",
+   "RDS",
+   "Docker",
+   "CI/CD",
+   "Power BI",
+   "SharePoint"
+  ],
+  "shape": "Built · embedded",
+  "featured": false,
+  "order": 7,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F7"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "health-insurance-platform-under-supervision",
+  "title": "Health-insurance platform under supervision",
+  "slug": {
+   "current": "health-insurance-platform-under-supervision"
+  },
+  "domain": "Healthcare · regulated",
+  "problem": "A regulated insurer needed a digital platform that a supervisor would sign off and a member could actually use.",
+  "whatWeDid": "Mapped the underwriting and claims workflow before designing against it; balanced regulatory constraints against a usable member journey, from discovery to launch.",
+  "measured": "Launched under regulatory supervision — <span class=\"phx\">[ADD MEMBERS / CLAIMS]</span>.",
+  "stack": [
+   "Regulated delivery",
+   "Underwriting",
+   "Claims",
+   "Compliance"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 8,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F8"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "online-therapy-platform-concept-to-public-launch",
+  "title": "Online therapy platform, concept to public launch",
+  "slug": {
+   "current": "online-therapy-platform-concept-to-public-launch"
+  },
+  "domain": "Healthcare · telemedicine",
+  "problem": "Remote therapy for marginalised communities: practitioners and patients, scheduling, consent, sessions.",
+  "whatWeDid": "Practitioner and patient journeys, scheduling, consent and remote sessions, taken from concept to public launch.",
+  "measured": "Publicly launched — <span class=\"phx\">[ADD SESSIONS / PRACTITIONERS]</span>.",
+  "stack": [
+   "Telemedicine",
+   "Scheduling",
+   "Consent",
+   "Patient journeys"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 9,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F9"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "preventive-alerting-in-nursing-homes",
+  "title": "Preventive alerting in nursing homes",
+  "slug": {
+   "current": "preventive-alerting-in-nursing-homes"
+  },
+  "domain": "Healthcare · IoT",
+  "problem": "Care staff found out too late. Sensors could tell them earlier, if the alerts were trusted.",
+  "whatWeDid": "An IoT preventive-alerting product piloted and deployed across multiple nursing homes and validated in real care settings before scaling.",
+  "measured": "Deployed across multiple homes — <span class=\"phx\">[ADD HOMES / ALERT PRECISION]</span>.",
+  "stack": [
+   "IoT",
+   "Alerting",
+   "Care settings",
+   "Pilot to rollout"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 10,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F10"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "llm-and-rag-assistant-in-a-live-customer-journey",
+  "title": "LLM and RAG assistant in a live customer journey",
+  "slug": {
+   "current": "llm-and-rag-assistant-in-a-live-customer-journey"
+  },
+  "domain": "E-commerce · AI",
+  "problem": "A UK deals platform had inbound support volume it could see in its tickets.",
+  "whatWeDid": "An assistant sourced from support-ticket analysis rather than a feature request, embedded in the live journey, with quality gates before release.",
+  "measured": "Reduced inbound support volume — <span class=\"phx\">[ADD THE NUMBER]</span>.",
+  "stack": [
+   "LLM",
+   "RAG",
+   "Quality gates",
+   "Support analytics"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 11,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F11"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "detection-from-user-submitted-photographs",
+  "title": "Detection from user-submitted photographs",
+  "slug": {
+   "current": "detection-from-user-submitted-photographs"
+  },
+  "domain": "Agritech · computer vision",
+  "problem": "Non-experts photographing in poor conditions; a model that had to act on what they sent.",
+  "whatWeDid": "Owned the labelled dataset strategy, the evaluation criteria that gated release, production monitoring and the retraining loop as field data arrived; capture guidance and failure handling treated as part of the product. Localised for low-literacy users.",
+  "measured": "<b>98% detection accuracy.</b> Government incubator funding secured on the minimum viable build.",
+  "stack": [
+   "Computer vision",
+   "Dataset strategy",
+   "Evaluation",
+   "Retraining loop",
+   "i18n"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 12,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F12"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "developer-platform-exposing-device-telemetry",
+  "title": "Developer platform exposing device telemetry",
+  "slug": {
+   "current": "developer-platform-exposing-device-telemetry"
+  },
+  "domain": "Platform · APIs",
+  "problem": "A global hardware company wanted third parties building on its device telemetry through public APIs.",
+  "whatWeDid": "Led the core API team: design, versioning, partner onboarding and documentation.",
+  "measured": "Public API programme live with third-party partners — <span class=\"phx\">[ADD PARTNERS / CALLS]</span>.",
+  "stack": [
+   "Public APIs",
+   "Versioning",
+   "Partner onboarding",
+   "Telemetry"
+  ],
+  "shape": "Embedded",
+  "featured": false,
+  "order": 13,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F13"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "process-documentation-platform-backend",
+  "title": "Process-documentation platform backend",
+  "slug": {
+   "current": "process-documentation-platform-backend"
+  },
+  "domain": "Enterprise · .NET",
+  "problem": "A browser-extension product that writes process documentation from recorded sessions, with a milestone that could not slip.",
+  "whatWeDid": "Owned Lambda and hosted worker services (SQS, SNS) across environments and led the refactor that shipped the critical milestone on deadline.",
+  "measured": "Critical milestone shipped on the date.",
+  "stack": [
+   ".NET",
+   "AWS Lambda",
+   "SQS / SNS",
+   "Worker services"
+  ],
+  "shape": "Embedded",
+  "featured": false,
+  "order": 14,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F14"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "retailer-replenishment-sdk",
+  "title": "Retailer replenishment SDK",
+  "slug": {
+   "current": "retailer-replenishment-sdk"
+  },
+  "domain": "Retail · integrations",
+  "problem": "Retailers integrating a replenishment service each failed in their own way.",
+  "whatWeDid": ".NET Core microservices on Azure Service Fabric with EF Code First, plus an admin module that resolved SDK-level failures across retailer integrations.",
+  "measured": "SDK in production across retailer integrations — <span class=\"phx\">[ADD RETAILERS]</span>.",
+  "stack": [
+   ".NET Core",
+   "Azure Service Fabric",
+   "Microservices",
+   "EF Core"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 15,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F15"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "marketing-data-consolidated-into-ml-ready-datasets",
+  "title": "Marketing data consolidated into ML-ready datasets",
+  "slug": {
+   "current": "marketing-data-consolidated-into-ml-ready-datasets"
+  },
+  "domain": "Data · ETL",
+  "problem": "Marketing data scattered across sources, none of it ready for a model.",
+  "whatWeDid": "An R&D engagement on AWS Glue and Athena consolidating marketing data into ML-ready S3 datasets.",
+  "measured": "ML-ready datasets delivered — <span class=\"phx\">[ADD SOURCES / VOLUME]</span>.",
+  "stack": [
+   "AWS Glue",
+   "Athena",
+   "S3",
+   "ETL"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 16,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F16"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "real-time-operational-intelligence-for-200-buildings",
+  "title": "Real-time operational intelligence for 200+ buildings",
+  "slug": {
+   "current": "real-time-operational-intelligence-for-200-buildings"
+  },
+  "domain": "Buildings · IoT",
+  "problem": "Building operators needed live operational data, not last month’s report.",
+  "whatWeDid": "Product leadership of a telemetry platform delivering real-time operational intelligence across a large building estate.",
+  "measured": "<b>Powering 200+ buildings.</b>",
+  "stack": [
+   "IoT telemetry",
+   "Real-time",
+   "Operations"
+  ],
+  "shape": "Product",
+  "featured": true,
+  "order": 17,
+  "metric": {
+   "value": "200+",
+   "label": "buildings on one real-time operational telemetry platform",
+   "before": null,
+   "after": null
+  },
+  "filterDomain": "iot",
+  "hasPage": false,
+  "route": null,
+  "source": "F17"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "small-language-models-where-an-llm-was-too-expensive",
+  "title": "Small language models where an LLM was too expensive",
+  "slug": {
+   "current": "small-language-models-where-an-llm-was-too-expensive"
+  },
+  "domain": "AI · small models",
+  "problem": "An accuracy target that a large model met at a cost the business could not.",
+  "whatWeDid": "Shipped a product on small language models as a cost-effective alternative, weighing accuracy against inference cost.",
+  "measured": "Accuracy target met at a fraction of the inference cost — <span class=\"phx\">[ADD COST / ACCURACY]</span>.",
+  "stack": [
+   "SLMs",
+   "Inference cost",
+   "Evaluation"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 18,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F18"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "autonomous-development-pipeline-for-dynamics-365",
+  "title": "Autonomous development pipeline for Dynamics 365",
+  "slug": {
+   "current": "autonomous-development-pipeline-for-dynamics-365"
+  },
+  "domain": "Enterprise · automation",
+  "problem": "Customising a CRM platform end to end without a team of specialists.",
+  "whatWeDid": "Provisioned a full Dataverse environment and Azure AD app registration, then authored the project blueprint covering three MCP servers and plugin lifecycle management, letting an agent drive customisation end to end.",
+  "measured": "Agent-driven customisation running end to end.",
+  "stack": [
+   "Dynamics 365",
+   "Dataverse",
+   "Azure AD",
+   "MCP",
+   "Claude Code"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 19,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "F19"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "surgical-imaging-platform-with-automated-analysis",
+  "title": "Surgical imaging platform with automated analysis",
+  "slug": {
+   "current": "surgical-imaging-platform-with-automated-analysis"
+  },
+  "domain": "Healthcare",
+  "problem": "Surgeons and clinicians needed one workflow for patient imaging, with analysis that did not wait for a human to open every file.",
+  "whatWeDid": "Two backends where each fits: Node.js/Express for workflow, Python/FastAPI for the models. Computer-vision analysis of medical images (OpenCV, TensorFlow). Role-based access and HIPAA-grade handling of patient data. PostgreSQL, imaging files on AWS S3, a real-time React front end.",
+  "measured": "Workflow time and review backlog, before and after — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: workflow efficiency up, data fully secured.",
+  "stack": [
+   "Node.js",
+   "Express",
+   "FastAPI",
+   "OpenCV",
+   "TensorFlow",
+   "PostgreSQL",
+   "AWS S3",
+   "React"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 100,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C0"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "preclinical-research-portal-for-global-labs",
+  "title": "Preclinical research portal for global labs",
+  "slug": {
+   "current": "preclinical-research-portal"
+  },
+  "domain": "Life sciences · data",
+  "problem": "Preclinical data was growing exponentially across labs and formats; nobody could compare it, let alone predict from it.",
+  "whatWeDid": "A compliant cloud architecture with custom ETL to harmonise heterogeneous lab data. Machine-learning models for predicting therapeutic response and model relevance. Dashboards and real-time visualisation for researchers.",
+  "measured": "<b>Data analysis time down 60%.</b> 100% of data visible across global teams. Predictive accuracy up.",
+  "stack": [
+   "Custom ETL",
+   "Python",
+   "ML models",
+   "Cloud architecture",
+   "Dashboards"
+  ],
+  "shape": "Data & AI",
+  "featured": true,
+  "order": 101,
+  "metric": {
+   "value": "60%",
+   "label": "less analysis time on preclinical data across global labs",
+   "before": 100,
+   "after": 40,
+   "beforeLabel": "Before",
+   "afterLabel": "After"
+  },
+  "filterDomain": "health",
+  "hasPage": true,
+  "route": "/work/preclinical-research-portal",
+  "source": "C1"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "real-time-freight-dispatch-and-load-board",
+  "title": "Real-time freight dispatch and load board",
+  "slug": {
+   "current": "freight-dispatch"
+  },
+  "domain": "Logistics",
+  "problem": "Dispatchers were assigning loads from stale data; delays and errors compounded through the day.",
+  "whatWeDid": "WebSockets for instant load status, driver availability and assignments. Live vehicle tracking and route planning on Google Maps. A modular React load board with revenue and broker-performance analytics over GraphQL/Apollo.",
+  "measured": "Dispatch delays and errors down — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: real-time accuracy, significantly fewer delays and errors.",
+  "stack": [
+   "React",
+   "WebSockets",
+   "GraphQL",
+   "Apollo",
+   "Google Maps API"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 102,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": true,
+  "route": "/work/freight-dispatch",
+  "source": "C2"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "transporter-driver-and-customer-app",
+  "title": "Transporter, driver and customer app",
+  "slug": {
+   "current": "transporter-driver-and-customer-app"
+  },
+  "domain": "Logistics · mobile",
+  "problem": "Three very different users — a transporter running finances, a driver on the road, a customer waiting — sharing one product.",
+  "whatWeDid": "iOS and Android app with a module per role: a transporter hub for loads, invoices and financial overview; a driver interface built for use in motion, with large targets and quick actions; customer visibility. A modular design system in Figma so the three stayed one product.",
+  "measured": "Fleet coordination and customer visibility improved — <span class=\"phx\">[ADD THE NUMBER]</span>.",
+  "stack": [
+   "iOS",
+   "Android",
+   "Figma design system",
+   "Data visualisation"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 103,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C3"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "omnichannel-loyalty-platform-on-microservices",
+  "title": "Omnichannel loyalty platform on microservices",
+  "slug": {
+   "current": "omnichannel-loyalty-platform-on-microservices"
+  },
+  "domain": "Retail · loyalty",
+  "problem": "A loyalty programme that had to take high transaction volumes across channels without slowing the checkout.",
+  "whatWeDid": "Microservices per loyalty function. Django REST Framework and React. AWS SQS/SNS for messaging, Celery for background work, Redis and Redshift caching for low-latency reads, OAuth for authentication, gRPC and GraphQL between services and clients.",
+  "measured": "High transaction volumes at low latency — <span class=\"phx\">[ADD p95 AND VOLUME]</span>.",
+  "stack": [
+   "Django REST",
+   "React",
+   "AWS SQS/SNS",
+   "Celery",
+   "Redis",
+   "Redshift",
+   "OAuth",
+   "gRPC",
+   "GraphQL"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 104,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C4"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "p-l-forecasting-engine-with-accounting-integration",
+  "title": "P&L forecasting engine with accounting integration",
+  "slug": {
+   "current": "p-l-forecasting-engine-with-accounting-integration"
+  },
+  "domain": "Fintech",
+  "problem": "Finance teams wanted forecasts they could trust and adjust, fed straight from their accounting data.",
+  "whatWeDid": "A Django REST backend with secure APIs for data import, including a XERO integration. A hybrid model: time-series machine learning (SARIMA-class) combined with the team’s own formulas for P&L projection. Built as a secure vault for sensitive projections.",
+  "measured": "Forecast accuracy against actuals — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: production-ready, customisable, data-driven forecasts.",
+  "stack": [
+   "Django REST",
+   "Python",
+   "SARIMA",
+   "XERO API",
+   "PostgreSQL"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 105,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C5"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "multi-agent-orchestration-framework",
+  "title": "Multi-agent orchestration framework",
+  "slug": {
+   "current": "multi-agent-orchestration-framework"
+  },
+  "domain": "AI systems",
+  "problem": "Several independent AI agents had to work one objective together, reliably, not just in a demo.",
+  "whatWeDid": "A Streamlit proof of concept first, to validate the idea in days. Then production: FastAPI backend, React front end, LangChain to define agent roles and collaboration flows, OpenAI and Groq models behind them.",
+  "measured": "Coordinated workflow simulation among autonomous agents, reliably repeatable — <span class=\"phx\">[ADD RUNS / SUCCESS RATE]</span>.",
+  "stack": [
+   "FastAPI",
+   "React",
+   "LangChain",
+   "OpenAI",
+   "Groq",
+   "Streamlit"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 106,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C6"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "two-brands-one-ordering-platform-and-admin",
+  "title": "Two brands, one ordering platform and admin",
+  "slug": {
+   "current": "two-brands-one-ordering-platform-and-admin"
+  },
+  "domain": "Food & hospitality",
+  "problem": "A group running two restaurant brands wanted separate customer experiences and one back office.",
+  "whatWeDid": "Distinct layouts and menus per brand under a shared design language. A single admin portal for orders, analytics and support across both. A complete design system in Figma so the third brand would be cheap.",
+  "measured": "Ordering-journey conversion — <span class=\"phx\">[ADD BEFORE → AFTER]</span>. Source states: journey optimised for conversion; internal operations centralised.",
+  "stack": [
+   "Web UI/UX",
+   "Admin portal",
+   "Figma design system"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 107,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C7"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "rental-flights-and-community-in-one-product",
+  "title": "Rental, flights and community in one product",
+  "slug": {
+   "current": "rental-flights-and-community-in-one-product"
+  },
+  "domain": "Travel",
+  "problem": "A travel product with admins, influencers and hotel owners, three modules and an AI recommendation layer, needed a system before it needed screens.",
+  "whatWeDid": "Complete user flows for Rental, Flights and Community. Role-specific journeys. AI-assisted trip discovery designed into the flows rather than bolted on. A design system for web and mobile handoff.",
+  "measured": "Ready for multi-role management and rapid feature expansion — <span class=\"phx\">[ADD SHIP DATE / SCOPE]</span>.",
+  "stack": [
+   "System design",
+   "Web & mobile",
+   "Design system",
+   "AI recommendations"
+  ],
+  "shape": "Built",
+  "featured": false,
+  "order": 108,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C8"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "funnel-analysis-and-cro-for-a-large-store",
+  "title": "Funnel analysis and CRO for a large store",
+  "slug": {
+   "current": "funnel-analysis-and-cro-for-a-large-store"
+  },
+  "domain": "E-commerce · analytics",
+  "problem": "A store with over Rs 95M in sales and thousands of orders did not know where the funnel leaked.",
+  "whatWeDid": "Deep funnel analysis across 1.15M sessions to find drop-offs before checkout. Conversion-rate work at the points that mattered. A data foundation for budget allocation.",
+  "measured": "<b>2.05% store conversion held at high traffic.</b> Average order value Rs 6,074. Over Rs 95M total sales analysed.",
+  "stack": [
+   "Shopify analytics",
+   "Funnel analysis",
+   "CRO"
+  ],
+  "shape": "Data & AI",
+  "featured": false,
+  "order": 109,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C9"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "organic-revenue-engine-for-an-online-store",
+  "title": "Organic revenue engine for an online store",
+  "slug": {
+   "current": "organic-revenue-engine-for-an-online-store"
+  },
+  "domain": "E-commerce · growth",
+  "problem": "A WooCommerce/Shopify store with almost no organic sales.",
+  "whatWeDid": "Collection-based keyword targeting across product and category pages, AI-assisted content at scale, caching for fast checkout, and CRO on the checkout funnel.",
+  "measured": "<b>Monthly revenue from $2,000 to $12,000 in six months</b> — 6×, organic only.",
+  "stack": [
+   "WooCommerce",
+   "Shopify",
+   "Ahrefs",
+   "Semrush",
+   "WP Rocket"
+  ],
+  "shape": "Growth",
+  "featured": true,
+  "order": 110,
+  "metric": {
+   "value": "6×",
+   "label": "monthly revenue in six months, organic only",
+   "before": 2000,
+   "after": 12000,
+   "beforeLabel": "$2K",
+   "afterLabel": "$12K"
+  },
+  "filterDomain": "retail",
+  "hasPage": false,
+  "route": null,
+  "source": "C10"
+ },
+ {
+  "_type": "caseStudy",
+  "_id": "inbound-lead-engine-for-a-vehicle-marketplace",
+  "title": "Inbound lead engine for a vehicle marketplace",
+  "slug": {
+   "current": "inbound-lead-engine-for-a-vehicle-marketplace"
+  },
+  "domain": "Marketplace · growth",
+  "problem": "A UAE vehicle marketplace needed buyer and seller leads without buying every one.",
+  "whatWeDid": "Intent-based keyword mapping, high-converting landing pages, and vehicle-listing schema for rich results across the Emirates.",
+  "measured": "<b>500% growth in qualified inbound leads in six months</b> (audited). Top rankings for buyer and seller intent terms.",
+  "stack": [
+   "Technical SEO",
+   "Schema markup",
+   "Landing pages",
+   "Ahrefs",
+   "Semrush"
+  ],
+  "shape": "Growth",
+  "featured": false,
+  "order": 111,
+  "metric": null,
+  "filterDomain": null,
+  "hasPage": false,
+  "route": null,
+  "source": "C11"
+ }
+]

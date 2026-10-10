@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+dist/
+.sanity/
+.vercel/
+.env*.local
+.env
+__pycache__/
+*.tsbuildinfo
+next-env.d.ts
+audit/

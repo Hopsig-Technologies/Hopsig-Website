@@ -1,0 +1,113 @@
+{
+ "route": "/working-with-us",
+ "reference": "reference/site/working-with-us.html",
+ "docTitle": "Hopsig — Working with us",
+ "blocks": [
+  {
+   "kind": "hero",
+   "eyebrow": "Working with us",
+   "title": "The paperwork,\nin one page.",
+   "sub": "What procurement asks before the first invoice: contracts, IP, data, security, insurance, invoicing. Placeholders are marked; we would rather show a gap than a badge.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "section",
+   "eyebrow": "The list",
+   "title": "Everything a buyer checks.",
+   "sub": "Nine items. If yours is not here, ask on the call and we will add it to this page.",
+   "rows": [
+    [
+     "Contracts",
+     "A master services agreement once, a two-page SOW per engagement. Thirty days’ notice either side, no minimum beyond the first three months on embedded work, no automatic renewal. Your paper or ours. [MSA TEMPLATE LINK]"
+    ],
+    [
+     "Intellectual property",
+     "Yours on payment of each invoice. Code lives in your repository from day one; we keep nothing except what we have learned. Open-source licences used are listed in the handover pack."
+    ],
+    [
+     "Your data",
+     "We work in your cloud account under least-privilege access that you grant and revoke. No production data on laptops; no copies outside your estate; access removed at handover and confirmed in writing. For UK and EU clients we sign your DPA or supply ours. [DPA LINK]"
+    ],
+    [
+     "Security practices",
+     "Two-factor authentication on every account, secrets in a manager and never in a repo, dependency scanning in CI, every change reviewed by a second senior, no shared accounts. Certifications: [NONE YET / LIST]; we will say so plainly rather than imply otherwise."
+    ],
+    [
+     "Where the work happens",
+     "Delivery in Lahore, Pakistan, with four hours of daily overlap with GMT (shifted for US teams and written into the SOW). Model and AI tooling runs through providers that do not train on your data, or inside your own cloud account; the SOW states which."
+    ],
+    [
+     "Insurance",
+     "Professional indemnity: [INSURER · COVER AMOUNT]. Certificate available on request."
+    ],
+    [
+     "Invoicing",
+     "Monthly in arrears for embedded work, per increment for built work. NET 14. GBP, USD or EUR by bank transfer. [VAT / TAX STATUS] · [BANK COUNTRY]."
+    ],
+    [
+     "Subcontracting",
+     "None without your written consent. The engineers on your SOW are the engineers on your account."
+    ],
+    [
+     "The company",
+     "Hopsig Technologies, [LEGAL FORM], registered in Pakistan, [COMPANY REG NO.], established [YEAR]. Registered office: [ADDRESS]."
+    ]
+   ],
+   "tone": "l"
+  },
+  {
+   "kind": "section",
+   "title": "What we ask of you.",
+   "aside": [
+    "Three things, all in week one"
+   ],
+   "rows": [
+    [
+     "A named decision-maker",
+     "One person who can say yes to a scope and no to a change. Not a committee."
+    ],
+    [
+     "Access in week one",
+     "Repo, cloud account, board, and whoever owns the thing we are touching. Day ten is only possible if day one happens."
+    ],
+    [
+     "Fifteen minutes a fortnight",
+     "The review. Shipped, slipped, cost against plan. It is the whole governance model."
+    ]
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "closing",
+   "eyebrow": "Working with us · the call",
+   "title": "Send this page to procurement. Then book the call.",
+   "sub": "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "emailLine": "Or email [HELLO@HOPSIG.COM] — reply within one working day.",
+   "tone": "l"
+  }
+ ]
+}

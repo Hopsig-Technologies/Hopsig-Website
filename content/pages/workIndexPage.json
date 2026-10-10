@@ -1,0 +1,117 @@
+{
+ "route": "/work",
+ "reference": "reference/site/work/index.html",
+ "docTitle": "Hopsig — Work",
+ "blocks": [
+  {
+   "kind": "hero",
+   "eyebrow": "Work",
+   "title": "What we shipped.\nWhat it measured.",
+   "sub": "Case notes, not case studies: the problem, what we did, and the number that moved. Client names are withheld throughout. Every system here was built, run or measured by us, and any of them can be walked through on the call.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    }
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "section",
+   "title": "Selected.",
+   "aside": [
+    "Twelve with the numbers on them"
+   ],
+   "rows": [
+    {
+     "from": "case-studies",
+     "refs": [
+      "F0",
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "C1",
+      "C0",
+      "C4",
+      "C10",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F12",
+      "F13",
+      "F14",
+      "F15",
+      "F16",
+      "F17",
+      "F18",
+      "F19",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "C11"
+     ]
+    }
+   ],
+   "tone": "l",
+   "templateText": [
+    "{nn} · {domain}",
+    "Problem —",
+    "What we did —",
+    "Measured —",
+    "Client withheld · details on the call",
+    "Read the case note →",
+    "Ask about this →",
+    "The rest of the record.",
+    "20 more · ask for any of them on the call"
+   ]
+  },
+  {
+   "kind": "section",
+   "eyebrow": "How we report",
+   "title": "Measured before we claim it improved.",
+   "sub": "Every case note above uses the same rule as every fortnightly review: a number from before, the same number from after, and the unit. Where the record only has the outcome in words, the number is marked to be added rather than invented.",
+   "aside": [
+    "Baseline taken in week one, in your environment",
+    "Same metric, same query, after the increment",
+    "Written into the review you sign, not a slide"
+   ],
+   "rows": [
+    {
+     "component": "engagementPanel"
+    }
+   ],
+   "svgText": [],
+   "tone": "d"
+  },
+  {
+   "kind": "closing",
+   "eyebrow": "Work · the call",
+   "title": "Bring the problem. We may have solved one like it.",
+   "sub": "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "emailLine": "Or email [HELLO@HOPSIG.COM] — reply within one working day.",
+   "tone": "l"
+  }
+ ]
+}

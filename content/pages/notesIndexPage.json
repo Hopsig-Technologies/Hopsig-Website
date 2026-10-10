@@ -1,0 +1,80 @@
+{
+ "route": "/notes",
+ "reference": "reference/site/notes/index.html",
+ "docTitle": "Hopsig — Notes",
+ "blocks": [
+  {
+   "kind": "hero",
+   "eyebrow": "Notes",
+   "title": "Things we would say\non the call anyway.",
+   "sub": "Short and opinionated, written by the people doing the work. No newsletter, no pop-up, no reading time invented.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "section",
+   "title": "All notes.",
+   "aside": [
+    "AI",
+    "Delivery",
+    "Measurement",
+    "Scope",
+    "Working together"
+   ],
+   "rows": [
+    {
+     "from": "posts",
+     "refs": [
+      "superintelligence-is-not-on-your-roadmap",
+      "the-sow-is-the-pitch",
+      "eval-harness-before-the-demo",
+      "what-a-person-still-signs",
+      "four-hours-is-enough",
+      "the-number-before-the-claim"
+     ]
+    }
+   ],
+   "tone": "l",
+   "templateText": [
+    "Read",
+    "→",
+    "[DRAFT]",
+    "…"
+   ]
+  },
+  {
+   "kind": "closing",
+   "eyebrow": "Notes · the call",
+   "title": "Disagree with one? Thirty minutes, and bring the counter-argument.",
+   "sub": "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "emailLine": "Or email [HELLO@HOPSIG.COM] — reply within one working day.",
+   "tone": "l"
+  }
+ ],
+ "buildNotes": [
+  "Build note: this list renders from *[_type == \"post\" && defined(publishedAt)] | order(publishedAt desc); two notes have pages in this prototype, the rest are titles until written."
+ ]
+}

@@ -1,0 +1,220 @@
+{
+ "route": "/rates",
+ "reference": "reference/site/rates.html",
+ "docTitle": "Hopsig — Rates",
+ "blocks": [
+  {
+   "kind": "hero",
+   "eyebrow": "Rates",
+   "title": "Rates. On the page,\nnot after three calls.",
+   "sub": "Every number below is the number on the SOW. If your problem does not fit one of the three shapes, the call is still thirty minutes and still free.",
+   "buttons": [],
+   "tone": "d"
+  },
+  {
+   "kind": "section",
+   "rows": [
+    [
+     "Embedded",
+     "[YOUR RATE]\n/ day, per engineer",
+     "Billed monthly · 21 days a month"
+    ],
+    [
+     "Named senior engineer in your standup"
+    ],
+    [
+     "Your tooling, your repo, your board"
+    ],
+    [
+     "Performance, holidays and cover handled"
+    ],
+    [
+     "Replacement inside ten working days"
+    ],
+    [
+     "3-month minimum · 30 days’ notice"
+    ],
+    [
+     "Book a consult"
+    ],
+    [
+     "Built",
+     "[QUOTE]\nper increment",
+     "Six weeks, fixed scope · NET 14"
+    ],
+    [
+     "Two-page SOW three days after the call"
+    ],
+    [
+     "Working software in your cloud account"
+    ],
+    [
+     "Fortnightly review with cost against plan"
+    ],
+    [
+     "Runbook, tests, recorded walkthrough"
+    ],
+    [
+     "IP yours on payment"
+    ],
+    {
+     "button": {
+      "label": "Book a consult",
+      "route": "/book",
+      "variant": "lime"
+     }
+    },
+    [
+     "Data & AI",
+     "[YOUR RATE]\n/ day, or retained",
+     "Retained from [MONTHLY] · NET 14"
+    ],
+    [
+     "Pipelines, warehouse, retrieval, evaluation"
+    ],
+    [
+     "Before-and-after measurement, every increment"
+    ],
+    [
+     "Runs without us afterwards"
+    ],
+    [
+     "Dashboards your team will actually use"
+    ],
+    [
+     "Project or rolling monthly"
+    ],
+    [
+     "Book a consult"
+    ]
+   ],
+   "tone": "l"
+  },
+  {
+   "kind": "section",
+   "rows": [
+    [
+     "Estimate an embedded team",
+     "Move the sliders. The number is the number."
+    ],
+    [
+     "Engineers",
+     "2 engineers"
+    ],
+    [
+     "Months",
+     "6 months"
+    ],
+    [
+     "21 working days a month. No onboarding fee, no recruiter fee, no notice-period buyout. Set the day rate in Tweaks to see a total. <a href=\"/why-not-just-hire\">Compare it with hiring →</a>"
+    ],
+    [
+     "Engineer-days",
+     "252 engineer-days",
+     "Total",
+     "—",
+     "Invoiced monthly in arrears · GBP, USD or EUR\nNET 14 · 30 days’ notice, either side"
+    ]
+   ],
+   "tone": "l",
+   "id": "est"
+  },
+  {
+   "kind": "section",
+   "title": "Terms.",
+   "aside": [
+    "The whole list"
+   ],
+   "rows": [
+    [
+     "First engineer in",
+     "10 working days"
+    ],
+    [
+     "Overlap with GMT",
+     "4 hours, daily"
+    ],
+    [
+     "Minimum term",
+     "3 months rolling"
+    ],
+    [
+     "Notice",
+     "30 days, either side"
+    ],
+    [
+     "Invoicing",
+     "Monthly, in arrears"
+    ],
+    [
+     "Payment",
+     "NET 14 · GBP / USD / EUR"
+    ],
+    [
+     "IP",
+     "Yours, on payment"
+    ],
+    [
+     "NDA",
+     "Ours or yours, before the scope"
+    ],
+    [
+     "Replacement",
+     "Inside 10 working days"
+    ],
+    [
+     "Delivered from",
+     "Lahore · GMT+5"
+    ]
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "faq",
+   "title": "Questions we get on the call.",
+   "items": [
+    {
+     "q": "What if the engineer is not working out?",
+     "a": "Say so at the fortnightly review, or before. A replacement is in your standup inside ten working days, and you do not pay for the overlap."
+    },
+    {
+     "q": "Who owns the code?",
+     "a": "You do, on payment of each invoice. We keep nothing except what we have learned."
+    },
+    {
+     "q": "Do you work in our timezone?",
+     "a": "Four hours of overlap with GMT every working day, the same four hours, so it is predictable. US teams: we shift the day and agree the overlap in the SOW."
+    },
+    {
+     "q": "Can we start with one engineer?",
+     "a": "Yes. Most do. The minimum is one engineer for three months."
+    },
+    {
+     "q": "What is not included?",
+     "a": "Your cloud bill, third-party licences, and travel if you ask us to visit. Everything else on this page is included."
+    }
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "closing",
+   "eyebrow": "Rates · the call",
+   "title": "If the numbers work, the next step is thirty minutes.",
+   "sub": "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "emailLine": "Or email [HELLO@HOPSIG.COM] — reply within one working day.",
+   "tone": "l"
+  }
+ ]
+}

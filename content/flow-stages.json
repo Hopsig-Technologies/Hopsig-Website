@@ -1,0 +1,56 @@
+[
+ {
+  "stage": "Plan",
+  "agent": "Solutions-architect agent",
+  "input": "A brief in plain language, the repo, your conventions",
+  "output": "A plan: components, risks, the order of work",
+  "guardrail": "Nothing is built from a plan a person has not read",
+  "humanGate": true,
+  "humanNote": "You read the plan and object before any code exists."
+ },
+ {
+  "stage": "Stories",
+  "agent": "Story agent",
+  "input": "The approved plan",
+  "output": "Epics and stories in your Jira or ours, with acceptance criteria",
+  "guardrail": "Every story traces to a line in the plan",
+  "humanGate": false,
+  "humanNote": ""
+ },
+ {
+  "stage": "Build",
+  "agent": "Implementation agent",
+  "input": "One story, your codebase, your guardrails",
+  "output": "A branch with the change, inside your conventions",
+  "guardrail": "Lint, CI, branch rules and review policy, enforced on every change",
+  "humanGate": false,
+  "humanNote": ""
+ },
+ {
+  "stage": "Review",
+  "agent": "Review and test agents",
+  "input": "The branch",
+  "output": "A reviewed diff with generated tests, and a pull request",
+  "guardrail": "A senior always looks before it merges",
+  "humanGate": true,
+  "humanNote": "A senior engineer reviews the pull request. Agents never merge to main."
+ },
+ {
+  "stage": "Document",
+  "agent": "Docs agent",
+  "input": "The merged change",
+  "output": "Documentation updated as the code changed",
+  "guardrail": "Docs live with the code, never a handover task",
+  "humanGate": false,
+  "humanNote": ""
+ },
+ {
+  "stage": "Escalate",
+  "agent": "Escalation agent",
+  "input": "Any decision outside the guardrails",
+  "output": "A question pushed to a phone, with the context, while the pipeline waits",
+  "guardrail": "No guess where a person should decide",
+  "humanGate": true,
+  "humanNote": "A person answers; the pipeline resumes or stops."
+ }
+]

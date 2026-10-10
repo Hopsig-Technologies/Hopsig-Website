@@ -1,0 +1,175 @@
+{
+ "route": "/why-not-just-hire",
+ "reference": "reference/site/why-not-just-hire.html",
+ "docTitle": "Hopsig — Why not just hire?",
+ "blocks": [
+  {
+   "kind": "hero",
+   "eyebrow": "Why not just hire?",
+   "title": "Fair question.\nHere is the honest table.",
+   "sub": "Sometimes you should hire. Sometimes a freelancer is right. This page says when, including when it is not us.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "section",
+   "title": "Four ways to get the work done.",
+   "aside": [
+    "The last column is us; the other three are fair"
+   ],
+   "rows": [],
+   "tone": "l"
+  },
+  {
+   "kind": "section",
+   "rows": [
+    [
+     "Hire in-house",
+     "Big outsourcer",
+     "Freelancers",
+     "Hopsig"
+    ],
+    [
+     "First commit",
+     "After the recruiting cycle",
+     "After the statement of work and the bench",
+     "Days, if you find the right one",
+     "10 working days"
+    ],
+    [
+     "Who you get",
+     "Whoever applied",
+     "Whoever was free",
+     "One person, as good as their last job",
+     "Named senior engineers you interview first"
+    ],
+    [
+     "Who manages them",
+     "You",
+     "An account manager",
+     "You",
+     "We manage the person; you direct the work"
+    ],
+    [
+     "Leaving",
+     "Notice period, severance, a gap",
+     "Contract term, often a year",
+     "Whenever, both ways",
+     "30 days, either side"
+    ],
+    [
+     "IP and code",
+     "Yours",
+     "Check the MSA",
+     "Check the contract",
+     "Yours on payment, in your repo from day one"
+    ],
+    [
+     "Overlap with your day",
+     "All of it",
+     "Depends on the delivery centre",
+     "Depends on the person",
+     "Four hours with GMT, every day, the same four"
+    ],
+    [
+     "Cost shape",
+     "Salary, taxes, equipment, recruiter fee, ramp-up",
+     "Blended rate, minimum team size",
+     "Day rate; no cover when they are ill",
+     "Day rate; cover and holidays handled; no recruiter fee"
+    ],
+    [
+     "Right choice when",
+     "The work is permanent and core",
+     "You need forty people and a programme office",
+     "A fortnight of specialist work",
+     "Three to twelve months of senior capacity, measured"
+    ]
+   ],
+   "tone": "l"
+  },
+  {
+   "kind": "section",
+   "rows": [
+    [
+     "Put a number on it",
+     "Engineers and months. The total is the total."
+    ],
+    [
+     "Engineers",
+     "2 engineers"
+    ],
+    [
+     "Months",
+     "6 months"
+    ],
+    [
+     "21 working days a month. No onboarding fee, no recruiter fee, no notice-period buyout. Compare it with a hire: salary plus employer taxes, equipment, a recruiter fee and the months before the first commit."
+    ],
+    [
+     "Engineer-days",
+     "252 engineer-days",
+     "Total",
+     "—",
+     "At [YOUR RATE] a day · invoiced monthly in arrears\nNET 14 · 30 days’ notice, either side"
+    ]
+   ],
+   "tone": "l",
+   "id": "est"
+  },
+  {
+   "kind": "faq",
+   "title": "The questions behind the question.",
+   "items": [
+    {
+     "q": "When should we hire instead?",
+     "a": "When the work is permanent and core to the product, and you can wait for the right person. We will say so on the call; we would rather lose the engagement than have you rent what you should own."
+    },
+    {
+     "q": "When is a big outsourcer right?",
+     "a": "When you need forty people, a programme office and someone to blame. We are not that, and we do not pretend to be."
+    },
+    {
+     "q": "When is a freelancer right?",
+     "a": "A fortnight of specialist work with a clear end. For three months or more, the cover, the review and the handover start to matter, and that is where we come in."
+    },
+    {
+     "q": "Can we convert an engineer to a hire later?",
+     "a": "Yes. After six months there is no fee; before that, one month of the day rate. We would rather you had the person than a clause."
+    }
+   ],
+   "tone": "d"
+  },
+  {
+   "kind": "closing",
+   "eyebrow": "Rates · the call",
+   "title": "If the table says hire, we will say so too.",
+   "sub": "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",
+   "buttons": [
+    {
+     "label": "Book a consult",
+     "route": "/book",
+     "variant": "lime"
+    },
+    {
+     "label": "See our work",
+     "route": "/work",
+     "variant": "outline"
+    }
+   ],
+   "emailLine": "Or email [HELLO@HOPSIG.COM] — reply within one working day.",
+   "tone": "l"
+  }
+ ]
+}

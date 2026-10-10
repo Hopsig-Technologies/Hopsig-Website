@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+/* Tokens (CLAUDE.md). These are the only colours; components use the tone variables below, not these. */
+@theme {
+  --color-ink: #0e1116;
+  --color-paper: #f7f8f4;
+  --color-lime: #c6f24e;
+  --color-moss: #3f6b1f;
+  --color-neutral-100: #eaece6;
+  --color-neutral-200: #d6dad2;
+  --color-neutral-300: #b9bfb6;
+  --color-neutral-400: #939a96;
+  --color-neutral-500: #545a60;
+  --color-neutral-600: #3c424a;
+  --color-neutral-700: #262c34;
+  --color-neutral-800: #1c222b;
+  --color-neutral-900: #181d24;
+
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+
+  --container-wrap: 1264px;
+}
+
+/* inline: these resolve where they are used, so they follow the surrounding .tone-d / .tone-l. */
+@theme inline {
+  /* Tone variables exposed to Tailwind: bg-bg, text-dim, border-line, … */
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+  --color-dim: var(--dim);
+  --color-sub: var(--sub);
+  --color-line: var(--line);
+  --color-panel: var(--panel);
+  --color-hair: var(--hair);
+  --color-acc: var(--acc);
+
+  --font-sans: var(--font-grotesk), sans-serif;
+  --font-mono: var(--font-plex-mono), monospace;
+}
+
+/* Tone system: every section sits in .tone-d or .tone-l. */
+.tone-d,
+.tone-l {
+  position: relative;
+  background: var(--bg);
+  color: var(--text);
+}
+.tone-d {
+  --bg: #0e1116;
+  --text: #e7ecef;
+  --dim: #939a96;
+  --sub: #b9bfb6;
+  --line: #262c34;
+  --panel: #12161c;
+  --hair: #1c222b;
+  --acc: #c6f24e;
+  --acc-hover: #e7ecef;
+  --btn: #c6f24e;
+  --btnText: #0e1116;
+  --seamdot: #454c55;
+  --dot: #1c222b;
+}
+.tone-l {
+  --bg: #f7f8f4;
+  --text: #0e1116;
+  --dim: #545a60;
+  --sub: #3c424a;
+  --line: #d6dad2;
+  --panel: #ffffff;
+  --hair: #eaece6;
+  --acc: #3f6b1f;
+  --acc-hover: #0e1116;
+  --btn: #0e1116;
+  --btnText: #f7f8f4;
+  --seamdot: #a9afa6;
+  --dot: #d9decf;
+}
+
+@layer base {
+  /* The reference uses the browser default line-height; Tailwind's preflight sets 1.5. */
+  html {
+    line-height: normal;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: #0e1116;
+    color: #e7ecef;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: var(--acc);
+  }
+  /* Rule 6: hover never turns Lime on light surfaces (the reference's #A9D437 is not used). */
+  a:hover {
+    color: var(--acc-hover);
+  }
+  /* Rule 11: one visible focus ring everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--acc, #c6f24e);
+    outline-offset: 3px;
+  }
+}
+
+/* Container: max-width 1264 + 88px side padding (content-box), as in the reference. */
+.wrap {
+  max-width: var(--container-wrap);
+  margin: 0 auto;
+  padding: 0 88px;
+  box-sizing: content-box;
+}
+@media (max-width: 899px) {
+  .wrap {
+    padding: 0 20px;
+  }
+}
+
+/* Seam between tones: 120px band of 1px dots on a 22px grid, fading out, overlapping the next section. */
+.seam {
+  height: 120px;
+  margin: 0 0 -120px;
+  background-image: radial-gradient(var(--seamdot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(#000, transparent);
+  mask-image: linear-gradient(#000, transparent);
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* Mono label (eyebrows, labels, nav). */
+.lab {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* Buttons. */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn-sm {
+  font-size: 11px;
+  padding: 12px 17px;
+}
+.btn-lime,
+.btn-lime:hover {
+  background: var(--btn);
+  color: var(--btnText);
+}
+.btn-outline,
+.btn-outline:hover {
+  background: transparent;
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+/* In the closing section the outline button sits on --bg so the ring canvas does not show through. */
+.btn-outline.on-bg {
+  background: var(--bg);
+}
+
+/* Reveal (rule 10): hidden only once the head script has marked <html class="js">. */
+.js .rv {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js .rv.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

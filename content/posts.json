@@ -1,0 +1,230 @@
+[
+ {
+  "_type": "post",
+  "_id": "superintelligence-is-not-on-your-roadmap",
+  "slug": {
+   "current": "superintelligence-is-not-on-your-roadmap"
+  },
+  "title": "Superintelligence is not on your roadmap. Agents are.",
+  "excerpt": "The word is everywhere this month. Here is what it changes for a sixty-person engineering team: nothing, and one thing.",
+  "category": "Delivery",
+  "publishedAt": "2026-01-02T09:00:00Z",
+  "status": "published",
+  "route": "/notes/superintelligence-is-not-on-your-roadmap",
+  "body": [
+   {
+    "type": "p",
+    "text": "Every few months a word arrives that everyone has to have an opinion about. This month it is superintelligence: the labs are reorganising around it, governments are renaming things after it, and a two-letter country-code domain has become a speculative asset because its letters happen to match. None of that changes what your team ships on Friday."
+   },
+   {
+    "type": "p",
+    "text": "We work with heads of engineering at companies of twenty to two hundred people. The question they ask is never what our position on superintelligence is. It is: my team of eight is behind, the roadmap is not getting shorter, and I have budget for two people. What do I do?"
+   },
+   {
+    "type": "h2",
+    "text": "What changed, concretely"
+   },
+   {
+    "type": "p",
+    "text": "Agents can now take a story, implement it inside guardrails, generate the tests, write the documentation and hand a reviewable pull request to a person. That is not a forecast; it is how our own builds run. We installed that pipeline for a ten-engineer practice and it became the default path for new work. Two Android apps that had been scoped for five developers were shipped by one, on the original timeline."
+   },
+   {
+    "type": "pq",
+    "text": "The pipeline moves the work from typing to judgement. It does not remove the judgement."
+   },
+   {
+    "type": "h2",
+    "text": "What did not change"
+   },
+   {
+    "type": "p",
+    "text": "Somebody still decides what to build. Somebody still signs off the increment. A passing test is not a working feature, and an evaluation set still has to be labelled by a person who knows the domain. Every stage we automate ends at a human who can say no, and the stage that pushes a decision to a phone is the one we would never remove."
+   },
+   {
+    "type": "h2",
+    "text": "What to do this quarter"
+   },
+   {
+    "type": "ol",
+    "items": [
+     "Pick one repo, not the platform.",
+     "Measure first: lead time, pull-request cycle time, review turnaround, incidents. Before any agent touches the code.",
+     "Put the pipeline on one service, with the conventions, CI and review your team already has as the guardrails.",
+     "Let the team run it for a fortnight without us in the room.",
+     "Look at the same numbers, after. If they moved, widen it. If they did not, you have lost six weeks and learned something true."
+    ]
+   },
+   {
+    "type": "h2",
+    "text": "Where the hype is useful"
+   },
+   {
+    "type": "p",
+    "text": "It gets you budget. Spend it on the boring version: a pipeline, a number, a person in the loop. That is the whole offer, and it fits in six weeks."
+   }
+  ],
+  "offer": {
+   "title": "Agentic delivery in six weeks",
+   "text": "One repo, a baseline, the pipeline, the same numbers after.",
+   "route": "/ai-transformation",
+   "cta": "Read the offer"
+  },
+  "closing": "Bring one repo. We will show you the Friday after."
+ },
+ {
+  "_type": "post",
+  "_id": "the-sow-is-the-pitch",
+  "slug": {
+   "current": "the-sow-is-the-pitch"
+  },
+  "title": "The SOW is the sales pitch.",
+  "excerpt": "Two pages, three days after the call, before any money changes hands. What goes in, what we leave out on purpose, and why the out list is the part a CTO reads twice.",
+  "category": "Scope",
+  "publishedAt": "2026-01-01T09:00:00Z",
+  "status": "published",
+  "route": "/notes/the-sow-is-the-pitch",
+  "body": [
+   {
+    "type": "p",
+    "text": "Most statements of work are written to be signed, not read. Twelve pages, a liability section copied from the last one, an hourly estimate per feature that nobody believes, and a signature block. The buyer skims to the number, the seller hopes they do, and the document goes into a folder until something goes wrong."
+   },
+   {
+    "type": "p",
+    "text": "Ours is two pages, and it arrives three days after the first call, before any money has changed hands. That is not a courtesy. It is the part of the sale that does the selling, because it is the first piece of work you see from us, and it is work you can check."
+   },
+   {
+    "type": "h2",
+    "text": "What goes in"
+   },
+   {
+    "type": "p",
+    "text": "Page one is four lists. <b>In</b>: the first increment, written as things a user can do, not as components. <b>Out</b>: everything we discussed that is not in the first increment, by name. <b>Cost</b>: one fixed number for the increment, with the day rate it was built from, so you can do the arithmetic yourself. <b>Acceptance</b>: how we both know an item is done, in your environment, before the invoice."
+   },
+   {
+    "type": "p",
+    "text": "Page two is how it runs. The fortnightly review and what it reports: shipped, slipped, cost against plan. Who on your side signs the increment. What happens when scope changes, which it will. And what stops the work: the two or three conditions under which either of us can call it without a conversation about fault."
+   },
+   {
+    "type": "h2",
+    "text": "The out list is the page a CTO reads twice"
+   },
+   {
+    "type": "p",
+    "text": "Anyone can write the in list; it is the brief, reformatted. The out list is where the thinking shows. It says we understood the whole product, chose a first slice on purpose, and are not going to let the increment quietly grow until the budget is gone. When a head of engineering reads <i>single sign-on: out, increment two</i>, they learn two things at once: we heard it, and we are not pretending it is free."
+   },
+   {
+    "type": "pq",
+    "text": "A scope that lists only what is in has made no decisions. It has copied the brief and added a price."
+   },
+   {
+    "type": "h2",
+    "text": "What we leave out on purpose"
+   },
+   {
+    "type": "ol",
+    "items": [
+     "Hour estimates per feature. They are precise, wrong, and used later as a weapon. The increment has one number.",
+     "A change-request process with forms. Changes go into the next increment, and the fortnightly review is where they are agreed.",
+     "Velocity promises. We commit to a scope and a date, not to points per sprint.",
+     "Liability boilerplate that pretends a two-page scope is a forty-page contract. The contract is a separate document, and it is short too.",
+     "Anything we have not shipped before. If a line would be our first time, it says so, or it is not there."
+    ]
+   },
+   {
+    "type": "h2",
+    "text": "Why before the money"
+   },
+   {
+    "type": "p",
+    "text": "Because it is the cheapest test either side will ever run. Three days of our thinking, free, and you learn whether we understood the problem, whether we can write, and whether we will say no to anything. If the two pages are vague, the next six weeks will be too. If they are sharp, you are holding a document you could hand to any other firm and get a comparable quote, which is the point: a scope you can take elsewhere is a scope you can trust."
+   },
+   {
+    "type": "h2",
+    "text": "How to read one, whoever wrote it"
+   },
+   {
+    "type": "ol",
+    "items": [
+     "Can you find the first increment without asking? If the answer is <i>everything, in phases</i>, it is a brief, not a scope.",
+     "Does it name what is out? If nothing is out, nothing has been decided.",
+     "Could you check an acceptance line yourself, in your own environment, with nobody from the vendor in the room? If not, done means whatever they say it means."
+    ]
+   },
+   {
+    "type": "p",
+    "text": "Ours passes those three or it goes back for another day. That is the whole pitch."
+   }
+  ],
+  "offer": {
+   "title": "Products built end to end",
+   "text": "A two-page scope three days after the call, a fixed first increment, a fortnightly review you sign.",
+   "route": "/services/custom-software",
+   "cta": "Read the service"
+  },
+  "closing": "Thirty minutes on the call. Two pages, three days later."
+ },
+ {
+  "_type": "post",
+  "_id": "eval-harness-before-the-demo",
+  "slug": {
+   "current": "eval-harness-before-the-demo"
+  },
+  "title": "An eval harness before the demo.",
+  "excerpt": "How we decide an LLM feature actually got better, and what a number looks like before a chat window does.",
+  "category": "AI",
+  "publishedAt": null,
+  "status": "draft",
+  "route": null,
+  "body": null,
+  "offer": null,
+  "closing": null
+ },
+ {
+  "_type": "post",
+  "_id": "what-a-person-still-signs",
+  "slug": {
+   "current": "what-a-person-still-signs"
+  },
+  "title": "What a person still signs in an agentic pipeline.",
+  "excerpt": "Six stages run on Claude Code. Where the human sits, and why that seat is the one we refuse to automate.",
+  "category": "Delivery",
+  "publishedAt": null,
+  "status": "draft",
+  "route": null,
+  "body": null,
+  "offer": null,
+  "closing": null
+ },
+ {
+  "_type": "post",
+  "_id": "four-hours-is-enough",
+  "slug": {
+   "current": "four-hours-is-enough"
+  },
+  "title": "Four hours of overlap is enough. Here is the day.",
+  "excerpt": "A standup, a review and a pairing session fit inside 09:00–13:00 GMT. What happens in the other four, and what never does.",
+  "category": "Working together",
+  "publishedAt": null,
+  "status": "draft",
+  "route": null,
+  "body": null,
+  "offer": null,
+  "closing": null
+ },
+ {
+  "_type": "post",
+  "_id": "the-number-before-the-claim",
+  "slug": {
+   "current": "the-number-before-the-claim"
+  },
+  "title": "The number before the claim.",
+  "excerpt": "Why every fortnightly review starts with a baseline taken in week one, in your environment, with your query.",
+  "category": "Measurement",
+  "publishedAt": null,
+  "status": "draft",
+  "route": null,
+  "body": null,
+  "offer": null,
+  "closing": null
+ }
+]

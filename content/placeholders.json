@@ -1,0 +1,318 @@
+{
+ "[ADD BEFORE → AFTER]": [
+  "/work"
+ ],
+ "[ADD COST / ACCURACY]": [
+  "/ai-transformation",
+  "/industries/saas-platforms-ai-products",
+  "/work"
+ ],
+ "[ADD HOMES / ALERT PRECISION]": [
+  "/industries/healthcare-life-sciences",
+  "/industries/iot-signage-built-environment",
+  "/work"
+ ],
+ "[ADD MEMBERS / CLAIMS]": [
+  "/industries/healthcare-life-sciences",
+  "/work"
+ ],
+ "[ADD PARTNERS / CALLS]": [
+  "/industries/iot-signage-built-environment",
+  "/services/team-augmentation",
+  "/work"
+ ],
+ "[ADD RETAILERS]": [
+  "/industries/retail-ecommerce",
+  "/services/legacy-modernisation",
+  "/work"
+ ],
+ "[ADD RUNS / SUCCESS RATE]": [
+  "/ai-transformation",
+  "/industries/saas-platforms-ai-products",
+  "/work"
+ ],
+ "[ADD SESSIONS / PRACTITIONERS]": [
+  "/industries/healthcare-life-sciences",
+  "/work"
+ ],
+ "[ADD SHIP DATE / SCOPE]": [
+  "/industries/logistics-travel-marketplaces",
+  "/work"
+ ],
+ "[ADD SOURCES / VOLUME]": [
+  "/industries/saas-platforms-ai-products",
+  "/services/data-engineering",
+  "/work"
+ ],
+ "[ADD THE NUMBER]": [
+  "/industries/fintech-payments",
+  "/industries/healthcare-life-sciences",
+  "/industries/logistics-travel-marketplaces",
+  "/services/ai-machine-learning",
+  "/services/custom-software",
+  "/services/mobile",
+  "/work",
+  "/work/freight-dispatch",
+  "/work/payments-platform"
+ ],
+ "[ADD UPTIME / DEVICES]": [
+  "/industries/iot-signage-built-environment",
+  "/services/cloud-devops",
+  "/services/legacy-modernisation",
+  "/services/team-augmentation",
+  "/work"
+ ],
+ "[ADD p95 AND VOLUME]": [
+  "/industries/retail-ecommerce",
+  "/work"
+ ],
+ "[ADDRESS]": [
+  "/privacy",
+  "/working-with-us"
+ ],
+ "[AGENCY DISCOUNT]": [
+  "/for-agencies"
+ ],
+ "[ANALYTICS TOOL]": [
+  "/privacy"
+ ],
+ "[BANK COUNTRY]": [
+  "/working-with-us"
+ ],
+ "[BOOKING TOOL]": [
+  "/privacy"
+ ],
+ "[CMS PROVIDER]": [
+  "/privacy"
+ ],
+ "[COMPANY REG NO.]": [
+  "/",
+  "/404",
+  "/agentic-flow",
+  "/ai-transformation",
+  "/approach",
+  "/book",
+  "/brief",
+  "/for-agencies",
+  "/industries",
+  "/industries/fintech-payments",
+  "/industries/healthcare-life-sciences",
+  "/industries/iot-signage-built-environment",
+  "/industries/logistics-travel-marketplaces",
+  "/industries/retail-ecommerce",
+  "/industries/saas-platforms-ai-products",
+  "/join",
+  "/notes",
+  "/notes/superintelligence-is-not-on-your-roadmap",
+  "/notes/the-sow-is-the-pitch",
+  "/privacy",
+  "/rates",
+  "/services",
+  "/services/ai-machine-learning",
+  "/services/cloud-devops",
+  "/services/custom-software",
+  "/services/data-engineering",
+  "/services/legacy-modernisation",
+  "/services/mobile",
+  "/services/qa-test-automation",
+  "/services/team-augmentation",
+  "/terms",
+  "/why-not-just-hire",
+  "/work",
+  "/work/freight-dispatch",
+  "/work/payments-platform",
+  "/work/preclinical-research-portal",
+  "/working-with-us"
+ ],
+ "[COOKIE TABLE]": [
+  "/privacy"
+ ],
+ "[Client]": [
+  "/services",
+  "/work"
+ ],
+ "[DATE]": [
+  "/notes/superintelligence-is-not-on-your-roadmap",
+  "/notes/the-sow-is-the-pitch",
+  "/privacy",
+  "/terms"
+ ],
+ "[DPA LINK]": [
+  "/working-with-us"
+ ],
+ "[DRAFT]": [
+  "/notes"
+ ],
+ "[EMAIL PROVIDER]": [
+  "/privacy"
+ ],
+ "[EMPLOYMENT MODEL]": [
+  "/join"
+ ],
+ "[FORM ENDPOINT]": [
+  "/brief"
+ ],
+ "[HELLO@HOPSIG.COM]": [
+  "/",
+  "/404",
+  "/agentic-flow",
+  "/ai-transformation",
+  "/approach",
+  "/book",
+  "/brief",
+  "/for-agencies",
+  "/industries",
+  "/industries/fintech-payments",
+  "/industries/healthcare-life-sciences",
+  "/industries/iot-signage-built-environment",
+  "/industries/logistics-travel-marketplaces",
+  "/industries/retail-ecommerce",
+  "/industries/saas-platforms-ai-products",
+  "/join",
+  "/notes",
+  "/notes/superintelligence-is-not-on-your-roadmap",
+  "/notes/the-sow-is-the-pitch",
+  "/privacy",
+  "/rates",
+  "/services",
+  "/services/ai-machine-learning",
+  "/services/cloud-devops",
+  "/services/custom-software",
+  "/services/data-engineering",
+  "/services/legacy-modernisation",
+  "/services/mobile",
+  "/services/qa-test-automation",
+  "/services/team-augmentation",
+  "/terms",
+  "/why-not-just-hire",
+  "/work",
+  "/work/freight-dispatch",
+  "/work/payments-platform",
+  "/work/preclinical-research-portal",
+  "/working-with-us"
+ ],
+ "[HOSTING PROVIDER]": [
+  "/privacy"
+ ],
+ "[IDTA / SCCs / ADEQUACY]": [
+  "/privacy"
+ ],
+ "[INBOX]": [
+  "/brief"
+ ],
+ "[INSURER · COVER AMOUNT]": [
+  "/working-with-us"
+ ],
+ "[JURISDICTION]": [
+  "/terms"
+ ],
+ "[LEAVE POLICY]": [
+  "/join"
+ ],
+ "[LEGAL FORM]": [
+  "/privacy",
+  "/working-with-us"
+ ],
+ "[MONTHLY]": [
+  "/rates",
+  "/services"
+ ],
+ "[MSA TEMPLATE LINK]": [
+  "/working-with-us"
+ ],
+ "[NONE YET / LIST]": [
+  "/working-with-us"
+ ],
+ "[OFFICE DAYS, IF ANY]": [
+  "/join"
+ ],
+ "[OFFICE DAYS]": [
+  "/join"
+ ],
+ "[OPEN / PIPELINE]": [
+  "/join"
+ ],
+ "[OVERLAP WITH ET]": [
+  "/approach"
+ ],
+ "[PAY BANDS BY LEVEL]": [
+  "/join"
+ ],
+ "[PERIOD]": [
+  "/privacy"
+ ],
+ "[PKR / USD]": [
+  "/join"
+ ],
+ "[QUOTE]": [
+  "/ai-transformation",
+  "/rates"
+ ],
+ "[REGIONS]": [
+  "/privacy"
+ ],
+ "[RETENTION PERIOD]": [
+  "/privacy"
+ ],
+ "[STATUS]": [
+  "/join"
+ ],
+ "[VAT / TAX STATUS]": [
+  "/working-with-us"
+ ],
+ "[YEAR]": [
+  "/",
+  "/404",
+  "/agentic-flow",
+  "/ai-transformation",
+  "/approach",
+  "/book",
+  "/brief",
+  "/for-agencies",
+  "/industries",
+  "/industries/fintech-payments",
+  "/industries/healthcare-life-sciences",
+  "/industries/iot-signage-built-environment",
+  "/industries/logistics-travel-marketplaces",
+  "/industries/retail-ecommerce",
+  "/industries/saas-platforms-ai-products",
+  "/join",
+  "/notes",
+  "/notes/superintelligence-is-not-on-your-roadmap",
+  "/notes/the-sow-is-the-pitch",
+  "/privacy",
+  "/rates",
+  "/services",
+  "/services/ai-machine-learning",
+  "/services/cloud-devops",
+  "/services/custom-software",
+  "/services/data-engineering",
+  "/services/legacy-modernisation",
+  "/services/mobile",
+  "/services/qa-test-automation",
+  "/services/team-augmentation",
+  "/terms",
+  "/why-not-just-hire",
+  "/work",
+  "/work/freight-dispatch",
+  "/work/payments-platform",
+  "/work/preclinical-research-portal",
+  "/working-with-us"
+ ],
+ "[YOUR RATE]": [
+  "/",
+  "/for-agencies",
+  "/rates",
+  "/services",
+  "/services/ai-machine-learning",
+  "/services/cloud-devops",
+  "/services/custom-software",
+  "/services/data-engineering",
+  "/services/legacy-modernisation",
+  "/services/mobile",
+  "/services/qa-test-automation",
+  "/services/team-augmentation",
+  "/why-not-just-hire",
+  "/work"
+ ]
+}

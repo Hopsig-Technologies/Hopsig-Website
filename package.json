@@ -1,0 +1,19 @@
+{
+  "name": "hopsig-site",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "dev:studio": "pnpm --filter studio dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "check:content": "python scripts/check_bundle.py",
+    "shot": "node scripts/shot.mjs"
+  },
+  "devDependencies": {
+    "pixelmatch": "^8.0.0",
+    "playwright": "^1.64.0",
+    "pngjs": "^7.0.0"
+  }
+}
