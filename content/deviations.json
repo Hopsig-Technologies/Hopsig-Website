@@ -8,7 +8,9 @@
   {"reference": "5 h 10 m", "now": "[BEFORE]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
   {"reference": "18 m", "now": "[AFTER]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
   {"reference": "14 / 14", "now": "[SHIPPED / PLANNED]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
-  {"reference": "on plan", "now": "[COST VS PLAN]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"}
+  {"reference": "on plan", "now": "[COST VS PLAN]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
+  {"reference": "Note · Scope · [DATE]", "now": "Note · Scope", "where": "note pages (/notes/<slug>) hero eyebrow", "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"},
+  {"reference": "Note · Delivery · [DATE]", "now": "Note · Delivery", "where": "note pages (/notes/<slug>) hero eyebrow", "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"}
  ],
  "added_placeholders": ["[ENGINEER]", "[YEARS]", "[BEFORE]", "[AFTER]", "[SHIPPED / PLANNED]", "[SLIPPED]", "[COST VS PLAN]"]
 }

@@ -89,11 +89,20 @@ export const templates = {
     closingTitle: "Ask about this one. We will say what we would do differently.",
   },
   notePage: {
-    heroEyebrow: "Note · {category} · [DATE]",
+    // The reference reads "Note · {category} · [DATE]"; the date is kept out (rule 7: no dates on Notes) until the
+    // founders decide — recorded in content/deviations.json.
+    heroEyebrow: "Note · {category}",
     byline: "Written by the people who would do the work ·",
+    allLink: { label: "All notes →", href: "/notes", variant: "link" },
     tocTitle: "In this note",
     offerTitle: "The offer this note describes",
+    bookButton: { label: "Book a consult", href: "/book", variant: "lime" },
     nextTitle: "Next notes.",
+    closingEyebrow: "Notes · the call",
+    buttons: [
+      { label: "Book a consult", href: "/book", variant: "lime" },
+      { label: "See our work", href: "/work", variant: "outline" },
+    ],
   },
   legalPage: {
     contentsTitle: "Contents",

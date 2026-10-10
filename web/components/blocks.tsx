@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import type { Cta, Fact, PageHero as PageHeroCopy, SectionHead, TitleText } from "@/content/types";
@@ -146,7 +147,8 @@ export function Ledger({
   mark = "tok",
   pad = 22,
 }: {
-  items: TitleText[];
+  /** An item with `href` gets its title linked with an arrow (the next-notes list). */
+  items: (TitleText & { href?: string })[];
   fill: Fill;
   titleWidth?: number;
   tone?: "dim" | "sub";
@@ -160,7 +162,15 @@ export function Ledger({
         const row = (
           <>
             <span className="ledger-n">{idx(i)}</span>
-            <span className="ledger-t">{fill(it.title)}</span>
+            <span className="ledger-t">
+              {it.href ? (
+                <Link href={it.href as Route} className="ledger-a">
+                  {fill(it.title)} →
+                </Link>
+              ) : (
+                fill(it.title)
+              )}
+            </span>
             <span className="ledger-x" style={{ color: `var(--${tone})` }}>
               {it.text ? <Filled text={it.text} fill={fill} mark={mark} /> : null}
             </span>

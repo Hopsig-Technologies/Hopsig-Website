@@ -120,7 +120,7 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 
 ## Open questions (do not decide these in code)
 
-- `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]", `templates.ts` → `notePage.heroEyebrow`) and conflicts with rule 7. Keep it out of the build until the founders decide.
+- `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]", `templates.ts` → `notePage.heroEyebrow`) and conflicts with rule 7. It is out of the build (`notePage.heroEyebrow` is "Note · {category}", recorded in `content/deviations.json`) until the founders decide.
 - Visible copy that describes the implementation: "Eight case notes, fetched from Sanity Studio." (home case index) and "… Fetched from Sanity Studio." (home notes). Probably prototype wording; ask before changing the copy.
 - The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel; the rate now comes from Site settings. Ask before rewording.
 - The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. For counsel's review.

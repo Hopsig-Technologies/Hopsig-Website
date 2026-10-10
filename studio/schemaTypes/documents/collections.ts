@@ -138,6 +138,11 @@ export const post = defineType({
       type: 'datetime',
       description: 'Empty = draft: listed as an inert row marked [DRAFT]. Only orders the list; no date is shown (rule 7).',
     }),
+    defineField({
+      name: 'order',
+      type: 'number',
+      description: 'Position among the notes not yet published (they follow the published ones). Published notes are ordered by date.',
+    }),
     defineField({name: 'body', type: 'richBody'}),
     defineField({
       name: 'offer',

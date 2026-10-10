@@ -61,7 +61,7 @@ export function Rv({
   delay,
   children,
 }: {
-  as?: "div" | "section" | "span";
+  as?: "div" | "section" | "span" | "article" | "aside";
   className?: string;
   style?: CSSProperties;
   /** Stagger in ms (transition-delay), as the reference does for rows and cards. */

@@ -29,8 +29,8 @@ export const CASE_BY_SLUG_QUERY = defineQuery(`*[_type == "caseStudy" && hasPage
 export const CASE_SLUGS_QUERY = defineQuery(`*[_type == "caseStudy" && hasPage == true].slug.current`);
 
 /** Notes index and home journal: published first (newest first), then drafts as inert [DRAFT] rows. */
-export const POSTS_QUERY = defineQuery(`*[_type == "post"] | order(defined(publishedAt) desc, publishedAt desc){
-  _id, title, "slug": slug.current, category, excerpt, publishedAt
+export const POSTS_QUERY = defineQuery(`*[_type == "post"] | order(defined(publishedAt) desc, publishedAt desc, order asc){
+  _id, title, "slug": slug.current, category, excerpt, "published": defined(publishedAt)
 }`);
 
 export const POST_BY_SLUG_QUERY = defineQuery(`*[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{

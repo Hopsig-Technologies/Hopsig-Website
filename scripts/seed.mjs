@@ -108,7 +108,7 @@ for (const c of caseStudies) {
   docs.push(d)
 }
 
-for (const p of posts) {
+for (const [i, p] of posts.entries()) {
   begin(p._id)
   const d = {
     _id: p._id,
@@ -117,6 +117,7 @@ for (const p of posts) {
     slug: {_type: 'slug', current: p.slug.current},
     category: p.category,
     excerpt: plain(p.excerpt),
+    order: i,
   }
   if (p.publishedAt) d.publishedAt = p.publishedAt
   if (p.body) d.body = richBody(p.body)

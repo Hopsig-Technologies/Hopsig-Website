@@ -69,7 +69,9 @@ Gate: text diff on seven.
 `/work` (`CASES_ALL_QUERY`: the first 12 as full cards, the rest compact; engagement panel) and `/work/[slug]` for the three `hasPage` case studies (`generateStaticParams` from `CASE_SLUGS_QUERY`; "More from the record").
 Gate: text diff; Presentation edit of a case note shows in the preview.
 
-### P6 — Notes
+### P6 — Notes — DONE 2026-10-10
+
+`/notes` (published first, newest first, then unpublished by the new `post.order` field; published rows link, the rest are inert `[DRAFT]` rows; category chips from the posts) and `/notes/[slug]` for the two published notes (`generateStaticParams` from `POST_SLUGS_QUERY`; article from the Portable Text body; sticky aside with "In this note" from the h2s, the offer and Book a consult; "Next notes" = the two after it in list order, wrapping, published ones linked). Text diff 0 missing on all three; pixel diff note pages 0.11–0.12% at identical heights; the index is 44px shorter only by the reference's build note, which never ships. Hero eyebrow drops "· [DATE]" (rule 7), recorded in `content/deviations.json`. All static.
 
 `/notes` (published rows link, drafts inert and marked `[DRAFT]`) and `/notes/[slug]` (sticky aside: in-this-note from h2s, the offer, CTA; "Next notes").
 Gate: text diff; Presentation edit of a body shows in the preview.

@@ -119,7 +119,17 @@ export type Templates = {
     closingEyebrow: string;
     closingTitle: string;
   };
-  notePage: { heroEyebrow: string; byline: string; tocTitle: string; offerTitle: string; nextTitle: string };
+  notePage: {
+    heroEyebrow: string;
+    byline: string;
+    allLink: Cta;
+    tocTitle: string;
+    offerTitle: string;
+    bookButton: Cta;
+    nextTitle: string;
+    closingEyebrow: string;
+    buttons: Cta[];
+  };
   legalPage: { contentsTitle: string };
 };
 
