@@ -88,6 +88,11 @@ export type Templates = {
     servicesLink: string;
     othersTitle: string;
     closingEyebrow: string;
+    recordLink: Cta;
+    servicesHref: Href;
+    othersLink: Cta;
+    hereLabel: string;
+    buttons: Cta[];
   };
   industriesIndexRow: { count: string };
   casePage: {

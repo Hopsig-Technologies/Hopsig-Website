@@ -48,6 +48,14 @@ export const templates = {
     servicesLink: "All eight →",
     othersTitle: "The other industries.",
     closingEyebrow: "{short} · the call",
+    recordLink: { label: "All 32 case notes →", href: "/work", variant: "link" },
+    servicesHref: "/services",
+    othersLink: { label: "All six →", href: "/industries", variant: "link" },
+    hereLabel: "here",
+    buttons: [
+      { label: "Book a consult", href: "/book", variant: "lime" },
+      { label: "See our work", href: "/work", variant: "outline" },
+    ],
   },
   industriesIndexRow: {
     count: "{count} notes",

@@ -7,6 +7,10 @@ import { getFetchMode, PUBLISHED, type FetchMode } from "@/sanity/lib/live";
  * in draft mode (Presentation tool) renders drafts with click-to-edit, behind a Suspense boundary because
  * reading the draft cookies is dynamic. `draftMode()` itself outside Suspense keeps the route static (Phase 4).
  *
+ * Pages with route params (`/services/[slug]` …) also render inside Suspense: Next 16 with partialPrefetching
+ * requires params to be awaited below a boundary. Slugs listed in generateStaticParams are still prerendered
+ * in full (○ in the build output); the boundary only shapes the fallback shell for unknown slugs.
+ *
  *   const Content = async ({ mode, params }: { mode: FetchMode; params: Promise<{ slug: string }> }) => …
  *   export default withMode(Content)
  */
@@ -20,6 +24,13 @@ export function withMode<P extends object>(Content: ComponentType<P & { mode: Fe
       return (
         <Suspense fallback={null}>
           <Draft {...props} />
+        </Suspense>
+      );
+    }
+    if ("params" in props) {
+      return (
+        <Suspense fallback={null}>
+          <Content {...props} mode={PUBLISHED} />
         </Suspense>
       );
     }

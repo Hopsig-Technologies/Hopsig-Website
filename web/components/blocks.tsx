@@ -34,7 +34,7 @@ export function MoreLink({ cta }: { cta: Cta }) {
 }
 
 /** Page hero: drifting dot field, eyebrow, 72px title, intro, then buttons or chips and the facts row. */
-export function PageHero({ hero, fill }: { hero: PageHeroCopy; fill: Fill }) {
+export function PageHero({ hero, fill, size = 22 }: { hero: PageHeroCopy; fill: Fill; size?: 22 | 26 }) {
   const buttons = hero.buttons?.filter((b) => b.variant !== "chip") ?? [];
   const chips = hero.buttons?.filter((b) => b.variant === "chip") ?? [];
   return (
@@ -64,7 +64,7 @@ export function PageHero({ hero, fill }: { hero: PageHeroCopy; fill: Fill }) {
             ))}
           </div>
         ) : null}
-        {hero.facts?.length ? <FactsRow facts={hero.facts} fill={fill} /> : null}
+        {hero.facts?.length ? <FactsRow facts={hero.facts} fill={fill} size={size} /> : null}
       </div>
     </section>
   );

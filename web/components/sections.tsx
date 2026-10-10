@@ -86,6 +86,23 @@ export function CaseCard({ c, n, fill, delay }: { c: CaseRow; n: number; fill: F
   );
 }
 
+/** A compact case row ("the rest of the record"): number, title + domain, the measured line, the shape. */
+export function CaseRow({ c, n, fill }: { c: CaseRow; n: number; fill: Fill }) {
+  return (
+    <Rv className="case-row">
+      <span className="case-row-n">{nn(n)}</span>
+      <div>
+        <div className="case-row-t">{fill(c.title)}</div>
+        <div className="case-row-d">{fill(c.domain)}</div>
+      </div>
+      <div className="case-row-m">
+        <Rich value={c.measured} fill={fill} inline />
+      </div>
+      <span className="case-row-s">{fill(c.shape)}</span>
+    </Rv>
+  );
+}
+
 export function FaqBlock({ faq, fill, title }: { faq?: FaqSection; fill: Fill; title?: string }) {
   const items = faq?.items ?? [];
   return (

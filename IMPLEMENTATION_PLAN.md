@@ -55,7 +55,9 @@ Gate: shots + text diff on both.
 `/services` (hero chips → anchors, three engagement modes with the engagement panel, the eight-services list, "inside every engagement", steps) and the eight `/services/[slug]` pages from `services.ts` (facts, gets, say-no, steps, FAQ, "From the record" via `casesByKey`).
 Gate: shots on three pages, text diff on all nine.
 
-### P4 — Industries
+### P4 — Industries — DONE 2026-10-10
+
+`/industries` (rows with the intro up to its colon, the lead fact and "{count} notes") and the six `/industries/[slug]` pages (first `fullCards` record cases as cards, the rest as compact `CaseRow`s; asks ledger; services that fit; the other industries). Text diff 0 missing on all seven; pixel diff 0.07–0.13% at identical heights; console clean; all static. `withMode` now renders param pages inside Suspense (Next 16 + partialPrefetching requires params below a boundary; the dev server returned 500 without it while the production build was fine).
 
 `/industries` (rows with the lead fact and "{count} notes") and the six `/industries/[slug]` pages.
 Gate: text diff on seven.

@@ -545,3 +545,226 @@
     margin-top: 16px;
   }
 }
+
+/* ---------------------------------------------------------------- compact case rows */
+.case-rows {
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+}
+.case-row {
+  display: grid;
+  grid-template-columns: 52px 1.1fr 1.6fr auto;
+  gap: 20px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.case-row-n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--acc);
+}
+.case-row-t {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.case-row-d,
+.case-row-s {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.case-row-d {
+  margin-top: 4px;
+}
+.case-row-s {
+  white-space: nowrap;
+}
+.case-row-m {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--sub);
+}
+
+/* ---------------------------------------------------------------- industries */
+.ilist {
+  border-top: 1px solid var(--line);
+}
+.irow {
+  display: grid;
+  grid-template-columns: 52px 1.5fr 1fr 110px 40px;
+  gap: 22px;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+}
+.irow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--acc);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.irow:hover::after {
+  transform: scaleX(1);
+}
+.irow:hover {
+  color: var(--text);
+}
+.irow .n {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  transition: color 0.3s;
+}
+.irow:hover .n {
+  color: var(--acc);
+}
+.irow .t {
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.irow:hover .t {
+  transform: translateX(14px);
+}
+.irow .s {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--dim);
+  max-width: 520px;
+}
+.irow .m {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--sub);
+}
+.irow .m b {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-right: 8px;
+}
+.irow .c {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+}
+.irow .r {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--dim);
+  justify-self: end;
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 0.3s;
+}
+.irow:hover .r {
+  transform: translateX(6px);
+  color: var(--acc);
+}
+@media (prefers-reduced-motion: reduce) {
+  .irow::after,
+  .irow .t,
+  .irow .r {
+    transition: none;
+  }
+}
+.fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.fit-grid > a {
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 24px 26px;
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+}
+.fit-grid .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--acc);
+}
+.fit-grid .t {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.fit-grid .x {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--dim);
+}
+.fit-grid .a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--acc);
+}
+.svc-grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 899px) {
+  .irow {
+    grid-template-columns: 32px 1fr 34px;
+  }
+  .irow .m,
+  .irow .c {
+    grid-column: 2;
+  }
+  .irow .t {
+    font-size: 24px;
+  }
+  .case-row {
+    grid-template-columns: 32px 1fr;
+  }
+  .case-row-m,
+  .case-row-s {
+    grid-column: 2;
+  }
+  .fit-grid,
+  .svc-grid.three {
+    grid-template-columns: 1fr;
+  }
+}
