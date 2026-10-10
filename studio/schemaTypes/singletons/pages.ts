@@ -212,7 +212,7 @@ export const servicesIndexPage = page('servicesIndexPage', [
   defineField({name: 'modes', title: 'Three ways we work', type: 'array', of: [defineArrayMember({type: 'engagementMode'})], validation: (r) => r.max(3)}),
   section('detail', 'Eight services', [head()]),
   obj('inside', 'titleTextSection', {title: 'Inside every engagement'}),
-  obj('howItRuns', 'stepsSection', {title: 'How an engagement runs'}),
+  section('howItRuns', 'How an engagement runs', [head(), defineField({name: 'link', type: 'cta'}), list('steps', 'step')]),
   closing,
 ])
 
@@ -230,12 +230,16 @@ export const workIndexPage = page('workIndexPage', [
   closing,
 ])
 
-export const notesIndexPage = page('notesIndexPage', [hero, section('list', 'All notes', [head()]), closing])
+export const notesIndexPage = page('notesIndexPage', [
+  hero,
+  section('list', 'All notes', [head(), str('readLabel'), str('draftLabel', {description: 'Marks unpublished notes, e.g. [DRAFT].'})]),
+  closing,
+])
 
 export const approachPage = page('approachPage', [
   hero,
   obj('staffing', 'titleTextSection', {title: 'How we staff an account'}),
-  obj('agentic', 'titleTextSection', {title: 'Agentic delivery'}),
+  section('agentic', 'Agentic delivery', [head(), strList('tags'), list('links', 'cta'), list('items', 'titleText')]),
   section('hours', 'Where we are, when we are', [head(), strList('zones'), defineField({name: 'paragraphs', type: 'array', of: [defineArrayMember({type: 'text', rows: 4})]})]),
   closing,
 ])

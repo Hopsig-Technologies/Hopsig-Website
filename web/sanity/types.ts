@@ -648,7 +648,7 @@ export type Industry = {
       _key: string;
     } & CaseStudyReference
   >;
-  lead?: CaseStudyReference;
+  fullCards?: number;
   asks?: Array<
     {
       _key: string;
@@ -988,7 +988,20 @@ export type ApproachPage = {
   _rev: string;
   hero?: PageHero;
   staffing?: TitleTextSection;
-  agentic?: TitleTextSection;
+  agentic?: {
+    head?: SectionHead;
+    tags?: Array<string>;
+    links?: Array<
+      {
+        _key: string;
+      } & Cta
+    >;
+    items?: Array<
+      {
+        _key: string;
+      } & TitleText
+    >;
+  };
   hours?: {
     head?: SectionHead;
     zones?: Array<string>;
@@ -1007,6 +1020,8 @@ export type NotesIndexPage = {
   hero?: PageHero;
   list?: {
     head?: SectionHead;
+    readLabel?: string;
+    draftLabel?: string;
   };
   closing?: Closing;
   seo?: Seo;
@@ -1067,7 +1082,15 @@ export type ServicesIndexPage = {
     head?: SectionHead;
   };
   inside?: TitleTextSection;
-  howItRuns?: StepsSection;
+  howItRuns?: {
+    head?: SectionHead;
+    link?: Cta;
+    steps?: Array<
+      {
+        _key: string;
+      } & Step
+    >;
+  };
   closing?: Closing;
   seo?: Seo;
 };

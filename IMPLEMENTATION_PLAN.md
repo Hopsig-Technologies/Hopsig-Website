@@ -142,7 +142,9 @@ Check: throwaway page vs the closing section of `reference/site/approach.html` a
 
 Check: Studio opens on the hosted URL; every singleton opens with empty fields; typegen output compiles in `web`.
 
-### Phase 3 — Seed
+### Phase 3 — Seed — DONE 2026-10-10
+
+`scripts/seed.mjs` (Node, not TS) → 74 documents imported into `development`. Gates: every string of `content/` lands in a document (seed.mjs verify), every reference link's label + destination exists in the seed (`check_links.py`, found and fixed three links extracted as plain text), `sanity documents validate` 0 errors (66 placeholder warnings, intended), `verify_dataset.py` all green. Schema changes made while seeding: industry `lead` became `fullCards` (it is a count in the generator), approach agentic got tags + links, services "How an engagement runs" got its link, notes index got read/draft labels, service record cap removed. `production` is untouched until Phase 12.
 
 - `scripts/seed.ts`: reads `content/*.json` and `content/pages/*.json` and writes NDJSON with deterministic `_id`s:
   - case-study record keys (`F0`, `C2`) become references;

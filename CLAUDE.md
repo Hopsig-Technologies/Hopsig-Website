@@ -26,6 +26,7 @@ Next.js (App Router, TypeScript, static generation, on-demand revalidation) on *
 
 Version notes (read `web/AGENTS.md`; the bundled docs in `web/node_modules/next/dist/docs/` win over memory):
 - Next 16 with `cacheComponents`: cache CMS reads with `'use cache'` + `cacheTag()` + `cacheLife()`; segment exports `revalidate` / `dynamic` / `fetchCache` throw. `revalidateTag(tag, 'max')` takes two arguments. `params` are async; use the generated `PageProps<'/x/[slug]'>` / `LayoutProps<'/'>` (run `next typegen`). `middleware.ts` is now `proxy.ts`. `generateStaticParams` must return at least one entry.
+- Seed (re-runnable, deterministic ids): `node scripts/seed.mjs` (writes `audit/seed.ndjson`, fails if any content string is missing) → `python scripts/check_links.py` → `pnpm --filter studio exec sanity dataset import ../audit/seed.ndjson --dataset development --replace` → `python scripts/verify_dataset.py`. `--replace` overwrites edits made in Studio: after the founders start editing, never re-seed a dataset they use.
 - Commands: `pnpm --filter studio typegen` (after any schema change; CI fails if `web/sanity/types.ts` is stale), `pnpm --filter studio deploy` (Studio at https://hopsig.sanity.studio), `pnpm dev` (web), `pnpm dev:studio`, `pnpm typecheck`, `pnpm lint`, `pnpm build`, `pnpm check:content`, `pnpm shot -- --name … --ref … --ref-sel … --url … --web-sel …`.
 
 ## Hard rules (from the brief; do not relax)
@@ -122,4 +123,6 @@ Full model in `IMPLEMENTATION_PLAN.md`. The facts that matter while building:
 - `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]") and conflicts with rule 7. Keep it out of the build until the founders decide.
 - The engagement panel shows illustrative initials ("A.K.", "S.R.", with years of experience) and illustrative numbers ("5 h 10 m → 18 m", "7 → 0", "14 / 14"). Rules 1 and 3 suggest they should be placeholders or removed; ask before building it.
 - Visible copy that describes the implementation: "Eight case notes, fetched from Sanity Studio." (home case index) and "… Fetched from Sanity Studio." (home notes). Probably prototype wording; ask before changing the copy.
+- The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel. Seeded verbatim; replace in Studio (e.g. with nothing: the rate comes from Site settings).
+- The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. Seeded verbatim; for counsel's review.
 - Home case-index order: now an explicit ordered list in Studio (`homePage.caseIndex.cases`), seeded in the reference order. The founders can reorder it there; `order` only sorts /work's "rest of the record".
