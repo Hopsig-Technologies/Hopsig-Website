@@ -80,9 +80,16 @@
 }
 
 @layer base {
-  /* The reference uses the browser default line-height; Tailwind's preflight sets 1.5. */
+  /* The reference uses the browser defaults that Tailwind's preflight changes: line-height normal (not 1.5) and
+     box-sizing content-box (not border-box), so its widths and min-widths mean the same here. Opt into border-box
+     per element where a layout needs it. */
   html {
     line-height: normal;
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: content-box;
   }
   body {
     margin: 0;

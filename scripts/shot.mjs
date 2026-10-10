@@ -2,7 +2,8 @@
 //
 //   node scripts/shot.mjs --name approach-closing \
 //     --ref reference/site/approach.html --ref-sel "section.close" \
-//     --url http://localhost:3000/phase1 --web-sel "main > div:last-child section" [--width 1440]
+//     --url http://localhost:3000/approach --web-sel "section.close" [--width 1440] [--hover ".hdr .dd:nth-of-type(1)"]
+//     [--clip-height 520]   # extend the element screenshot downwards (open dropdowns overflow the header)
 //
 // Writes audit/shots/<name>.{ref,web,diff}.png and prints the share of differing pixels. Canvases are hidden and
 // reveal/entrance animations frozen on both sides, so the diff is about layout, type and colour only.
@@ -28,23 +29,32 @@ const FREEZE = `
   *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; caret-color: transparent !important; }
 `;
 
-async function grab(browser, url, selector, file) {
+async function grab(browser, url, selector, file, hover) {
   const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
   await page.goto(url, { waitUntil: "networkidle" });
   await page.addStyleTag({ content: FREEZE });
   await page.evaluate(() => document.fonts.ready);
   const el = page.locator(selector).first();
   await el.scrollIntoViewIfNeeded();
+  if (hover) {
+    await page.locator(hover).first().hover();
+    await page.waitForTimeout(400);
+  }
   await page.waitForTimeout(150);
-  await el.screenshot({ path: file });
+  if (args["clip-height"]) {
+    const box = await el.boundingBox();
+    await page.screenshot({ path: file, clip: { x: box.x, y: box.y, width: box.width, height: Number(args["clip-height"]) } });
+  } else {
+    await el.screenshot({ path: file });
+  }
   await page.close();
 }
 
 const browser = await chromium.launch();
 const refFile = `${out}/${args.name}.ref.png`;
 const webFile = `${out}/${args.name}.web.png`;
-await grab(browser, pathToFileURL(resolve(args.ref)).href, args["ref-sel"], refFile);
-await grab(browser, args.url, args["web-sel"], webFile);
+await grab(browser, pathToFileURL(resolve(args.ref)).href, args["ref-sel"], refFile, args.hover);
+await grab(browser, args.url, args["web-sel"], webFile, args.hover);
 await browser.close();
 
 const a = PNG.sync.read(readFileSync(refFile));

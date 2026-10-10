@@ -34,7 +34,9 @@ One phase is one Claude Code session (or `/clear` between). Every UI phase: `pnp
 
 Copy converted to `web/content` (24 modules; every string verified present), Studio cut to 4 types (schema validate 0/0; typegen 10 queries / 20 types), `development` dataset migrated (44 documents imported, 35 of the removed types deleted, `verify_dataset.py` all ok, `documents validate` 0 errors), webhook re-created with the four-type filter, Studio deployed, `/phase4` removed, checks rewritten around `audit/content-corpus.json`. Deviation from the approved plan: `Href` is derived from `web/content/routes.ts` rather than Next's `typedRoutes`, because `typedRoutes` validates against routes that exist in the app and none of the 37 pages existed yet; switch to it in P9.
 
-### P1 — Chrome
+### P1 — Chrome — DONE 2026-10-10
+
+Header (client component, navigation strings as props; dropdowns on hover/focus/tap, Esc and outside click close, current page `.on`; reference breakpoints 1300/1180/1060; a Menu panel below 900px), Footer and Closing (server; Site settings substituted), `RingCanvas` (TS port of the reference `Field`, draws only on screen, reduced motion respected), `Lines`, the not-found page, `scripts/text_diff.py`. Measured against `404.html`: header 0.12%, Services/Industries/Company menus open 0.06/0.05/0.04%, footer 0.08%, closing 0.02% pixels differ; text diff 0 missing (1 intended extra: the mobile "Menu" button). Site settings → footer verified end to end (fill, then placeholder back on unset). Two global fixes found by the diffs: `box-sizing: content-box` (Tailwind preflight made the menu 18px narrow) and the mono font's adjusted fallback (drew → as ⟶). `/phase1` deleted. `Rich` moves to P2, where the first rich strings render.
 
 Header from `navigation.ts` (three dropdowns: hover/focus-within open, tap toggles, Esc and outside click close, current page `.on`; tighten at 1300, drop "Technologies" at 1180, hamburger below 900 with the same tokens), Footer (`site.footer` lines through `getFill`), `Closing` (ring canvas; `sub` falls back to `site.defaultClosing`), `Rich` (PortableText with the site's marks and link), `withMode` in use, `text_diff.mjs`; delete `/phase1`.
 Gate: shots of the header with each menu open vs `services/data-engineering.html` and the closing vs `approach.html`; the route is ○ in the build output; in draft mode an edited email in Site settings shows in the footer.
@@ -89,7 +91,7 @@ Dead-link crawl of every route; `typedRoutes: true` (all routes now exist) repla
 | `prune_dataset.mjs` | delete documents of removed types (used once in P0; keep for `production` if ever needed) |
 | `placeholders.mjs` | every bracketed token still on the site (static + dataset), minus Site settings that are filled — `pnpm placeholders` |
 | `shot.mjs` | Playwright element screenshots of a built route and its reference + pixel diff — `pnpm shot` |
-| `text_diff.mjs` (P1) | visible text of a built route vs its reference page |
+| `text_diff.py` | visible text of a built route vs its reference page (multiset: missing / extra) |
 
 ## Still open (blocking the phases named)
 
