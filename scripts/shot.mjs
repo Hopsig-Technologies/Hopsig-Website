@@ -3,6 +3,7 @@
 //   node scripts/shot.mjs --name approach-closing \
 //     --ref reference/site/approach.html --ref-sel "section.close" \
 //     --url http://localhost:3000/approach --web-sel "section.close" [--width 1440] [--hover ".hdr .dd:nth-of-type(1)"]
+//     [--no-header]     # hide the sticky header (element shots further down a long page)
 //     [--clip-height 520]   # extend the element screenshot downwards (open dropdowns overflow the header)
 //
 // Writes audit/shots/<name>.{ref,web,diff}.png and prints the share of differing pixels. Canvases are hidden and
@@ -33,7 +34,8 @@ async function grab(browser, url, selector, file, hover) {
   const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
   await page.goto(url, { waitUntil: "load" });
   await page.waitForTimeout(800); // dev servers keep a connection open, so "networkidle" never arrives
-  await page.addStyleTag({ content: FREEZE });
+  // --no-header: hide the sticky header, which otherwise lands over element shots taken mid-page.
+  await page.addStyleTag({ content: FREEZE + ("no-header" in args ? "#hdr { visibility: hidden !important; }" : "") });
   await page.evaluate(() => document.fonts.ready);
   const el = page.locator(selector).first();
   await el.scrollIntoViewIfNeeded();

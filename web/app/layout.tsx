@@ -13,6 +13,7 @@ import "./globals.css";
 import "./chrome.css";
 import "./blocks.css";
 import "./sections.css";
+import "./home.css";
 
 const grotesk = Space_Grotesk({
   subsets: ["latin"],

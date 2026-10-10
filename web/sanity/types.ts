@@ -382,6 +382,11 @@ export type CASES_FEATURED_QUERY_RESULT = Array<{
 }>;
 
 // Source: ../web/sanity/queries.ts
+// Variable: CASE_COUNT_QUERY
+// Query: count(*[_type == "caseStudy"])
+export type CASE_COUNT_QUERY_RESULT = number;
+
+// Source: ../web/sanity/queries.ts
 // Variable: CASES_ALL_QUERY
 // Query: *[_type == "caseStudy"] | order(order asc){  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric}
 export type CASES_ALL_QUERY_RESULT = Array<{
@@ -497,6 +502,7 @@ declare global {
     '*[_type == "siteSettings" && _id == "siteSettings"][0]{\n  companyRegNo, year, email, legalForm, address, vatStatus, bankCountry, dayRate, monthlyRetainer, agencyDiscount, insurance, bookingUrl\n}': SETTINGS_QUERY_RESULT;
     '*[_type == "caseStudy" && source in $keys]{\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric\n}': CASES_BY_KEY_QUERY_RESULT;
     '*[_type == "caseStudy" && featured == true] | order(featuredOrder asc){\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, filterDomain\n}': CASES_FEATURED_QUERY_RESULT;
+    'count(*[_type == "caseStudy"])': CASE_COUNT_QUERY_RESULT;
     '*[_type == "caseStudy"] | order(order asc){\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric\n}': CASES_ALL_QUERY_RESULT;
     '*[_type == "caseStudy" && hasPage == true && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, seo\n}': CASE_BY_SLUG_QUERY_RESULT;
     '*[_type == "caseStudy" && hasPage == true].slug.current': CASE_SLUGS_QUERY_RESULT;

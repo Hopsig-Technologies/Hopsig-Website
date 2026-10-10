@@ -17,6 +17,9 @@ export const CASES_FEATURED_QUERY = defineQuery(`*[_type == "caseStudy" && featu
   _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, filterDomain
 }`);
 
+/** Home "All {count} case notes": how many case studies there are. */
+export const CASE_COUNT_QUERY = defineQuery(`count(*[_type == "caseStudy"])`);
+
 /** /work: every case study by order; the page renders the first N as full cards. */
 export const CASES_ALL_QUERY = defineQuery(`*[_type == "caseStudy"] | order(order asc){
   _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric

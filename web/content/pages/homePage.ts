@@ -20,7 +20,12 @@ export const homePage = {
         variant: "outline",
       },
     ],
-    facts: ["Principal-level talent", "10 days to deployment", "Daily overlap with your team", "Flexible terms"],
+    facts: [
+      { value: "Principal-level", label: "talent" },
+      { value: "10 days", label: "to deployment" },
+      { value: "Daily", label: "overlap with your team" },
+      { value: "Flexible", label: "terms" },
+    ],
     beats: [
       {
         when: "Day 0",
@@ -48,40 +53,9 @@ export const homePage = {
         text: "Shipped, slipped, cost against plan. Continue, or hand over. Your call, every fortnight.",
       },
     ],
-    scrollHint: "Scroll ↓ the engagement, in five beats",
+    // The reference spaces the arrow with a no-break space.
+    scrollHint: "Scroll ↓ \u00a0 the engagement, in five beats",
   },
-  domains: [
-    {
-      name: "Payments, wallets & KYC",
-      text: "An embedded payments platform: 0 to 150+ merchants and 100K+ transactions in four months, PCI-DSS, automated KYC.",
-      lead: "F0",
-    },
-    {
-      name: "Retail, loyalty & e-commerce",
-      text: "Loyalty at 5× repeat transactions; personalisation at 261× ROI; POS in 100+ locations; funnel work on a Rs 95M store.",
-      lead: "F1",
-    },
-    {
-      name: "Healthcare & regulated",
-      text: "A regulated health-insurance platform, a telemedicine launch, IoT alerting in nursing homes, a surgical imaging platform.",
-      lead: "F8",
-    },
-    {
-      name: "AI agents, RAG & evaluation",
-      text: "An agentic delivery framework on Claude Code, a multi-agent orchestration framework, RAG in a live journey, 98% computer vision.",
-      lead: "F5",
-    },
-    {
-      name: "Digital signage & IoT",
-      text: "A multi-tenant signage SaaS built by one engineer; an enterprise platform across four continents; telemetry for 200+ buildings.",
-      lead: "F6",
-    },
-    {
-      name: "Logistics & platforms",
-      text: "Real-time freight dispatch; a three-role transporter app; public telemetry APIs for a global hardware company.",
-      lead: "C2",
-    },
-  ],
   services: {
     head: {
       eyebrow: "Core services",
@@ -145,7 +119,7 @@ export const homePage = {
     pageLink: "Read the case note →",
     askLink: "Ask about this →",
     allLink: {
-      label: "All 32 case notes →",
+      label: "All {count} case notes →",
       href: "/work",
       variant: "link",
     },
@@ -228,7 +202,7 @@ export const homePage = {
       title: "Things we would say on the call anyway.",
       aside: "Short and opinionated, written by the people doing the work. Fetched from Sanity Studio.",
     },
-    countLine: "6 notes · no newsletter, no pop-up",
+    countLine: "{count} notes · no newsletter, no pop-up",
     latestLabel: "Latest",
     readLabel: "Read the note →",
     moreTitle: "Everything else we have written",

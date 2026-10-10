@@ -61,8 +61,11 @@ def main():
         route = ROUTES[ref]
         body, chrome = page_links(ref)
         have = {(norm(l['label']), l['href']) for l in corpus[f'web/content/pages/{name}.ts']['links']}
+        # A label with {tokens} ("All {count} case notes") is filled at render time: match it as a pattern.
+        patterns = [(re.compile('^' + re.sub(r'\\{\w+\\}', '.+', re.escape(l)) + '$'), h) for l, h in have if '{' in l]
         missing = sorted(l for l in body - have
-                         if l[0] not in GENERATED
+                         if not any(rx.match(l[0]) and h == l[1] for rx, h in patterns)
+                         and l[0] not in GENERATED
                          and not re.match(r'^\d{2}', l[0])  # numbered rows render from collections
                          and not l[1].startswith(('/work/', '/notes/', '/services/', '/industries/')))
         # Header/footer: menu labels are composed (number + label + description), so compare destinations only.

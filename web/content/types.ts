@@ -191,11 +191,11 @@ export type HomePage = {
     title: string;
     sub: string;
     buttons: Cta[];
-    facts: string[];
+    /** The mono line under the buttons: `value` in the text colour, then `label`. */
+    facts: Fact[];
     beats: Step[];
     scrollHint: string;
   };
-  domains: { name: string; text: string; lead: CaseKey }[];
   services: {
     head: SectionHead;
     scrollHint: string;
@@ -223,6 +223,7 @@ export type HomePage = {
   record: { head: SectionHead; link: Cta; stats: Fact[]; strip: string[] };
   notes: {
     head: SectionHead;
+    /** `{count}`: every note, drafts included. */
     countLine: string;
     latestLabel: string;
     readLabel: string;

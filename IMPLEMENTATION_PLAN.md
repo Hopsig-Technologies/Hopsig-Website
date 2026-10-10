@@ -76,7 +76,11 @@ Gate: text diff; Presentation edit of a case note shows in the preview.
 `/notes` (published rows link, drafts inert and marked `[DRAFT]`) and `/notes/[slug]` (sticky aside: in-this-note from h2s, the offer, CTA; "Next notes").
 Gate: text diff; Presentation edit of a body shows in the preview.
 
-### P7 — Home
+### P7 — Home — DONE 2026-10-10
+
+Hero scroll sequence (`HomeHero`: 240vh sticky stage; copy fades, the dot field forms the ring, five beats caption it, rail fills, header CTA lights past 30%), core-services file (`ServiceFile`: sticky sheets one tab apart, sized to the tallest, lime tabs when stacked, legend, tab click scrolls), case index (`CaseIndex`: featured case studies by `featuredOrder`; filters with counts, one row open at a time with count-up and before/after bars, cursor-following measured card on fine pointers), mid CTA, capabilities marquee, why, the record, notes journal (first note featured, next five as a ledger; unpublished ones link to /notes), closing. Text diff 0 missing (extras: the before/after bar labels from the record, which the reference also shows once a row opens). Hero and closing pixel diffs 0.03–0.08%; the page is 39px shorter only by the two build notes (never ship) and the sheets are 5px taller because ours are sized after the web fonts load (the reference sizes them before). Counts are live: "All {count} case notes", "{count} notes". `homePage.domains` removed (not on any reference page). Static; console clean.
+
+**Found while checking P7 (affects every page except /notes): with JavaScript off the main content is invisible.** The production HTML puts `<main>` in a Suspense segment that is streamed out of order (`<div hidden id="S:0">` + `$RC` script), so without JS it stays hidden. To fix next (rule 10), before P8.
 
 Hero scroll sequence (240vh, five beats), domains strip, services file stack (read `generator/site.py core_services()` and the `fSize` / `.stacked` / `.dwell` / `.over` logic first), case index (`CASES_FEATURED_QUERY`; cursor card, expansion, filters), notes journal, the record, closing. Last of the big pages because it composes P3/P5/P6 components.
 Gate: shot per section.
