@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { Suspense } from "react";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { JsClass } from "@/components/JsClass";
+import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 
 const grotesk = Space_Grotesk({
@@ -31,7 +36,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <JsClass />
         {children}
+        <Suspense fallback={null}>
+          <SanityTools />
+        </Suspense>
       </body>
     </html>
+  );
+}
+
+/** Live updates for everyone; click-to-edit overlays and an exit link only in draft mode. */
+async function SanityTools() {
+  const { isEnabled } = await draftMode();
+  return (
+    <>
+      <SanityLive includeDrafts={isEnabled} />
+      {isEnabled ? (
+        <>
+          <VisualEditing />
+          <DisableDraftMode />
+        </>
+      ) : null}
+    </>
   );
 }

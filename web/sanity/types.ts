@@ -1416,3 +1416,54 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: ../web/sanity/queries.ts
+// Variable: PHASE4_QUERY
+// Query: {  "approach": *[_type == "approachPage" && _id == "approachPage"][0]{ hero{ eyebrow, title, sub }, closing{ eyebrow, title, sub } },  "settings": *[_type == "siteSettings" && _id == "siteSettings"][0]{ companyRegNo, year, email, dayRate, footer, defaultClosing },  "cases": *[_type == "homePage" && _id == "homePage"][0].caseIndex.cases[]->{ _id, title, source }}
+export type PHASE4_QUERY_RESULT = {
+  approach: {
+    hero: {
+      eyebrow: string | null;
+      title: string;
+      sub: string | null;
+    } | null;
+    closing: {
+      eyebrow: string | null;
+      title: string;
+      sub: string | null;
+    } | null;
+  } | null;
+  settings: {
+    companyRegNo: string | null;
+    year: string | null;
+    email: string | null;
+    dayRate: number | null;
+    footer: {
+      tagline?: string;
+      legalLeft?: string;
+      legalRight?: string;
+    } | null;
+    defaultClosing: {
+      eyebrow?: string;
+      title?: string;
+      sub?: string;
+      emailLine?: string;
+    } | null;
+  } | null;
+  cases: Array<{
+    _id: string;
+    title: string;
+    source: string | null;
+  }> | null;
+};
+
+// Query TypeMap
+declare global {
+  interface SanityQueries {
+    '{\n  "approach": *[_type == "approachPage" && _id == "approachPage"][0]{ hero{ eyebrow, title, sub }, closing{ eyebrow, title, sub } },\n  "settings": *[_type == "siteSettings" && _id == "siteSettings"][0]{ companyRegNo, year, email, dayRate, footer, defaultClosing },\n  "cases": *[_type == "homePage" && _id == "homePage"][0].caseIndex.cases[]->{ _id, title, source }\n}': PHASE4_QUERY_RESULT;
+  }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
+}
