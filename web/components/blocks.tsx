@@ -34,7 +34,18 @@ export function MoreLink({ cta }: { cta: Cta }) {
 }
 
 /** Page hero: drifting dot field, eyebrow, 72px title, intro, then buttons or chips and the facts row. */
-export function PageHero({ hero, fill, size = 22 }: { hero: PageHeroCopy; fill: Fill; size?: 22 | 26 }) {
+/** `buttonRow="chips"`: buttons sit in the chip row (no top margin), as on /work. */
+export function PageHero({
+  hero,
+  fill,
+  size = 22,
+  buttonRow = "buttons",
+}: {
+  hero: PageHeroCopy;
+  fill: Fill;
+  size?: 22 | 26;
+  buttonRow?: "buttons" | "chips";
+}) {
   const buttons = hero.buttons?.filter((b) => b.variant !== "chip") ?? [];
   const chips = hero.buttons?.filter((b) => b.variant === "chip") ?? [];
   return (
@@ -56,7 +67,7 @@ export function PageHero({ hero, fill, size = 22 }: { hero: PageHeroCopy; fill: 
           </div>
         ) : null}
         {buttons.length ? (
-          <div className="ph-btns">
+          <div className={buttonRow === "chips" ? "chips" : "ph-btns"}>
             {buttons.map((b) => (
               <Button key={b.label} href={b.href} variant={b.variant === "lime" ? "lime" : "outline"}>
                 {b.label}

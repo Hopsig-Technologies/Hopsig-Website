@@ -62,7 +62,9 @@ Gate: shots on three pages, text diff on all nine.
 `/industries` (rows with the lead fact and "{count} notes") and the six `/industries/[slug]` pages.
 Gate: text diff on seven.
 
-### P5 — Work
+### P5 — Work — DONE 2026-10-10
+
+`/work` (all case studies by `order`: 12 cards, the rest as rows from 13; "How we report" with the engagement panel's measured scene) and `/work/[slug]` for the three `hasPage` case studies (hero facts; article; Measured box, which shows "—" and "Number to be added from the record." when there is no figure; "More from the record" by the generator's rule: same first domain word, else the first three F records). Text diff 0 missing on all four; pixel diff /work 0.17%, case notes 0.07–0.12%; static; console clean. Case-page wording corrected to the reference's lowercase labels (the coverage check is case-insensitive, so it had not noticed). `generateMetadata` uses the cached fetch (uncached data there is an error under cacheComponents). Dev-server note: edits under `web/content` sometimes need a dev-server restart to show (component edits hot-reload).
 
 `/work` (`CASES_ALL_QUERY`: the first 12 as full cards, the rest compact; engagement panel) and `/work/[slug]` for the three `hasPage` case studies (`generateStaticParams` from `CASE_SLUGS_QUERY`; "More from the record").
 Gate: text diff; Presentation edit of a case note shows in the preview.
