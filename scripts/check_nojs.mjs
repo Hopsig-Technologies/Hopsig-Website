@@ -10,7 +10,8 @@ const base = process.argv[2] || "http://localhost:3100";
 const routes = [
   "/", "/approach", "/working-with-us", "/services", "/services/custom-software", "/services/ai-machine-learning",
   "/industries", "/industries/fintech-payments", "/work", "/work/payments-platform", "/notes",
-  "/notes/the-sow-is-the-pitch", "/does-not-exist",
+  "/notes/the-sow-is-the-pitch", "/join", "/rates", "/why-not-just-hire", "/book", "/brief", "/ai-transformation",
+  "/agentic-flow", "/for-agencies", "/privacy", "/terms", "/does-not-exist",
 ];
 
 const browser = await chromium.launch();

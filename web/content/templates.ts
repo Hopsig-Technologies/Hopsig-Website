@@ -104,6 +104,16 @@ export const templates = {
       { label: "See our work", href: "/work", variant: "outline" },
     ],
   },
+  /** The estimator's computed lines (rates, why-not-just-hire). `{n}` is a number; the total uses the Site settings
+   *  day rate, or shows the days × [YOUR RATE] until it is set. */
+  estimator: {
+    engineer: "{n} engineer",
+    engineers: "{n} engineers",
+    months: "{n} months",
+    days: "{n} engineer-days",
+    total: "{total} at {rate} / day",
+    totalNoRate: "{days} × [YOUR RATE]",
+  },
   legalPage: {
     contentsTitle: "Contents",
   },

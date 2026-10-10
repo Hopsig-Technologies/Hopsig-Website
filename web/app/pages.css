@@ -1,0 +1,422 @@
+/* P8 pages: legal, join, rates, compare, book, brief, ai-transformation, agentic-flow, for-agencies.
+   Numbers are the reference's inline styles and page CSS. */
+
+/* ---------------------------------------------------------------- legal */
+.legal-body {
+  padding: 80px 0 120px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 96px;
+  align-items: start;
+}
+.legal {
+  max-width: 760px;
+}
+.legal h2 {
+  margin: 44px 0 12px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.legal p,
+.legal li {
+  font-size: 16px;
+  line-height: 27px;
+  color: var(--sub);
+}
+.legal ul,
+.legal ol {
+  padding-left: 20px;
+  margin: 0 0 16px;
+}
+.legal p {
+  margin: 0 0 16px;
+}
+.legal-aside {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.legal-toc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--sub);
+}
+.legal-foot {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+@media (max-width: 900px) {
+  .legal-body {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .legal-aside {
+    position: static;
+  }
+}
+
+/* ---------------------------------------------------------------- join */
+.role-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 1fr auto;
+  gap: 20px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.role-t {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.role-x {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--sub);
+}
+.role-s {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.mono-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+@media (max-width: 900px) {
+  .role-row {
+    grid-template-columns: 32px 1fr;
+  }
+  .role-x,
+  .role-s {
+    grid-column: 2;
+  }
+}
+
+/* ---------------------------------------------------------------- rates, estimator, compare */
+.rate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.rate {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rate.hi {
+  box-shadow: inset 0 0 0 1px var(--acc);
+}
+.rate .big {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.rate .big small {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 400;
+}
+.rate-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--sub);
+}
+.est {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 36px;
+}
+.est-sub {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 12px 0 28px;
+}
+.est label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.est input[type="range"] {
+  width: 100%;
+  accent-color: var(--acc);
+  margin: 0 0 28px;
+}
+.est-note {
+  font-size: 13px;
+  line-height: 21px;
+  color: var(--dim);
+}
+.est-note a {
+  text-decoration: none;
+}
+.est .out {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 1px solid var(--line);
+  padding-left: 48px;
+}
+.est .out .n {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+.terms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+}
+.terms div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-top: 1px solid var(--hair);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.terms div span:first-child {
+  color: var(--dim);
+}
+.cmp {
+  border-top: 1px solid var(--line);
+}
+.cmp > div {
+  display: grid;
+  grid-template-columns: 170px repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--sub);
+}
+.cmp > div > span:first-child {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding-top: 4px;
+}
+.cmp > div > span:last-child {
+  color: var(--text);
+}
+.cmp .hd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.cmp .hd span:last-child {
+  color: var(--acc);
+}
+@media (max-width: 900px) {
+  .rate-grid,
+  .est,
+  .terms {
+    grid-template-columns: 1fr;
+  }
+  .est .out {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .cmp {
+    overflow-x: auto;
+  }
+  .cmp > div {
+    min-width: 760px;
+  }
+}
+/* The reference's card button is an inline link: its padding overflows the line instead of adding height. */
+.rate-btn {
+  margin-top: auto;
+  padding-top: 10px;
+}
+.rate-btn .btn {
+  display: inline;
+}
+
+/* A Portable Text link set as the mono "more" label inside a sentence (AI transformation's priced line). */
+.more-inline a {
+  display: inline-block;
+  padding: 10px 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* ---------------------------------------------------------------- agentic flow */
+/* Inline, as in the reference (Tailwind's preflight makes svg a block), keeping its baseline gap below. */
+.flow {
+  display: inline;
+  vertical-align: baseline;
+}
+.flow .node {
+  cursor: pointer;
+  outline: none;
+}
+.flow .node rect {
+  transition:
+    stroke 0.25s,
+    fill 0.25s;
+}
+/* Focus shows as the accent outline on the node box (rule 11), the same as hover. */
+.flow .node:hover rect,
+.flow .node:focus-visible rect,
+.flow .node.on rect {
+  stroke: var(--acc);
+}
+.flow .node:focus-visible rect {
+  stroke-width: 2;
+}
+.flist-hd {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 44px 170px 1fr 1fr 1fr 1fr;
+  gap: 18px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.flist .frow {
+  display: grid;
+  grid-template-columns: 44px 170px 1fr 1fr 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--sub);
+  transition: background 0.25s;
+}
+.flist .frow.on {
+  background: var(--panel);
+}
+.flist .frow .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--acc);
+  scroll-margin-top: 200px;
+}
+.flist .frow .t {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.2;
+}
+.flist .frow .a {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-top: 6px;
+}
+.flist .frow .k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 4px;
+}
+.agents {
+  padding: 100px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.agents-h {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.tooling {
+  padding: 100px 0 120px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 72px;
+  align-items: start;
+}
+.where {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.where-t {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.where-x {
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--dim);
+}
+@media (max-width: 900px) {
+  .flist-hd {
+    display: none;
+  }
+  .flist .frow {
+    grid-template-columns: 32px 1fr;
+  }
+  .flist .frow > *:nth-child(n + 3) {
+    grid-column: 2;
+  }
+  .agents,
+  .tooling {
+    grid-template-columns: 1fr;
+  }
+}

@@ -97,6 +97,8 @@ export const joinPage = {
       aside: "[OPEN / PIPELINE] · set per role",
     },
     statusPlaceholder: "[STATUS]",
+    // What a role shows once its status is set in Studio (the aside reads "[OPEN / PIPELINE]").
+    statusLabels: { open: "Open", pipeline: "Pipeline" },
     payLine: "Pay: [PAY BANDS BY LEVEL] · paid monthly in [PKR / USD] · equipment provided · [LEAVE POLICY]",
   },
   faq: {

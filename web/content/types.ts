@@ -130,6 +130,7 @@ export type Templates = {
     closingEyebrow: string;
     buttons: Cta[];
   };
+  estimator: { engineer: string; engineers: string; months: string; days: string; total: string; totalNoRate: string };
   legalPage: { contentsTitle: string };
 };
 
@@ -318,6 +319,14 @@ export type BookPage = {
     title: string;
     timezone: string;
     prompt: string;
+    pickFirst: string;
+    /** `{day} {date} {month} · {time}`. */
+    summary: string;
+    dayNames: string[];
+    monthNames: string[];
+    times: string[];
+    emailFallback: string;
+    notConnected: string;
     fieldPlaceholders: string[];
     submit: string;
     bookedLabel: string;
@@ -341,6 +350,8 @@ export type BriefPage = {
     whenOptions: string[];
     budgetLabel: string;
     submit: string;
+    emailFallback: string;
+    notConnected: string;
     receivedLabel: string;
     receivedTitle: string;
     receivedText: string;
@@ -424,7 +435,7 @@ export type JoinPage = {
   hero: PageHero;
   work: TitleTextSection;
   vetting: TitleTextSection;
-  roles: { head: SectionHead; statusPlaceholder: string; payLine: string };
+  roles: { head: SectionHead; statusPlaceholder: string; statusLabels: { open: string; pipeline: string }; payLine: string };
   faq: FaqSection;
   closing: Closing;
 };

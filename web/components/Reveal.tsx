@@ -59,6 +59,7 @@ export function Rv({
   className = "",
   style,
   delay,
+  onMouseEnter,
   children,
 }: {
   as?: "div" | "section" | "span" | "article" | "aside";
@@ -66,6 +67,7 @@ export function Rv({
   style?: CSSProperties;
   /** Stagger in ms (transition-delay), as the reference does for rows and cards. */
   delay?: number;
+  onMouseEnter?: () => void;
   children?: ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -79,6 +81,7 @@ export function Rv({
       ref={ref as never}
       className={`rv${shown ? " in" : ""}${className ? " " + className : ""}`}
       style={delay !== undefined ? { transitionDelay: `${delay}ms`, ...style } : style}
+      onMouseEnter={onMouseEnter}
     >
       {children}
     </Tag>

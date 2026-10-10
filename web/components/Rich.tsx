@@ -10,12 +10,12 @@ type Block = PortableTextBlock & { children?: Span[] };
 /**
  * Portable Text (Sanity content, or static rich strings converted by lib/portable.ts) with the site's marks:
  * bold, italic, links. Span text goes through `fill`, and any placeholder still bracketed gets the `mark` class
- * (phx = mono accent, as the reference shows "[ADD THE NUMBER]"). `inline` renders blocks without <p>.
+ * (phx = mono accent, as the reference shows "[ADD THE NUMBER]"; none = plain text). `inline` renders blocks without <p>.
  */
 /** Any Portable Text array: Sanity query results (stega-typed) or lib/portable.ts output. */
-type Value = ReadonlyArray<{ _type: string; _key: string }> | null | undefined;
+type Value = ReadonlyArray<{ _type: string; _key?: string }> | null | undefined;
 
-export function Rich({ value, fill, mark = "phx", inline = false }: { value: Value; fill: Fill; mark?: "phx" | "tok"; inline?: boolean }) {
+export function Rich({ value, fill, mark = "phx", inline = false }: { value: Value; fill: Fill; mark?: "phx" | "tok" | "none"; inline?: boolean }) {
   if (!value?.length) return null;
   const prepared = (value as unknown as Block[]).map((b) => {
     if (b._type !== "block" || !b.children) return b;
@@ -23,6 +23,11 @@ export function Rich({ value, fill, mark = "phx", inline = false }: { value: Val
     for (const c of b.children) {
       if (c._type !== "span") {
         children.push(c);
+        continue;
+      }
+      // Plain tokens: keep the span whole, so the text stays one node.
+      if (mark === "none") {
+        children.push({ ...c, text: fill(c.text ?? "") });
         continue;
       }
       fill(c.text ?? "")
@@ -43,7 +48,7 @@ export function Rich({ value, fill, mark = "phx", inline = false }: { value: Val
         const href = (v as { href?: string })?.href ?? "#";
         return href.startsWith("/") ? <Link href={href as never}>{children}</Link> : <a href={href}>{children}</a>;
       },
-      __token: ({ children }) => <span className={mark}>{children}</span>,
+      __token: ({ children }) => (mark === "none" ? <>{children}</> : <span className={mark}>{children}</span>),
     },
   };
   return <PortableText value={prepared as PortableTextBlock[]} components={components} />;

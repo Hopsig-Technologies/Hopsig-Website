@@ -28,12 +28,22 @@ export const bookPage = {
     title: "Next week · 30 minutes",
     timezone: "GMT",
     prompt: "Pick a day and a time (GMT).",
+    // The calendar's own words (the reference's script): the week shown is next Monday to Friday.
+    pickFirst: "Pick a day and a time first.",
+    summary: "{day} {date} {month} · {time} GMT · 30 min · with Hopsig",
+    dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    times: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"],
+    emailFallback: "[your email]",
+    // Shown instead of the confirmation while no booking tool or email provider is connected (not in the
+    // reference; decided 2026-10-10: build now, connect later).
+    notConnected: "Booking is not connected yet. Email [HELLO@HOPSIG.COM] and we will reply within one working day.",
     fieldPlaceholders: ["Your name", "Work email", "Company · team size", "The problem, in a sentence or two"],
     submit: "Confirm the call",
     bookedLabel: "Booked",
     bookedTitle: "See you then.",
     bookedText:
-      "Invite sent to .\nThe people who would do the work will be on it. If anything changes, reply to the invite.",
+      "Invite sent to {email}.\nThe people who would do the work will be on it. If anything changes, reply to the invite.",
     checklist: [
       "Bring the problem, not a brief",
       "Someone who can say yes to a scope",

@@ -1,0 +1,270 @@
+/* /book and /brief: hero with the form card beside it, the calendar, the brief form, the mono strip.
+   Numbers are the reference's (book.html, brief.html). */
+.book {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 64px;
+  align-items: start;
+}
+.book-l {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.book-h1 {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+.book-steps {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  max-width: 520px;
+}
+.book-step {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+.book-step-n {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--acc);
+}
+.book-step-t {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.book-step-x {
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--dim);
+  margin-top: 4px;
+}
+.book-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.8;
+}
+.book-note a {
+  display: inline-block;
+  padding: 4px 0;
+  text-decoration: none;
+}
+.cal {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 112px;
+}
+.cal .live {
+  display: flex;
+  flex-direction: column;
+}
+.cal.done .live {
+  display: none;
+}
+.cal .confirm {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+}
+.cal.done .confirm {
+  display: flex;
+}
+.confirm-t {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+.cal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cal-sum {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--sub);
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.days {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+.slots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.days button,
+.slots button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sub);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 6px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.days button b {
+  display: block;
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.days button.on,
+.slots button.on {
+  border-color: var(--acc);
+  color: var(--bg);
+  background: var(--acc);
+}
+.days button.on b {
+  color: var(--bg);
+}
+.f {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.brief .f {
+  gap: 10px;
+}
+.f input,
+.f textarea {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.f input:focus,
+.f textarea:focus {
+  border-color: var(--dim);
+}
+.f textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.f .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.btnp {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background: var(--btn);
+  color: var(--btnText);
+  border: 0;
+  cursor: pointer;
+}
+.btnp:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.brief input,
+.brief textarea {
+  background: transparent;
+  padding: 13px 14px;
+}
+.brief input:focus,
+.brief textarea:focus {
+  border-color: var(--acc);
+}
+.brief textarea {
+  min-height: 120px;
+}
+.brief .lbl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-top: 8px;
+}
+.chips2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chips2 button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--dim);
+  cursor: pointer;
+}
+.chips2 button.on {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+@media (max-width: 1060px) {
+  .book {
+    grid-template-columns: 1fr;
+  }
+  .cal {
+    position: static;
+  }
+}
+@media (max-width: 900px) {
+  .book-h1 {
+    font-size: 44px;
+  }
+  .strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

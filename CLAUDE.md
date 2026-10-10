@@ -83,8 +83,8 @@ Seam between tones: 120px band of 1px dots on a 22px grid, masked to fade (`.sea
 | Steps | approach, service pages | Day 0 / Day 3 / Day 10 / Week 6 / Fortnightly beats. |
 | FAQ | service, industry, agentic | Disclosure rows, one open at a time. |
 | Estimator | `rates.html` `#est`, `why-not-just-hire.html` | Engineers (slider) × months (slider) × 21 working days × day rate. Until `siteSettings.dayRate` is set, the total reads "N × [YOUR RATE]". Keep its code page-local so `[YOUR RATE]` is not in a shared JS chunk. |
-| Calendar | `book.html` `#cal` | Visual only; wire to `siteSettings.bookingUrl` when the tool is chosen. |
-| Brief form | `brief.html` `#bf` | Posts to a Vercel route handler that emails `siteSettings.briefRecipient`; submissions are not stored in Sanity. |
+| Calendar | `book.html` `#cal` | `components/ContactForms.tsx` `BookCalendar`: next week's days, eight GMT slots, the fields. Confirm opens `siteSettings.bookingUrl` when set; otherwise posts to `/api/contact`. The "Booked" card shows only after a successful send, never as decoration. |
+| Brief form | `brief.html` `#bf` | `BriefForm` posts to `/api/contact` (`app/api/contact/route.ts` → `lib/contact.ts` `sendContact`), which will email `siteSettings.briefRecipient`; submissions are not stored. Until a provider is wired it answers 503 and the form shows `notConnected` (email us instead). |
 | Flow diagram | `agentic-flow.html` | SVG: six nodes from `agenticFlowPage.flow.stages`, three "A PERSON SIGNS" gates in Lime; hovering a node highlights its table row and vice versa. |
 | Closing | every page | Ring canvas + eyebrow + 56px h2 + two buttons + email line. |
 
@@ -123,4 +123,5 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 - `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]", `templates.ts` → `notePage.heroEyebrow`) and conflicts with rule 7. It is out of the build (`notePage.heroEyebrow` is "Note · {category}", recorded in `content/deviations.json`) until the founders decide.
 - Visible copy that describes the implementation: "Eight case notes, fetched from Sanity Studio." (home case index) and "… Fetched from Sanity Studio." (home notes). Probably prototype wording; ask before changing the copy.
 - The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel; the rate now comes from Site settings. Ask before rewording.
+- Booking tool for `/book` and email provider for `/brief` (and the booking request): not chosen. Both are stubbed so nothing pretends to work (`bookingUrl` in Site settings; `sendContact` in `web/lib/contact.ts`). The `notConnected` lines in `bookPage`/`briefPage` are new copy, to remove once connected.
 - The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. For counsel's review.

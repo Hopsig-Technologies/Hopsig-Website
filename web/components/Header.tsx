@@ -98,9 +98,12 @@ export function Header({ nav }: { nav: Navigation }) {
               </Link>
             ),
           )}
-          <Link href={nav.cta.href} className="cta">
-            {nav.cta.label}
-          </Link>
+          {/* Not on the page it points to (the reference's /book has no header CTA). */}
+          {pathname === nav.cta.href ? null : (
+            <Link href={nav.cta.href} className="cta">
+              {nav.cta.label}
+            </Link>
+          )}
         </nav>
         <button type="button" className="hdr-burger" aria-expanded={mobile} aria-controls="hdr-mobile" onClick={() => setMobile(!mobile)}>
           {mobile ? "Close" : "Menu"}

@@ -85,7 +85,10 @@ Hero scroll sequence (`HomeHero`: 240vh sticky stage; copy fades, the dot field 
 Hero scroll sequence (240vh, five beats), domains strip, services file stack (read `generator/site.py core_services()` and the `fSize` / `.stacked` / `.dwell` / `.over` logic first), case index (`CASES_FEATURED_QUERY`; cursor card, expansion, filters), notes journal, the record, closing. Last of the big pages because it composes P3/P5/P6 components.
 Gate: shot per section.
 
-### P8 — The rest
+### P8 — The rest — DONE 2026-10-10
+
+All ten pages, each against its reference: text diff 0 missing, full-page pixel diff 0.03–0.09% at identical heights (book/brief are 22px/7px shorter only by their build notes). `/privacy` and `/terms` share `components/LegalPage.tsx`; `/join` lists `jobListing` roles from Sanity (no status → `[STATUS]`; set → "Open"/"Pipeline"); `/rates` and `/why-not-just-hire` share the estimator (`components/Estimator.tsx`, words and tokens passed as props: no copy in any client chunk, checked in `.next/static`); `/book` (calendar; Confirm opens `siteSettings.bookingUrl` once set) and `/brief` post to `/api/contact`, whose sender (`lib/contact.ts`) returns "not configured" until an email provider is chosen, so the pages show an "email us instead" line rather than a fake confirmation; `/agentic-flow` draws the SVG from `agenticFlowPage.flow.stages` with node↔row hover sync; the header CTA is hidden on `/book`, as in the reference. JS-off check: 23 routes, 0 failures.
+**Still to connect (founders' decision):** the booking tool (`bookingUrl`) and the email provider (`sendContact`).
 
 `/join` + careers (`JOBS_QUERY`; `[STATUS]` verified with an empty status), `/rates` (page-local estimator; rate from Site settings), `/why-not-just-hire`, `/book` (calendar; `bookingUrl` when chosen), `/brief` (route handler → email; provider still to choose), `/ai-transformation`, `/agentic-flow` (SVG with hover sync), `/for-agencies`, `/privacy`, `/terms`, `not-found`.
 Gate: text diff each.

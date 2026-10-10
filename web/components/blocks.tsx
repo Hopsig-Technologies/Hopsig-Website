@@ -119,12 +119,13 @@ export function HeadRow({
   );
 }
 
-/** Three cards under a 2px rule; the first rule is the accent. */
-export function Cards({ items, fill }: { items: TitleText[]; fill: Fill }) {
+/** Three cards under a 2px rule; the first rule is the accent. `numbered` puts a mono 01, 02 … above each title. */
+export function Cards({ items, fill, numbered = false }: { items: TitleText[]; fill: Fill; numbered?: boolean }) {
   return (
     <div className="cards3">
       {items.map((it, i) => (
         <Rv key={it.title} className={`card3${i === 0 ? " first" : ""}`} delay={i * 90}>
+          {numbered ? <div className="tile2-n">{idx(i)}</div> : null}
           <div className="card3-t">{fill(it.title)}</div>
           {it.text ? (
             <div className="card3-x">
