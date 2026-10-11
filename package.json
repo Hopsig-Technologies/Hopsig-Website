@@ -13,7 +13,8 @@
     "placeholders": "node --no-warnings scripts/content_corpus.mjs && node scripts/placeholders.mjs",
     "anim:static": "node scripts/anim_static.mjs",
     "anim:test": "node scripts/anim_test.mjs",
-    "anim:flows": "node scripts/anim_flows.mjs"
+    "anim:flows": "node scripts/anim_flows.mjs",
+    "anim:audit": "node scripts/anim_audit.mjs"
   },
   "devDependencies": {
     "pixelmatch": "^8.0.0",
