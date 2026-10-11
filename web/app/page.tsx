@@ -14,7 +14,7 @@ import { HeroAnim } from "@/components/anim/HeroAnim";
 import { ServiceFile } from "@/components/home/ServiceFile";
 import { Capabilities } from "@/components/more";
 import { Surface } from "@/components/Surface";
-import { homePage as page, seoTemplates, services } from "@/content";
+import { homePage as page, seoTemplates, services, templates } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import { nn, tpl } from "@/lib/tpl";
@@ -23,6 +23,7 @@ import { CASE_COUNT_QUERY, CASES_FEATURED_QUERY, POSTS_QUERY } from "@/sanity/qu
 import { pageMeta } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/seo";
+import { longDate } from "@/lib/date";
 
 export const metadata: Metadata = pageMeta("/");
 
@@ -304,7 +305,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
                 <Link className="feat" href={feat.href as never} aria-label={`Read: ${stegaClean(feat.title)}`}>
                   <div className="k">
                     <b>{notes.latestLabel}</b>
-                    <span>{feat.category}</span>
+                    <span>{tpl(templates.notePage.rowMeta, { category: feat.category ?? "", date: longDate(feat.publishedAt) })}</span>
                   </div>
                   <h3>{fill(feat.title)}</h3>
                   <p>{fill(feat.excerpt)}</p>
@@ -322,7 +323,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
                         <span className="t" style={{ display: "inline-block" }}>
                           {fill(p.title)}
                         </span>
-                        <span className="c">{p.category}</span>
+                        <span className="c">{tpl(templates.notePage.rowMeta, { category: p.category ?? "", date: longDate(p.publishedAt) })}</span>
                       </span>
                       <span className="r">
                         <i>→</i>

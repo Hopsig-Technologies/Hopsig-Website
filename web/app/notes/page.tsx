@@ -5,13 +5,14 @@ import { Closing } from "@/components/Closing";
 import { Rv } from "@/components/Reveal";
 import { H2, PageHero } from "@/components/blocks";
 import { Surface } from "@/components/Surface";
-import { notesIndexPage as page } from "@/content";
+import { notesIndexPage as page, templates } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
-import { nn } from "@/lib/tpl";
 import { cachedSanity, type FetchMode } from "@/sanity/lib/live";
 import { POSTS_QUERY } from "@/sanity/queries";
 import { pageMeta } from "@/lib/seo";
+import { longDate } from "@/lib/date";
+import { nn, tpl } from "@/lib/tpl";
 
 export const metadata: Metadata = {
   ...pageMeta("/notes"),
@@ -50,7 +51,7 @@ async function NotesContent({ mode }: { mode: FetchMode }) {
                     <span className="t">{fill(p.title)}</span>
                     <span className="s">{fill(p.excerpt)}</span>
                   </span>
-                  <span className="m">{p.category}</span>
+                  <span className="m">{tpl(templates.notePage.rowMeta, { category: p.category ?? "", date: longDate(p.publishedAt) })}</span>
                   <span className="c">{p.published ? list.readLabel : list.draftLabel}</span>
                   <span className="r">{p.published ? "→" : "…"}</span>
                 </>

@@ -96,10 +96,13 @@ export const templates = {
   },
   notePage: {
     crumb: "Notes", // breadcrumb (structured data)
-    // The reference reads "Note · {category} · [DATE]"; the date is kept out (rule 7: no dates on Notes) until the
-    // founders decide — recorded in content/deviations.json.
-    heroEyebrow: "Note · {category}",
-    byline: "Written by the people who would do the work ·",
+    // The reference's "Note · {category} · [DATE]", with the publish date (rule 7, amended 2026-10-11).
+    heroEyebrow: "Note · {category} · {date}",
+    // Organisational byline, no names (rule 3); "Updated …" only when the note has an updatedAt.
+    byline: "Hopsig engineering · written by the people who would do the work ·",
+    updated: "Updated {date} ·",
+    // Index and home journal rows: the category, then the date.
+    rowMeta: "{category} · {date}",
     allLink: { label: "All notes →", href: "/notes", variant: "link" },
     tocTitle: "In this note",
     offerTitle: "The offer this note describes",

@@ -34,11 +34,11 @@ export const CASE_SLUGS_QUERY = defineQuery(`*[_type == "caseStudy" && hasPage =
 /** Notes index and home journal: published first (newest first), then drafts as inert [DRAFT] rows. */
 /** Published notes only (owner decision 2026-10-11: drafts are hidden until they are published). */
 export const POSTS_QUERY = defineQuery(`*[_type == "post" && defined(publishedAt)] | order(publishedAt desc, order asc){
-  _id, title, "slug": slug.current, category, excerpt, "published": defined(publishedAt)
+  _id, title, "slug": slug.current, category, excerpt, publishedAt, "published": defined(publishedAt)
 }`);
 
 export const POST_BY_SLUG_QUERY = defineQuery(`*[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{
-  _id, title, "slug": slug.current, category, excerpt, publishedAt, body, offer, closing, seo
+  _id, title, "slug": slug.current, category, excerpt, publishedAt, updatedAt, body, offer, closing, seo
 }`);
 
 export const POST_SLUGS_QUERY = defineQuery(`*[_type == "post" && defined(publishedAt)].slug.current`);

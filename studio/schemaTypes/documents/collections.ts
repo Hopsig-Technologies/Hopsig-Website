@@ -136,7 +136,12 @@ export const post = defineType({
     defineField({
       name: 'publishedAt',
       type: 'datetime',
-      description: 'Empty = draft: listed as an inert row marked [DRAFT]. Only orders the list; no date is shown (rule 7).',
+      description: 'The publish date, shown on the note and in the lists (rule 7, amended 2026-10-11). Empty = not published: the note is hidden.',
+    }),
+    defineField({
+      name: 'updatedAt',
+      type: 'datetime',
+      description: 'Optional: set when the note is materially revised; shown as "Updated …" beside the publish date.',
     }),
     defineField({
       name: 'order',

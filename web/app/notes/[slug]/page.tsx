@@ -15,6 +15,7 @@ import { cachedSanity, PUBLISHED, type FetchMode } from "@/sanity/lib/live";
 import { POST_BY_SLUG_QUERY, POST_SLUGS_QUERY, POSTS_QUERY } from "@/sanity/queries";
 import { meta, SITE_URL } from "@/lib/seo";
 import { breadcrumbsLd, JsonLd, orgRef } from "@/components/JsonLd";
+import { longDate } from "@/lib/date";
 
 type Params = Promise<{ slug: string }>;
 
@@ -64,6 +65,8 @@ async function NoteContent({ mode, params }: { mode: FetchMode; params: Params }
           "@type": "BlogPosting",
           headline: stegaClean(p.title),
           articleSection: stegaClean(p.category),
+          datePublished: stegaClean(p.publishedAt),
+          dateModified: stegaClean(p.updatedAt ?? p.publishedAt),
           author: orgRef,
           publisher: orgRef,
           mainEntityOfPage: `${SITE_URL}/notes/${slug}`,
@@ -72,7 +75,7 @@ async function NoteContent({ mode, params }: { mode: FetchMode; params: Params }
       <JsonLd data={breadcrumbsLd([[t.crumb, "/notes"], [stegaClean(p.title) ?? "", `/notes/${slug}`]])} />
       <Surface tone="d">
         {/* The reference breaks the title after its first full stop. */}
-        <PageHero fill={fill} hero={{ eyebrow: tpl(t.heroEyebrow, { category: p.category ?? "" }), title: title.replace(". ", ".\n"), sub: p.excerpt ?? "" }} />
+        <PageHero fill={fill} hero={{ eyebrow: tpl(t.heroEyebrow, { category: p.category ?? "", date: longDate(p.publishedAt) }), title: title.replace(". ", ".\n"), sub: p.excerpt ?? "" }} />
       </Surface>
 
       <Surface tone="l" seam>
@@ -80,7 +83,8 @@ async function NoteContent({ mode, params }: { mode: FetchMode; params: Params }
           <Rv as="article" className="art">
             <Rich value={p.body} fill={fill} />
             <div className="note-byline">
-              {t.byline} <MoreLink cta={t.allLink} />
+              {t.byline} {p.updatedAt ? `${tpl(t.updated, { date: longDate(p.updatedAt) })} ` : null}
+              <MoreLink cta={t.allLink} />
             </div>
           </Rv>
           <Rv as="aside" delay={90}>

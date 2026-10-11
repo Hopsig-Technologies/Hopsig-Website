@@ -127,6 +127,8 @@ export type Templates = {
     crumb: string;
     heroEyebrow: string;
     byline: string;
+    updated: string;
+    rowMeta: string;
     allLink: Cta;
     tocTitle: string;
     offerTitle: string;

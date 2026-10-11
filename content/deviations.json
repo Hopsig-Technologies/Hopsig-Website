@@ -51,15 +51,15 @@
   },
   {
    "reference": "Note · Scope · [DATE]",
-   "now": "Note · Scope",
+   "now": "Note · Scope · 22 July 2026",
    "where": "note pages (/notes/<slug>) hero eyebrow",
-   "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"
+   "reason": "The [DATE] slot holds the publish date the owner chose (2026-10-11)."
   },
   {
    "reference": "Note · Delivery · [DATE]",
-   "now": "Note · Delivery",
+   "now": "Note · Delivery · 16 September 2026",
    "where": "note pages (/notes/<slug>) hero eyebrow",
-   "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"
+   "reason": "The [DATE] slot holds the publish date the owner chose (2026-10-11)."
   },
   {
    "reference": "Service 01 · Custom software",
@@ -228,6 +228,12 @@
    "now": "Book a consult",
    "where": "/book hero eyebrow",
    "reason": "Design & SEO review (2026-10-11): one term, as on every button."
+  },
+  {
+   "reference": "Written by the people who would do the work ·",
+   "now": "Hopsig engineering · written by the people who would do the work ·",
+   "where": "note pages (byline)",
+   "reason": "Organisational byline on Notes (owner decision 2026-10-11, rule 7 amended)."
   }
  ],
  "removed": [

@@ -53,6 +53,7 @@ export type Post = {
   category?: "Delivery" | "Scope" | "AI" | "Working together" | "Measurement";
   excerpt: string;
   publishedAt?: string;
+  updatedAt?: string;
   order?: number;
   body?: RichBody;
   offer?: {
@@ -436,7 +437,7 @@ export type CASE_SLUGS_QUERY_RESULT = Array<string>;
 
 // Source: ../web/sanity/queries.ts
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(publishedAt)] | order(publishedAt desc, order asc){  _id, title, "slug": slug.current, category, excerpt, "published": defined(publishedAt)}
+// Query: *[_type == "post" && defined(publishedAt)] | order(publishedAt desc, order asc){  _id, title, "slug": slug.current, category, excerpt, publishedAt, "published": defined(publishedAt)}
 export type POSTS_QUERY_RESULT = Array<{
   _id: string;
   title: string;
@@ -444,12 +445,13 @@ export type POSTS_QUERY_RESULT = Array<{
   category:
     "AI" | "Delivery" | "Measurement" | "Scope" | "Working together" | null;
   excerpt: string;
+  publishedAt: string;
   published: true;
 }>;
 
 // Source: ../web/sanity/queries.ts
 // Variable: POST_BY_SLUG_QUERY
-// Query: *[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{  _id, title, "slug": slug.current, category, excerpt, publishedAt, body, offer, closing, seo}
+// Query: *[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{  _id, title, "slug": slug.current, category, excerpt, publishedAt, updatedAt, body, offer, closing, seo}
 export type POST_BY_SLUG_QUERY_RESULT = {
   _id: string;
   title: string;
@@ -458,6 +460,7 @@ export type POST_BY_SLUG_QUERY_RESULT = {
     "AI" | "Delivery" | "Measurement" | "Scope" | "Working together" | null;
   excerpt: string;
   publishedAt: string | null;
+  updatedAt: string | null;
   body: RichBody | null;
   offer: {
     title?: string;
@@ -494,8 +497,8 @@ declare global {
     '*[_type == "caseStudy"] | order(order asc){\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric\n}': CASES_ALL_QUERY_RESULT;
     '*[_type == "caseStudy" && hasPage == true && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, seo\n}': CASE_BY_SLUG_QUERY_RESULT;
     '*[_type == "caseStudy" && hasPage == true].slug.current': CASE_SLUGS_QUERY_RESULT;
-    '*[_type == "post" && defined(publishedAt)] | order(publishedAt desc, order asc){\n  _id, title, "slug": slug.current, category, excerpt, "published": defined(publishedAt)\n}': POSTS_QUERY_RESULT;
-    '*[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, category, excerpt, publishedAt, body, offer, closing, seo\n}': POST_BY_SLUG_QUERY_RESULT;
+    '*[_type == "post" && defined(publishedAt)] | order(publishedAt desc, order asc){\n  _id, title, "slug": slug.current, category, excerpt, publishedAt, "published": defined(publishedAt)\n}': POSTS_QUERY_RESULT;
+    '*[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, category, excerpt, publishedAt, updatedAt, body, offer, closing, seo\n}': POST_BY_SLUG_QUERY_RESULT;
     '*[_type == "post" && defined(publishedAt)].slug.current': POST_SLUGS_QUERY_RESULT;
     '*[_type == "jobListing" && status != "closed"] | order(order asc){\n  _id, title, text, status\n}': JOBS_QUERY_RESULT;
   }
