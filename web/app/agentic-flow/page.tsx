@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Closing } from "@/components/Closing";
 import { FlowTable } from "@/components/FlowTable";
 import { HeroAnim } from "@/components/anim/HeroAnim";
@@ -23,21 +24,24 @@ async function FlowContent({ mode }: { mode: FetchMode }) {
       <Surface tone="d">
         <PageHero hero={page.hero} fill={fill} size={26} figure={<HeroAnim id="agentic-flow-sim" />} />
         {/* v2: the never wall replaces the "What they never do." list; each rule is a button. */}
-        <section className="wrap sp-t100 sp-b120">
-          <Rv className="head-row" style={{ marginBottom: 28 }}>
-            <H2>{fill(agents.neverTitle)}</H2>
-            <Eyebrow>
-              <FigHint text={fill(agents.neverAside)} hint={fill(agents.neverAsideHint)} />
-            </Eyebrow>
-          </Rv>
-          <Rv>
-            <HeroAnim id="agentic-never-wall" style={{ margin: 0 }} />
-            {/* Phones: the figure is hidden, so the rules it draws are listed (anim.css .fig-alt). */}
-            <div className="fig-alt">
-              <BulletList items={agents.never.map((r) => fill(r))} nolime />
-            </div>
-          </Rv>
-        </section>
+        {/* Its own boundary, so the hero above is sent inline and paints first (components/Surface.tsx). */}
+        <Suspense fallback={null}>
+          <section className="wrap sp-t100 sp-b120">
+            <Rv className="head-row" style={{ marginBottom: 28 }}>
+              <H2>{fill(agents.neverTitle)}</H2>
+              <Eyebrow>
+                <FigHint text={fill(agents.neverAside)} hint={fill(agents.neverAsideHint)} />
+              </Eyebrow>
+            </Rv>
+            <Rv>
+              <HeroAnim id="agentic-never-wall" style={{ margin: 0 }} />
+              {/* Phones: the figure is hidden, so the rules it draws are listed (anim.css .fig-alt). */}
+              <div className="fig-alt">
+                <BulletList items={agents.never.map((r) => fill(r))} nolime />
+              </div>
+            </Rv>
+          </section>
+        </Suspense>
       </Surface>
 
       <Surface tone="l" seam>

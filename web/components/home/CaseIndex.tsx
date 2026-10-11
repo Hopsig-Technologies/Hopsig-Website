@@ -196,12 +196,13 @@ export function CaseIndex({
     <section ref={root} id="cidx" className="cidx wrap sp-t120 sp-b130">
       <Rv className="home-head">
         {head}
-        <div className="filters" role="tablist" aria-label="Filter by domain">
+        <div className="filters" role="group" aria-label="Filter by domain">
           {filters.map((f) => (
             <button
               key={f.key}
               type="button"
               className={filter === f.key ? "on" : undefined}
+              aria-pressed={filter === f.key}
               onClick={() => {
                 setFilter(f.key);
                 setOpen(null);

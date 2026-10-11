@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { seo, seoTemplates } from "@/content";
 
-/** The site's public origin: hopsig.com once the domain is live (set NEXT_PUBLIC_SITE_URL), the Vercel URL until then. */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://hopsig-website.vercel.app").replace(/\/$/, "");
+/** The site's public origin (canonical URLs, sitemap, Open Graph, JSON-LD). NEXT_PUBLIC_SITE_URL overrides it. */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://hopsig.com").replace(/\/$/, "");
 
 export type SeoPath = keyof typeof seo;
 

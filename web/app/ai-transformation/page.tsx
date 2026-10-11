@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Closing } from "@/components/Closing";
 import { Rich } from "@/components/Rich";
 import { HeroAnim } from "@/components/anim/HeroAnim";
@@ -29,20 +30,23 @@ async function AiContent({ mode }: { mode: FetchMode }) {
       <Surface tone="d">
         <PageHero hero={page.hero} fill={fill} size={26} />
         {/* v2: "Six weeks in your repo", scrubbed by scroll through a 250vh section with a sticky figure. */}
-        <section className="scrub wrap">
-          <div className="stick">
-            <div className="head-row" style={{ marginBottom: 20 }}>
-              <Eyebrow>
-                <FigHint text={fill(page.scrub.eyebrow)} hint={fill(page.scrub.eyebrowHint)} />
-              </Eyebrow>
-              <span className="lab fig-hint" style={{ letterSpacing: "0.12em" }}>
-                {fill(page.scrub.hint)}
-              </span>
+        {/* Its own boundary, so the hero above is sent inline and paints first (components/Surface.tsx). */}
+        <Suspense fallback={null}>
+          <section className="scrub wrap">
+            <div className="stick">
+              <div className="head-row" style={{ marginBottom: 20 }}>
+                <Eyebrow>
+                  <FigHint text={fill(page.scrub.eyebrow)} hint={fill(page.scrub.eyebrowHint)} />
+                </Eyebrow>
+                <span className="lab fig-hint" style={{ letterSpacing: "0.12em" }}>
+                  {fill(page.scrub.hint)}
+                </span>
+              </div>
+              <HeroAnim id="ai-transformation" style={{ margin: 0 }} />
             </div>
-            <HeroAnim id="ai-transformation" style={{ margin: 0 }} />
-          </div>
-          <ScrubWiring id="ai-transformation" />
-        </section>
+            <ScrubWiring id="ai-transformation" />
+          </section>
+        </Suspense>
       </Surface>
 
       <Surface tone="l" seam>

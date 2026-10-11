@@ -1,6 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
+import { Suspense, type CSSProperties, type ReactNode } from "react";
 import type { Cta, Fact, PageHero as PageHeroCopy, SectionHead, TitleText } from "@/content/types";
 import { Button } from "./Button";
 import { RingCanvas } from "./canvas/RingCanvas";
@@ -104,7 +104,8 @@ export function PageHero({
           </div>
         ) : null}
         {hero.facts?.length ? <FactsRow facts={hero.facts} fill={fill} size={size} /> : null}
-        {figure}
+        {/* Its own boundary: the static frame can be large, and the hero copy must stay in the first chunk. */}
+        {figure ? <Suspense fallback={null}>{figure}</Suspense> : null}
       </div>
     </section>
   );

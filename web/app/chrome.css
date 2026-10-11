@@ -322,6 +322,14 @@
 }
 
 /* ---------------------------------------------------------------- footer */
+/* React streams large Suspense boundaries (the page's <main>, and the home page below its hero) after the footer
+   and moves each into place with an inline script; until then a <template id="B:n"> marks the spot (see the
+   JS-off note in app/layout.tsx). The footer would sit just under what has arrived and then jump down by the
+   rest of the page: PageSpeed measured that as a layout shift of 0.9 (mobile) / 0.5 (desktop). Holding the
+   footer a screen lower while any boundary is pending keeps the jump off screen, where it does not count. */
+.pg:has(template[id^="B:"]) > footer {
+  margin-top: 100vh;
+}
 .foot {
   border-top: 1px solid var(--hair);
 }

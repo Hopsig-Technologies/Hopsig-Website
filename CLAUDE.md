@@ -115,6 +115,13 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 
 **Publishing:** a Sanity webhook ("Revalidate website (development)", filter `_type in ["caseStudy","post","jobListing","siteSettings"]`) posts to `/api/revalidate`, which checks the signature and revalidates the `sanity` tag, i.e. the whole site; changes are live in ~5 s with no deploy. Secrets (`SANITY_API_READ_TOKEN` viewer, `SANITY_REVALIDATE_SECRET`) live in Vercel and `web/.env.local`, never in the repo. CORS origins with credentials: `https://hopsig-website.vercel.app`, `http://localhost:3000`.
 
+**Performance (PageSpeed round, 2026-10-11).** Measured on hopsig.com: CLS 0.91 (mobile), unused JS 211 KB, a Sanity CORS error. Rules that keep it fixed:
+- **No `next-sanity/live` in anything a page imports.** It imports the live client component, and the visual-editing kit (~570 KB) then ships on every page. `sanity/lib/live.ts` fetches with the plain client (mirrors `sanityFetch`); the live, click-to-edit and exit tools are draft-mode only, in `components/DraftTools*.tsx`, loaded by a client-side `next/dynamic` (`ssr: false`) — a server-side dynamic import from the layout does not split the code. `DraftToolsClient` uses next-sanity's internal `SanityLive` client component: check it when upgrading next-sanity.
+- **Hero first.** React sends a big Suspense boundary after the footer and moves it in with a script, so every surface below the hero is its own boundary (`Surface` with `seam`, or `defer`; the hero `figure`; the extra sections in the first surface on home, agentic flow, AI transformation): the hero stays inline in the first chunk and paints with the first paint. Check after adding a section: in the built HTML (`web/.next/server/app/*.html`) the page's `<h1>` must come before `<footer>`.
+- **The footer waits off screen** while any boundary is pending (`.pg:has(template[id^="B:"]) > footer` in chrome.css), so the late content never shifts it on screen (CLS 0).
+- `experimental.inlineCss` (no render-blocking stylesheet requests). Next's own polyfill module (`Array.prototype.at`, `flat` …, ~1.4 KB) is what Lighthouse calls "legacy JavaScript"; it ships with Next and is not ours to remove.
+- `SITE_URL` (canonical, sitemap, Open Graph, JSON-LD) defaults to https://hopsig.com; `NEXT_PUBLIC_SITE_URL` overrides it.
+
 ## Routes
 
 37 routes in `content/routes.json` and `web/content/routes.ts`. Services and industries render from `services.ts` / `industries.ts` (one template each); case notes, notes and roles from Sanity; every other page from its module. `404.html` is the not-found page.

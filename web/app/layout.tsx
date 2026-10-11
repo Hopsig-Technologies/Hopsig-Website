@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity/visual-editing";
 import { Suspense } from "react";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
-import { DisableDraftMode } from "@/components/DisableDraftMode";
+import { DraftTools } from "@/components/DraftTools";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsClass } from "@/components/JsClass";
 import { navigation, seo, seoTemplates, site } from "@/content";
-import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 import "./chrome.css";
 import "./blocks.css";
@@ -57,7 +54,7 @@ const jsClass = `document.documentElement.classList.add('js')`;
 const noJs = `<style>
 body { display: flex; flex-direction: column; }
 .pg { display: contents; }
-.pg > footer { order: 2; }
+.pg > footer { order: 2; margin-top: 0 !important; }
 /* In Tailwind's base layer, where the preflight's [hidden] { display: none !important } lives: a layered
    !important beats an unlayered one, so the override has to sit in the same layer and win on specificity. */
 @layer base { body > div[hidden][id^="S:"] { display: block !important; order: 1; } }
@@ -80,25 +77,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </div>
         <Analytics copy={site.consent} />
         <Suspense fallback={null}>
-          <SanityTools />
+          <DraftTools />
         </Suspense>
       </body>
     </html>
-  );
-}
-
-/** Live updates for everyone; click-to-edit overlays and an exit link only in draft mode. */
-async function SanityTools() {
-  const { isEnabled } = await draftMode();
-  return (
-    <>
-      <SanityLive includeDrafts={isEnabled} />
-      {isEnabled ? (
-        <>
-          <VisualEditing />
-          <DisableDraftMode />
-        </>
-      ) : null}
-    </>
   );
 }

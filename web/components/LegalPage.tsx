@@ -16,7 +16,7 @@ export function LegalPage({ page, fill, contentsTitle }: { page: LegalCopy; fill
       <Surface tone="d">
         <PageHero hero={page.hero} fill={fill} />
       </Surface>
-      <Surface tone="l">
+      <Surface tone="l" defer>
         <div className="wrap legal-body">
           <Rv as="article" className="legal">
             {page.sections.map((s) => (

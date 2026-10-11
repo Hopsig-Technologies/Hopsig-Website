@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { stegaClean } from "next-sanity";
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import { Button } from "@/components/Button";
 import { Closing } from "@/components/Closing";
 import { Lines } from "@/components/Lines";
@@ -107,26 +107,30 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
           </div>
           <p className="hero-loc">{fill(hero.location)}</p>
         </HomeHero>
-        {/* v2: the agentic band, between the hero sequence and the services file. */}
-        <section className="wrap sp-t120 sp-b120">
-          <Rv style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 900 }}>
-            <Eyebrow>{fill(band.head.eyebrow)}</Eyebrow>
-            <h2 className="h2" style={{ fontSize: 48 }}>
-              {fill(band.head.title)}
-            </h2>
-            <p className="band-sub">{fill(band.head.sub)}</p>
-          </Rv>
-          <Rv style={{ marginTop: 40 }}>
-            <HeroAnim id="home-agentic" style={{ margin: 0 }} />
-          </Rv>
-          <Rv className="ph-btns" style={{ marginTop: 32 }}>
-            {band.buttons.map((b) => (
-              <Button key={b.label} href={b.href} variant={b.variant === "lime" ? "lime" : "outline"}>
-                {b.label}
-              </Button>
-            ))}
-          </Rv>
-        </section>
+        {/* The band is its own Suspense boundary, as every surface below is (components/Surface.tsx), so the hero
+            stays small enough to be sent inline in the first chunk of HTML and paints with the first paint. */}
+        <Suspense fallback={null}>
+          {/* v2: the agentic band, between the hero sequence and the services file. */}
+          <section className="wrap sp-t120 sp-b120">
+            <Rv style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 900 }}>
+              <Eyebrow>{fill(band.head.eyebrow)}</Eyebrow>
+              <h2 className="h2" style={{ fontSize: 48 }}>
+                {fill(band.head.title)}
+              </h2>
+              <p className="band-sub">{fill(band.head.sub)}</p>
+            </Rv>
+            <Rv style={{ marginTop: 40 }}>
+              <HeroAnim id="home-agentic" style={{ margin: 0 }} />
+            </Rv>
+            <Rv className="ph-btns" style={{ marginTop: 32 }}>
+              {band.buttons.map((b) => (
+                <Button key={b.label} href={b.href} variant={b.variant === "lime" ? "lime" : "outline"}>
+                  {b.label}
+                </Button>
+              ))}
+            </Rv>
+          </section>
+        </Suspense>
       </Surface>
 
       <Surface tone="l" seam>
