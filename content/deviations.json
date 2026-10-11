@@ -1,16 +1,116 @@
 {
- "_note": "Deliberate differences from the approved reference (reference/site). Each entry was decided by the owner; the checks (check_pages.py, text_diff.py, placeholders.mjs) accept exactly these and nothing else. Add an entry only with the decision and its date.",
+ "_note": "Deliberate differences from the approved reference (reference/site). Each entry was decided by the owner; the checks (check_pages.py, check_links.py, text_diff.py, placeholders.mjs) accept exactly these and nothing else. Add an entry only with the decision and its date. 'replaced': one string became another. 'removed': reference copy taken off the site on purpose, grouped by decision (exact 'strings', regex 'patterns', dropped 'links' as [label, route]). 'removed_routes': pages that no longer exist. 'retired_placeholders': tokens whose copy was removed, so they are no longer expected on the site.",
  "replaced": [
-  {"reference": "A.K.", "now": "[ENGINEER]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
-  {"reference": "S.R.", "now": "[ENGINEER]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
-  {"reference": "Backend · 11 yrs", "now": "Backend · [YEARS]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
-  {"reference": "Data · 9 yrs", "now": "Data · [YEARS]", "where": "engagement panel (/services, /work)", "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"},
-  {"reference": "5 h 10 m", "now": "[BEFORE]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
-  {"reference": "18 m", "now": "[AFTER]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
-  {"reference": "14 / 14", "now": "[SHIPPED / PLANNED]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
-  {"reference": "on plan", "now": "[COST VS PLAN]", "where": "engagement panel (/services, /work)", "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"},
-  {"reference": "Note · Scope · [DATE]", "now": "Note · Scope", "where": "note pages (/notes/<slug>) hero eyebrow", "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"},
-  {"reference": "Note · Delivery · [DATE]", "now": "Note · Delivery", "where": "note pages (/notes/<slug>) hero eyebrow", "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"}
+  {
+   "reference": "A.K.",
+   "now": "[ENGINEER]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "S.R.",
+   "now": "[ENGINEER]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "Backend · 11 yrs",
+   "now": "Backend · [YEARS]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "Data · 9 yrs",
+   "now": "Data · [YEARS]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented person (rule 3); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "5 h 10 m",
+   "now": "[BEFORE]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "18 m",
+   "now": "[AFTER]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "14 / 14",
+   "now": "[SHIPPED / PLANNED]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "on plan",
+   "now": "[COST VS PLAN]",
+   "where": "engagement panel (/services, /work)",
+   "reason": "Invented result (rule 1); placeholders chosen 2026-10-10"
+  },
+  {
+   "reference": "Note · Scope · [DATE]",
+   "now": "Note · Scope",
+   "where": "note pages (/notes/<slug>) hero eyebrow",
+   "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"
+  },
+  {
+   "reference": "Note · Delivery · [DATE]",
+   "now": "Note · Delivery",
+   "where": "note pages (/notes/<slug>) hero eyebrow",
+   "reason": "Rule 7 (no dates on Notes); the date stays out until the founders decide (CLAUDE.md Open questions)"
+  }
  ],
- "added_placeholders": ["[ENGINEER]", "[YEARS]", "[BEFORE]", "[AFTER]", "[SHIPPED / PLANNED]", "[SLIPPED]", "[COST VS PLAN]"]
+ "removed": [
+  {
+   "id": "no-rates",
+   "decided": "2026-10-11",
+   "reason": "Owner decision in the design & SEO review (@Arslan, 2026-10-11): no rates anywhere on the site (Rates page, day rates, Priced callouts, estimators, agency rate card).",
+   "strings": [],
+   "patterns": [],
+   "links": []
+  },
+  {
+   "id": "no-overlap",
+   "decided": "2026-10-11",
+   "reason": "Owner decision in the design & SEO review (@Arslan, 2026-10-11): no time zone or overlap mentions anywhere.",
+   "strings": [],
+   "patterns": [],
+   "links": []
+  },
+  {
+   "id": "legal-identity",
+   "decided": "2026-10-11",
+   "reason": "Owner decision in the design & SEO review (@Arslan, 2026-10-11): Hopsig Technologies LLC, Wyoming, USA; Delivery Centre: Lahore, Pakistan; email info@hopsig.com.",
+   "strings": [],
+   "patterns": [],
+   "links": []
+  },
+  {
+   "id": "review-copy-fixes",
+   "decided": "2026-10-11",
+   "reason": "Owner decision in the design & SEO review (@Arslan, 2026-10-11): smaller copy fixes (instruction labels, stray eyebrows, unverified 'Source states' lines, wording).",
+   "strings": [],
+   "patterns": [],
+   "links": []
+  }
+ ],
+ "removed_routes": [
+  {
+   "route": "/rates",
+   "decided": "2026-10-11",
+   "reason": "Owner decision in the design & SEO review (@Arslan, 2026-10-11): the Rates page is deleted; /rates redirects (308) to /book."
+  }
+ ],
+ "added_placeholders": [
+  "[ENGINEER]",
+  "[YEARS]",
+  "[BEFORE]",
+  "[AFTER]",
+  "[SHIPPED / PLANNED]",
+  "[SLIPPED]",
+  "[COST VS PLAN]"
+ ],
+ "retired_placeholders": []
 }

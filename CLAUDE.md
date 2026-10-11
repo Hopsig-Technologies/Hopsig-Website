@@ -1,6 +1,6 @@
 # Hopsig Technologies — website
 
-Marketing site for Hopsig Technologies: senior engineers and data/AI people who join a client's team or take a build end to end. Delivery from Lahore, Pakistan. Buyers are CTOs, heads of engineering and agency founders at 20–200-person companies in the UK, US and EU.
+Marketing site for Hopsig Technologies: senior engineers and data/AI people who join a client's team or take a build end to end. The company is **Hopsig Technologies LLC, a Wyoming limited liability company (30 N Gould St Ste R, Sheridan, WY 82801, USA)**; the work is delivered from the **Delivery Centre: Lahore, Pakistan** (always worded exactly so, alongside the LLC). Email: info@hopsig.com. Buyers are CTOs, heads of engineering and agency founders at 20–200-person companies in the UK, US and EU.
 
 Brand line: **You think it. We finish it.**
 Five-second test, every page: a London head of engineering thinks "senior, will not waste my time".
@@ -18,7 +18,7 @@ Five-second test, every page: a London head of engineering thinks "senior, will 
 
 ## Stack
 
-Next.js 16 (App Router, TypeScript, static generation, on-demand revalidation) on **Vercel** (`hopsig-website`, root `web/`, auto-deploys `main`). **Sanity Studio 6 is a separate app** in `studio/`, deployed with `pnpm --filter studio deploy`; datasets `development` (now) and `production` (launch). Tailwind 4 is fine for layout; the tokens below are the only colours, sizes and radii. No component library, no animation library beyond what the prototype does by hand (IntersectionObserver reveals, `requestAnimationFrame` canvases). No third-party scripts except Google Fonts (loaded via `next/font`).
+Next.js 16 (App Router, TypeScript, static generation, on-demand revalidation) on **Vercel** (`hopsig-website`, root `web/`, auto-deploys `main`). **Sanity Studio 6 is a separate app** in `studio/`, deployed with `pnpm --filter studio deploy`; datasets `development` (now) and `production` (launch). Tailwind 4 is fine for layout; the tokens below are the only colours, sizes and radii. No component library, no animation library beyond what the prototype does by hand (IntersectionObserver reveals, `requestAnimationFrame` canvases). No third-party scripts except Google Fonts (loaded via `next/font`) and, after consent only, Google Analytics 4 and PostHog (owner decision 2026-10-11; Hotjar was considered and dropped).
 
 Version notes (read `web/AGENTS.md`; the bundled docs in `web/node_modules/next/dist/docs/` win over memory):
 - Next 16 with `cacheComponents`: cache CMS reads with `'use cache'` + `cacheTag()` + `cacheLife()`; segment exports `revalidate` / `dynamic` / `fetchCache` throw. `revalidateTag(tag, …)` takes two arguments. `params` are async; use the generated `PageProps<'/x/[slug]'>` / `LayoutProps<'/'>` (run `next typegen`). `middleware.ts` is now `proxy.ts`. `generateStaticParams` must return at least one entry.
@@ -33,12 +33,15 @@ Version notes (read `web/AGENTS.md`; the bundled docs in `web/node_modules/next/
 4. **Nothing from the banned list:** purple/blue gradient blobs, glassmorphism, neon, 3D shapes, circuit-board or "AI brain" imagery, stock photography, rounded friendly-SaaS styling, generic wordmarks, overpromising taglines, **card drop shadows**. Depth comes from borders and tone changes, never shadows. (`box-shadow: inset 0 0 0 1px` used as a border is fine.)
 5. **One Lime moment per screen** on dark surfaces (the accent is the eyebrow, or the button, or the ring — not all three). Approved exceptions: collapsed tabs in the services file stack are Lime; the header's AI capsule (AI transformation · Agentic flow) is Lime on every page (v2).
 6. Light surfaces use **Moss** as the accent, never Lime (Lime on Paper fails contrast). This includes hover: link hover is `--acc` darkened/underlined per tone, **never `#A9D437`** (the reference uses it globally; do not copy it).
-7. **No reading times, dates, bylines or newsletter pop-ups** on Notes. No cookie banner unless legally required for the analytics actually installed.
+7. **No reading times, person bylines or newsletter pop-ups** on Notes. Notes show their publish (and updated) date and the organisational byline "Hopsig engineering" (owner decision 2026-10-11; no names, no role claims). A consent banner exists because GA4 and PostHog are installed; nothing non-essential loads before consent.
 8. Mobile is **not designed yet** (prototype is 1440 wide). Build responsive from the tokens and the desktop reference; keep the hierarchy, drop the side-by-side grids to single column below 900px, and do not invent new components to do it.
 9. **Build notes never ship.** The reference renders designer notes as visible text ("Build note: …", "Source: Sanity · caseStudy · …"). They are not in the content and `check_pages.py` skips them; never reproduce them.
 10. **Content is visible with JS off.** `.rv` (and the home hero captions) start hidden only under `html.js`, set by an inline script in `<head>`; the reference hides them unconditionally — do not copy that. Large pages also need the `<noscript>` stylesheet in `app/layout.tsx` (React streams a big `<main>` out of order into a hidden div); check with `node scripts/check_nojs.mjs` against a production build.
 11. **Focus is visible everywhere**: one global `:focus-visible` ring (2px `var(--acc)`, offset 3px) on links, buttons, form fields and dropdown triggers. Never `outline: none` without a replacement.
 12. **Nothing from `web/content` reaches a client bundle.** `web/content/index.ts` is `server-only`; client components get the strings they need as props (so `[YOUR RATE]` is never in a shared JS chunk).
+13. **No rates anywhere** (owner decision 2026-10-11): no Rates page (`/rates` redirects to `/book`), no day rates, "Priced" callouts, estimators or rate cards. Engagement shape only ("Embedded · monthly, per engineer", "Built · fixed scope per increment"); non-price terms (notice, replacement, IP on payment, NET 14) stay. Pricing questions are answered "we scope it on the call".
+14. **No time zones or overlap** (owner decision 2026-10-11): no "4 h overlap", GMT windows, overlap clocks or local times. Location is only "Delivery Centre: Lahore, Pakistan".
+15. **Every removal of reference copy is recorded** in `content/deviations.json` under its decision (`removed`, `removed_routes`, `retired_placeholders`); the checks accept exactly those.
 
 ## Tokens
 
@@ -123,7 +126,6 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 
 - `[DATE]` appears in the note-page hero eyebrow ("Note · Delivery · [DATE]", `templates.ts` → `notePage.heroEyebrow`) and conflicts with rule 7. It is out of the build (`notePage.heroEyebrow` is "Note · {category}", recorded in `content/deviations.json`) until the founders decide.
 - Visible copy that describes the implementation: "Eight case notes, fetched from Sanity Studio." (home case index) and "… Fetched from Sanity Studio." (home notes). Probably prototype wording; ask before changing the copy.
-- The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel; the rate now comes from Site settings. Ask before rewording.
 - Booking tool for `/book` and email provider for `/brief` (and the booking request): not chosen. Both are stubbed so nothing pretends to work (`bookingUrl` in Site settings; `sendContact` in `web/lib/contact.ts`). The `notConnected` lines in `bookPage`/`briefPage` are new copy, to remove once connected.
 - The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. For counsel's review.
 

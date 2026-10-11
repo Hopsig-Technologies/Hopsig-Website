@@ -57,19 +57,26 @@ def main():
     corpus = json.load(open(CORPUS, encoding='utf-8'))
     nav = {l['href'] for l in corpus['web/content/navigation.ts']['links']}
     failures = 0
+    dev = json.load(open(os.path.join(ROOT, 'content', 'deviations.json'), encoding='utf-8'))
+    gone = {r['route'] for r in dev.get('removed_routes', [])}
+    # Links the owner removed on purpose (e.g. every "See rates" when the Rates page went): [label, route] pairs.
+    dropped = {(norm(l), r) for d in dev.get('removed', []) for l, r in d.get('links', [])}
     for name, ref in PAGES.items():
         route = ROUTES[ref]
+        if route in gone:
+            continue
         body, chrome = page_links(ref)
         have = {(norm(l['label']), l['href']) for l in corpus[f'web/content/pages/{name}.ts']['links']}
         # A label with {tokens} ("All {count} case notes") is filled at render time: match it as a pattern.
         patterns = [(re.compile('^' + re.sub(r'\\{\w+\\}', '.+', re.escape(l)) + '$'), h) for l, h in have if '{' in l]
         missing = sorted(l for l in body - have
-                         if not any(rx.match(l[0]) and h == l[1] for rx, h in patterns)
+                         if l[1] not in gone and l not in dropped
+                         and not any(rx.match(l[0]) and h == l[1] for rx, h in patterns)
                          and l[0] not in GENERATED
                          and not re.match(r'^\d{2}', l[0])  # numbered rows render from collections
                          and not l[1].startswith(('/work/', '/notes/', '/services/', '/industries/')))
         # Header/footer: menu labels are composed (number + label + description), so compare destinations only.
-        missing_nav = sorted({r for l, r in chrome if l != 'hopsigtechnologies'} - nav)  # wordmark -> / is code
+        missing_nav = sorted({r for l, r in chrome if l != 'hopsigtechnologies'} - nav - gone)  # wordmark -> / is code
         if missing or missing_nav:
             failures += len(missing) + len(missing_nav)
             print(f'{route} ({name})')

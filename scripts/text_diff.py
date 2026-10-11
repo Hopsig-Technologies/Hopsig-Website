@@ -43,7 +43,7 @@ def diff(base, route, ref=None):
         os.unlink(f.name)
     want = texts(os.path.join(SITE, ref))
     dev = check_pages.deviations()  # owner-approved replacements (content/deviations.json)
-    missing = collections.Counter({k: v for k, v in (want - built).items() if k not in dev['replaced']})
+    missing = collections.Counter({k: v for k, v in (want - built).items() if not check_pages.removed(k)})
     extra = collections.Counter({k: v for k, v in (built - want).items() if k not in dev['now']})
     print(f'{route}  vs  {ref}:  {sum(want.values())} reference strings, {len(missing)} missing, {len(extra)} extra')
     for s, n in sorted(missing.items()):

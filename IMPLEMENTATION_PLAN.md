@@ -108,6 +108,26 @@ Header capsule on every page; animated figures on 17 pages (18 scenes on one eng
 | V6 AI transformation — DONE | `.scrub` 250vh, sticky at 96, `t = p × 7000`, week ticks → `inst.goto` | `pnpm anim:flows`: 45% → t = 3149, W3 → t = 3001; page 0.04% at identical height |
 | V7 Audit + deploy — DONE | no console errors; pause off-screen / hidden tab; pause button; reduced motion; contrast; ≤ 25 KB gz; 60 fps at CPU ×4; < 768px; check_nojs; screenshots in `audit/v2/` | `pnpm anim:audit` (production build): 17 routes mount with no console errors; pauses off-screen and in a hidden tab; pause button toggles and relabels; reduced motion keeps static frames (interactive scenes still load); fps equal to the prototype under CPU ×4 (headless has no GPU, so 60 fps is a manual real-device check); 390px hides frames, keeps captions, no sideways scroll. Scene chunks 0.9–4.0 KB gz, engine 5.4 KB. Figcaption contrast 6.58:1. check_nojs 0 failures |
 
+## Review round (2026-10-11; @Arslan's design & SEO review)
+
+Owner decisions: no rates anywhere; no time zones or overlap; GA4 + PostHog behind consent (Hotjar dropped); legal identity Hopsig Technologies LLC, Wyoming, USA · Delivery Centre: Lahore, Pakistan · info@hopsig.com; notes show dates and a "Hopsig engineering" byline (rule 7 amended); the team-augmentation animation (an overlap dial) is replaced by a new standup scene; the review's new visual concepts go to a v3 design round first.
+
+Not done, or done differently (reasons in the plan): no invented commit-log ticker (rule 1); no accent-for-numbers recolour (token system; v3 brief); "Source states" lines removed, not rewritten as assertions; the "duplicate" case notes are different engagements; "&amp;", double spaces, run-together labels are not bugs; expanded case notes and FAQs only from founder-supplied facts; draft label stays until counsel signs off; FAQPage schema has little payoff; note dates need real dates first.
+
+| Phase | Scope |
+|---|---|
+| R0 Rules and gates — DONE | CLAUDE.md rules 7, 13–15, legal identity, analytics; `deviations.json` decision groups (`removed`, `removed_routes`, `retired_placeholders`) honoured by check_pages / check_links / text_diff / placeholders |
+| R1 Launch blockers | legal identity + mailto email; remove rates (page → 308 /book, nav, sheets, Priced, estimators, rate card, Site settings fields); remove overlap/GMT; smaller copy fixes; drafts hidden |
+| R2 Team augmentation scene | new standup scene to BRIEF.md; seam test; owner reviews a frame sheet |
+| R3 SEO foundations | titles + metas (`seo.ts`), keyword in H1, h3s, robots, sitemap, RSS, canonical, OG images, JSON-LD, internal links |
+| R4 Notes | dates + byline (needs real dates), linked sticky TOC, offer in margin |
+| R5 Content depth | caseStudy fields + richer template; more case pages; metric placeholders list + launch switch; FAQs (founders approve) |
+| R6 Analytics + consent | banner, Consent Mode v2, GA4 + PostHog after consent, events, privacy copy for counsel |
+| R7 Booking + brief | Cal.com embed, Resend to info@hopsig.com, pre-filled "Ask about this" |
+| R8 Functional improvements | /work filters + sort, real table on Why not just hire, linked legal TOC, Company toggle, fewer CTAs, home tagline + location, industries paragraphs |
+| R9 v3 design brief | docs/design/v3-brief.md for Claude Design |
+| R10 Domain + launch | old P9: hopsig.com, redirects, Search Console, Lighthouse, 390px, production dataset, counsel |
+
 ### P9 — Audit & launch
 
 Dead-link crawl of every route; `typedRoutes: true` (all routes now exist) replacing the hand-kept `Href`; `pnpm placeholders` == tokens in the built HTML; Lighthouse on `/`, `/services/data-engineering`, `/work`: performance ≥ 90, accessibility 100; JS disabled: all copy visible; `prefers-reduced-motion`; metadata on every route, `sitemap.ts`, `robots.ts`, OG image; 1440 + 390 contact sheet in `audit/`. Launch: seed `production` (`seed.mjs --with-settings` once, then the founders fill Site settings there), production webhook, CORS for the real domain, move the Vercel project to a Hopsig Pro team (Hobby excludes commercial use), domain; `hopsig.si` → 301 to `/ai-transformation` if registered.

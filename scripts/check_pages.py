@@ -104,12 +104,34 @@ def visible(path):
 
 
 def deviations():
-    """content/deviations.json: reference strings deliberately replaced (owner decisions), normalised."""
+    """content/deviations.json: the owner's decisions to depart from the reference, normalised.
+
+    replaced          reference string -> new string (both sides accepted)
+    removed           reference strings deliberately gone, grouped by decision (exact `strings` or regex `patterns`)
+    removed_routes    reference pages that no longer exist on the site (not checked at all)
+    """
     path = os.path.join(ROOT, 'content', 'deviations.json')
     if not os.path.exists(path):
-        return {'replaced': set(), 'now': set()}
+        return {'replaced': set(), 'now': set(), 'patterns': [], 'removed_routes': set()}
     d = json.load(open(path, encoding='utf-8'))
-    return {'replaced': {norm(r['reference']) for r in d['replaced']}, 'now': {norm(r['now']) for r in d['replaced']} | {norm(t) for t in d.get('added_placeholders', [])}}
+    replaced = {norm(r['reference']) for r in d['replaced']}
+    patterns = []
+    for decision in d.get('removed', []):
+        replaced |= {norm(s) for s in decision.get('strings', [])}
+        patterns += [re.compile(p, re.I) for p in decision.get('patterns', [])]
+    return {
+        'replaced': replaced,
+        'now': {norm(r['now']) for r in d['replaced']} | {norm(t) for t in d.get('added_placeholders', [])},
+        'patterns': patterns,
+        'removed_routes': {r['route'] for r in d.get('removed_routes', [])},
+    }
+
+
+def removed(s):
+    """True if the owner removed this (normalised) reference string on purpose."""
+    global DEVIATIONS
+    DEVIATIONS = DEVIATIONS or deviations()
+    return s in DEVIATIONS['replaced'] or any(p.search(s) for p in DEVIATIONS['patterns'])
 
 
 DEVIATIONS = None
@@ -120,7 +142,7 @@ def covered(s, big):
     DEVIATIONS = DEVIATIONS or deviations()
     s = re.sub(r'^— ', '', s)  # list items are rendered with a leading em dash
     s = re.sub(r' →$', '', s)  # links carry a trailing arrow the data does not
-    return s in big or s in DEVIATIONS['replaced'] or any(p.fullmatch(s) for p in TEMPLATES)
+    return s in big or removed(s) or any(p.fullmatch(s) for p in TEMPLATES)
 
 
 def template_patterns(all_strings):
@@ -145,7 +167,10 @@ def main():
     TEMPLATES = template_patterns(all_strings)
     big = '\u0001'.join(norm(s) for s in all_strings)
     missing_total = 0
+    gone = deviations()['removed_routes']
     for ref, route in ROUTES.items():
+        if route in gone:
+            continue
         miss = []
         for s in visible(os.path.join(SITE, ref)):
             if not covered(norm(s), big) and s not in miss:

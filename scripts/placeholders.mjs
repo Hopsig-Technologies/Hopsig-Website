@@ -32,6 +32,9 @@ const NOT_COPY = new Set(['clientName', 'source', 'evidence'])
 
 const dataset = process.argv[2] || 'development'
 const corpus = JSON.parse(readFileSync(resolve(ROOT, 'audit', 'content-corpus.json'), 'utf8'))
+const deviationsFile = JSON.parse(readFileSync(resolve(ROOT, 'content', 'deviations.json'), 'utf8'))
+// Placeholders whose copy the owner removed (e.g. every rate token when rates came off the site): not expected.
+const RETIRED = new Set(deviationsFile.retired_placeholders ?? [])
 const expected = [
   ...Object.keys(JSON.parse(readFileSync(resolve(ROOT, 'content', 'placeholders.json'), 'utf8'))),
   // Placeholders the owner chose instead of invented reference content (content/deviations.json).
@@ -68,7 +71,7 @@ const resolved = new Set(Object.entries(SITE_TOKENS).filter(([k]) => settings[k]
 for (const t of resolved) counts.delete(t)
 
 const present = new Set(counts.keys())
-const missing = expected.filter((t) => !present.has(t) && !resolved.has(t) && !BUILD_NOTE_ONLY.has(t))
+const missing = expected.filter((t) => !present.has(t) && !resolved.has(t) && !BUILD_NOTE_ONLY.has(t) && !RETIRED.has(t))
 const extra = [...present].filter((t) => !expected.includes(t))
 
 console.log(`${present.size} placeholder tokens still on the site (${dataset}); ${resolved.size} resolved in Site settings`)
