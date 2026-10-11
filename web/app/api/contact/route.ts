@@ -3,7 +3,7 @@ import { sendContact, type ContactMessage } from "@/lib/contact";
 const MAX = 5000;
 const str = (v: unknown, max = 300) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
-/** POST from the /book calendar and the /brief form. 400 on bad input, 503 while no email provider is set up. */
+/** POST from the /book calendar and the /brief form. 400 on bad input, 503 while email is not set up (no key or recipients). */
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
   if (!body) return Response.json({ error: "bad-request" }, { status: 400 });
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   const common = { name: str(body.name), email, company: str(body.company), problem };
   const message: ContactMessage =
     body.kind === "booking"
-      ? { kind: "booking", ...common, slot: str(body.slot) }
+      ? { kind: "booking", ...common, slot: str(body.slot), start: str(body.start, 40), timeZone: str(body.timeZone, 80) }
       : { kind: "brief", ...common, when: str(body.when), budget: str(body.budget), link: str(body.link, 1000) };
 
   const result = await sendContact(message);

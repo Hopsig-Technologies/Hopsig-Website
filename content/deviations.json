@@ -276,6 +276,36 @@
    "now": "SaaS and AI product development: multi-tenant platforms, enterprise systems, developer APIs and AI products, built on an agentic pipeline with the evaluation discipline to keep them right.",
    "where": "/industries row",
    "reason": "Design & SEO review (R8, plan approved 2026-10-11): one keyword paragraph per industry, drafted from the industry's own intro"
+  },
+  {
+   "reference": "Confirm the call",
+   "now": "Request the call",
+   "where": "/book button",
+   "reason": "Owner decision 2026-10-11: no booking tool; the request is emailed and the invite sent by hand, so nothing says 'booked' before it is"
+  },
+  {
+   "reference": "Booked",
+   "now": "Requested",
+   "where": "/book confirmation label",
+   "reason": "Owner decision 2026-10-11: no booking tool; the request is emailed and the invite sent by hand, so nothing says 'booked' before it is"
+  },
+  {
+   "reference": "See you then.",
+   "now": "We will confirm the time.",
+   "where": "/book confirmation title",
+   "reason": "Owner decision 2026-10-11: no booking tool; the request is emailed and the invite sent by hand, so nothing says 'booked' before it is"
+  },
+  {
+   "reference": "Invite sent to",
+   "now": "A calendar invite goes to … within one working day.",
+   "where": "/book confirmation",
+   "reason": "Owner decision 2026-10-11: no booking tool; the request is emailed and the invite sent by hand, so nothing says 'booked' before it is"
+  },
+  {
+   "reference": "The people who would do the work will be on it. If anything changes, reply to the invite.",
+   "now": "The people who would do the work will be on it. If the time does not suit, reply to the invite.",
+   "where": "/book confirmation",
+   "reason": "Owner decision 2026-10-11: no booking tool; the request is emailed and the invite sent by hand, so nothing says 'booked' before it is"
   }
  ],
  "removed": [
@@ -431,6 +461,19 @@
    ],
    "patterns": [],
    "links": []
+  },
+  {
+   "id": "no-booking-tool",
+   "decided": "2026-10-11",
+   "reason": "Owner decision (2026-10-11): no booking tool (Cal.com dropped). /book requests and /brief submissions are emailed through Resend to Site settings -> Form recipients; the invite is sent by hand, so the page says the call is requested, not booked, and the privacy page names Resend and no scheduler.",
+   "strings": [
+    "[BOOKING TOOL]",
+    "[EMAIL PROVIDER]",
+    "(email),",
+    "(scheduling),"
+   ],
+   "patterns": [],
+   "links": []
   }
  ],
  "removed_routes": [
@@ -453,9 +496,11 @@
   "[ADDRESS]",
   "[AGENCY DISCOUNT]",
   "[ANALYTICS TOOL]",
+  "[BOOKING TOOL]",
   "[CMS PROVIDER]",
   "[COMPANY REG NO.]",
   "[COOKIE TABLE]",
+  "[EMAIL PROVIDER]",
   "[HOSTING PROVIDER]",
   "[LEGAL FORM]",
   "[MONTHLY]",

@@ -35,17 +35,18 @@ export const bookPage = {
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     times: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"],
     emailFallback: "[your email]",
-    // Shown instead of the confirmation while no booking tool or email provider is connected (not in the
-    // reference; decided 2026-10-10: build now, connect later).
-    notConnected: "Booking is not connected yet. Email [HELLO@HOPSIG.COM] and we will reply within one working day.",
+    // Shown instead of the confirmation when the request could not be emailed (not in the reference).
+    notConnected: "That did not go through. Email [HELLO@HOPSIG.COM] and we will reply within one working day.",
     fieldPlaceholders: ["Your name", "Work email", "Company · team size", "The problem, in a sentence or two"],
     // Review R8 (new copy, for owner approval): "Ask about this →" on a case card carries the case title here.
     aboutNote: "About the case note “{title}”: ",
-    submit: "Confirm the call",
-    bookedLabel: "Booked",
-    bookedTitle: "See you then.",
+    // No booking tool (owner decision 2026-10-11): the request is emailed and the invite is sent by hand, so the
+    // button and the confirmation say "request", not "booked" (deviations.json).
+    submit: "Request the call",
+    bookedLabel: "Requested",
+    bookedTitle: "We will confirm the time.",
     bookedText:
-      "Invite sent to {email}.\nThe people who would do the work will be on it. If anything changes, reply to the invite.",
+      "A calendar invite goes to {email} within one working day.\nThe people who would do the work will be on it. If the time does not suit, reply to the invite.",
     checklist: [
       "Bring the problem, not a brief",
       "Someone who can say yes to a scope",
