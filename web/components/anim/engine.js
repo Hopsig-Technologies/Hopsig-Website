@@ -199,6 +199,12 @@ HA.boot = function () { Array.prototype.slice.call(document.querySelectorAll('fi
 // ---- port: lifecycle for React (client-side navigation mounts and unmounts figures)
 HA.started = false;
 HA.start = function () { if (HA.started) return; HA.started = true; document.addEventListener('visibilitychange', function () { HA.last = 0; }); requestAnimationFrame(HA.tick_); };
-HA.unmount = function (fig) { HA.inst = HA.inst.filter(function (inst) { if (inst.fig !== fig) return true; if (inst.io) inst.io.disconnect(); return false; }); fig._ha = false; };
+// Also removes what mount added beside the svg (HTML buttons, pause button, canvas), so a remount (React Strict Mode
+// runs effects twice in development) does not stack a second set of controls over the first.
+HA.unmount = function (fig) {
+  HA.inst = HA.inst.filter(function (inst) { if (inst.fig !== fig) return true; if (inst.io) inst.io.disconnect(); return false; });
+  Array.prototype.slice.call(fig.querySelectorAll('.ha-btns, .ha-pause, .ha-canvas')).forEach(function (e) { e.parentNode.removeChild(e); });
+  fig._ha = false;
+};
 
 export default HA;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Closing } from "@/components/Closing";
-import { FlowDiagram } from "@/components/FlowDiagram";
+import { FlowTable } from "@/components/FlowTable";
+import { HeroAnim } from "@/components/anim/HeroAnim";
 import { Rv } from "@/components/Reveal";
 import { Eyebrow, H2, HeadRow, MoreLink, PageHero, Tags } from "@/components/blocks";
 import { BulletList } from "@/components/sections";
@@ -19,13 +20,23 @@ async function FlowContent({ mode }: { mode: FetchMode }) {
   return (
     <main>
       <Surface tone="d">
-        <PageHero hero={page.hero} fill={fill} size={26} />
+        <PageHero hero={page.hero} fill={fill} size={26} figure={<HeroAnim id="agentic-flow-sim" />} />
+        {/* v2: the never wall replaces the "What they never do." list; each rule is a button. */}
+        <section className="wrap" style={{ padding: "100px 0 120px" }}>
+          <Rv className="head-row" style={{ marginBottom: 28 }}>
+            <H2>{fill(agents.neverTitle)}</H2>
+            <Eyebrow>{fill(agents.neverAside)}</Eyebrow>
+          </Rv>
+          <Rv>
+            <HeroAnim id="agentic-never-wall" style={{ margin: 0 }} />
+          </Rv>
+        </section>
       </Surface>
 
       <Surface tone="l" seam>
         <div className="wrap" style={{ padding: "100px 0 120px" }}>
           <HeadRow head={flow.head} fill={fill} style={{ marginBottom: 28 }} />
-          <FlowDiagram
+          <FlowTable
             stages={flow.stages.map((s) => ({
               ...s,
               input: fill(s.input),
@@ -48,15 +59,6 @@ async function FlowContent({ mode }: { mode: FetchMode }) {
                 </h2>
               </div>
               <BulletList items={agents.does.map((x) => fill(x))} />
-            </Rv>
-            <Rv delay={90}>
-              <div className="agents-h">
-                <h2 className="h2" style={{ fontSize: 36 }}>
-                  {fill(agents.neverTitle)}
-                </h2>
-                <Eyebrow>{fill(agents.neverAside)}</Eyebrow>
-              </div>
-              <BulletList items={agents.never.map((x) => fill(x))} nolime />
             </Rv>
           </section>
           <section className="tooling">

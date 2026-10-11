@@ -63,6 +63,9 @@
   cursor: pointer;
   padding: 0;
   box-sizing: border-box;
+  /* The scenes name a button class "outline", which is also a Tailwind utility (a 1px outline); this undoes it.
+     The keyboard ring comes back in the :focus-visible rule below (rule 11). */
+  outline: none;
 }
 .ha-btns .lime {
   background: #c6f24e;

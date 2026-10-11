@@ -415,11 +415,9 @@ export type AgenticFlowPage = {
       personSigns: string;
       noGate: string;
       runsAlone: string;
-      briefIn: string;
-      prOut: string;
     };
   };
-  agents: { head: SectionHead; does: string[]; neverTitle: string; neverAside: string; never: string[] };
+  agents: { head: SectionHead; does: string[]; neverTitle: string; neverAside: string };
   tooling: { head: SectionHead; tools: string[]; whereLabel: string; where: string[]; links: Cta[] };
   closing: Closing;
 };

@@ -284,29 +284,6 @@
 }
 
 /* ---------------------------------------------------------------- agentic flow */
-/* Inline, as in the reference (Tailwind's preflight makes svg a block), keeping its baseline gap below. */
-.flow {
-  display: inline;
-  vertical-align: baseline;
-}
-.flow .node {
-  cursor: pointer;
-  outline: none;
-}
-.flow .node rect {
-  transition:
-    stroke 0.25s,
-    fill 0.25s;
-}
-/* Focus shows as the accent outline on the node box (rule 11), the same as hover. */
-.flow .node:hover rect,
-.flow .node:focus-visible rect,
-.flow .node.on rect {
-  stroke: var(--acc);
-}
-.flow .node:focus-visible rect {
-  stroke-width: 2;
-}
 .flist-hd {
   margin-top: 60px;
   display: grid;
@@ -332,15 +309,11 @@
   color: var(--sub);
   transition: background 0.25s;
 }
-.flist .frow.on {
-  background: var(--panel);
-}
 .flist .frow .n {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.12em;
   color: var(--acc);
-  scroll-margin-top: 200px;
 }
 .flist .frow .t {
   font-size: 19px;
@@ -366,12 +339,14 @@
   color: var(--dim);
   margin-bottom: 4px;
 }
+/* v2: one column (the never list moved into the never-wall figure). */
 .agents {
   padding: 100px 0 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 48px;
   align-items: start;
+  max-width: 760px;
 }
 .agents-h {
   display: flex;

@@ -106,8 +106,6 @@ export const agenticFlowPage = {
       personSigns: "A person signs",
       noGate: "No gate",
       runsAlone: "Runs on its own inside the guardrail",
-      briefIn: "Brief in",
-      prOut: "Pull request out · docs updated",
     },
   },
   agents: {
@@ -125,15 +123,6 @@ export const agenticFlowPage = {
     ],
     neverTitle: "What they never do.",
     neverAside: "Written into the guardrails · press one",
-    never: [
-      "Merge to main",
-      "Change the guardrails, the CI or the branch rules",
-      "Touch a production environment or production data",
-      "Decide scope, or add to it",
-      "Sign off an increment",
-      "Spend money, open accounts or talk to your users",
-      "Carry on when a person has said stop",
-    ],
   },
   tooling: {
     head: {
