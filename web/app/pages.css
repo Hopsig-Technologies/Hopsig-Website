@@ -350,4 +350,11 @@
   .legal-body .legal-aside {
     order: -1;
   }
+  .legal-toc {
+    gap: 0;
+  }
+  .legal-toc a {
+    display: block;
+    padding: 12px 0;
+  }
 }

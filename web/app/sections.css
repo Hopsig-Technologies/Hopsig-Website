@@ -1137,4 +1137,11 @@ html:not(.js) .wf {
   .note-aside > div:has(> .note-toc) {
     order: -1;
   }
+  .note-toc {
+    gap: 0;
+  }
+  .note-toc a {
+    display: block;
+    padding: 12px 0;
+  }
 }
