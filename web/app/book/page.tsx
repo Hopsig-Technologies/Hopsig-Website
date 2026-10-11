@@ -16,7 +16,7 @@ async function BookContent({ mode }: { mode: FetchMode }) {
   const cal = page.calendar;
   return (
     <ContactPage hero={page.hero} steps={page.steps} note={page.note} strip={page.strip} fill={fill}>
-      <BookCalendar copy={{ ...cal, notConnected: fill(cal.notConnected) }} bookingUrl={settings?.bookingUrl ?? null} />
+      <BookCalendar copy={{ ...cal, notConnected: fill(cal.notConnected) }} />
     </ContactPage>
   );
 }

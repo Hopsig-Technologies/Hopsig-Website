@@ -4,7 +4,7 @@ import { defineQuery } from "next-sanity";
 // Singleton queries filter on _type AND _id so the generated type is not a union of every document.
 
 export const SETTINGS_QUERY = defineQuery(`*[_type == "siteSettings" && _id == "siteSettings"][0]{
-  year, email, vatStatus, bankCountry, insurance, bookingUrl
+  year, email, vatStatus, bankCountry, insurance
 }`);
 
 /** Case studies the static pages name by record key (services, industries, AI transformation). Order is restored in code. */

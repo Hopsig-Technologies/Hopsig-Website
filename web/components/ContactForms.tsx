@@ -76,12 +76,13 @@ export type CalendarCopy = {
 };
 
 /**
- * /book: next week's five working days and eight half-hour slots (GMT), the four fields and Confirm. With a
- * booking tool set in Site settings, Confirm opens it; otherwise the request goes to /api/contact, and the
- * "Booked" card shows only when that succeeds (until an email provider is set up it shows `notConnected`).
- * The days depend on today, so they render after mount.
+ * /book: next week's five working days and eight half-hour slots in the visitor's own time, the four fields and
+ * the request button. The request is emailed to the form recipients (/api/contact) with the visitor's time zone;
+ * the confirmation card shows only when that succeeds, otherwise `notConnected`. There is no booking tool (owner
+ * decision 2026-10-11): someone sends the calendar invite by hand. The days depend on today, so they render after
+ * mount.
  */
-export function BookCalendar({ copy, bookingUrl }: { copy: CalendarCopy; bookingUrl: string | null }) {
+export function BookCalendar({ copy }: { copy: CalendarCopy }) {
   const [days, setDays] = useState<Date[]>([]);
   const [day, setDay] = useState<number | null>(null);
   const [time, setTime] = useState<string | null>(null);
@@ -106,13 +107,11 @@ export function BookCalendar({ copy, bookingUrl }: { copy: CalendarCopy; booking
 
   const confirm = async () => {
     if (!picked) return setNudge(true);
-    if (bookingUrl) {
-      track("consult_booked", { via: "booking-tool" });
-      window.location.href = bookingUrl;
-      return;
-    }
+    const [h, m] = time!.split(":").map(Number);
+    const start = new Date(picked.getFullYear(), picked.getMonth(), picked.getDate(), h, m).toISOString();
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? "";
     setStatus("sending");
-    const ok = await post({ kind: "booking", ...f, slot: summary });
+    const ok = await post({ kind: "booking", ...f, slot: summary, start, timeZone });
     if (ok) track("consult_booked", { via: "request" });
     setStatus(ok ? "done" : "failed");
   };

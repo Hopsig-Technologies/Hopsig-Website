@@ -50,7 +50,7 @@ export const privacyPage = {
       heading: "Who sees it",
       body: [
         {
-          p: "The people at Hopsig who would do the work. Our processors: Vercel (hosting), Sanity (site content), [EMAIL PROVIDER] (email), [BOOKING TOOL] (scheduling), Google (Google Analytics 4, with consent) and PostHog, US cloud (analytics and session recordings, with consent). Each is bound by a data-processing agreement.",
+          p: "The people at Hopsig who would do the work. Our processors: Vercel (hosting), Sanity (site content), Resend (emailing what you send through the forms), Google (Google Analytics 4, with consent) and PostHog, US cloud (analytics and session recordings, with consent). Each is bound by a data-processing agreement.",
         },
       ],
     },

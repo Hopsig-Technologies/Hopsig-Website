@@ -26,8 +26,7 @@ export type SiteSettings = {
   vatStatus?: string;
   bankCountry?: string;
   insurance?: string;
-  bookingUrl?: string;
-  briefRecipient?: string;
+  contactRecipients?: Array<string>;
 };
 
 export type JobListing = {
@@ -305,14 +304,13 @@ export type AllSanitySchemaTypes =
 
 // Source: ../web/sanity/queries.ts
 // Variable: SETTINGS_QUERY
-// Query: *[_type == "siteSettings" && _id == "siteSettings"][0]{  year, email, vatStatus, bankCountry, insurance, bookingUrl}
+// Query: *[_type == "siteSettings" && _id == "siteSettings"][0]{  year, email, vatStatus, bankCountry, insurance}
 export type SETTINGS_QUERY_RESULT = {
   year: string | null;
   email: string | null;
   vatStatus: string | null;
   bankCountry: string | null;
   insurance: string | null;
-  bookingUrl: string | null;
 } | null;
 
 // Source: ../web/sanity/queries.ts
@@ -490,7 +488,7 @@ export type JOBS_QUERY_RESULT = Array<{
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    '*[_type == "siteSettings" && _id == "siteSettings"][0]{\n  year, email, vatStatus, bankCountry, insurance, bookingUrl\n}': SETTINGS_QUERY_RESULT;
+    '*[_type == "siteSettings" && _id == "siteSettings"][0]{\n  year, email, vatStatus, bankCountry, insurance\n}': SETTINGS_QUERY_RESULT;
     '*[_type == "caseStudy" && source in $keys]{\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric\n}': CASES_BY_KEY_QUERY_RESULT;
     '*[_type == "caseStudy" && featured == true] | order(featuredOrder asc){\n  _id, title, "slug": slug.current, source, domain, problem, whatWeDid, measured, stack, shape, order, hasPage, metric, filterDomain\n}': CASES_FEATURED_QUERY_RESULT;
     'count(*[_type == "caseStudy"])': CASE_COUNT_QUERY_RESULT;

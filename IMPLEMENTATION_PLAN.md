@@ -123,7 +123,7 @@ Not done, or done differently (reasons in the plan): no invented commit-log tick
 | R4 Notes — DONE (dates; TOC and margin offer moved to R8) | owner-chosen publish dates (22 Jul and 16 Sep 2026) on note heroes, lists, home journal, RSS and BlogPosting; "Hopsig engineering" byline; optional `updatedAt` |
 | R5 Content depth | caseStudy fields + richer template; more case pages; metric placeholders list + launch switch; FAQs (founders approve) |
 | R6 Analytics + consent — DONE | banner, Consent Mode v2, GA4 + PostHog after consent, events, privacy copy for counsel |
-| R7 Booking + brief — brief DONE (Resend); booking waits for Cal.com | Cal.com embed, Resend to info@hopsig.com, pre-filled "Ask about this" |
+| R7 Booking + brief — DONE | No booking tool (owner decision 2026-10-11, Cal.com dropped): /book requests and /brief submissions are emailed through Resend to Site settings → Form recipients (a list); /book says "Request the call" / "Requested" and the invite is sent by hand |
 | R8 Functional improvements | /work filters + sort, real table on Why not just hire, linked legal TOC, Company toggle, fewer CTAs, home tagline + location, industries paragraphs |
 | R9 v3 design brief — DONE | `docs/design/v3-brief.md`: motifs (dossier card, before→after counter, SOW sheet, gate stamp), page pieces, mobile 360×640 artboards owed from v2, the accent-for-numbers question, and what was rejected |
 | R10 Domain + launch | old P9: hopsig.com, redirects, Search Console, Lighthouse, 390px, production dataset, counsel |
@@ -150,8 +150,8 @@ Dead-link crawl of every route; `typedRoutes: true` (all routes now exist) repla
 | decision | blocks |
 |---|---|
 | `[DATE]` on note heroes (rule 7), "fetched from Sanity Studio" copy, "Tweaks" in the estimator note, the privacy page's "form storage" line | the pages that show them (P5–P8); see `CLAUDE.md` "Open questions" |
-| Booking tool (Cal.com / Calendly / SavvyCal) | P8 `/book`, privacy copy |
-| Email provider for the brief form (e.g. Resend, Postmark) | P8 `/brief`, privacy copy |
+| ~~Booking tool~~ decided 2026-10-11: none; requests are emailed (R7) | — |
+| ~~Email provider~~ decided: Resend (R7) | — |
 | Analytics (or none) | privacy copy, consent banner |
 | Published dates for the two notes (stand-ins: 2026-01-01 / 2026-01-02; only ordering) | nothing now |
 | Founders' Sanity accounts (Editor role) | whenever they want to start editing |
