@@ -18,6 +18,8 @@ const args = process.argv.slice(2);
 const base = args.find((a) => a.startsWith("http")) || "http://localhost:3100";
 const opt = (k) => (args.includes(k) ? args[args.indexOf(k) + 1] : null);
 const verbose = args.includes("--verbose");
+const dump = opt("--json"); // write every finding, for working through them
+const all = [];
 const routes = opt("--route")
   ? [opt("--route")]
   : JSON.parse(fs.readFileSync(new URL("../content/routes.json", import.meta.url), "utf8"))
@@ -70,8 +72,10 @@ for (const width of widths) {
           range.selectNodeContents(el);
           const tr = [...range.getClientRects()].filter((q) => q.width > 0);
           const left = Math.min(...tr.map((q) => q.left)), right = Math.max(...tr.map((q) => q.right));
-          if (tr.length && (left < 16 || right > vw - 16) && !clipsSideways(el)) edge.push(`${name(el)} [${Math.round(left)}–${Math.round(right)}]`);
-          if (parseFloat(cs.fontSize) < 11) tiny.push(`${name(el)} ${cs.fontSize}`);
+          const ellipsis = cs.textOverflow === "ellipsis" && cs.overflowX !== "visible"; // cut on purpose, with a mark
+          if (tr.length && (left < 16 || right > vw - 16) && !ellipsis && !clipsSideways(el)) edge.push(`${name(el)} [${Math.round(left)}–${Math.round(right)}]`);
+          // The wordmark is a logotype, and the engagement panel is a drawn mock UI like the artboards.
+          if (parseFloat(cs.fontSize) < 11 && !el.closest(".wm, .ep, .hdr-wm, .foot-brand")) tiny.push(`${name(el)} ${cs.fontSize}`);
         }
         if (el.matches("a[href], button, input:not([type=hidden]), select, textarea, summary")) {
           if (rc.width === 0 || rc.height === 0) {
@@ -84,13 +88,15 @@ for (const width of widths) {
         }
       }
       const add = (label, list) => list.length && problems.push(`${label} ×${list.length}: ${list.slice(0, 4).join(" | ")}`);
+      window.__findings = { edge, small, zero, field, tiny };
       add("text at the screen edge", edge);
       add("tap target under 44px", small);
       add("focusable with no size", zero);
       add("field under 16px", field);
       add("text under 11px", tiny);
-      return { problems, height: document.documentElement.scrollHeight };
+      return { problems, height: document.documentElement.scrollHeight, findings: window.__findings };
     }, width);
+    all.push({ width, route, ...r.findings });
     const ok = r.problems.length === 0;
     if (!ok) failures++;
     console.log(`${ok ? "ok  " : "FAIL"}  ${width}  ${route.padEnd(48)} ${Math.round(r.height / 800)} screens`);
@@ -99,5 +105,6 @@ for (const width of widths) {
   await ctx.close();
 }
 await browser.close();
+if (dump) fs.writeFileSync(dump, JSON.stringify(all, null, 1));
 console.log(`\n${failures} failure(s)`);
 process.exit(failures ? 1 : 0);

@@ -139,7 +139,7 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
             <Steps steps={s.steps} fill={fill} />
           </section>
           {/* v2: the agentic strip, one link to the pipeline (no caption, no pause button). */}
-          <section className="sp-t100">
+          <section className="sp-t100 strip-sec">
             <Link className="strip" href="/agentic-flow" aria-label={t.stripLabel}>
               <HeroAnim id="agentic-strip" style={{ margin: 0 }} />
             </Link>

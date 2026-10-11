@@ -283,3 +283,14 @@
     padding-bottom: 72px;
   }
 }
+
+/* Phones (round M): the flow table's mono labels at the 11px floor. */
+@media (max-width: 899px) {
+  .flist .frow .a,
+  .flist .frow .k {
+    font-size: 11px;
+  }
+  .more-inline a {
+    padding: 15px 0;
+  }
+}

@@ -1235,3 +1235,29 @@ html:not(.js) .cidx .bars i {
     font-size: 40px;
   }
 }
+/* Phones: 44px tap targets, 11px floor. */
+@media (max-width: 899px) {
+  .cidx .filters button {
+    padding: 14px;
+  }
+  .cidx .ask {
+    padding: 15px 0;
+  }
+  .file .tab .m,
+  .file .endc a {
+    padding: 15px 0;
+  }
+  .notes .ledger .all a {
+    padding: 15px 0;
+  }
+  .cidx .meas .k,
+  .cidx .meas .bl {
+    font-size: 11px;
+  }
+  .hero .hint {
+    padding: 0 20px;
+  }
+  .notes .feat h3 {
+    font-size: 34px;
+  }
+}

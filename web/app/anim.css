@@ -133,4 +133,8 @@ a.strip:hover text:last-of-type {
   .scrub .stick {
     position: static;
   }
+  /* The agentic strip is only its figure: with the figure hidden there is nothing to show or focus. */
+  .strip-sec {
+    display: none;
+  }
 }

@@ -241,7 +241,7 @@
 
 @media (max-width: 899px) {
   .steps {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .case-grid,
   .svc-intro {
@@ -252,7 +252,7 @@
     padding: 24px 20px;
   }
   .svc-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -408,7 +408,7 @@
 }
 @media (max-width: 899px) {
   .svc {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
   .svc-ui {
@@ -552,8 +552,23 @@
     min-height: 392px;
   }
   .ep-terms {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     margin-top: 16px;
+  }
+  .ep-top {
+    height: auto;
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .ep-phase {
+    width: 100% !important;
+  }
+  .ep-phase > div {
+    text-align: left !important;
+  }
+  .ep-quote {
+    white-space: normal;
+    border-right: 0;
   }
 }
 
@@ -874,7 +889,7 @@
 @media (max-width: 899px) {
   .work-report,
   .case-body {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
   .case-aside {
@@ -1000,5 +1015,36 @@
   .note-body {
     padding-top: 64px;
     padding-bottom: 72px;
+  }
+}
+
+/* Phones (round M): 44px tap targets (the FAQ question takes the row's top padding: same look), 11px floor for
+   the mono labels. */
+@media (max-width: 899px) {
+  a.more,
+  .more,
+  .case-foot .more {
+    padding: 15px 0;
+  }
+  .faq .item {
+    padding-top: 0;
+  }
+  .faq .item .t {
+    padding: 18px 0;
+    margin-bottom: -18px;
+  }
+  .faq .item .b {
+    position: relative;
+  }
+  .ledger-a {
+    display: inline-block;
+    padding: 9px 0;
+  }
+  .svc-priced .more {
+    padding: 13px 0;
+  }
+  .case-row-d,
+  .case-row-s {
+    font-size: 11px;
   }
 }
