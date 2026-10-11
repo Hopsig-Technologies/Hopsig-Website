@@ -12,6 +12,7 @@ export { services } from "./services";
 export { industries } from "./industries";
 export { templates } from "./templates";
 export { engagementPanel } from "./engagementPanel";
+export { animations, scenesFor } from "./animations";
 
 export { homePage } from "./pages/homePage";
 export { servicesIndexPage } from "./pages/servicesIndexPage";

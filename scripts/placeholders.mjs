@@ -5,7 +5,7 @@
 // Site = static copy (audit/content-corpus.json) + the dataset's published documents. A site-wide token counts as
 // resolved only when its Site settings field is filled. Fails if a token that content/placeholders.json expects
 // has disappeared any other way (i.e. someone "filled it in" from a guess). New tokens are reported, not failed.
-import {readFileSync} from 'node:fs'
+import {readdirSync, readFileSync} from 'node:fs'
 import {resolve} from 'node:path'
 
 const ROOT = resolve(import.meta.dirname, '..')
@@ -36,6 +36,8 @@ const expected = [
   ...Object.keys(JSON.parse(readFileSync(resolve(ROOT, 'content', 'placeholders.json'), 'utf8'))),
   // Placeholders the owner chose instead of invented reference content (content/deviations.json).
   ...JSON.parse(readFileSync(resolve(ROOT, 'content', 'deviations.json'), 'utf8')).added_placeholders,
+  // v2 animation artboards: text drawn by the scene files themselves (healthcare: "BAA / DPA [TO CONFIRM]").
+  '[TO CONFIRM]',
 ]
 
 const q = (groq) => fetch(`https://${PROJECT}.apicdn.sanity.io/v${API}/data/query/${dataset}?query=${encodeURIComponent(groq)}`).then((r) => r.json()).then((r) => r.result)
@@ -53,6 +55,11 @@ const walk = (o, where) => {
   else if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) if (!k.startsWith('_') && !NOT_COPY.has(k)) walk(v, where)
 }
 for (const d of docs) walk(d, `${d._type}:${d._id}`)
+// Scene files draw their own artboard text (fictional product UI); a bracketed token there is a placeholder too.
+const SCENES = resolve(ROOT, 'web', 'components', 'anim', 'scenes')
+for (const f of readdirSync(SCENES).filter((f) => f.endsWith('.js'))) {
+  for (const lit of readFileSync(resolve(SCENES, f), 'utf8').match(/'(?:[^'\\\n]|\\.)*'/g) ?? []) count(lit.slice(1, -1), `scene:${f}`)
+}
 // The join page renders [STATUS] for every role without a status.
 const unsetRoles = docs.filter((d) => d._type === 'jobListing' && !d.status)
 if (unsetRoles.length) counts.set('[STATUS]', [...(counts.get('[STATUS]') ?? []), ...unsetRoles.map((d) => `jobListing:${d._id}`)])

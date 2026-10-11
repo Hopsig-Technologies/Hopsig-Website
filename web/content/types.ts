@@ -58,6 +58,7 @@ export type Templates = {
     askLink: string;
   };
   servicePage: {
+    stripLabel: string;
     heroEyebrow: string;
     heroMeta: string;
     stepsAside: string;
@@ -187,6 +188,7 @@ export type Industry = {
 // ---------------------------------------------------------------- pages
 
 export type HomePage = {
+  agenticBand: { head: SectionHead; buttons: Cta[] };
   hero: {
     eyebrow: string;
     title: string;
@@ -372,6 +374,7 @@ export type WorkingWithUsPage = { hero: PageHero; checks: TitleTextSection; asks
 
 export type AiTransformationPage = {
   hero: PageHero;
+  scrub: { eyebrow: string; hint: string };
   offer: {
     head: SectionHead;
     gets: string[];
@@ -443,3 +446,18 @@ export type JoinPage = {
 export type LegalPage = { hero: PageHero; sections: LegalSection[]; footnote: string };
 
 export type NotFoundPage = { closing: Closing };
+
+// ---------------------------------------------------------------- animations (v2)
+
+/** One animated figure. `mode`: loop (plays while visible), state (interactive), scrub (scroll sets t). */
+export type AnimScene = {
+  id: string;
+  w: number;
+  h: number;
+  mode: "loop" | "state" | "scrub";
+  /** No pause button (the service strip). */
+  nopause?: boolean;
+  /** Describes the mechanism; never states a number. Empty = no figcaption. */
+  caption: string;
+};
+export type AnimPage = { route: string; scenes: AnimScene[] };

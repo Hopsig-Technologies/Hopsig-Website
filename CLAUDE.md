@@ -8,7 +8,8 @@ Five-second test, every page: a London head of engineering thinks "senior, will 
 ## What this repo is
 
 - `IMPLEMENTATION_PLAN.md` — the build order (P0–P9) and the content split. Replaces `PROMPTS.md`.
-- `reference/site/` — the approved prototype: 37 static HTML pages, desktop only (1440 wide), each self-contained. **This is the design source of truth**, except where a rule below overrides it. `reference/page-map.json` maps old artboard names to clean paths.
+- `reference/site/` — the approved prototype: 37 static HTML pages, desktop only (1440 wide), each self-contained. **This is the design source of truth**, except where a rule below overrides it. Since 2026-10-11 it holds the **v2 design** (new header on every page; animated figures on 17 pages), applied by `scripts/apply_v2_reference.py` from the v2 bundle (kept outside git in `v2 handover/`); the v1 pages are in git history. In the 17 animated pages the figures are empty `<figure class="anim">` shells filled by the prototype's script: open `v2 handover/reference/site-v2/` to watch them run.
+- `docs/anim/` — the animation brief, per-scene specs, `DEVIATIONS.md` (deliberate departures; keep them) and the v2 `CHANGES-v2.md`. `reference/page-map.json` maps old artboard names to clean paths.
 - `web/` — the Next.js site (Vercel). **`web/content/` holds the copy of every static page as typed TypeScript modules** (`satisfies <Type>` against `web/content/types.ts`; internal hrefs are checked against `web/content/routes.ts`). Edit copy there; never type it into a component.
 - `studio/` — Sanity Studio, hosted at https://hopsig.sanity.studio. **Sanity holds only what changes without a developer:** case studies (`caseStudy`), notes (`post`), career listings (`jobListing`) and the site-wide values (`siteSettings`: company reg no, year, email, day rate, booking link …).
 - `content/` — seed input for Sanity only: `case-studies.json`, `posts.json`, `job-listings.json`, plus `routes.json` and `placeholders.json` used by the checks. (The page copy was extracted from the reference into `content/pages/*.json` and converted once into `web/content` on 2026-10-10 in the "P0 pivot" commit; git history has the extractor and converter.)
@@ -30,7 +31,7 @@ Version notes (read `web/AGENTS.md`; the bundled docs in `web/node_modules/next/
 2. **Client names are withheld** on every case note. Do not add logos, names or testimonials.
 3. **Company voice, no people.** No founder names, photos, bios or "our team" sections anywhere. "We", "the people who would do the work", "the record".
 4. **Nothing from the banned list:** purple/blue gradient blobs, glassmorphism, neon, 3D shapes, circuit-board or "AI brain" imagery, stock photography, rounded friendly-SaaS styling, generic wordmarks, overpromising taglines, **card drop shadows**. Depth comes from borders and tone changes, never shadows. (`box-shadow: inset 0 0 0 1px` used as a border is fine.)
-5. **One Lime moment per screen** on dark surfaces (the accent is the eyebrow, or the button, or the ring — not all three). The one approved exception: collapsed tabs in the services file stack are Lime.
+5. **One Lime moment per screen** on dark surfaces (the accent is the eyebrow, or the button, or the ring — not all three). Approved exceptions: collapsed tabs in the services file stack are Lime; the header's AI capsule (AI transformation · Agentic flow) is Lime on every page (v2).
 6. Light surfaces use **Moss** as the accent, never Lime (Lime on Paper fails contrast). This includes hover: link hover is `--acc` darkened/underlined per tone, **never `#A9D437`** (the reference uses it globally; do not copy it).
 7. **No reading times, dates, bylines or newsletter pop-ups** on Notes. No cookie banner unless legally required for the analytics actually installed.
 8. Mobile is **not designed yet** (prototype is 1440 wide). Build responsive from the tokens and the desktop reference; keep the hierarchy, drop the side-by-side grids to single column below 900px, and do not invent new components to do it.
@@ -125,3 +126,19 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 - The rates estimator note says "Set the day rate in Tweaks to see a total" — "Tweaks" is the prototype tool's panel; the rate now comes from Site settings. Ask before rewording.
 - Booking tool for `/book` and email provider for `/brief` (and the booking request): not chosen. Both are stubbed so nothing pretends to work (`bookingUrl` in Site settings; `sendContact` in `web/lib/contact.ts`). The `notConnected` lines in `bookPage`/`briefPage` are new copy, to remove once connected.
 - The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. For counsel's review.
+
+## Header (v2)
+
+`AI transformation` and `Agentic flow` sit together in a hairline capsule (`span.ai`) between the Industries and Company dropdowns, coloured Lime (`var(--acc)`); the other links stay dim. Capsule border goes Lime at 50 % on hover/focus-within. No dot, no pulse, no extra nav item. The mobile menu is unchanged.
+
+## Animations (v2)
+
+- Runtime: `web/components/anim/engine.js` (the handover engine plus three marked port edits: `HA.start`, `HA.unmount`, `export default`). One clock for every figure, seeded randomness, IntersectionObserver playback at .35, pause on hidden tab, pause button on loops > 5 s, reduced motion = frozen `resolved` frame. Scenes (`web/components/anim/scenes/*.js`) are byte-identical to the handover and are pure functions of `t`; never keep per-frame state in a scene, never re-tune one silently: check `docs/anim/DEVIATIONS.md`, and if a departure is not listed, stop and ask.
+- Manifest: `web/content/animations.ts` — route → scene ids, artboard size, mode, caption. Captions come from there, never written in a component. Timings (loop, seed, resolved) live in the scene files.
+- Figure markup: `<figure class="anim" id="fig-<id>" data-scene="<id>"><div class="frame" style="aspect-ratio: W / H"></div><figcaption id="fig-<id>-cap">…</figcaption></figure>`; the `.frame` reserves its aspect ratio and holds the server-rendered static frame (`web/public/anim/<id>.static.svg`) before the scene loads (no layout shift, visible with JS off). Styles in `web/app/anim.css`.
+- Animation-only tokens: amber `#D9A441` (queued / pending), red `#E06A55` (failure, ≤ 1,200 ms on screen). Not used in page chrome. Lime inside an artboard means "done and correct" only.
+- Artboard numbers are a fictional product's UI; figcaptions never state a number; outcome-like scenes carry the on-artboard `EXAMPLE FIGURES` micro label. Never "fix" a figure to look better and never remove a label. Artboard text lives in the scene files (the one place copy sits in client JS, by design); `pnpm placeholders` scans them (`[TO CONFIRM]` in the healthcare scene until the founders confirm BAA / DPA).
+- Interactive scenes (`agentic-flow-sim`, `agentic-never-wall`) use real `<button>`s positioned in artboard units (`HA.button`); keyboard-operable, focus ring 2 px Lime.
+- `/ai-transformation` is scroll-scrubbed: `.scrub` 250vh with a sticky child; `t = p × 7000`; week ticks call `inst.goto(t)`.
+- Verification: every loop scene's frame at `t = loop − 1` equals the frame at `t = 0` (0–10 differing pixels is anti-aliasing, more is a bug): `pnpm anim:test`. Static frames: `pnpm anim:static` (committed; CI fails if they drift).
+- Mobile artboards are not designed. Below 768 px the figure is hidden and the figcaption stays as copy, until the mobile scenes exist.

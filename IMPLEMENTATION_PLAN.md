@@ -93,6 +93,21 @@ All ten pages, each against its reference: text diff 0 missing, full-page pixel 
 `/join` + careers (`JOBS_QUERY`; `[STATUS]` verified with an empty status), `/rates` (page-local estimator; rate from Site settings), `/why-not-just-hire`, `/book` (calendar; `bookingUrl` when chosen), `/brief` (route handler → email; provider still to choose), `/ai-transformation`, `/agentic-flow` (SVG with hover sync), `/for-agencies`, `/privacy`, `/terms`, `not-found`.
 Gate: text diff each.
 
+## v2 — design updates (2026-10-11; from `v2 handover/`, see `docs/anim/CHANGES-v2.md`)
+
+Header capsule on every page; animated figures on 17 pages (18 scenes on one engine); `/agentic-flow` and `/ai-transformation` restructured. The v2 bundle's `content/*.json` are the old v1 originals and are **not** used; ours stay. P9 moves after v2 so the audit covers the final design.
+
+| Phase | Scope | Gate |
+|---|---|---|
+| V0 Intake — DONE | `reference/site` = v2 design (`scripts/apply_v2_reference.py`); engine + 19 scene files in `web/components/anim/`; `web/content/animations.ts` (captions); new copy (home band, service strip label, agentic-flow edits, scrub labels); `placeholders.mjs` scans scenes (`[TO CONFIRM]`); CLAUDE.md v2 sections | check:content 0 uncovered against the v2 references |
+| V1 Header | `span.ai` capsule from `navigation.ts` (`group: "ai"`), CSS from CHANGES §1 | shots at 1440 / 1280 / 1180 |
+| V2 Engine wrapper | `HeroAnim` (server: figure, aspect-ratio frame, inlined static SVG, caption) + `AnimMount` (client: lazy engine + scene at rootMargin 200px, `HA.mount`/`unmount`); `anim.css` (+ font mapping, hide frames < 768px); `pnpm anim:static`, `pnpm anim:test`, CI | seam ≤ 10 px for every loop scene, no errors, zero layout shift, scene chunks ≤ 25 KB gz |
+| V3 Home band + service strip | band after the home hero; `agentic-strip` link between "How it runs." and the FAQ on 8 service pages | text diff + shots |
+| V4 Hero scenes | `PageHero` figure slot; 8 service + 6 industry scenes | text diff on 14, figure shots |
+| V5 Agentic flow | simulator in the hero, never-wall section, static SVG and never list removed, agents column 760 | full click path with mouse and keyboard |
+| V6 AI transformation | `.scrub` 250vh, sticky at 96, `t = p × 7000`, week ticks → `inst.goto` | scroll 45% → t ≈ 3150; W3 → t ≈ 3000 |
+| V7 Audit + deploy | no console errors; pause off-screen / hidden tab; pause button; reduced motion; contrast; ≤ 25 KB gz; 60 fps at CPU ×4; < 768px; check_nojs; screenshots in `audit/v2/` | all green, deployed |
+
 ### P9 — Audit & launch
 
 Dead-link crawl of every route; `typedRoutes: true` (all routes now exist) replacing the hand-kept `Href`; `pnpm placeholders` == tokens in the built HTML; Lighthouse on `/`, `/services/data-engineering`, `/work`: performance ≥ 90, accessibility 100; JS disabled: all copy visible; `prefers-reduced-motion`; metadata on every route, `sitemap.ts`, `robots.ts`, OG image; 1440 + 390 contact sheet in `audit/`. Launch: seed `production` (`seed.mjs --with-settings` once, then the founders fill Site settings there), production webhook, CORS for the real domain, move the Vercel project to a Hopsig Pro team (Hobby excludes commercial use), domain; `hopsig.si` → 301 to `/ai-transformation` if registered.

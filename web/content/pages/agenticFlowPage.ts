@@ -7,7 +7,7 @@ export const agenticFlowPage = {
   hero: {
     title: "Six agents. One pipeline.\nA person at every gate.",
     eyebrow: "Agentic flow · how a story becomes a pull request",
-    sub: "This is the delivery pipeline every Hopsig build runs on. Each stage is an agent with a defined input, output and guardrail; each handoff can be stopped by a person. Hover a stage; the detail is below.",
+    sub: "This is the delivery pipeline every Hopsig build runs on. Each stage is an agent with a defined input, output and guardrail; each handoff can be stopped by a person. Run a story; the detail is below.",
     buttons: [
       {
         label: "Book a consult",
@@ -124,7 +124,7 @@ export const agenticFlowPage = {
       "Stop and ask a person, with the context, when a decision is outside the guardrails",
     ],
     neverTitle: "What they never do.",
-    neverAside: "Written into the guardrails",
+    neverAside: "Written into the guardrails · press one",
     never: [
       "Merge to main",
       "Change the guardrails, the CI or the branch rules",

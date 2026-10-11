@@ -39,6 +39,11 @@ export const aiTransformationPage = {
       },
     ],
   },
+  // v2: the scroll-scrubbed "six weeks" figure after the hero (caption in animations.ts).
+  scrub: {
+    eyebrow: "Six weeks in your repo · scroll",
+    hint: "Click a week to jump",
+  },
   offer: {
     head: {
       title: "What you get.",

@@ -56,6 +56,26 @@ export const homePage = {
     // The reference spaces the arrow with a no-break space.
     scrollHint: "Scroll ↓ \u00a0 the engagement, in five beats",
   },
+  // v2: the band after the hero that carries the home-agentic figure (caption in animations.ts).
+  agenticBand: {
+    head: {
+      eyebrow: "Agentic delivery",
+      title: "Six agents. A person at every gate.",
+      sub: "Our delivery pipeline runs on Claude Code. Agents plan, build, review and document. People sign off. Agents never merge to main.",
+    },
+    buttons: [
+      {
+        label: "Get it in six weeks",
+        href: "/ai-transformation",
+        variant: "lime",
+      },
+      {
+        label: "See the pipeline",
+        href: "/agentic-flow",
+        variant: "outline",
+      },
+    ],
+  },
   services: {
     head: {
       eyebrow: "Core services",

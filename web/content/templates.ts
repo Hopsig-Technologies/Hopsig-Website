@@ -14,6 +14,8 @@ export const templates = {
     askLink: "Ask about this →",
   },
   servicePage: {
+    // v2: the agentic-strip figure before the FAQ is one link to /agentic-flow; this is its accessible name.
+    stripLabel: "Delivered on our agentic pipeline. Six agents, a person at every gate. See the pipeline.",
     heroEyebrow: "Service {nn} · {name}",
     heroMeta: "{shape} · from [YOUR RATE] / day",
     stepsAside: "The same loop as every engagement",

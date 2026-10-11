@@ -14,3 +14,6 @@ audit/
 .vercel
 .env*
 !.env.example
+
+# The v2 design bundle as received; what the build uses is in reference/site, docs/anim and web/components/anim.
+/v2 handover/
