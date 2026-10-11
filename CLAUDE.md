@@ -57,7 +57,7 @@ Tone system — every section is wrapped in `.tone-d` or `.tone-l`, which set th
 .tone-l { --bg:#F7F8F4; --text:#0E1116; --dim:#545A60; --sub:#3C424A; --line:#D6DAD2; --panel:#FFFFFF; --hair:#EAECE6; --acc:#3F6B1F; --btn:#0E1116; --btnText:#F7F8F4; --seamdot:#A9AFA6; --dot:#D9DECF }
 ```
 
-Type: **Space Grotesk** 600 for headings (letter-spacing −0.045em to −0.05em, line-height 1.02–1.05), 400 for body; **IBM Plex Mono** 400/500 for eyebrows, labels, numbers and nav (11–12px, letter-spacing 0.12–0.16em, uppercase). Load only these weights.
+Type: **Space Grotesk** 600 for headings (letter-spacing −0.045em to −0.05em, line-height 1.02–1.05), 400 for body, 500 only inside the v2 animation artboards; **IBM Plex Mono** 400/500 for eyebrows, labels, numbers and nav (11–12px, letter-spacing 0.12–0.16em, uppercase). Load only these weights.
 Headline sizes: h1 84 (home) / 72 (page heroes) / 64 (book, brief); h2 56 (closing) / 44 (section) / 40 / 32; file-stack numerals 88 (mono 500).
 Full scale in use (px): 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24 26 30 32 34 36 40 42 44 48 56 64 72 84 88. Use these; do not "normalise" them to fewer.
 

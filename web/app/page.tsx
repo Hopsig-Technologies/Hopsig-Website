@@ -10,6 +10,7 @@ import { Rv } from "@/components/Reveal";
 import { Eyebrow, H2, MoreLink } from "@/components/blocks";
 import { CaseIndex, type CaseIndexRow } from "@/components/home/CaseIndex";
 import { HomeHero } from "@/components/home/HomeHero";
+import { HeroAnim } from "@/components/anim/HeroAnim";
 import { ServiceFile } from "@/components/home/ServiceFile";
 import { Capabilities } from "@/components/more";
 import { Surface } from "@/components/Surface";
@@ -32,7 +33,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
     cachedSanity({ query: POSTS_QUERY, ...mode }),
     cachedSanity({ query: CASE_COUNT_QUERY, ...mode }),
   ]);
-  const { hero, services: svc, caseIndex: ci, midCta, why, record, notes } = page;
+  const { hero, agenticBand: band, services: svc, caseIndex: ci, midCta, why, record, notes } = page;
 
   const rows: CaseIndexRow[] = featured.map((c) => ({
     id: c._id,
@@ -100,6 +101,26 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
             ))}
           </div>
         </HomeHero>
+        {/* v2: the agentic band, between the hero sequence and the services file. */}
+        <section className="wrap" style={{ padding: "120px 0" }}>
+          <Rv style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 900 }}>
+            <Eyebrow>{fill(band.head.eyebrow)}</Eyebrow>
+            <h2 className="h2" style={{ fontSize: 48 }}>
+              {fill(band.head.title)}
+            </h2>
+            <p className="band-sub">{fill(band.head.sub)}</p>
+          </Rv>
+          <Rv style={{ marginTop: 40 }}>
+            <HeroAnim id="home-agentic" style={{ margin: 0 }} />
+          </Rv>
+          <Rv className="ph-btns" style={{ marginTop: 32 }}>
+            {band.buttons.map((b) => (
+              <Button key={b.label} href={b.href} variant={b.variant === "lime" ? "lime" : "outline"}>
+                {b.label}
+              </Button>
+            ))}
+          </Rv>
+        </section>
       </Surface>
 
       <Surface tone="l" seam>

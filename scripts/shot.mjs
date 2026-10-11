@@ -3,6 +3,7 @@
 //   node scripts/shot.mjs --name approach-closing \
 //     --ref reference/site/approach.html --ref-sel "section.close" \
 //     --url http://localhost:3000/approach --web-sel "section.close" [--width 1440] [--hover ".hdr .dd:nth-of-type(1)"]
+//     [--eval "HA.seek(8000)"]   # freeze animated figures at the same frame on both pages
 //     [--no-header]     # hide the sticky header (element shots further down a long page)
 //     [--clip-height 520]   # extend the element screenshot downwards (open dropdowns overflow the header)
 //
@@ -42,6 +43,13 @@ async function grab(browser, url, selector, file, hover) {
   if (hover) {
     await page.locator(hover).first().hover();
     await page.waitForTimeout(400);
+  }
+  // --eval "<js>": run on both pages once the element is in view, e.g. "HA.seek(8000)" to freeze an animated
+  // figure at the same frame (waits for the site's lazy-loaded scene to mount first).
+  if (args.eval) {
+    await page.waitForFunction(() => window.HA && window.HA.inst && window.HA.inst.length > 0, null, { timeout: 15000 });
+    await page.evaluate(args.eval);
+    await page.waitForTimeout(150);
   }
   await page.waitForTimeout(150);
   if (args["clip-height"]) {

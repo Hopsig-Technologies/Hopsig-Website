@@ -6,6 +6,7 @@ import { Rv } from "@/components/Reveal";
 import { H2, HeadRow, MoreLink, PageHero, Tags } from "@/components/blocks";
 import { BulletList, CaseCard, FaqBlock, Steps } from "@/components/sections";
 import { Surface } from "@/components/Surface";
+import { HeroAnim } from "@/components/anim/HeroAnim";
 import { SERVICE_SLUGS, services, templates, type ServiceSlug } from "@/content";
 import { casesByKey } from "@/lib/cases";
 import { withMode } from "@/lib/mode";
@@ -108,6 +109,12 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
           <section style={{ padding: "100px 0 0" }}>
             <HeadRow head={{ title: t.stepsTitle, aside: t.stepsAside }} fill={fill} style={{ marginBottom: 36 }} />
             <Steps steps={s.steps} fill={fill} />
+          </section>
+          {/* v2: the agentic strip, one link to the pipeline (no caption, no pause button). */}
+          <section style={{ padding: "100px 0 0" }}>
+            <Link className="strip" href="/agentic-flow" aria-label={t.stripLabel}>
+              <HeroAnim id="agentic-strip" style={{ margin: 0 }} />
+            </Link>
           </section>
           <FaqBlock fill={fill} title={t.faqTitle} faq={{ title: t.faqTitle, items: s.faq }} />
           <section style={{ padding: "100px 0 120px" }}>

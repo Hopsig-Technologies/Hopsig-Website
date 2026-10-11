@@ -20,7 +20,8 @@ import "./anim.css";
 
 const grotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  // 500 is used only inside the v2 animation artboards (node labels, titles).
+  weight: ["400", "500", "600"],
   variable: "--font-grotesk",
 });
 
