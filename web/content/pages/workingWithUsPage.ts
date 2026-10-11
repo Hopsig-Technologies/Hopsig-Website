@@ -46,7 +46,7 @@ export const workingWithUsPage = {
       },
       {
         title: "Where the work happens",
-        text: "Delivery in Lahore, Pakistan, with four hours of daily overlap with GMT (shifted for US teams and written into the SOW). Model and AI tooling runs through providers that do not train on your data, or inside your own cloud account; the SOW states which.",
+        text: "Delivery Centre: Lahore, Pakistan. Model and AI tooling runs through providers that do not train on your data, or inside your own cloud account; the SOW states which.",
       },
       {
         title: "Insurance",
@@ -62,7 +62,7 @@ export const workingWithUsPage = {
       },
       {
         title: "The company",
-        text: "Hopsig Technologies, [LEGAL FORM], registered in Pakistan, [COMPANY REG NO.], established [YEAR]. Registered office: [ADDRESS].",
+        text: "Hopsig Technologies LLC, a Wyoming limited liability company. Registered office: 30 N Gould St Ste R, Sheridan, WY 82801, USA. Delivery Centre: Lahore, Pakistan. Contracts are with the US company.",
       },
     ],
   },

@@ -20,7 +20,6 @@ export { industriesIndexPage } from "./pages/industriesIndexPage";
 export { workIndexPage } from "./pages/workIndexPage";
 export { notesIndexPage } from "./pages/notesIndexPage";
 export { approachPage } from "./pages/approachPage";
-export { ratesPage } from "./pages/ratesPage";
 export { bookPage } from "./pages/bookPage";
 export { briefPage } from "./pages/briefPage";
 export { comparePage } from "./pages/comparePage";

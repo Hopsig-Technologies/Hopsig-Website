@@ -23,7 +23,6 @@ export const homePage = {
     facts: [
       { value: "Principal-level", label: "talent" },
       { value: "10 days", label: "to deployment" },
-      { value: "Daily", label: "overlap with your team" },
       { value: "Flexible", label: "terms" },
     ],
     beats: [
@@ -81,22 +80,15 @@ export const homePage = {
       eyebrow: "Core services",
       title: "Eight things we do. All of them end in something running.",
     },
-    scrollHint: "Scroll — the sheets stack, the tabs stay",
     detailsLabel: "Details →",
     goodForLabel: "Good for",
     stackLabel: "Stack · only what we have shipped to production",
     engagementLabel: "Engagement:",
-    fromLabel: "From [YOUR RATE] / day",
     closingLabel: "08 of 08 · the file closes here",
     closingLinks: [
       {
         label: "All services →",
         href: "/services",
-        variant: "link",
-      },
-      {
-        label: "Rates →",
-        href: "/rates",
         variant: "link",
       },
     ],
@@ -105,7 +97,6 @@ export const homePage = {
     head: {
       eyebrow: "Some of our work",
       title: "Where we have done this before.",
-      aside: "Eight case notes, fetched from Sanity Studio. Hover a row for the number; open it for the note.",
     },
     filters: [
       {
@@ -209,18 +200,17 @@ export const homePage = {
       },
     ],
     strip: [
-      "Established [YEAR]",
-      "Lahore, Pakistan",
+      "Hopsig Technologies LLC · Wyoming, USA",
+      "Delivery Centre: Lahore, Pakistan",
       "In production since 2019",
       "Built for teams in the UK, US and EU",
-      "[COMPANY REG NO.]",
     ],
   },
   notes: {
     head: {
       eyebrow: "Notes",
       title: "Things we would say on the call anyway.",
-      aside: "Short and opinionated, written by the people doing the work. Fetched from Sanity Studio.",
+      aside: "Short and opinionated, written by the people doing the work.",
     },
     countLine: "{count} notes · no newsletter, no pop-up",
     latestLabel: "Latest",

@@ -1,4 +1,4 @@
-/* P8 pages: legal, join, rates, compare, book, brief, ai-transformation, agentic-flow, for-agencies.
+/* P8 pages: legal, join, compare, book, brief, ai-transformation, agentic-flow, for-agencies.
    Numbers are the reference's inline styles and page CSS. */
 
 /* ---------------------------------------------------------------- legal */
@@ -107,111 +107,7 @@
   }
 }
 
-/* ---------------------------------------------------------------- rates, estimator, compare */
-.rate-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-.rate {
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: 14px;
-  padding: 30px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.rate.hi {
-  box-shadow: inset 0 0 0 1px var(--acc);
-}
-.rate .big {
-  font-size: 34px;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-}
-.rate .big small {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--dim);
-  font-weight: 400;
-}
-.rate-meta {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--sub);
-}
-.est {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: 14px;
-  padding: 36px;
-}
-.est-sub {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  margin: 12px 0 28px;
-}
-.est label {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 10px;
-}
-.est input[type="range"] {
-  width: 100%;
-  accent-color: var(--acc);
-  margin: 0 0 28px;
-}
-.est-note {
-  font-size: 13px;
-  line-height: 21px;
-  color: var(--dim);
-}
-.est-note a {
-  text-decoration: none;
-}
-.est .out {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border-left: 1px solid var(--line);
-  padding-left: 48px;
-}
-.est .out .n {
-  font-size: 44px;
-  font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 1;
-}
-.terms {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 48px;
-}
-.terms div {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 12px 0;
-  border-top: 1px solid var(--hair);
-  font-family: var(--font-mono);
-  font-size: 13px;
-}
-.terms div span:first-child {
-  color: var(--dim);
-}
+/* ---------------------------------------------------------------- compare */
 .cmp {
   border-top: 1px solid var(--line);
 }
@@ -247,29 +143,12 @@
   color: var(--acc);
 }
 @media (max-width: 900px) {
-  .rate-grid,
-  .est,
-  .terms {
-    grid-template-columns: 1fr;
-  }
-  .est .out {
-    border-left: 0;
-    padding-left: 0;
-  }
   .cmp {
     overflow-x: auto;
   }
   .cmp > div {
     min-width: 760px;
   }
-}
-/* The reference's card button is an inline link: its padding overflows the line instead of adding height. */
-.rate-btn {
-  margin-top: auto;
-  padding-top: 10px;
-}
-.rate-btn .btn {
-  display: inline;
 }
 
 /* A Portable Text link set as the mono "more" label inside a sentence (AI transformation's priced line). */

@@ -45,7 +45,7 @@ export const animations = [
         w: 1200,
         h: 560,
         mode: "loop",
-        caption: "Four hours of daily overlap with London. A senior engineer in your standup within ten working days.",
+        caption: "A senior engineer in your standup within ten working days, on your repo and your board.",
       },
       {
         id: "agentic-strip",

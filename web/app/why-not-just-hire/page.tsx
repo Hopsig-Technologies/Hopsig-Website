@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
 import { Closing } from "@/components/Closing";
-import { EstimatorSection } from "@/components/EstimatorSection";
 import { Rv } from "@/components/Reveal";
 import { HeadRow, PageHero } from "@/components/blocks";
 import { FaqBlock } from "@/components/sections";
 import { Surface } from "@/components/Surface";
 import { comparePage as page } from "@/content";
 import { withMode } from "@/lib/mode";
-import { getSettings } from "@/lib/site";
-import { makeFill } from "@/lib/tokens";
+import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
 
 export const metadata: Metadata = { title: "Hopsig — Why not just hire?" };
 
 async function CompareContent({ mode }: { mode: FetchMode }) {
-  const settings = await getSettings(mode);
-  const fill = makeFill(settings);
+  const fill = await getFill(mode);
   const { table } = page;
   return (
     <main>
@@ -42,7 +39,6 @@ async function CompareContent({ mode }: { mode: FetchMode }) {
               </div>
             ))}
           </Rv>
-          <EstimatorSection copy={page.estimator} fill={fill} rate={settings?.dayRate ?? null} />
           <div style={{ height: 120 }} />
         </div>
       </Surface>

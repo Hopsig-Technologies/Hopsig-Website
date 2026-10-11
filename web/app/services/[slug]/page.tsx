@@ -59,7 +59,7 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
               <H2>{t.getsTitle}</H2>
               <BulletList items={s.gets.map((g) => fill(g))} />
               <div className="svc-priced">
-                {t.pricedPrefix} <span style={{ color: "var(--sub)" }}>{fill(tpl(t.heroMeta, { shape: s.shape }))}</span> ·{" "}
+                {t.pricedPrefix} <span style={{ color: "var(--sub)" }}>{fill(s.shape)}</span> ·{" "}
                 <MoreLink cta={t.ratesLink} />
               </div>
             </Rv>

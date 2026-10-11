@@ -72,7 +72,6 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
     href: p.published && p.slug ? `/notes/${stegaClean(p.slug)}` : "/notes",
   }));
   const [feat, ...ledger] = journal;
-  const [ratePre, ratePost] = svc.fromLabel.split("[YOUR RATE]");
 
   return (
     <main>
@@ -134,9 +133,6 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10 }}>
               <MoreLink cta={svc.closingLinks[0]} />
-              <span className="lab" style={{ letterSpacing: "0.12em" }}>
-                {svc.scrollHint}
-              </span>
             </div>
           </Rv>
           <ServiceFile count={services.length}>
@@ -190,11 +186,6 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
                       <span>
                         {svc.engagementLabel} <b>{fill(s.shape)}</b>
                       </span>
-                      <span>
-                        {ratePre}
-                        <b>{fill("[YOUR RATE]")}</b>
-                        {ratePost}
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -227,7 +218,6 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
               <h2 className="h2" style={{ fontSize: 48 }}>
                 {fill(ci.head.title)}
               </h2>
-              <div className="home-note">{fill(ci.head.aside)}</div>
             </div>
           }
           foot={

@@ -5,7 +5,7 @@ import type { BookPage } from "../types";
 
 export const bookPage = {
   hero: {
-    eyebrow: "Book a call",
+    eyebrow: "Book a consult",
     title: "Thirty minutes.\nBring the problem,\nnot a brief.",
     sub: "The people who would do the work are on the call, not a salesperson. You will leave knowing whether we can help, and roughly what it would cost.",
   },
@@ -26,11 +26,11 @@ export const bookPage = {
   note: 'Prefer writing? <a href="/brief">Send a brief →</a> — or email [HELLO@HOPSIG.COM]; reply within one working day.',
   calendar: {
     title: "Next week · 30 minutes",
-    timezone: "GMT",
-    prompt: "Pick a day and a time (GMT).",
+    timezone: "",
+    prompt: "Pick a day and a time.",
     // The calendar's own words (the reference's script): the week shown is next Monday to Friday.
     pickFirst: "Pick a day and a time first.",
-    summary: "{day} {date} {month} · {time} GMT · 30 min · with Hopsig",
+    summary: "{day} {date} {month} · {time} · 30 min · with Hopsig",
     dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     times: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"],
@@ -47,7 +47,7 @@ export const bookPage = {
     checklist: [
       "Bring the problem, not a brief",
       "Someone who can say yes to a scope",
-      "Access to nothing — we will ask after",
+      "We ask for no access before the call",
     ],
   },
   strip: [
@@ -55,6 +55,6 @@ export const bookPage = {
     "Engineers on the call",
     "Scope in 3 days",
     "Nothing to pay before the scope",
-    "Lahore · GMT+5",
+    "Delivery Centre: Lahore, Pakistan",
   ],
 } satisfies BookPage;

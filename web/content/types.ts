@@ -60,8 +60,7 @@ export type Templates = {
   servicePage: {
     stripLabel: string;
     heroEyebrow: string;
-    heroMeta: string;
-    stepsAside: string;
+      stepsAside: string;
     othersTitle: string;
     othersAside: string;
     closingEyebrow: string;
@@ -131,7 +130,6 @@ export type Templates = {
     closingEyebrow: string;
     buttons: Cta[];
   };
-  estimator: { engineer: string; engineers: string; months: string; days: string; total: string; totalNoRate: string };
   legalPage: { contentsTitle: string };
 };
 
@@ -201,12 +199,10 @@ export type HomePage = {
   };
   services: {
     head: SectionHead;
-    scrollHint: string;
     detailsLabel: string;
     goodForLabel: string;
     stackLabel: string;
     engagementLabel: string;
-    fromLabel: string;
     closingLabel: string;
     closingLinks: Cta[];
   };
@@ -278,38 +274,7 @@ export type ApproachPage = {
   hero: PageHero;
   staffing: TitleTextSection;
   agentic: { head: SectionHead; tags: string[]; links: Cta[]; items: TitleText[] };
-  /** `bars`: each zone's working hours in GMT, [start, end] on a 0–24 scale (drawn as the bar). */
-  hours: { head: SectionHead; zones: string[]; bars: [number, number][]; paragraphs: string[] };
-  closing: Closing;
-};
-
-export type RateCard = {
-  name: string;
-  price: string;
-  unit: string;
-  meta: string;
-  items: string[];
-  button?: Cta;
-  highlight?: boolean;
-};
-/** Engineers × months × 21 working days × day rate (Site settings); the outputs are computed. */
-export type Estimator = {
-  title: string;
-  sub: string;
-  engineersLabel: string;
-  monthsLabel: string;
-  note: Rich;
-  daysLabel: string;
-  totalLabel: string;
-  footnotes: string[];
-};
-
-export type RatesPage = {
-  hero: PageHero;
-  cards: RateCard[];
-  estimator: Estimator;
-  terms: LabelValueSection;
-  faq: FaqSection;
+  where: { head: SectionHead; paragraphs: string[] };
   closing: Closing;
 };
 
@@ -365,7 +330,6 @@ export type BriefPage = {
 export type ComparePage = {
   hero: PageHero;
   table: { head: SectionHead; columns: string[]; rows: { label: string; cells: string[] }[] };
-  estimator: Estimator;
   faq: FaqSection;
   closing: Closing;
 };

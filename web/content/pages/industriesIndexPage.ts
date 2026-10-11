@@ -24,7 +24,6 @@ export const industriesIndexPage = {
   list: {
     head: {
       title: "Where we have done this before.",
-      aside: "Hover for the headline number",
     },
   },
   closing: {

@@ -66,7 +66,7 @@ def main():
     expect(counts['cases'] == 32, f"32 case studies ({counts['cases']})")
     expect(counts['featured'] == 8, f"8 featured ({counts['featured']})")
     expect(counts['pages'] == 3, f"3 with a page ({counts['pages']})")
-    expect(counts['posts'] == 6 and counts['published'] == 2, f"6 notes, 2 published ({counts['posts']}, {counts['published']})")
+    expect(counts['posts'] == 5 and counts['published'] == 2, f"5 notes, 2 published ({counts['posts']}, {counts['published']})")  # 'four hours of overlap' deleted 2026-10-11 (no-overlap decision)
     expect(counts['jobs'] == 5, f"5 roles ({counts['jobs']})")
     expect(counts['gone'] == 0, f"no documents of removed types ({counts['gone']})")
     expect(counts['settings'] is True, 'siteSettings exists')

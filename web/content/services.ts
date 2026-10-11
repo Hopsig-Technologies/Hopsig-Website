@@ -123,8 +123,8 @@ export const services = [
         text: "Nothing of ours to adopt.",
       },
       {
-        title: "4 h overlap",
-        text: "With GMT, every day.",
+        title: "10-day replacement",
+        text: "If it is not working.",
       },
     ],
     goodFor: [
@@ -191,11 +191,6 @@ export const services = [
         question: "How senior is senior?",
         answer:
           "Years shipping to production, not years in the industry. Every engineer we place has owned a system in production and can show you which one.",
-      },
-      {
-        question: "Which timezone do they work in?",
-        answer:
-          "Four hours of overlap with GMT every working day, the same four hours, so your standup is never at midnight. US teams: we shift the day and agree the overlap in the SOW.",
       },
       {
         question: "Can we hire them permanently later?",
@@ -412,7 +407,7 @@ export const services = [
     name: "Cloud & DevOps",
     oneLiner: "Deploys that are boring",
     description:
-      "CI/CD, infrastructure as code, observability and cost control, set up so your team owns it afterwards and the on-call runbook is already written.",
+      "CI/CD, infrastructure as code, observability and cost control, set up so your team owns it afterwards and the on-call runbook is written before you need it.",
     tiles: [
       {
         title: "CI from day one",
@@ -636,8 +631,8 @@ export const services = [
       "iOS",
       "Offline-first sync",
       "EMQX / MQTT",
-      "Tauri",
-      "Electron",
+      "Tauri (desktop)",
+      "Electron (desktop)",
       "Figma design system",
     ],
     shape: "Built · fixed scope per increment",

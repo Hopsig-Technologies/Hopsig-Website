@@ -58,11 +58,6 @@ export const navigation = {
           href: "/services",
           variant: "link",
         },
-        {
-          label: "Rates →",
-          href: "/rates",
-          variant: "link",
-        },
       ],
     },
     {
@@ -158,10 +153,6 @@ export const navigation = {
           href: "/why-not-just-hire",
         },
       ],
-    },
-    {
-      label: "Rates",
-      href: "/rates",
     },
   ],
   cta: {
@@ -270,10 +261,6 @@ export const navigation = {
         {
           label: "Working with us",
           href: "/working-with-us",
-        },
-        {
-          label: "Rates",
-          href: "/rates",
         },
       ],
     },

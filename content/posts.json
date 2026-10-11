@@ -197,22 +197,6 @@
  },
  {
   "_type": "post",
-  "_id": "four-hours-is-enough",
-  "slug": {
-   "current": "four-hours-is-enough"
-  },
-  "title": "Four hours of overlap is enough. Here is the day.",
-  "excerpt": "A standup, a review and a pairing session fit inside 09:00–13:00 GMT. What happens in the other four, and what never does.",
-  "category": "Working together",
-  "publishedAt": null,
-  "status": "draft",
-  "route": null,
-  "body": null,
-  "offer": null,
-  "closing": null
- },
- {
-  "_type": "post",
   "_id": "the-number-before-the-claim",
   "slug": {
    "current": "the-number-before-the-claim"

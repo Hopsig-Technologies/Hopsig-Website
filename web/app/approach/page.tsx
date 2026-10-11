@@ -11,11 +11,10 @@ import type { FetchMode } from "@/sanity/lib/live";
 
 export const metadata: Metadata = { title: "Hopsig — Approach" };
 
-const HOURS = ["00", "03", "06", "09", "12", "15", "18", "21", "24"];
 
 async function ApproachContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);
-  const { staffing, agentic, hours } = page;
+  const { staffing, agentic, where } = page;
   return (
     <main>
       <Surface tone="d">
@@ -62,31 +61,9 @@ async function ApproachContent({ mode }: { mode: FetchMode }) {
       <Surface tone="d" seam>
         <div style={{ height: 100 }} />
         <section className="wrap" style={{ paddingBottom: 120 }}>
-          <HeadRow head={hours.head} fill={fill} />
-          <div className="hours">
-            <div className="hours-row">
-              <div />
-              <div className="hours-scale">
-                {HOURS.map((h) => (
-                  <span key={h}>{h}</span>
-                ))}
-              </div>
-            </div>
-            {hours.zones.map((z, i) => {
-              const [a, b] = hours.bars[i];
-              const overlap = i === hours.zones.length - 1;
-              return (
-                <Rv key={z} className="hours-row" style={{ alignItems: "center" }}>
-                  <div className="hours-z">{fill(z)}</div>
-                  <div className="ov">
-                    <i style={{ left: `${(a / 24) * 100}%`, width: `${((b - a) / 24) * 100}%`, background: overlap ? "var(--acc)" : "#3C424A" }} />
-                  </div>
-                </Rv>
-              );
-            })}
-          </div>
+          <HeadRow head={where.head} fill={fill} />
           <Rv className="hours-p">
-            {hours.paragraphs.map((p) => (
+            {where.paragraphs.map((p) => (
               <div key={p.slice(0, 24)}>
                 <Filled text={p} fill={fill} />
               </div>

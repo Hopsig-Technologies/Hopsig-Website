@@ -10,7 +10,6 @@ export const PAGE_ROUTES = [
   "/work",
   "/notes",
   "/approach",
-  "/rates",
   "/book",
   "/brief",
   "/why-not-just-hire",

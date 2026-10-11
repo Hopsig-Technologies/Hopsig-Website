@@ -64,15 +64,6 @@ export const comparePage = {
         cells: ["Yours", "Check the MSA", "Check the contract", "Yours on payment, in your repo from day one"],
       },
       {
-        label: "Overlap with your day",
-        cells: [
-          "All of it",
-          "Depends on the delivery centre",
-          "Depends on the person",
-          "Four hours with GMT, every day, the same four",
-        ],
-      },
-      {
         label: "Cost shape",
         cells: [
           "Salary, taxes, equipment, recruiter fee, ramp-up",
@@ -91,16 +82,6 @@ export const comparePage = {
         ],
       },
     ],
-  },
-  estimator: {
-    title: "Put a number on it",
-    sub: "Engineers and months. The total is the total.",
-    engineersLabel: "Engineers",
-    monthsLabel: "Months",
-    note: "21 working days a month. No onboarding fee, no recruiter fee, no notice-period buyout. Compare it with a hire: salary plus employer taxes, equipment, a recruiter fee and the months before the first commit.",
-    daysLabel: "Engineer-days",
-    totalLabel: "Total",
-    footnotes: ["At [YOUR RATE] a day · invoiced monthly in arrears", "NET 14 · 30 days’ notice, either side"],
   },
   faq: {
     title: "The questions behind the question.",
@@ -130,7 +111,7 @@ export const comparePage = {
   closing: {
     title: "If the table says hire, we will say so too.",
     showEmail: true,
-    eyebrow: "Rates · the call",
+    eyebrow: "Why not just hire · the call",
     buttons: [
       {
         label: "Book a consult",

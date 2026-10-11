@@ -12,7 +12,7 @@ export const engagementPanel = {
   client: "Engagement · [Client]",
   phases: ["Day 0 · The call", "Day 3 · The scope", "Day 10 · People in", "Week 6 · Measured", "Fortnightly · The review"],
   call: {
-    meta: "09:14 GMT · 30 min · you and the people who would do the work",
+    meta: "30 min · you and the people who would do the work",
     quote: "“Rebuild the ingest pipeline. Our team runs it after.”",
     options: ["Engineers embedded in your team", "A product, scoped and built", "Data & AI system, measured"],
     chosen: 1,
@@ -23,14 +23,14 @@ export const engagementPanel = {
     rows: [
       { label: "In", value: "Ingest service · DLQ + replay · runbook", strong: true },
       { label: "Out", value: "Warehouse schema · dashboards", strong: false },
-      { label: "Terms", value: "6 weeks, fixed · [YOUR RATE] · NET 14", strong: true },
+      { label: "Terms", value: "6 weeks, fixed · NET 14", strong: true },
     ],
     note: "Two pages. Before you pay anything.",
   },
   people: {
     engineers: [
-      { initials: "[ENGINEER]", role: "Backend · [YEARS]", note: "in your standup 09:30 GMT" },
-      { initials: "[ENGINEER]", role: "Data · [YEARS]", note: "in your standup 09:30 GMT" },
+      { initials: "[ENGINEER]", role: "Backend · [YEARS]", note: "in your standup" },
+      { initials: "[ENGINEER]", role: "Data · [YEARS]", note: "in your standup" },
     ],
     commits: [
       { hash: "a41f2c", message: "ingest: replace cron with queue consumer", when: "day 10 · 14:02" },
@@ -58,10 +58,8 @@ export const engagementPanel = {
   },
   terms: [
     { label: "First engineer in", value: "10 working days" },
-    { label: "Overlap with GMT", value: "4 h, daily" },
     { label: "Notice", value: "30 days, either side" },
-    { label: "Delivered from", value: "Lahore · GMT+5" },
+    { label: "Delivery Centre", value: "Lahore, Pakistan" },
     { label: "Minimum term", value: "3 months rolling" },
-    { label: "Day rate from", value: "[YOUR RATE]" },
   ],
 } satisfies EngagementPanel;

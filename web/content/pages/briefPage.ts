@@ -53,5 +53,5 @@ export const briefPage = {
       "Scope in three days if it is a yes",
     ],
   },
-  strip: ["No salespeople", "Read the same day", "Reply in one working day", "Scope in 3 days", "Lahore · GMT+5"],
+  strip: ["No salespeople", "Read the same day", "Reply in one working day", "Scope in 3 days", "Delivery Centre: Lahore, Pakistan"],
 } satisfies BriefPage;

@@ -14,7 +14,7 @@ export const privacyPage = {
       heading: "Who we are",
       body: [
         {
-          p: "Hopsig Technologies, [LEGAL FORM], registered in Pakistan under [COMPANY REG NO.], registered office [ADDRESS]. For the purposes of UK and EU data protection law we are the controller of the personal data described on this page. Contact: [HELLO@HOPSIG.COM].",
+          p: "Hopsig Technologies LLC, a Wyoming limited liability company, 30 N Gould St Ste R, Sheridan, WY 82801, USA. Work is delivered from our Delivery Centre: Lahore, Pakistan, where processing may occur. For the purposes of UK and EU data protection law we are the controller of the personal data described on this page. Contact: [HELLO@HOPSIG.COM].",
         },
       ],
     },
@@ -52,7 +52,7 @@ export const privacyPage = {
       heading: "Where it goes",
       body: [
         {
-          p: "We are in Pakistan; our processors are in [REGIONS]. Transfers from the UK and EU rely on [IDTA / SCCs / ADEQUACY], and we will provide the documentation on request.",
+          p: "We are a US company delivering from our Delivery Centre: Lahore, Pakistan; our processors are in [REGIONS]. Transfers from the UK and EU rely on [IDTA / SCCs / ADEQUACY], and we will provide the documentation on request.",
         },
       ],
     },

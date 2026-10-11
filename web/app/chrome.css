@@ -452,3 +452,10 @@
     justify-content: center;
   }
 }
+/* The site email (a mailto link) reads as part of its line: inherited colour, underlined. */
+.close-mail a,
+.foot-legal a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -64,7 +64,6 @@ export const agenciesPage = {
       title: "What you get.",
     },
     items: [
-      "An agency rate card: [YOUR RATE] less [AGENCY DISCOUNT] per day, so there is margin without padding the scope",
       "Named senior engineers you can put in front of your client as yours",
       "Our estimate inside your SOW, in your template, with our name nowhere on it unless you want it there",
       "Mutual non-solicitation for twelve months, in writing",
@@ -102,7 +101,7 @@ export const agenciesPage = {
       },
       {
         question: "Do you take a share of the margin?",
-        answer: "No. You pay the agency day rate; what you charge your client is yours.",
+        answer: "No. What you charge your client is yours.",
       },
     ],
   },

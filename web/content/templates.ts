@@ -17,14 +17,14 @@ export const templates = {
     // v2: the agentic-strip figure before the FAQ is one link to /agentic-flow; this is its accessible name.
     stripLabel: "Delivered on our agentic pipeline. Six agents, a person at every gate. See the pipeline.",
     heroEyebrow: "Service {nn} · {name}",
-    heroMeta: "{shape} · from [YOUR RATE] / day",
     stepsAside: "The same loop as every engagement",
     othersTitle: "The other seven.",
     othersAside: "All eight end in something running",
     closingEyebrow: "{name} · the call",
-    pricedLabel: "Priced",
-    pricedPrefix: "Priced:",
-    ratesLink: { label: "See rates →", href: "/rates", variant: "link" },
+    // No rates (CLAUDE.md rule 13): the engagement shape, then a consult link, where prices used to be.
+    pricedLabel: "Engagement",
+    pricedPrefix: "Engagement:",
+    ratesLink: { label: "Book a consult →", href: "/book", variant: "link" },
     getsTitle: "What you get.",
     goodForLabel: "Good for",
     sayNoLabel: "We will say no when",
@@ -105,16 +105,6 @@ export const templates = {
       { label: "Book a consult", href: "/book", variant: "lime" },
       { label: "See our work", href: "/work", variant: "outline" },
     ],
-  },
-  /** The estimator's computed lines (rates, why-not-just-hire). `{n}` is a number; the total uses the Site settings
-   *  day rate, or shows the days × [YOUR RATE] until it is set. */
-  estimator: {
-    engineer: "{n} engineer",
-    engineers: "{n} engineers",
-    months: "{n} months",
-    days: "{n} engineer-days",
-    total: "{total} at {rate} / day",
-    totalNoRate: "{days} × [YOUR RATE]",
   },
   legalPage: {
     contentsTitle: "Contents",

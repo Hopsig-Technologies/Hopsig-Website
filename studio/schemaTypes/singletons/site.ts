@@ -4,16 +4,10 @@ import {defineField, defineType} from 'sanity'
  *  appears once the field here is filled; an empty field leaves the placeholder visible (rule 1).
  *  Mirrored in web/lib/tokens.ts. */
 export const SITE_TOKENS: {name: string; token: string; title: string; type?: 'number'}[] = [
-  {name: 'companyRegNo', token: '[COMPANY REG NO.]', title: 'Company registration number'},
-  {name: 'year', token: '[YEAR]', title: 'Year established'},
+  {name: 'year', token: '[YEAR]', title: 'Copyright year (footer)'},
   {name: 'email', token: '[HELLO@HOPSIG.COM]', title: 'Contact email'},
-  {name: 'legalForm', token: '[LEGAL FORM]', title: 'Legal form'},
-  {name: 'address', token: '[ADDRESS]', title: 'Registered office address'},
   {name: 'vatStatus', token: '[VAT / TAX STATUS]', title: 'VAT / tax status'},
   {name: 'bankCountry', token: '[BANK COUNTRY]', title: 'Bank country'},
-  {name: 'dayRate', token: '[YOUR RATE]', title: 'Day rate', type: 'number'},
-  {name: 'monthlyRetainer', token: '[MONTHLY]', title: 'Monthly retainer (from)'},
-  {name: 'agencyDiscount', token: '[AGENCY DISCOUNT]', title: 'Agency discount'},
   {name: 'insurance', token: '[INSURER · COVER AMOUNT]', title: 'Insurer and cover amount'},
 ]
 

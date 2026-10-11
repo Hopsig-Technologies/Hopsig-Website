@@ -300,7 +300,7 @@
   "domain": "Healthcare",
   "problem": "Surgeons and clinicians needed one workflow for patient imaging, with analysis that did not wait for a human to open every file.",
   "whatWeDid": "Two backends where each fits: Node.js/Express for workflow, Python/FastAPI for the models. Computer-vision analysis of medical images (OpenCV, TensorFlow). Role-based access and HIPAA-grade handling of patient data. PostgreSQL, imaging files on AWS S3, a real-time React front end.",
-  "measured": "Workflow time and review backlog, before and after — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: workflow efficiency up, data fully secured.",
+  "measured": "Workflow time and review backlog, before and after — <span class=\"phx\">[ADD THE NUMBER]</span>.",
   "stack": [
    "Node.js",
    "Express",
@@ -714,7 +714,7 @@
   "domain": "Logistics",
   "problem": "Dispatchers were assigning loads from stale data; delays and errors compounded through the day.",
   "whatWeDid": "WebSockets for instant load status, driver availability and assignments. Live vehicle tracking and route planning on Google Maps. A modular React load board with revenue and broker-performance analytics over GraphQL/Apollo.",
-  "measured": "Dispatch delays and errors down — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: real-time accuracy, significantly fewer delays and errors.",
+  "measured": "Dispatch delays and errors down — <span class=\"phx\">[ADD THE NUMBER]</span>.",
   "stack": [
    "React",
    "WebSockets",
@@ -767,7 +767,7 @@
   "domain": "Fintech",
   "problem": "Finance teams wanted forecasts they could trust and adjust, fed straight from their accounting data.",
   "whatWeDid": "A Django REST backend with secure APIs for data import, including a XERO integration. A hybrid model: time-series machine learning (SARIMA-class) combined with the team’s own formulas for P&L projection. Built as a secure vault for sensitive projections.",
-  "measured": "Forecast accuracy against actuals — <span class=\"phx\">[ADD THE NUMBER]</span>. Source states: production-ready, customisable, data-driven forecasts.",
+  "measured": "Forecast accuracy against actuals — <span class=\"phx\">[ADD THE NUMBER]</span>.",
   "stack": [
    "Django REST",
    "Python",
@@ -822,7 +822,7 @@
   "domain": "Food & hospitality",
   "problem": "A group running two restaurant brands wanted separate customer experiences and one back office.",
   "whatWeDid": "Distinct layouts and menus per brand under a shared design language. A single admin portal for orders, analytics and support across both. A complete design system in Figma so the third brand would be cheap.",
-  "measured": "Ordering-journey conversion — <span class=\"phx\">[ADD BEFORE → AFTER]</span>. Source states: journey optimised for conversion; internal operations centralised.",
+  "measured": "Ordering-journey conversion — <span class=\"phx\">[ADD BEFORE → AFTER]</span>.",
   "stack": [
    "Web UI/UX",
    "Admin portal",

@@ -14,16 +14,10 @@ const API = '2025-02-19'
 const PLACEHOLDER = /\[[A-Z][^\]\n<>"]{0,60}\]/g
 // Mirrors SITE_TOKENS in studio/schemaTypes/singletons/site.ts and web/lib/tokens.ts.
 const SITE_TOKENS = {
-  companyRegNo: '[COMPANY REG NO.]',
   year: '[YEAR]',
   email: '[HELLO@HOPSIG.COM]',
-  legalForm: '[LEGAL FORM]',
-  address: '[ADDRESS]',
   vatStatus: '[VAT / TAX STATUS]',
   bankCountry: '[BANK COUNTRY]',
-  dayRate: '[YOUR RATE]',
-  monthlyRetainer: '[MONTHLY]',
-  agencyDiscount: '[AGENCY DISCOUNT]',
   insurance: '[INSURER · COVER AMOUNT]',
 }
 // Tokens that only ever lived in the prototype's build notes, which never render.

@@ -21,16 +21,12 @@ export const joinPage = {
         label: "years shipping to production, not years in the industry",
       },
       {
-        value: "09:00–13:00 GMT",
-        label: "the overlap, every working day; the rest is yours",
-      },
-      {
         value: "One account",
         label: "at a time; no bench, no two clients",
       },
       {
         value: "Lahore",
-        label: "remote within Pakistan; [OFFICE DAYS]",
+        label: "our Delivery Centre, or remote within Pakistan; [OFFICE DAYS]",
       },
     ],
   },
@@ -55,10 +51,6 @@ export const joinPage = {
       {
         title: "Reviewed by a senior",
         text: "Every change is reviewed by a second senior before it lands, yours included. That is the quality bar, not a hierarchy.",
-      },
-      {
-        title: "Four hours, then your day",
-        text: "The overlap with GMT is 09:00 to 13:00 Lahore time, the same four hours every day. Afternoons are deep work, not meetings.",
       },
     ],
   },
@@ -87,7 +79,7 @@ export const joinPage = {
       },
       {
         title: "The offer",
-        text: "Written, with the band, the overlap and the first engagement if there is one lined up.",
+        text: "Written, with the band and the first engagement if there is one lined up.",
       },
     ],
   },
@@ -106,7 +98,7 @@ export const joinPage = {
     items: [
       {
         question: "Do I have to be in Lahore?",
-        answer: "Remote within Pakistan is fine; the overlap hours are what matter. [OFFICE DAYS, IF ANY].",
+        answer: "Based at our Delivery Centre in Lahore, or remote within Pakistan. [OFFICE DAYS, IF ANY].",
       },
       {
         question: "What happens between engagements?",

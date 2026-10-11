@@ -4,7 +4,7 @@ import { defineQuery } from "next-sanity";
 // Singleton queries filter on _type AND _id so the generated type is not a union of every document.
 
 export const SETTINGS_QUERY = defineQuery(`*[_type == "siteSettings" && _id == "siteSettings"][0]{
-  companyRegNo, year, email, legalForm, address, vatStatus, bankCountry, dayRate, monthlyRetainer, agencyDiscount, insurance, bookingUrl
+  year, email, vatStatus, bankCountry, insurance, bookingUrl
 }`);
 
 /** Case studies the static pages name by record key (services, industries, AI transformation). Order is restored in code. */
@@ -32,7 +32,8 @@ export const CASE_BY_SLUG_QUERY = defineQuery(`*[_type == "caseStudy" && hasPage
 export const CASE_SLUGS_QUERY = defineQuery(`*[_type == "caseStudy" && hasPage == true].slug.current`);
 
 /** Notes index and home journal: published first (newest first), then drafts as inert [DRAFT] rows. */
-export const POSTS_QUERY = defineQuery(`*[_type == "post"] | order(defined(publishedAt) desc, publishedAt desc, order asc){
+/** Published notes only (owner decision 2026-10-11: drafts are hidden until they are published). */
+export const POSTS_QUERY = defineQuery(`*[_type == "post" && defined(publishedAt)] | order(publishedAt desc, order asc){
   _id, title, "slug": slug.current, category, excerpt, "published": defined(publishedAt)
 }`);
 

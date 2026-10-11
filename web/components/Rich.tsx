@@ -25,16 +25,19 @@ export function Rich({ value, fill, mark = "phx", inline = false }: { value: Val
         children.push(c);
         continue;
       }
-      // Plain tokens: keep the span whole, so the text stays one node.
-      if (mark === "none") {
-        children.push({ ...c, text: fill(c.text ?? "") });
-        continue;
-      }
-      fill(c.text ?? "")
-        .split(TOKEN)
-        .forEach((part, i) => {
-          if (!part) return;
-          children.push({ ...c, _key: `${c._key}-${i}`, text: part, marks: i % 2 ? [...(c.marks ?? []), "__token"] : c.marks });
+      // The site email becomes a mailto link; a placeholder still bracketed gets the `mark` class (unless "none",
+      // where the text stays one node).
+      const email = fill.email;
+      const pieces: [string, string | null][] = [];
+      (email ? fill(c.text ?? "").split(email) : [fill(c.text ?? "")]).forEach((seg, k) => {
+        if (k && email) pieces.push([email, "__email"]);
+        if (mark === "none") pieces.push([seg, null]);
+        else seg.split(TOKEN).forEach((part, i) => pieces.push([part, i % 2 ? "__token" : null]));
+      });
+      pieces
+        .filter(([text]) => text)
+        .forEach(([text, extra], i) => {
+          children.push({ ...c, _key: `${c._key}-${i}`, text, marks: extra ? [...(c.marks ?? []), extra] : c.marks });
         });
     }
     return { ...b, children };
@@ -49,6 +52,7 @@ export function Rich({ value, fill, mark = "phx", inline = false }: { value: Val
         return href.startsWith("/") ? <Link href={href as never}>{children}</Link> : <a href={href}>{children}</a>;
       },
       __token: ({ children }) => (mark === "none" ? <>{children}</> : <span className={mark}>{children}</span>),
+      __email: ({ children }) => <a href={`mailto:${fill.email}`}>{children}</a>,
     },
   };
   return <PortableText value={prepared as PortableTextBlock[]} components={components} />;

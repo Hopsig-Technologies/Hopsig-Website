@@ -4,9 +4,10 @@ import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
 import { Button } from "./Button";
+import { Filled } from "./Filled";
 import { Wordmark } from "./Wordmark";
 
-/** The four-column footer. The legal line carries site-wide values (reg no, year, email) from Site settings. */
+/** The four-column footer. The legal line carries site-wide values (year, email) from Site settings; the email is a link. */
 async function FooterContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);
   return (
@@ -32,8 +33,12 @@ async function FooterContent({ mode }: { mode: FetchMode }) {
           ))}
         </div>
         <div className="foot-legal">
-          <span>{fill(site.footer.legalLeft)}</span>
-          <span>{fill(site.footer.legalRight)}</span>
+          <span>
+            <Filled text={site.footer.legalLeft} fill={fill} />
+          </span>
+          <span>
+            <Filled text={site.footer.legalRight} fill={fill} />
+          </span>
         </div>
       </div>
     </footer>

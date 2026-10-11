@@ -1,5 +1,6 @@
 import { site, type Closing as ClosingCopy } from "@/content";
 import { Button } from "./Button";
+import { Filled } from "./Filled";
 import { Lines } from "./Lines";
 import { RingCanvas } from "./canvas/RingCanvas";
 
@@ -40,7 +41,11 @@ export function Closing({
             ))}
           </div>
         ) : null}
-        {copy.showEmail ? <span className="close-mail">{fill(site.defaultClosing.emailLine)}</span> : null}
+        {copy.showEmail ? (
+          <span className="close-mail">
+            <Filled text={site.defaultClosing.emailLine} fill={fill} />
+          </span>
+        ) : null}
       </div>
     </section>
   );
