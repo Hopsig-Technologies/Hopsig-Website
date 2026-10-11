@@ -251,6 +251,12 @@
   .case-card {
     padding: 24px 20px;
   }
+  .case-top,
+  .case-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
   .svc-grid {
     grid-template-columns: minmax(0, 1fr);
   }
