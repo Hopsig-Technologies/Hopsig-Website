@@ -20,9 +20,9 @@ async function WorkingWithUsContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ paddingTop: 100 }}>
+        <div className="wrap sp-t100">
           <TwoCol
-            style={{ paddingTop: 100 }}
+            className="sp-t100"
             left={
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <Eyebrow>{fill(checks.head.eyebrow)}</Eyebrow>
@@ -38,7 +38,7 @@ async function WorkingWithUsContent({ mode }: { mode: FetchMode }) {
 
       <Surface tone="d" seam>
         <div className="wrap">
-          <section style={{ padding: "100px 0 120px" }}>
+          <section className="sp-t100 sp-b120">
             <HeadRow head={asks.head} fill={fill} style={{ marginBottom: 24 }} />
             <Cards items={asks.items} fill={fill} />
           </section>

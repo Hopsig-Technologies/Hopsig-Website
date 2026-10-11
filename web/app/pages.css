@@ -3,7 +3,9 @@
 
 /* ---------------------------------------------------------------- legal */
 .legal-body {
-  padding: 80px 0 120px;
+  /* top and bottom only: the element is also .wrap, which owns the side gutter */
+  padding-top: 80px;
+  padding-bottom: 120px;
   display: grid;
   grid-template-columns: 1fr 260px;
   gap: 96px;
@@ -272,5 +274,12 @@
   .agents,
   .tooling {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 899px) {
+  .legal-body {
+    padding-top: 56px;
+    padding-bottom: 72px;
   }
 }

@@ -61,7 +61,7 @@ async function ServicesContent({ mode }: { mode: FetchMode }) {
             </section>
           ))}
 
-          <section style={{ padding: "0 0 100px" }}>
+          <section className="sp-b100">
             <HeadRow head={page.detail.head} fill={fill} style={{ marginBottom: 24 }} />
             <Rv className="eight">
               {services.map((s) => (
@@ -75,7 +75,7 @@ async function ServicesContent({ mode }: { mode: FetchMode }) {
             </Rv>
           </section>
 
-          <section style={{ padding: "100px 0", borderTop: "1px solid var(--hair)" }}>
+          <section className="sp-t100 sp-b100" style={{ borderTop: "1px solid var(--hair)" }}>
             <HeadRow head={page.inside.head} fill={fill} style={{ marginBottom: 36 }} />
             <Rv className="tiles">
               {page.inside.items.map((it, i) => (
@@ -92,10 +92,10 @@ async function ServicesContent({ mode }: { mode: FetchMode }) {
 
       <Surface tone="d" seam>
         <div style={{ height: 100 }} />
-        <section style={{ paddingBottom: 140 }}>
+        <section className="sp-b140">
           <Capabilities fill={fill} />
         </section>
-        <section className="wrap" style={{ padding: "40px 0 140px" }}>
+        <section className="wrap sp-t40 sp-b140">
           <Rv className="head-row" style={{ marginBottom: 36 }}>
             <H2>{fill(page.howItRuns.head.title)}</H2>
             <MoreLink cta={page.howItRuns.link} />

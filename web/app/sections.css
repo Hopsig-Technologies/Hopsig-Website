@@ -782,14 +782,18 @@
 
 /* ---------------------------------------------------------------- work + case notes */
 .work-report {
-  padding: 100px 0 120px;
+  /* top and bottom only: the element is also .wrap, which owns the side gutter */
+  padding-top: 100px;
+  padding-bottom: 120px;
   display: grid;
   grid-template-columns: 1fr 568px;
   gap: 64px;
   align-items: center;
 }
 .case-body {
-  padding: 90px 0 120px;
+  /* top and bottom only: the element is also .wrap, which owns the side gutter */
+  padding-top: 90px;
+  padding-bottom: 120px;
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 96px;
@@ -903,7 +907,9 @@
   pointer-events: none;
 }
 .note-body {
-  padding: 90px 0 120px;
+  /* top and bottom only: the element is also .wrap, which owns the side gutter */
+  padding-top: 90px;
+  padding-bottom: 120px;
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: 96px;
@@ -973,5 +979,26 @@
   .irow.note-row .m,
   .irow.note-row .c {
     display: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .work-report {
+    padding-top: 64px;
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 899px) {
+  .case-body {
+    padding-top: 64px;
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 899px) {
+  .note-body {
+    padding-top: 64px;
+    padding-bottom: 72px;
   }
 }

@@ -193,8 +193,8 @@ export function CaseIndex({
   let shownIndex = 0;
   const peekRow = rows.find((r) => r.id === peekId);
   return (
-    <section ref={root} id="cidx" className="cidx wrap" style={{ padding: "120px 0 130px" }}>
-      <Rv style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 40 }}>
+    <section ref={root} id="cidx" className="cidx wrap sp-t120 sp-b130">
+      <Rv className="home-head">
         {head}
         <div className="filters" role="tablist" aria-label="Filter by domain">
           {filters.map((f) => (

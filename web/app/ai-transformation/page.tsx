@@ -44,7 +44,7 @@ async function AiContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ paddingTop: 100 }}>
+        <div className="wrap sp-t100">
           <section className="svc-intro">
             <Rv style={{ display: "flex", flexDirection: "column", gap: 22 }}>
               <H2>{fill(offer.head.title)}</H2>
@@ -82,7 +82,7 @@ async function AiContent({ mode }: { mode: FetchMode }) {
             </Rv>
           </section>
           <TwoCol
-            style={{ paddingTop: 100 }}
+            className="sp-t100"
             left={
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <Eyebrow>{fill(pipeline.head.eyebrow)}</Eyebrow>
@@ -98,11 +98,11 @@ async function AiContent({ mode }: { mode: FetchMode }) {
 
       <Surface tone="d" seam>
         <div className="wrap">
-          <section style={{ padding: "100px 0 0" }}>
+          <section className="sp-t100">
             <HeadRow head={weeks.head} fill={fill} style={{ marginBottom: 36 }} />
             <Steps steps={weeks.steps} fill={fill} />
           </section>
-          <section style={{ padding: "100px 0 0" }}>
+          <section className="sp-t100">
             <HeadRow head={measures.head} fill={fill} style={{ marginBottom: 24 }} />
             <Rv className="why" style={{ marginTop: 0 }}>
               {measures.items.map((it, i) => (
@@ -115,7 +115,7 @@ async function AiContent({ mode }: { mode: FetchMode }) {
             </Rv>
           </section>
           {cases.length ? (
-            <section style={{ padding: "100px 0 0" }}>
+            <section className="sp-t100">
               <Rv className="head-row" style={{ marginBottom: 28 }}>
                 <H2>{fill(record.head.title)}</H2>
                 <MoreLink cta={record.allLink} />

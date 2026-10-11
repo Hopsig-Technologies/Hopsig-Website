@@ -34,7 +34,13 @@ export function RingCanvas({ variant, tone }: { variant: "closing" | "drift"; to
       if (visible && !raf) raf = requestAnimationFrame(loop);
     });
     io.observe(canvas);
-    const onResize = () => field.resize();
+    // Phones fire resize whenever the URL bar shows or hides; rebuild the dot field only when the width changes.
+    let lastWidth = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      field.resize();
+    };
     window.addEventListener("resize", onResize);
     return () => {
       io.disconnect();

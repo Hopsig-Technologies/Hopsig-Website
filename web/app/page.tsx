@@ -106,7 +106,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
           </div>
         </HomeHero>
         {/* v2: the agentic band, between the hero sequence and the services file. */}
-        <section className="wrap" style={{ padding: "120px 0" }}>
+        <section className="wrap sp-t120 sp-b120">
           <Rv style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 900 }}>
             <Eyebrow>{fill(band.head.eyebrow)}</Eyebrow>
             <h2 className="h2" style={{ fontSize: 48 }}>
@@ -128,7 +128,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <section id="svc" className="wrap" style={{ padding: "120px 0 0" }}>
+        <section id="svc" className="wrap sp-t120">
           <Rv className="home-head" style={{ marginBottom: 28 }}>
             <div className="home-head-l">
               <Eyebrow>{fill(svc.head.eyebrow)}</Eyebrow>
@@ -231,7 +231,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
             </Rv>
           }
         />
-        <section className="wrap" style={{ paddingBottom: 140 }}>
+        <section className="wrap sp-b140">
           <Rv className="mid-cta">
             <div className="mid-cta-t">{fill(midCta.text)}</div>
             <Button href={midCta.button.href}>{midCta.button.label}</Button>
@@ -241,10 +241,10 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
 
       <Surface tone="l" seam>
         <div style={{ height: 100 }} />
-        <section style={{ paddingBottom: 140 }}>
+        <section className="sp-b140">
           <Capabilities fill={fill} />
         </section>
-        <section className="wrap" style={{ paddingBottom: 140 }}>
+        <section className="wrap sp-b140">
           <Rv>
             <H2>{fill(why.head.title)}</H2>
           </Rv>
@@ -262,7 +262,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="d" seam>
-        <section id="record" className="wrap" style={{ padding: "100px 0 120px" }}>
+        <section id="record" className="wrap sp-t100 sp-b120">
           <div className="record">
             <Rv className="record-l">
               <Eyebrow>{fill(record.head.eyebrow)}</Eyebrow>
@@ -288,7 +288,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <section id="notes" className="notes wrap" style={{ padding: "120px 0 110px" }}>
+        <section id="notes" className="notes wrap sp-t120 sp-b110">
           <Rv className="home-head">
             <div className="home-head-l">
               <Eyebrow>{fill(notes.head.eyebrow)}</Eyebrow>

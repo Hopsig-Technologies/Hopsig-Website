@@ -22,7 +22,7 @@ async function AgenciesContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ paddingTop: 100 }}>
+        <div className="wrap sp-t100">
           <section>
             <Rv>
               <H2>{fill(how.head.title)}</H2>
@@ -32,7 +32,7 @@ async function AgenciesContent({ mode }: { mode: FetchMode }) {
             </div>
           </section>
           <TwoCol
-            style={{ paddingTop: 100 }}
+            className="sp-t100"
             left={
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <Eyebrow>{fill(gets.head.eyebrow)}</Eyebrow>
@@ -42,7 +42,7 @@ async function AgenciesContent({ mode }: { mode: FetchMode }) {
             right={<BulletList items={gets.items.map((x) => fill(x))} />}
           />
           <TwoCol
-            style={{ paddingTop: 100 }}
+            className="sp-t100"
             left={<H2 size={40}>{fill(sayNo.head.title)}</H2>}
             right={
               <div className="dash-list" style={{ marginTop: 0, gap: 10, color: "var(--sub)" }}>

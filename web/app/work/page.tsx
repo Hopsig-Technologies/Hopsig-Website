@@ -27,7 +27,7 @@ async function WorkContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ padding: "100px 0 120px" }}>
+        <div className="wrap sp-t100 sp-b120">
           <HeadRow head={selected.head} fill={fill} style={{ marginBottom: 28 }} />
           <div className="case-grid">
             {cards.map((c, i) => (

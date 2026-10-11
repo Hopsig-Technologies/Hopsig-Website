@@ -1056,3 +1056,182 @@ html:not(.js) .cidx .bars i {
   line-height: 28px;
   color: var(--dim);
 }
+
+/* ---------------------------------------------------------------- Phones and narrow tablets (round M). Rule 8:
+   one column, the desktop hierarchy, sizes from the scale. The scroll-driven hero stays; the services file becomes
+   a plain list (its no-JS form; ServiceFile.tsx stands down below 900px). */
+@media (max-width: 899px) {
+  .hero .stick {
+    height: 100vh;
+    height: 100svh;
+  }
+  .hero .copy {
+    padding: 0 20px;
+    gap: 18px;
+  }
+  .hero-h1 {
+    font-size: 48px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    line-height: 28px;
+  }
+  .hero-facts {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    margin-top: 8px;
+  }
+  .hero-facts i {
+    display: none;
+  }
+  .hero .cap {
+    padding: 0 20px;
+  }
+  .hero .cap .n {
+    font-size: 32px;
+  }
+
+  .file .legend,
+  .file .dwell,
+  .file .veil {
+    display: none;
+  }
+  .file .sheet {
+    position: relative;
+    top: auto !important;
+    min-height: 0 !important;
+    transform: none !important;
+    margin-bottom: 14px;
+  }
+  .file .tab {
+    height: auto;
+    min-height: var(--tab);
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 6px 16px;
+    cursor: default;
+  }
+  .file .tab .s,
+  .file .big {
+    display: none;
+  }
+  .file .tab .m {
+    padding: 14px 0;
+  }
+  .file .sh {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 24px 20px 24px;
+  }
+  .file h3 {
+    font-size: 26px;
+  }
+  .file .get {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .file .sheet.end {
+    margin-bottom: 0;
+  }
+  .file .endc {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 0 0;
+  }
+
+  .home-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .cidx .filters {
+    justify-content: flex-start;
+  }
+  .cidx .head {
+    grid-template-columns: 32px minmax(0, 1fr) 34px;
+    gap: 8px 14px;
+    align-items: start;
+    padding: 20px 0;
+  }
+  .cidx .head .n {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 6px;
+  }
+  .cidx .head .t {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 22px;
+  }
+  .cidx .head .d {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .cidx .head .m {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .cidx .head .s {
+    display: none;
+  }
+  .cidx .head .p {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .cidx .bi {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    padding-bottom: 28px;
+  }
+  .cidx .bi > div:first-child {
+    display: none;
+  }
+  .cidx .foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .mid-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+  .mid-cta-t {
+    font-size: 22px;
+  }
+  .why {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .record {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .record-l {
+    width: auto;
+  }
+  .record-grid {
+    width: 100%;
+  }
+  .record-strip {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+  }
+  .notes .jn {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    margin-top: 32px;
+  }
+  .notes-count {
+    white-space: normal;
+  }
+}
+@media (max-width: 479px) {
+  .hero-h1 {
+    font-size: 40px;
+  }
+}

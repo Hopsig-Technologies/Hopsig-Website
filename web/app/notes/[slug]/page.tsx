@@ -118,7 +118,7 @@ async function NoteContent({ mode, params }: { mode: FetchMode; params: Params }
       {next.length ? (
         <Surface tone="d" seam>
           <div className="wrap">
-            <section style={{ padding: "100px 0 120px" }}>
+            <section className="sp-t100 sp-b120">
               <Rv className="head-row" style={{ marginBottom: 20 }}>
                 <h2 className="h2" style={{ fontSize: 32 }}>
                   {t.nextTitle}

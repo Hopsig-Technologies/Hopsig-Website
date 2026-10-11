@@ -11,7 +11,8 @@ const TOP = 88;
  * tab scrolls its sheet into place. Every sheet is sized to the tallest so the stack lines up, and the dark
  * surface that follows (`.over`) is pulled up over the dwell. Port of the reference's `#file` script.
  *
- * Without JS the sheets are a plain list (each still sticky at its own offset).
+ * Without JS the sheets are a plain list (each still sticky at its own offset). Below 900px they are a plain list
+ * too (home.css): the stack needs more height than a phone has, so this stands down and undoes what it wrote.
  */
 export function ServiceFile({ count, children }: { count: number; children: ReactNode }) {
   const file = useRef<HTMLDivElement>(null);
@@ -22,19 +23,30 @@ export function ServiceFile({ count, children }: { count: number; children: Reac
     const legend = Array.from(root.querySelectorAll<HTMLElement>(".legend i"));
     const dwell = root.querySelector<HTMLElement>(".dwell");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const narrow = window.matchMedia("(max-width: 899px)");
+    const next = root.closest(".tone-l")?.nextElementSibling as HTMLElement | null;
 
     const size = () => {
+      if (narrow.matches) {
+        sheets.forEach((c) => {
+          c.style.minHeight = "";
+          c.style.transform = "";
+          c.classList.remove("stacked");
+        });
+        if (next?.classList.contains("over")) next.style.marginTop = "";
+        return;
+      }
       let mx = 0;
       sheets.forEach((c, i) => {
         c.style.minHeight = "";
         mx = Math.max(mx, c.offsetHeight + i * TAB);
       });
       sheets.forEach((c, i) => (c.style.minHeight = `${mx - i * TAB}px`));
-      const next = root.closest(".tone-l")?.nextElementSibling as HTMLElement | null;
       const end = sheets[sheets.length - 1];
       if (next?.classList.contains("over") && dwell) next.style.marginTop = `-${end.offsetHeight + dwell.offsetHeight + 22 - 200}px`;
     };
     const tickNow = () => {
+      if (narrow.matches) return;
       let active = 0;
       sheets.forEach((c, i) => {
         const r = c.getBoundingClientRect();
@@ -63,7 +75,11 @@ export function ServiceFile({ count, children }: { count: number; children: Reac
         tickNow();
       });
     };
-    const onResize = () => {
+    // Phones fire resize whenever the URL bar shows or hides; only a width change can change the sheets.
+    let lastWidth = window.innerWidth;
+    const onResize = (ev?: Event) => {
+      if (ev && window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
       size();
       onScroll();
     };
@@ -73,7 +89,7 @@ export function ServiceFile({ count, children }: { count: number; children: Reac
       const tab = target.closest<HTMLElement>(".tab");
       const sheet = tab?.parentElement;
       const i = sheet ? sheets.indexOf(sheet) : -1;
-      if (i < 0) return;
+      if (i < 0 || narrow.matches) return;
       const y = sheet!.getBoundingClientRect().top + window.scrollY - (TOP + i * TAB);
       window.scrollTo({ top: y, behavior: reducedMotion ? "auto" : "smooth" });
     };
@@ -86,7 +102,7 @@ export function ServiceFile({ count, children }: { count: number; children: Reac
     size();
     tickNow();
     // Web fonts change the sheet heights once they load.
-    document.fonts?.ready.then(onResize);
+    document.fonts?.ready.then(() => onResize());
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
     root.addEventListener("click", onClick);

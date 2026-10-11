@@ -52,7 +52,7 @@ async function IndustryContent({ mode, params }: { mode: FetchMode; params: Para
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ padding: "100px 0 120px" }}>
+        <div className="wrap sp-t100 sp-b120">
           <HeadRow head={{ title: t.recordTitle, aside: tpl(t.recordAside, { count: d.record.length }) }} fill={fill} style={{ marginBottom: 28 }} />
           <div className="case-grid">
             {cards.map((c, i) => (
@@ -70,7 +70,7 @@ async function IndustryContent({ mode, params }: { mode: FetchMode; params: Para
             <MoreLink cta={t.recordLink} />
           </Rv>
           <TwoCol
-            style={{ paddingTop: 100 }}
+            className="sp-t100"
             left={
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <Eyebrow>{t.asksTitle}</Eyebrow>
@@ -84,7 +84,7 @@ async function IndustryContent({ mode, params }: { mode: FetchMode; params: Para
 
       <Surface tone="d" seam>
         <div className="wrap">
-          <section style={{ padding: "100px 0 0" }}>
+          <section className="sp-t100">
             <Rv className="head-row" style={{ marginBottom: 24 }}>
               <H2>{t.servicesTitle}</H2>
               <MoreLink cta={{ label: t.servicesLink, href: t.servicesHref, variant: "link" }} />
@@ -105,7 +105,7 @@ async function IndustryContent({ mode, params }: { mode: FetchMode; params: Para
               })}
             </Rv>
           </section>
-          <section style={{ padding: "100px 0 120px" }}>
+          <section className="sp-t100 sp-b120">
             <Rv className="head-row" style={{ marginBottom: 20 }}>
               <H2 size={32}>{t.othersTitle}</H2>
               <MoreLink cta={t.othersLink} />

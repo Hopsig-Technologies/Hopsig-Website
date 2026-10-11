@@ -31,7 +31,7 @@ async function NotesContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ padding: "100px 0 120px" }}>
+        <div className="wrap sp-t100 sp-b120">
           <Rv className="head-row" style={{ marginBottom: 28, gap: 40 }}>
             <H2>{fill(list.head.title)}</H2>
             <div className="ncats">

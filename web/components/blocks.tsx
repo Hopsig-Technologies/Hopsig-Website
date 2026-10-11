@@ -204,15 +204,18 @@ export function TwoCol({
   ratio = "1fr 1.3fr",
   gap = 72,
   style,
+  className,
 }: {
   left: ReactNode;
   right: ReactNode;
   ratio?: string;
   gap?: number;
   style?: CSSProperties;
+  /** Section spacing (`sp-t*` / `sp-b*` in globals.css). */
+  className?: string;
 }) {
   return (
-    <section className="twocol" style={{ gridTemplateColumns: ratio, gap, ...style }}>
+    <section className={className ? `twocol ${className}` : "twocol"} style={{ gridTemplateColumns: ratio, gap, ...style }}>
       <Rv className="twocol-l">{left}</Rv>
       <Rv delay={90}>{right}</Rv>
     </section>

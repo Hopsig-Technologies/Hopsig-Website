@@ -59,7 +59,7 @@ export function ContactPage({
         </section>
       </Surface>
       <Surface tone="l" seam>
-        <section className="wrap" style={{ padding: "120px 0 140px" }}>
+        <section className="wrap sp-t120 sp-b140">
           <Rv className="mono-strip">
             {strip.map((s) => (
               <span key={s}>{fill(s)}</span>

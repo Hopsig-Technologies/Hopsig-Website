@@ -23,7 +23,7 @@ async function FlowContent({ mode }: { mode: FetchMode }) {
       <Surface tone="d">
         <PageHero hero={page.hero} fill={fill} size={26} figure={<HeroAnim id="agentic-flow-sim" />} />
         {/* v2: the never wall replaces the "What they never do." list; each rule is a button. */}
-        <section className="wrap" style={{ padding: "100px 0 120px" }}>
+        <section className="wrap sp-t100 sp-b120">
           <Rv className="head-row" style={{ marginBottom: 28 }}>
             <H2>{fill(agents.neverTitle)}</H2>
             <Eyebrow>{fill(agents.neverAside)}</Eyebrow>
@@ -35,7 +35,7 @@ async function FlowContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ padding: "100px 0 120px" }}>
+        <div className="wrap sp-t100 sp-b120">
           <HeadRow head={flow.head} fill={fill} style={{ marginBottom: 28 }} />
           <FlowTable
             stages={flow.stages.map((s) => ({
