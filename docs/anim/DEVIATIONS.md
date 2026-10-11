@@ -66,3 +66,7 @@ Seven rules (the site's list), four + three; labels wrap to two lines in `sans13
 
 ## ai-transformation
 A particle run is 900 ms in all (660 travel over three legs + two 120 ms pauses) so it stays inside its week. Caption swap completes in the 200 ms before each boundary so `t = N × 1000` shows week N. Before-value pulse is one dip 1 → .4 → 1 over 400–800 ms. After-values switch from "—" to counting at 1,500 with a 200 ms crossfade, ink while counting, Lime from W6. `EXAMPLE FIGURES` at (1106, 96) as specified.
+
+## svc-team-augmentation — replaced (v3, 2026-10-11)
+
+Owner decision in the design & SEO review: no time zones or overlap anywhere on the site. The v2 scene's left half was a 24 h GMT overlap dial ("Daily overlap", London 09:00–17:30 vs Lahore PKT) and the standup title read "· 09:30". v3 keeps the v2 right half (standup board, ten-working-day calendar, ticket to first commit) unchanged and replaces the dial with a profiles panel: three role-only profiles arrive on the "Profiles" day, you interview one, and that profile becomes the pill that joins your standup on day ten; a closing line reads "A replacement inside ten working days". Spec: `spec/svc-team-augmentation-v3.md`. The caption in `web/content/animations.ts` no longer mentions overlap.
