@@ -5,10 +5,10 @@ import type { HomePage } from "../types";
 
 export const homePage = {
   hero: {
-    eyebrow: "Senior software & AI engineering partner",
+    eyebrow: "Software & AI development partner",
     title: "You think it.\nWe finish it.",
     // Design & SEO review (R8): the site tagline directly under the H1 (deviations.json), and who we are in one line.
-    sub: "Senior engineers and data/AI people who join your team, or take the build end to end.",
+    sub: "We scope, build and run software and AI products end to end, or put engineers inside the team you already have.",
     buttons: [
       {
         label: "Book a consult",
@@ -22,9 +22,9 @@ export const homePage = {
       },
     ],
     facts: [
-      { value: "Principal-level", label: "talent" },
-      { value: "10 days", label: "to deployment" },
-      { value: "Flexible", label: "terms" },
+      { value: "3 days", label: "to a written scope" },
+      { value: "Week 6", label: "first release live" },
+      { value: "Senior-led", label: "teams" },
     ],
     location: "Hopsig Technologies LLC · Wyoming, USA · Delivery Centre: Lahore, Pakistan",
     beats: [
@@ -138,7 +138,7 @@ export const homePage = {
     },
   },
   midCta: {
-    text: "Start a new build, or put senior people on one that is already running.",
+    text: "Start a new build, or add engineers to one that is already running.",
     button: {
       label: "Book a consult",
       href: "/book",
@@ -151,12 +151,12 @@ export const homePage = {
     },
     items: [
       {
-        title: "Senior only",
-        text: "Shipped to production for years, not months. No juniors on your account, ever.",
-      },
-      {
         title: "Scope before money",
         text: "A written SOW three days after the call, before you pay.",
+      },
+      {
+        title: "Senior-led",
+        text: "A senior leads every engagement and reviews every change; the rest of the team fits the work and the budget.",
       },
       {
         title: "Agentic delivery",

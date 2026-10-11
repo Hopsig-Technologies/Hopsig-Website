@@ -380,7 +380,7 @@ export const industries = [
       },
       {
         service: "team-augmentation",
-        text: "Senior engineers inside your team when the roadmap outgrows it.",
+        text: "Engineers inside your team when the roadmap outgrows it.",
       },
       {
         service: "qa-test-automation",

@@ -306,6 +306,210 @@
    "now": "The people who would do the work will be on it. If the time does not suit, reply to the invite.",
    "where": "/book confirmation",
    "reason": "Owner decision 2026-10-11: no booking tool; the request is emailed and the invite sent by hand, so nothing says 'booked' before it is"
+  },
+  {
+   "reference": "Senior software & AI engineering partner",
+   "now": "Software & AI development partner",
+   "where": "home H1 keyword line",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Senior engineers and data/AI people who join your team, or take the build end to end.",
+   "now": "We scope, build and run software and AI products end to end, or put engineers inside the team you already have.",
+   "where": "home tagline, footer",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Principal-level",
+   "now": "3 days",
+   "where": "home hero facts",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "talent",
+   "now": "to a written scope",
+   "where": "home hero facts",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "10 days",
+   "now": "Week 6",
+   "where": "home hero facts",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "to deployment",
+   "now": "first release live",
+   "where": "home hero facts",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Flexible",
+   "now": "Senior-led",
+   "where": "home hero facts",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "terms",
+   "now": "teams",
+   "where": "home hero facts",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Start a new build, or put senior people on one that is already running.",
+   "now": "Start a new build, or add engineers to one that is already running.",
+   "where": "home mid CTA",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Senior only",
+   "now": "Senior-led",
+   "where": "home why, approach, team augmentation, join",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Shipped to production for years, not months. No juniors on your account, ever.",
+   "now": "A senior leads every engagement and reviews every change; the rest of the team fits the work and the budget.",
+   "where": "home why",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Senior engineers inside your team",
+   "now": "Engineers inside your team",
+   "where": "services menu, home file, team augmentation",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Senior engineers",
+   "now": "Engineers",
+   "where": "team augmentation page title",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Senior only, and what that means",
+   "now": "Senior-led, and what that means",
+   "where": "company menu",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Senior engineers inside your team when the roadmap outgrows it.",
+   "now": "Engineers inside your team when the roadmap outgrows it.",
+   "where": "SaaS industry page",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Years in production. No junior tier.",
+   "now": "A senior on every account; the level fits the work.",
+   "where": "team augmentation tile, home file",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "A named senior engineer, in your standup from day one, on your repo and your board",
+   "now": "A named engineer at the level the work needs, in your standup from day one, on your repo and your board",
+   "where": "team augmentation",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "You need a junior to clear the tickets nobody else wants",
+   "now": "You want engineers placed without a senior reviewing their work",
+   "where": "team augmentation, we say no when",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "How senior is senior?",
+   "now": "What level are the engineers?",
+   "where": "team augmentation FAQ",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Years shipping to production, not years in the industry. Every engineer we place has owned a system in production and can show you which one.",
+   "now": "The level the work needs. Every engineer we place has shipped to production, and a senior leads every account and reviews every change. The SOW says which level we would put on your work, and why.",
+   "where": "team augmentation FAQ",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "How we work as a senior engineering partner",
+   "now": "How we work as a software development partner",
+   "where": "approach H1 keyword line",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Scope before money. Senior only. Measured before we claim it improved. Easy to leave. Not values on a wall: clauses in the SOW, and habits you can check in the first fortnight.",
+   "now": "Scope before money. Senior-led. Measured before we claim it improved. Easy to leave. Not values on a wall: clauses in the SOW, and habits you can check in the first fortnight.",
+   "where": "approach hero",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Everyone we put on your account has shipped to production for years, not months. There is no junior tier, so there is nobody to hide behind one.",
+   "now": "A senior who has shipped to production for years leads every account and reviews every change. Around them the team fits the work: mid-level engineers where the work suits them, more seniors where it does not.",
+   "where": "approach, how we staff an account",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "A named senior engineer, in your standup from day one",
+   "now": "A named engineer, senior-led, in your standup from day one",
+   "where": "services hub, embedded",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "01 — Embedded",
+   "now": "03 — Embedded",
+   "where": "services hub (order: Built, Data & AI, Embedded)",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "02 — Built",
+   "now": "01 — Built",
+   "where": "services hub (order: Built, Data & AI, Embedded)",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "03 — Data & AI",
+   "now": "02 — Data & AI",
+   "where": "services hub (order: Built, Data & AI, Embedded)",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Named senior engineers you interview first",
+   "now": "Named engineers you interview first, led by a senior",
+   "where": "why not just hire, table",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Three to twelve months of senior capacity, measured",
+   "now": "Three to twelve months of capacity, senior-led and measured",
+   "where": "why not just hire, table",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Named senior engineers you can put in front of your client as yours",
+   "now": "Named engineers, senior-led, you can put in front of your client as yours",
+   "where": "for agencies",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "The scope is already sold at a price that cannot carry senior people",
+   "now": "The scope is already sold at a price that cannot carry a senior lead",
+   "where": "for agencies",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "Senior only means something.",
+   "now": "Senior-led means something.",
+   "where": "join hero",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "years shipping to production, not years in the industry",
+   "now": "every account, and every change reviewed by a senior",
+   "where": "join hero facts",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
+  },
+  {
+   "reference": "From day ten you are in their standup, on their repo and their board. We manage you; they direct the work. You are never the junior in the room.",
+   "now": "From day ten you are in their standup, on their repo and their board. We manage you; they direct the work. A senior from our side is on every account with you.",
+   "where": "join, the work",
+   "reason": "Owner decision 2026-10-11: position Hopsig as a software development partner first (building leads, embedded engineers are one way to work), and teams are senior-led and mixed rather than senior only"
   }
  ],
  "removed": [

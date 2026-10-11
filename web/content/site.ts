@@ -5,7 +5,7 @@ import type { Site } from "./types";
 
 export const site = {
   footer: {
-    tagline: "Senior engineers and data/AI people who join your team, or take the build end to end.",
+    tagline: "We scope, build and run software and AI products end to end, or put engineers inside the team you already have.",
     legalLeft: "Hopsig Technologies LLC · Sheridan, Wyoming, USA · Delivery Centre: Lahore, Pakistan",
     legalRight: "© [YEAR] · hopsig.com · [HELLO@HOPSIG.COM]",
   },

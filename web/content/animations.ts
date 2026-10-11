@@ -45,7 +45,7 @@ export const animations = [
         w: 1200,
         h: 560,
         mode: "loop",
-        caption: "A senior engineer in your standup within ten working days, on your repo and your board.",
+        caption: "An engineer in your standup within ten working days, on your repo and your board.",
       },
       {
         id: "agentic-strip",

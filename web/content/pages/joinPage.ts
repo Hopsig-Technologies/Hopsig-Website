@@ -5,8 +5,8 @@ import type { JoinPage } from "../types";
 
 export const joinPage = {
   hero: {
-    title: "Senior only\nmeans something.",
-    eyebrow: "Senior engineering jobs · Delivery Centre: Lahore, Pakistan",
+    title: "Senior-led\nmeans something.",
+    eyebrow: "Software engineering jobs · Delivery Centre: Lahore, Pakistan",
     sub: "We put engineers inside clients' teams in the UK, US and EU, or build for them end to end. The bar is higher than most shops, the work is in production from day ten, and nobody is on a bench.",
     buttons: [
       {
@@ -17,8 +17,8 @@ export const joinPage = {
     ],
     facts: [
       {
-        value: "Senior only",
-        label: "years shipping to production, not years in the industry",
+        value: "Senior-led",
+        label: "every account, and every change reviewed by a senior",
       },
       {
         value: "One account",
@@ -38,7 +38,7 @@ export const joinPage = {
     items: [
       {
         title: "In a client's standup",
-        text: "From day ten you are in their standup, on their repo and their board. We manage you; they direct the work. You are never the junior in the room.",
+        text: "From day ten you are in their standup, on their repo and their board. We manage you; they direct the work. A senior from our side is on every account with you.",
       },
       {
         title: "One account at a time",

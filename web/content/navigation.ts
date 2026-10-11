@@ -18,7 +18,7 @@ export const navigation = {
         },
         {
           label: "Team augmentation",
-          desc: "Senior engineers inside your team",
+          desc: "Engineers inside your team",
           href: "/services/team-augmentation",
         },
         {
@@ -146,7 +146,7 @@ export const navigation = {
         },
         {
           label: "Join",
-          desc: "Senior only, and what that means",
+          desc: "Senior-led, and what that means",
           href: "/join",
         },
         {

@@ -10,11 +10,6 @@ export const servicesIndexPage = {
     sub: "Whichever you pick, you get the same people, the same scope-first habit and the same fortnightly review. The detail below is the detail we would put in the SOW.",
     buttons: [
       {
-        label: "Embedded",
-        href: "/services#embedded",
-        variant: "chip",
-      },
-      {
         label: "Built",
         href: "/services#built",
         variant: "chip",
@@ -24,42 +19,19 @@ export const servicesIndexPage = {
         href: "/services#data",
         variant: "chip",
       },
+      {
+        label: "Embedded",
+        href: "/services#embedded",
+        variant: "chip",
+      },
     ],
   },
+  // Order (owner decision 2026-10-11): building leads, embedded engineers last.
   modes: [
-    {
-      anchor: "embedded",
-      head: {
-        eyebrow: "01 — Embedded",
-        title: "Engineers inside your team",
-        sub: "Your standups, your board, your repo, your definition of done. We manage the person; you direct the work.",
-      },
-      getsTitle: "What you get",
-      gets: [
-        "A named senior engineer, in your standup from day one",
-        "Your tooling, your repo, your board — nothing of ours to adopt",
-        "We manage performance, holidays and cover; you manage the work",
-        "If it is not working, a replacement inside ten working days",
-      ],
-      goodForTitle: "Good for",
-      goodFor: [
-        "Scaling a team without a six-month hiring round",
-        "A nine-month push with a hard date",
-        "Covering a leaver while you hire properly",
-      ],
-      priceLabel: "Engagement",
-      priceTitle: "Monthly, per engineer",
-      priceDetail: "3-month minimum · 30 days’ notice",
-      link: {
-        label: "Ask about adding engineers →",
-        href: "/book",
-        variant: "link",
-      },
-    },
     {
       anchor: "built",
       head: {
-        eyebrow: "02 — Built",
+        eyebrow: "01 — Built",
         title: "A product, scoped and shipped",
         sub: "A written scope, a fixed first increment, working software inside six weeks. Then we keep going or we hand it over.",
       },
@@ -88,7 +60,7 @@ export const servicesIndexPage = {
     {
       anchor: "data",
       head: {
-        eyebrow: "03 — Data & AI",
+        eyebrow: "02 — Data & AI",
         title: "Systems that stay correct",
         sub: "Pipelines, warehouses, retrieval and evaluation harnesses. We measure the thing before we claim it improved.",
       },
@@ -110,6 +82,35 @@ export const servicesIndexPage = {
       priceDetail: "Scoped on the call · NET 14",
       link: {
         label: "Ask about your data systems →",
+        href: "/book",
+        variant: "link",
+      },
+    },
+    {
+      anchor: "embedded",
+      head: {
+        eyebrow: "03 — Embedded",
+        title: "Engineers inside your team",
+        sub: "Your standups, your board, your repo, your definition of done. We manage the person; you direct the work.",
+      },
+      getsTitle: "What you get",
+      gets: [
+        "A named engineer, senior-led, in your standup from day one",
+        "Your tooling, your repo, your board — nothing of ours to adopt",
+        "We manage performance, holidays and cover; you manage the work",
+        "If it is not working, a replacement inside ten working days",
+      ],
+      goodForTitle: "Good for",
+      goodFor: [
+        "Scaling a team without a six-month hiring round",
+        "A nine-month push with a hard date",
+        "Covering a leaver while you hire properly",
+      ],
+      priceLabel: "Engagement",
+      priceTitle: "Monthly, per engineer",
+      priceDetail: "3-month minimum · 30 days’ notice",
+      link: {
+        label: "Ask about adding engineers →",
         href: "/book",
         variant: "link",
       },

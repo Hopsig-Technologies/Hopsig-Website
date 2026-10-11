@@ -50,7 +50,7 @@ async function ServicesContent({ mode }: { mode: FetchMode }) {
               </Rv>
               <div className="svc-ui">
                 {/* Scenes the reference shows: Embedded → people in, Built → scope, Data & AI → measured. */}
-                <EngagementPanelSlot phase={([2, 1, 3] as const)[i]} fill={fill} />
+                <EngagementPanelSlot phase={([1, 3, 2] as const)[i]} fill={fill} />
                 <div className="price">
                   <div className="lab">{fill(m.priceLabel)}</div>
                   <div className="price-t">{fill(m.priceTitle)}</div>

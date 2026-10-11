@@ -64,7 +64,7 @@ export const agenciesPage = {
       title: "What you get.",
     },
     items: [
-      "Named senior engineers you can put in front of your client as yours",
+      "Named engineers, senior-led, you can put in front of your client as yours",
       "Our estimate inside your SOW, in your template, with our name nowhere on it unless you want it there",
       "Mutual non-solicitation for twelve months, in writing",
       "A fortnightly review with you, not with your client, unless you invite us",
@@ -77,7 +77,7 @@ export const agenciesPage = {
     },
     items: [
       "You want us to present as your in-house team to a client who asks directly; we will stay quiet, we will not lie",
-      "The scope is already sold at a price that cannot carry senior people",
+      "The scope is already sold at a price that cannot carry a senior lead",
       "Your client needs us more than you do, and nobody has said so",
     ],
   },

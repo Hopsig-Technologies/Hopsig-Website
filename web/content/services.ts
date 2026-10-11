@@ -117,13 +117,13 @@ export const services = [
     n: 2,
     name: "Team augmentation",
     ask: "Ask about adding engineers →",
-    oneLiner: "Senior engineers inside your team",
+    oneLiner: "Engineers inside your team",
     description:
       "Named engineers in your standup from day one, on your repo and your board. We manage the person; you direct the work. Replacement inside ten working days if it is not working.",
     tiles: [
       {
-        title: "Senior only",
-        text: "Years in production. No junior tier.",
+        title: "Senior-led",
+        text: "A senior on every account; the level fits the work.",
       },
       {
         title: "Your tooling",
@@ -154,15 +154,15 @@ export const services = [
       "Kotlin",
     ],
     shape: "Embedded · monthly, per engineer",
-    pageTitle: "Senior engineers\ninside your team.",
+    pageTitle: "Engineers\ninside your team.",
     gets: [
-      "A named senior engineer, in your standup from day one, on your repo and your board",
+      "A named engineer at the level the work needs, in your standup from day one, on your repo and your board",
       "You meet the engineer before they start, and you can say no",
       "We manage performance, holidays and cover; you direct the work",
       "If it is not working, a replacement inside ten working days, and you do not pay for the overlap",
     ],
     sayNoWhen: [
-      "You need a junior to clear the tickets nobody else wants",
+      "You want engineers placed without a senior reviewing their work",
       "You want someone to be managed rather than someone who manages themselves",
     ],
     steps: [
@@ -195,9 +195,9 @@ export const services = [
     record: ["F7", "F13", "F14"],
     faq: [
       {
-        question: "How senior is senior?",
+        question: "What level are the engineers?",
         answer:
-          "Years shipping to production, not years in the industry. Every engineer we place has owned a system in production and can show you which one.",
+          "The level the work needs. Every engineer we place has shipped to production, and a senior leads every account and reviews every change. The SOW says which level we would put on your work, and why.",
       },
       {
         question: "Can we hire them permanently later?",

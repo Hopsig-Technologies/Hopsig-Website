@@ -6,8 +6,8 @@ import type { ApproachPage } from "../types";
 export const approachPage = {
   hero: {
     title: "How we work.\nThe same way, every account.",
-    eyebrow: "How we work as a senior engineering partner",
-    sub: "Scope before money. Senior only. Measured before we claim it improved. Easy to leave. Not values on a wall: clauses in the SOW, and habits you can check in the first fortnight.",
+    eyebrow: "How we work as a software development partner",
+    sub: "Scope before money. Senior-led. Measured before we claim it improved. Easy to leave. Not values on a wall: clauses in the SOW, and habits you can check in the first fortnight.",
   },
   staffing: {
     head: {
@@ -15,8 +15,8 @@ export const approachPage = {
     },
     items: [
       {
-        title: "Senior only",
-        text: "Everyone we put on your account has shipped to production for years, not months. There is no junior tier, so there is nobody to hide behind one.",
+        title: "Senior-led",
+        text: "A senior who has shipped to production for years leads every account and reviews every change. Around them the team fits the work: mid-level engineers where the work suits them, more seniors where it does not.",
       },
       {
         title: "No bench",

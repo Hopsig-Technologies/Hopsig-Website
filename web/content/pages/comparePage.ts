@@ -43,7 +43,7 @@ export const comparePage = {
           "Whoever applied",
           "Whoever was free",
           "One person, as good as their last job",
-          "Named senior engineers you interview first",
+          "Named engineers you interview first, led by a senior",
         ],
       },
       {
@@ -78,7 +78,7 @@ export const comparePage = {
           "The work is permanent and core",
           "You need forty people and a programme office",
           "A fortnight of specialist work",
-          "Three to twelve months of senior capacity, measured",
+          "Three to twelve months of capacity, senior-led and measured",
         ],
       },
     ],

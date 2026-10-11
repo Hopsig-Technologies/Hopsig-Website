@@ -7,14 +7,14 @@ import type { PageSeo, SeoTemplates } from "./types";
 
 export const seo = {
   "/": {
-    title: "Senior Software, Data & AI Engineering Partner | Hopsig",
+    title: "Software & AI Development Partner | Hopsig",
     description:
-      "Senior engineers who join your team or build end to end. A two-page scope in 3 days and people in your standup by day 10. US company, Lahore Delivery Centre.",
+      "We scope, build and run software and AI products end to end, or embed engineers in your team. A two-page scope in 3 days; first release by week 6. US company, Lahore Delivery Centre.",
   },
   "/services": {
     title: "Software Development Services: 3 Engagement Models | Hopsig",
     description:
-      "Embedded engineers, fixed-scope builds, or data & AI systems. Same senior people, same scope-first habit, and a fortnightly review either way.",
+      "Embedded engineers, fixed-scope builds, or data & AI systems. Same senior-led team, same scope-first habit, and a fortnightly review either way.",
   },
   "/services/custom-software": {
     title: "Custom Software Development Services | Hopsig",
@@ -22,9 +22,9 @@ export const seo = {
       "Products built end to end: a two-page scope in 3 days, working software in your cloud in 6 weeks, then a runbook and handover. Code is yours on payment.",
   },
   "/services/team-augmentation": {
-    title: "Staff Augmentation: Senior Engineers in Your Team | Hopsig",
+    title: "Staff Augmentation: Engineers in Your Team, Senior-Led | Hopsig",
     description:
-      "Named senior engineers in your standup from day 10, on your repo and board. We manage the person, you direct the work; replacement in 10 working days.",
+      "Named engineers in your standup from day 10, led by a senior, on your repo and board. We manage the person, you direct the work; replacement in 10 working days.",
   },
   "/services/data-engineering": {
     title: "Data Engineering & Analytics Services | Hopsig",
@@ -112,9 +112,9 @@ export const seo = {
       "Short, opinionated notes from the engineers doing the work: scoping, evaluation harnesses, agentic delivery and measuring what improved.",
   },
   "/approach": {
-    title: "How We Work: Senior-Only Engineering | Hopsig",
+    title: "How We Work: Senior-Led Engineering | Hopsig",
     description:
-      "Senior engineers only, no bench, replacement in 10 working days, and an SDLC on Claude Code where a person signs every increment.",
+      "Senior-led teams, no bench, replacement in 10 working days, and an SDLC on Claude Code where a person signs every increment.",
   },
   "/working-with-us": {
     title: "Contracts, IP, Data & Security | Working with Hopsig",
@@ -124,12 +124,12 @@ export const seo = {
   "/for-agencies": {
     title: "White-Label Software Development for Agencies | Hopsig",
     description:
-      "Your brand on the SOW, our senior engineers behind it. NDA by default, first commit in 10 days, 12-month non-solicit, no margin share.",
+      "Your brand on the SOW, our engineers behind it. NDA by default, first commit in 10 days, 12-month non-solicit, no margin share.",
   },
   "/join": {
-    title: "Senior Engineering Jobs in Lahore | Hopsig",
+    title: "Software Engineering Jobs in Lahore | Hopsig",
     description:
-      "Senior backend, frontend, data, AI and mobile engineers on client teams. No whiteboard puzzles: send us a system you shipped.",
+      "Backend, frontend, data, AI and mobile engineers on senior-led client teams. No whiteboard puzzles: send us a system you shipped.",
   },
   "/why-not-just-hire": {
     title: "Staff Augmentation vs Hiring vs Outsourcing | Hopsig",
