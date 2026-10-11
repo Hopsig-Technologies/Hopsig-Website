@@ -13,6 +13,25 @@ import { Rv } from "./Reveal";
 
 const idx = (i: number) => String(i + 1).padStart(2, "0");
 
+/**
+ * Text whose ending only makes sense beside an animated figure ("· press one", "Run a story; …"): the ending, with
+ * its separator, hides along with the figure on phones (anim.css `.fig-hint`). Without a matching hint, plain text.
+ */
+export function FigHint({ text, hint }: { text: string; hint?: string }) {
+  if (!hint || !text.endsWith(hint)) return <>{text}</>;
+  const head = text.slice(0, -hint.length);
+  const sep = /(\s*·\s*|\s+)$/.exec(head)?.[0] ?? "";
+  return (
+    <>
+      {head.slice(0, head.length - sep.length)}
+      <span className="fig-hint">
+        {sep}
+        {hint}
+      </span>
+    </>
+  );
+}
+
 export function Eyebrow({ children, acc = true }: { children: ReactNode; acc?: boolean }) {
   return <div className={`lab${acc ? " lab-acc" : ""}`}>{children}</div>;
 }
@@ -61,7 +80,11 @@ export function PageHero({
           {hero.eyebrow ? <span className="lab lab-acc ph-kw">{fill(hero.eyebrow)}</span> : null}
           <Lines text={fill(hero.title)} />
         </h1>
-        {hero.sub ? <p className="ph-sub">{fill(hero.sub)}</p> : null}
+        {hero.sub ? (
+          <p className="ph-sub">
+            <FigHint text={fill(hero.sub)} hint={hero.subHint ? fill(hero.subHint) : undefined} />
+          </p>
+        ) : null}
         {chips.length ? (
           <div className="chips">
             {chips.map((c) => (

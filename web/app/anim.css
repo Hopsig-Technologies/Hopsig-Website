@@ -120,6 +120,10 @@ a.strip:hover text:last-of-type {
   margin-top: 16px;
 }
 /* Mobile artboards are not designed yet: below 768px the figure's frame is hidden and the caption stays as copy. */
+/* A figure's text stand-in, shown only where the figure is hidden (phones, below). */
+.fig-alt {
+  display: none;
+}
 @media (max-width: 767px) {
   .anim .frame {
     display: none;
@@ -136,5 +140,12 @@ a.strip:hover text:last-of-type {
   /* The agentic strip is only its figure: with the figure hidden there is nothing to show or focus. */
   .strip-sec {
     display: none;
+  }
+  /* Words that point at a figure go with it; a figure's text stand-in (.fig-alt) takes its place. */
+  .fig-hint {
+    display: none;
+  }
+  .fig-alt {
+    display: block;
   }
 }

@@ -8,6 +8,7 @@ export const agenticFlowPage = {
     title: "Six agents. One pipeline.\nA person at every gate.",
     eyebrow: "Agentic software development on Claude Code",
     sub: "This is the delivery pipeline every Hopsig build runs on. Each stage is an agent with a defined input, output and guardrail; each handoff can be stopped by a person. Run a story; the detail is below.",
+    subHint: "Run a story; the detail is below.",
     buttons: [
       {
         label: "Book a consult",
@@ -123,6 +124,17 @@ export const agenticFlowPage = {
     ],
     neverTitle: "What they never do.",
     neverAside: "Written into the guardrails · press one",
+    neverAsideHint: "press one",
+    // The v1 list (approved copy, the rules the never wall draws), shown as text on phones where the wall is hidden.
+    never: [
+      "Merge to main",
+      "Change the guardrails, the CI or the branch rules",
+      "Touch a production environment or production data",
+      "Decide scope, or add to it",
+      "Sign off an increment",
+      "Spend money, open accounts or talk to your users",
+      "Carry on when a person has said stop",
+    ],
   },
   tooling: {
     head: {

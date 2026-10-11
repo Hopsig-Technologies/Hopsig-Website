@@ -1048,3 +1048,15 @@
     font-size: 11px;
   }
 }
+
+/* Phones (round M): a note's contents list comes before the article; the offer and the book button stay after
+   it. The aside's wrappers dissolve so their children can be ordered in the note grid. */
+@media (max-width: 899px) {
+  .note-body > aside,
+  .note-aside {
+    display: contents;
+  }
+  .note-aside > div:has(> .note-toc) {
+    order: -1;
+  }
+}

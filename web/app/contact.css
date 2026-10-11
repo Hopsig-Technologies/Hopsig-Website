@@ -285,3 +285,8 @@
     padding: 14px 6px;
   }
 }
+@media (max-width: 479px) {
+  .book-h1 {
+    font-size: 40px;
+  }
+}

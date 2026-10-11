@@ -128,6 +128,16 @@ Not done, or done differently (reasons in the plan): no invented commit-log tick
 | R9 v3 design brief — DONE | `docs/design/v3-brief.md`: motifs (dossier card, before→after counter, SOW sheet, gate stamp), page pieces, mobile 360×640 artboards owed from v2, the accent-for-numbers question, and what was rejected |
 | R10 Domain + launch | old P9: hopsig.com, redirects, Search Console, Lighthouse, 390px, production dataset, counsel |
 
+### Round M — mobile (2026-10-11)
+
+| Phase | What |
+|---|---|
+| M0 Gutter and spacing — DONE | inline section padding → `sp-t*`/`sp-b*` classes (tighter below 900px); `.wrap` keeps its 20px gutter; seams 64px |
+| M1 Home — DONE | hero fits (48/40px), services file as a plain list (ServiceFile stands down), case index rows, record, why, notes, mid CTA one column; canvases ignore URL-bar resizes |
+| M2 Shared — DONE | other-seven and steps one column, engagement panel fluid, 44px targets, menu dvh + scroll lock, 16px fields, 11px floor, long buttons wrap, agentic strip hidden with its figure |
+| M3 Pages — DONE | comparison table: sticky labels, Hopsig column first; contents lists before notes and legal text; figure hints hidden (`FigHint`); never-wall rules as text on phones |
+| M4 Gate — DONE | `scripts/check_mobile.mjs` (`pnpm check:mobile`, in CI); CLAUDE.md rule 8 conventions; owner review on the branch preview |
+
 ### P9 — Audit & launch
 
 Dead-link crawl of every route; `typedRoutes: true` (all routes now exist) replacing the hand-kept `Href`; `pnpm placeholders` == tokens in the built HTML; Lighthouse on `/`, `/services/data-engineering`, `/work`: performance ≥ 90, accessibility 100; JS disabled: all copy visible; `prefers-reduced-motion`; metadata on every route, `sitemap.ts`, `robots.ts`, OG image; 1440 + 390 contact sheet in `audit/`. Launch: seed `production` (`seed.mjs --with-settings` once, then the founders fill Site settings there), production webhook, CORS for the real domain, move the Vercel project to a Hopsig Pro team (Hobby excludes commercial use), domain; `hopsig.si` → 301 to `/ai-transformation` if registered.

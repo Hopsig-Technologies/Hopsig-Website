@@ -144,12 +144,30 @@
 .cmp .hd span:last-child {
   color: var(--acc);
 }
+/* Phones (round M): the table scrolls sideways inside itself; the row labels stay put (sticky, on the page tone,
+   a hairline as the edge) and the Hopsig column comes first after them, so the comparison that makes the case is
+   on screen without a swipe. */
 @media (max-width: 900px) {
   .cmp {
     overflow-x: auto;
+    overscroll-behavior-x: contain;
   }
   .cmp > div {
-    min-width: 760px;
+    grid-template-columns: 104px repeat(4, 150px);
+    gap: 16px;
+    width: max-content;
+  }
+  .cmp > div > span:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--bg);
+    box-shadow: inset -1px 0 0 var(--line);
+    padding-right: 12px;
+    order: -2;
+  }
+  .cmp > div > span:last-child {
+    order: -1;
   }
 }
 
@@ -292,5 +310,9 @@
   }
   .more-inline a {
     padding: 15px 0;
+  }
+  /* The contents list and the footnote come before the text they describe. */
+  .legal-body .legal-aside {
+    order: -1;
   }
 }

@@ -10,6 +10,7 @@
     "typecheck": "pnpm -r typecheck",
     "check:content": "node --no-warnings scripts/content_corpus.mjs && node scripts/seed.mjs && python scripts/check_bundle.py",
     "shot": "node scripts/shot.mjs",
+    "check:mobile": "node scripts/check_mobile.mjs",
     "placeholders": "node --no-warnings scripts/content_corpus.mjs && node scripts/placeholders.mjs",
     "anim:static": "node scripts/anim_static.mjs",
     "anim:test": "node scripts/anim_test.mjs",

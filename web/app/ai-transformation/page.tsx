@@ -4,7 +4,7 @@ import { Rich } from "@/components/Rich";
 import { HeroAnim } from "@/components/anim/HeroAnim";
 import { ScrubWiring } from "@/components/anim/ScrubWiring";
 import { Rv } from "@/components/Reveal";
-import { Eyebrow, H2, HeadRow, Ledger, MoreLink, PageHero, TwoCol } from "@/components/blocks";
+import { Eyebrow, FigHint, H2, HeadRow, Ledger, MoreLink, PageHero, TwoCol } from "@/components/blocks";
 import { BulletList, CaseCard, FaqBlock, Steps } from "@/components/sections";
 import { Surface } from "@/components/Surface";
 import { aiTransformationPage as page } from "@/content";
@@ -32,8 +32,10 @@ async function AiContent({ mode }: { mode: FetchMode }) {
         <section className="scrub wrap">
           <div className="stick">
             <div className="head-row" style={{ marginBottom: 20 }}>
-              <Eyebrow>{fill(page.scrub.eyebrow)}</Eyebrow>
-              <span className="lab" style={{ letterSpacing: "0.12em" }}>
+              <Eyebrow>
+                <FigHint text={fill(page.scrub.eyebrow)} hint={fill(page.scrub.eyebrowHint)} />
+              </Eyebrow>
+              <span className="lab fig-hint" style={{ letterSpacing: "0.12em" }}>
                 {fill(page.scrub.hint)}
               </span>
             </div>
