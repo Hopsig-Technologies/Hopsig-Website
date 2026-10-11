@@ -68,7 +68,8 @@ def diff(base, route, ref=None):
     dev = check_pages.deviations()  # owner-approved replacements (content/deviations.json)
     # A reference line counts as present if the page shows it split differently (a link now breaks it up) or with
     # Site settings values filled in where the reference shows the token.
-    loose = lambda x: re.sub(r'\s+([;,.:])', r'\1', re.sub(r'\s+', ' ', x.replace('—', ' '))).strip()  # lines lose a leading "— " in texts()
+    # Lines lose a leading "— " in texts(), and a "· " that starts an element (a phone-only hint span) is dropped.
+    loose = lambda x: re.sub(r'\s+([;,.:])', r'\1', re.sub(r'\s+', ' ', x.replace('—', ' ').replace('·', ' '))).strip()
     joined = loose(' '.join(built_seq))
     def shown(k):
         for token, value in site_values().items():

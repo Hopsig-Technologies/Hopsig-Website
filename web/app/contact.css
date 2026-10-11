@@ -268,3 +268,25 @@
     gap: 10px;
   }
 }
+
+/* Phones (round M): fields at 16px so iOS does not zoom on focus; chips and inline links reach 44px. */
+@media (max-width: 899px) {
+  .f input,
+  .f textarea {
+    font-size: 16px;
+  }
+  .chips2 button {
+    padding: 15px 12px;
+  }
+  .book-note a {
+    padding: 12px 0;
+  }
+  .slots button {
+    padding: 14px 6px;
+  }
+}
+@media (max-width: 479px) {
+  .book-h1 {
+    font-size: 40px;
+  }
+}

@@ -126,6 +126,32 @@
   .wrap {
     padding: 0 20px;
   }
+  /* The gutter survives any later one-class rule that sets `padding` on a .wrap element. */
+  body .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Section spacing (top / bottom): the desktop values of the reference, tighter below 900px. Classes, not inline
+   styles, so the mobile values can apply and `.wrap` keeps its side gutter. After `.wrap`, whose shorthand would
+   otherwise reset them. */
+.sp-t40 { padding-top: 40px; }
+.sp-t100 { padding-top: 100px; }
+.sp-t110 { padding-top: 110px; }
+.sp-t120 { padding-top: 120px; }
+.sp-b100 { padding-bottom: 100px; }
+.sp-b110 { padding-bottom: 110px; }
+.sp-b120 { padding-bottom: 120px; }
+.sp-b130 { padding-bottom: 130px; }
+.sp-b140 { padding-bottom: 140px; }
+@media (max-width: 899px) {
+  .sp-t40 { padding-top: 32px; }
+  .sp-t100, .sp-t110 { padding-top: 64px; }
+  .sp-t120 { padding-top: 72px; }
+  .sp-b100, .sp-b110 { padding-bottom: 64px; }
+  .sp-b120, .sp-b130 { padding-bottom: 72px; }
+  .sp-b140 { padding-bottom: 80px; }
 }
 
 /* Seam between tones: 120px band of 1px dots on a 22px grid, fading out, overlapping the next section. */
@@ -139,6 +165,12 @@
   pointer-events: none;
   position: relative;
   z-index: 2;
+}
+@media (max-width: 899px) {
+  .seam {
+    height: 64px;
+    margin-bottom: -64px;
+  }
 }
 
 /* Mono label (eyebrows, labels, nav). */

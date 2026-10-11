@@ -23,8 +23,8 @@ async function ApproachContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ paddingTop: 100 }}>
-          <section style={{ paddingBottom: 120 }}>
+        <div className="wrap sp-t100">
+          <section className="sp-b120">
             <Rv>
               <H2>{fill(staffing.head.title)}</H2>
             </Rv>
@@ -36,7 +36,7 @@ async function ApproachContent({ mode }: { mode: FetchMode }) {
           <TwoCol
             ratio="1fr 1.15fr"
             gap={64}
-            style={{ paddingBottom: 120 }}
+            className="sp-b120"
             left={
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 <Eyebrow>{fill(agentic.head.eyebrow)}</Eyebrow>
@@ -61,7 +61,7 @@ async function ApproachContent({ mode }: { mode: FetchMode }) {
 
       <Surface tone="d" seam>
         <div style={{ height: 100 }} />
-        <section className="wrap" style={{ paddingBottom: 120 }}>
+        <section className="wrap sp-b120">
           <HeadRow head={where.head} fill={fill} />
           <Rv className="hours-p">
             {where.paragraphs.map((p) => (

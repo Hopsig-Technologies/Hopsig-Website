@@ -309,3 +309,22 @@ a.more,
     gap: 20px;
   }
 }
+
+/* Phones (round M): chips reach 44px; a long button label wraps instead of running off the screen; the page
+   heroes lose a line at the narrowest widths. */
+@media (max-width: 899px) {
+  .chip2 {
+    padding: 14px;
+  }
+  .btn {
+    white-space: normal;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
+@media (max-width: 479px) {
+  .ph-h1 {
+    font-size: 40px;
+  }
+}

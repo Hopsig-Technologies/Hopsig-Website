@@ -22,7 +22,7 @@ async function CompareContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ paddingTop: 100 }}>
+        <div className="wrap sp-t100">
           <HeadRow head={table.head} fill={fill} style={{ marginBottom: 28 }} />
           {/* A real table (column and row headers), laid out as the reference's grid rows. */}
           <Rv>

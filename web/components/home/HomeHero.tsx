@@ -59,8 +59,13 @@ export function HomeHero({ beats, hint, children }: { beats: Beat[]; hint: strin
         onScroll();
       });
     };
+    // Phones fire resize whenever the URL bar shows or hides; rebuild the dot field only when the width changes.
+    let lastWidth = window.innerWidth;
     const onResize = () => {
-      field.resize();
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        field.resize();
+      }
       onScroll();
     };
     let raf = 0;

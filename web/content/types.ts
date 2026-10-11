@@ -25,7 +25,9 @@ export type StepsSection = { head: SectionHead; steps: Step[] };
 export type LabelValueSection = { head: SectionHead; rows: LabelValue[] };
 export type FaqSection = { title: string; items: FaqItem[] };
 
-export type PageHero = { eyebrow?: string; title: string; sub?: string; buttons?: Cta[]; facts?: Fact[] };
+/** `subHint`: the end of `sub` that only makes sense beside the hero's animated figure; it hides with the figure
+ *  on phones (round M). */
+export type PageHero = { eyebrow?: string; title: string; sub?: string; subHint?: string; buttons?: Cta[]; facts?: Fact[] };
 /** `sub` empty = the default closing intro from site.ts. */
 export type Closing = { eyebrow?: string; title: string; sub?: string; buttons?: Cta[]; showEmail: boolean };
 
@@ -357,7 +359,8 @@ export type WorkingWithUsPage = { hero: PageHero; checks: TitleTextSection; asks
 
 export type AiTransformationPage = {
   hero: PageHero;
-  scrub: { eyebrow: string; hint: string };
+  /** `eyebrowHint` and `hint` point at the figure and hide with it on phones. */
+  scrub: { eyebrow: string; eyebrowHint: string; hint: string };
   offer: {
     head: SectionHead;
     gets: string[];
@@ -400,7 +403,9 @@ export type AgenticFlowPage = {
       runsAlone: string;
     };
   };
-  agents: { head: SectionHead; does: string[]; neverTitle: string; neverAside: string };
+  /** `never`: the seven rules as text, shown where the never wall's figure is hidden (phones); `neverAsideHint`
+   *  is the part of the aside that points at the figure. */
+  agents: { head: SectionHead; does: string[]; neverTitle: string; neverAside: string; neverAsideHint: string; never: string[] };
   tooling: { head: SectionHead; tools: string[]; whereLabel: string; where: string[]; links: Cta[] };
   closing: Closing;
 };
@@ -440,6 +445,8 @@ export type AnimScene = {
   nopause?: boolean;
   /** Describes the mechanism; never states a number. Empty = no figcaption. */
   caption: string;
+  /** The end of `caption` that asks for an interaction ("Press one."); hidden with the figure on phones. */
+  captionHint?: string;
 };
 export type AnimPage = { route: string; scenes: AnimScene[] };
 

@@ -19,7 +19,7 @@ export function EngagementPanel({ phase, fill }: { phase: 0 | 1 | 2 | 3 | 4; fil
     <div className="ep">
       <div className="ep-top">
         <div style={lab}>{T(p.client)}</div>
-        <div style={{ position: "relative", width: 200, height: 14 }}>
+        <div className="ep-phase" style={{ position: "relative", width: 200, height: 14 }}>
           {p.phases.map((ph, i) => (
             <div key={ph} aria-hidden={i !== phase} style={{ ...lab, color: "var(--acc)", whiteSpace: "nowrap", position: "absolute", inset: 0, textAlign: "right", opacity: i === phase ? 1 : 0 }}>
               {ph}
@@ -66,7 +66,7 @@ export function EngagementPanel({ phase, fill }: { phase: 0 | 1 | 2 | 3 | 4; fil
         </div>
         {/* 2 · people in */}
         <div style={layer(phase === 2)} aria-hidden={phase !== 2}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)", gap: 10 }}>
             {p.people.engineers.map((e, i) => (
               <div key={i} className="ep-person">
                 <div className="ep-av">{T(e.initials)}</div>
@@ -79,7 +79,7 @@ export function EngagementPanel({ phase, fill }: { phase: 0 | 1 | 2 | 3 | 4; fil
           </div>
           <div style={{ marginTop: 14, ...mono, fontSize: 11, lineHeight: "20px", color: "var(--sub)" }}>
             {p.people.commits.map((c) => (
-              <div key={c.hash} style={{ display: "grid", gridTemplateColumns: "52px 1fr auto", gap: 10 }}>
+              <div key={c.hash} style={{ display: "grid", gridTemplateColumns: "52px minmax(0, 1fr) auto", gap: 10 }}>
                 <span style={{ color: "var(--dim)" }}>{c.hash}</span>
                 <span style={{ color: "var(--text)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c.message}</span>
                 <span style={{ color: "var(--dim)" }}>{c.when}</span>

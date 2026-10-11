@@ -26,9 +26,9 @@ async function JoinContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ paddingTop: 100 }}>
+        <div className="wrap sp-t100">
           <TwoCol
-            style={{ paddingTop: 100 }}
+            className="sp-t100"
             left={
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <Eyebrow>{fill(work.head.eyebrow)}</Eyebrow>
@@ -38,7 +38,7 @@ async function JoinContent({ mode }: { mode: FetchMode }) {
             right={<Ledger items={work.items} fill={fill} titleWidth={220} tone="sub" stagger={false} />}
           />
           <TwoCol
-            style={{ paddingTop: 100 }}
+            className="sp-t100"
             left={
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <Eyebrow>{fill(vetting.head.eyebrow)}</Eyebrow>
@@ -48,7 +48,7 @@ async function JoinContent({ mode }: { mode: FetchMode }) {
             }
             right={<Ledger items={vetting.items} fill={fill} tone="sub" stagger={false} />}
           />
-          <section style={{ paddingTop: 100 }}>
+          <section className="sp-t100">
             <HeadRow head={roles.head} fill={fill} style={{ marginBottom: 24 }} />
             {/* Roles come from Sanity (jobListing, closed ones excluded); a role with no status shows [STATUS]. */}
             <Rv style={{ borderTop: "1px solid var(--line)" }}>

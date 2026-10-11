@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { CSSProperties } from "react";
 import { animations, type AnimScene } from "@/content";
+import { FigHint } from "../blocks";
 import { AnimMount } from "./AnimMount";
 
 const sceneById = (id: string): AnimScene => {
@@ -21,7 +22,11 @@ export function HeroAnim({ id, style }: { id: string; style?: CSSProperties }) {
   return (
     <figure className="anim" id={`fig-${id}`} data-scene={id} style={style}>
       <div className="frame" style={{ aspectRatio: `${scene.w} / ${scene.h}` }} dangerouslySetInnerHTML={{ __html: svg }} />
-      {scene.caption ? <figcaption id={`fig-${id}-cap`}>{scene.caption}</figcaption> : null}
+      {scene.caption ? (
+        <figcaption id={`fig-${id}-cap`}>
+          <FigHint text={scene.caption} hint={scene.captionHint} />
+        </figcaption>
+      ) : null}
       <AnimMount id={id} mode={scene.mode} />
     </figure>
   );

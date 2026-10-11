@@ -3,7 +3,7 @@ import { Closing } from "@/components/Closing";
 import { FlowTable } from "@/components/FlowTable";
 import { HeroAnim } from "@/components/anim/HeroAnim";
 import { Rv } from "@/components/Reveal";
-import { Eyebrow, H2, HeadRow, MoreLink, PageHero, Tags } from "@/components/blocks";
+import { Eyebrow, FigHint, H2, HeadRow, MoreLink, PageHero, Tags } from "@/components/blocks";
 import { BulletList } from "@/components/sections";
 import { Surface } from "@/components/Surface";
 import { agenticFlowPage as page } from "@/content";
@@ -23,19 +23,25 @@ async function FlowContent({ mode }: { mode: FetchMode }) {
       <Surface tone="d">
         <PageHero hero={page.hero} fill={fill} size={26} figure={<HeroAnim id="agentic-flow-sim" />} />
         {/* v2: the never wall replaces the "What they never do." list; each rule is a button. */}
-        <section className="wrap" style={{ padding: "100px 0 120px" }}>
+        <section className="wrap sp-t100 sp-b120">
           <Rv className="head-row" style={{ marginBottom: 28 }}>
             <H2>{fill(agents.neverTitle)}</H2>
-            <Eyebrow>{fill(agents.neverAside)}</Eyebrow>
+            <Eyebrow>
+              <FigHint text={fill(agents.neverAside)} hint={fill(agents.neverAsideHint)} />
+            </Eyebrow>
           </Rv>
           <Rv>
             <HeroAnim id="agentic-never-wall" style={{ margin: 0 }} />
+            {/* Phones: the figure is hidden, so the rules it draws are listed (anim.css .fig-alt). */}
+            <div className="fig-alt">
+              <BulletList items={agents.never.map((r) => fill(r))} nolime />
+            </div>
           </Rv>
         </section>
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ padding: "100px 0 120px" }}>
+        <div className="wrap sp-t100 sp-b120">
           <HeadRow head={flow.head} fill={fill} style={{ marginBottom: 28 }} />
           <FlowTable
             stages={flow.stages.map((s) => ({

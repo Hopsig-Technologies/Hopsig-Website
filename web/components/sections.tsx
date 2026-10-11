@@ -108,7 +108,7 @@ export function CaseRow({ c, n, fill }: { c: CaseRow; n: number; fill: Fill }) {
 export function FaqBlock({ faq, fill, title }: { faq?: FaqSection; fill: Fill; title?: string }) {
   const items = faq?.items ?? [];
   return (
-    <section className="faq" style={{ padding: "100px 0 0" }}>
+    <section className="faq sp-t100">
       <JsonLd
         data={{
           "@type": "FAQPage",

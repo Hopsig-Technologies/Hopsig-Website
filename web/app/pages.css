@@ -3,7 +3,9 @@
 
 /* ---------------------------------------------------------------- legal */
 .legal-body {
-  padding: 80px 0 120px;
+  /* top and bottom only: the element is also .wrap, which owns the side gutter */
+  padding-top: 80px;
+  padding-bottom: 120px;
   display: grid;
   grid-template-columns: 1fr 260px;
   gap: 96px;
@@ -177,12 +179,30 @@
 .cmp .hd > :last-child {
   color: var(--acc);
 }
+/* Phones (round M): the table scrolls sideways inside itself; the row labels stay put (sticky, on the page tone,
+   a hairline as the edge) and the Hopsig column comes first after them, so the comparison that makes the case is
+   on screen without a swipe. */
 @media (max-width: 900px) {
   .cmp {
     overflow-x: auto;
+    overscroll-behavior-x: contain;
   }
   .cmp tr {
-    min-width: 760px;
+    grid-template-columns: 104px repeat(4, 150px);
+    gap: 16px;
+    width: max-content;
+  }
+  .cmp tr > :first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--bg);
+    box-shadow: inset -1px 0 0 var(--line);
+    padding-right: 12px;
+    order: -2;
+  }
+  .cmp tr > :last-child {
+    order: -1;
   }
 }
 
@@ -307,5 +327,27 @@
   .agents,
   .tooling {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 899px) {
+  .legal-body {
+    padding-top: 56px;
+    padding-bottom: 72px;
+  }
+}
+
+/* Phones (round M): the flow table's mono labels at the 11px floor. */
+@media (max-width: 899px) {
+  .flist .frow .a,
+  .flist .frow .k {
+    font-size: 11px;
+  }
+  .more-inline a {
+    padding: 15px 0;
+  }
+  /* The contents list and the footnote come before the text they describe. */
+  .legal-body .legal-aside {
+    order: -1;
   }
 }

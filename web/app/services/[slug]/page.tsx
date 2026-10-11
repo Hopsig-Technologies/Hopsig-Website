@@ -69,7 +69,7 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ paddingTop: 100 }}>
+        <div className="wrap sp-t100">
           <section className="svc-intro">
             <Rv style={{ display: "flex", flexDirection: "column", gap: 22 }}>
               <H2>{t.getsTitle}</H2>
@@ -115,7 +115,7 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
             </Rv>
           ) : null}
           {record.length ? (
-            <section style={{ padding: "110px 0 120px" }}>
+            <section className="sp-t110 sp-b120">
               <Rv className="head-row" style={{ marginBottom: 28 }}>
                 <H2>{t.recordTitle}</H2>
                 <MoreLink cta={t.recordLink} />
@@ -134,18 +134,18 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
 
       <Surface tone="d" seam>
         <div className="wrap">
-          <section style={{ padding: "100px 0 0" }}>
+          <section className="sp-t100">
             <HeadRow head={{ title: t.stepsTitle, aside: t.stepsAside }} fill={fill} style={{ marginBottom: 36 }} />
             <Steps steps={s.steps} fill={fill} />
           </section>
           {/* v2: the agentic strip, one link to the pipeline (no caption, no pause button). */}
-          <section style={{ padding: "100px 0 0" }}>
+          <section className="sp-t100 strip-sec">
             <Link className="strip" href="/agentic-flow" aria-label={t.stripLabel}>
               <HeroAnim id="agentic-strip" style={{ margin: 0 }} />
             </Link>
           </section>
           <FaqBlock fill={fill} title={t.faqTitle} faq={{ title: t.faqTitle, items: s.faq }} />
-          <section style={{ padding: "100px 0 120px" }}>
+          <section className="sp-t100 sp-b120">
             <HeadRow head={{ title: t.othersTitle, aside: t.othersAside }} fill={fill} size={32} style={{ marginBottom: 20 }} />
             <Rv className="svc-grid">
               {services.map((o) =>

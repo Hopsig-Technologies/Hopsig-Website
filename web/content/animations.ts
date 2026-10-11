@@ -265,6 +265,7 @@ export const animations = [
         h: 320,
         mode: "state",
         caption: "Every rule is a guardrail in the pipeline, not a promise. Press one.",
+        captionHint: "Press one.",
       },
     ],
   },

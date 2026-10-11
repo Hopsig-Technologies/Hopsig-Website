@@ -47,6 +47,13 @@ export function Header({ nav }: { nav: Navigation }) {
     };
   }, []);
 
+  // The page under an open mobile menu does not scroll (chrome.css html.menu-open); closing, Esc and navigating
+  // all clear `mobile`, so they all release it.
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", mobile);
+    return () => document.documentElement.classList.remove("menu-open");
+  }, [mobile]);
+
   const isHome = pathname === "/";
   const inSection = (href: string, children?: { href: string }[]) =>
     pathname === href ||

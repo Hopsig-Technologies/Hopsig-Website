@@ -39,7 +39,7 @@ async function WorkContent({ mode }: { mode: FetchMode }) {
       </Surface>
 
       <Surface tone="l" seam>
-        <div className="wrap" style={{ padding: "100px 0 120px" }}>
+        <div className="wrap sp-t100 sp-b120">
           <WorkFilter
             copy={templates.workFilters}
             industries={industries.map((d) => ({ id: d.id, label: d.short }))}
