@@ -1078,6 +1078,18 @@ html:not(.js) .wf {
   }
   .wf button {
     padding: 15px 12px;
+    flex-shrink: 0;
+  }
+  /* Each filter row is one line that scrolls sideways, edge to edge, instead of a screen of wrapped chips. */
+  .wf-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0 -20px;
+    padding: 0 20px;
+  }
+  .wf-chips::-webkit-scrollbar {
+    display: none;
   }
 }
 
