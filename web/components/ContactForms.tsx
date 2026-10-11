@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { track } from "@/lib/analytics";
 
 const put = (t: string, vars: Record<string, string | number>) => t.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
 
@@ -106,11 +107,13 @@ export function BookCalendar({ copy, bookingUrl }: { copy: CalendarCopy; booking
   const confirm = async () => {
     if (!picked) return setNudge(true);
     if (bookingUrl) {
+      track("consult_booked", { via: "booking-tool" });
       window.location.href = bookingUrl;
       return;
     }
     setStatus("sending");
     const ok = await post({ kind: "booking", ...f, slot: summary });
+    if (ok) track("consult_booked", { via: "request" });
     setStatus(ok ? "done" : "failed");
   };
 
@@ -197,6 +200,7 @@ export function BriefForm({ copy }: { copy: BriefCopy }) {
     if (!f.problem.trim()) return problem.current?.focus();
     setStatus("sending");
     const ok = await post({ kind: "brief", ...f, when: when ?? "" });
+    if (ok) track("brief_sent", { when: when ?? "" });
     setStatus(ok ? "done" : "failed");
   };
 

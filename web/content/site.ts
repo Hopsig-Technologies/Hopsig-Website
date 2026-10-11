@@ -9,6 +9,14 @@ export const site = {
     legalLeft: "Hopsig Technologies LLC · Sheridan, Wyoming, USA · Delivery Centre: Lahore, Pakistan",
     legalRight: "© [YEAR] · hopsig.com · [HELLO@HOPSIG.COM]",
   },
+  // Consent banner and footer link (GA4 + PostHog load only after "Accept"; owner decision 2026-10-11).
+  consent: {
+    text: "We use Google Analytics and PostHog to see which pages help and where the site gets in the way. They stay off unless you accept.",
+    accept: "Accept analytics",
+    decline: "Decline",
+    privacy: "Privacy",
+    settings: "Cookie settings",
+  },
   defaultClosing: {
     title: "Thirty minutes, and you will know whether we can help.",
     sub: "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",

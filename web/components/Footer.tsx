@@ -6,6 +6,7 @@ import type { FetchMode } from "@/sanity/lib/live";
 import { Button } from "./Button";
 import { Filled } from "./Filled";
 import { Wordmark } from "./Wordmark";
+import { CookieSettingsButton } from "./Analytics";
 
 /** The four-column footer. The legal line carries site-wide values (year, email) from Site settings; the email is a link. */
 async function FooterContent({ mode }: { mode: FetchMode }) {
@@ -37,7 +38,7 @@ async function FooterContent({ mode }: { mode: FetchMode }) {
             <Filled text={site.footer.legalLeft} fill={fill} />
           </span>
           <span>
-            <Filled text={site.footer.legalRight} fill={fill} />
+            <Filled text={site.footer.legalRight} fill={fill} /> · <CookieSettingsButton label={site.consent.settings} />
           </span>
         </div>
       </div>

@@ -25,7 +25,7 @@ export const privacyPage = {
           p: "When you book a call or send a brief we collect your name, work email, company, team size and whatever you write about the problem. We use it to reply to you and, if we work together, to scope the engagement. Lawful basis: our legitimate interest in responding to an enquiry you made, and performance of a contract once there is one.",
         },
         {
-          p: "When you browse the site we collect the usual server logs (IP address, browser, pages requested) and, if you accept them, analytics cookies from [ANALYTICS TOOL]. Lawful basis: legitimate interest for logs; consent for analytics.",
+          p: "When you browse the site we collect the usual server logs (IP address, browser, pages requested) and, if you accept them, analytics from Google Analytics 4 (how visitors find and use the site) and PostHog (product analytics and session recordings, with every form field masked). Lawful basis: legitimate interest for logs; consent for analytics.",
         },
         {
           p: "We do not buy lists, we do not run advertising pixels, and we do not sell or share your data with anyone for their own purposes.",
@@ -36,7 +36,13 @@ export const privacyPage = {
       heading: "Cookies",
       body: [
         {
-          p: "Essential cookies keep the site working and remember a choice you made. Analytics cookies are off until you accept them, and you can withdraw at any time from the cookie notice in the footer. The full list: [COOKIE TABLE].",
+          p: "Essential storage keeps the site working and remembers your analytics choice (in your browser, under hopsig-consent). Analytics cookies are off until you accept them, and you can withdraw at any time from Cookie settings in the footer.",
+        },
+        {
+          ul: [
+            "Google Analytics 4: _ga (identifies a browser, 2 years) and _ga_<ID> (keeps the session, 2 years). Only after you accept.",
+            "PostHog: ph_<project key>_posthog (identifies a browser and a session, 1 year). Only after you accept.",
+          ],
         },
       ],
     },
@@ -44,7 +50,7 @@ export const privacyPage = {
       heading: "Who sees it",
       body: [
         {
-          p: "The people at Hopsig who would do the work. Our processors: [HOSTING PROVIDER] (hosting), [CMS PROVIDER] (content and form storage), [EMAIL PROVIDER] (email), [BOOKING TOOL] (scheduling), [ANALYTICS TOOL] (analytics, with consent). Each is bound by a data-processing agreement.",
+          p: "The people at Hopsig who would do the work. Our processors: Vercel (hosting), Sanity (site content), [EMAIL PROVIDER] (email), [BOOKING TOOL] (scheduling), Google (Google Analytics 4, with consent) and PostHog, US cloud (analytics and session recordings, with consent). Each is bound by a data-processing agreement.",
         },
       ],
     },

@@ -459,3 +459,62 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Consent banner (GA4 + PostHog only after "Accept"): a dark bar above the page, tokens only, no shadow. */
+.consent {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  max-width: 1264px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 22px;
+  border: 1px solid #262c34;
+  border-radius: 12px;
+  background: #12161c;
+  color: #b9bfb6;
+  box-sizing: border-box;
+}
+.consent-t {
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  max-width: 760px;
+}
+.consent-link {
+  color: #e7ecef;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.consent-b {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.consent .btn {
+  cursor: pointer;
+  border: 0;
+}
+.foot-cookie {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .consent {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

@@ -27,6 +27,7 @@ const FREEZE = `
   canvas { visibility: hidden !important; }
   .rv, .js .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
   .pg { animation: none !important; }
+  .consent { display: none !important; }
   body { grid-template-rows: 1fr !important; transition: none !important; }
   *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; caret-color: transparent !important; }
 `;

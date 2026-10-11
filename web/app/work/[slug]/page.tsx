@@ -16,6 +16,7 @@ import { cachedSanity, PUBLISHED, type FetchMode } from "@/sanity/lib/live";
 import { CASE_BY_SLUG_QUERY, CASE_SLUGS_QUERY, CASES_ALL_QUERY } from "@/sanity/queries";
 import { meta, SITE_URL } from "@/lib/seo";
 import { breadcrumbsLd, JsonLd, orgRef } from "@/components/JsonLd";
+import { TrackView } from "@/components/Analytics";
 
 type Params = Promise<{ slug: string }>;
 
@@ -68,6 +69,7 @@ async function CaseContent({ mode, params }: { mode: FetchMode; params: Params }
   const domain = c.domain ?? "";
   return (
     <main>
+      <TrackView event="case_note_opened" slug={slug} />
       <JsonLd
         data={{
           "@type": "Article",

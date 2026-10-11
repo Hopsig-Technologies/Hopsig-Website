@@ -137,6 +137,13 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 - `app/robots.ts`, `app/sitemap.ts` (seo.ts paths + case notes with pages + published notes), `app/notes/rss.xml/route.ts`.
 - JSON-LD via `components/JsonLd.tsx`: Organization (layout), WebSite (home), Service + BreadcrumbList (services), BreadcrumbList (industries), Article (case notes), BlogPosting (notes), FAQPage (every `FaqBlock`). No prices in Service; JobPosting only for open roles; dates only once the notes have real ones.
 
+## Analytics and consent (review round R6, 2026-10-11)
+
+- GA4 (`G-D1Y3WDSLLJ`) and PostHog (project 658205, **US cloud** `https://us.i.posthog.com`) load only after "Accept" in the consent banner (`components/Analytics.tsx`, copy in `site.ts` `consent`); the choice lives in localStorage `hopsig-consent`; "Cookie settings" in the footer reopens it; Decline/withdraw stops both and clears `_ga*` / `ph_*` cookies. IDs in `lib/analytics.ts` (public client keys; `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST` override).
+- Consent Mode v2: ads signals always denied. PostHog: `person_profiles: identified_only`, history-change pageviews, session recordings with every input masked.
+- Events (`track()` in `lib/analytics.ts`, nothing sent without consent): `consult_booked` (/book), `brief_sent` (/brief), `case_note_opened` (/work/<slug>), `email_clicked` (any mailto link).
+- The privacy page names them and lists their cookies; it stays a draft for counsel (UK/EU transfers to the US PostHog cloud need SCCs / IDTA).
+
 ## Header (v2)
 
 `AI transformation` and `Agentic flow` sit together in a hairline capsule (`span.ai`) between the Industries and Company dropdowns, coloured Lime (`var(--acc)`); the other links stay dim. Capsule border goes Lime at 50 % on hover/focus-within. No dot, no pulse, no extra nav item. The mobile menu is unchanged.

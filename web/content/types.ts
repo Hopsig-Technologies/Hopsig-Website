@@ -36,6 +36,7 @@ export type LegalSection = { heading: string; body: LegalBlock[] };
 
 export type Site = {
   footer: { tagline: string; legalLeft: string; legalRight: string };
+  consent: { text: string; accept: string; decline: string; privacy: string; settings: string };
   defaultClosing: { title: string; sub: string; emailLine: string };
   /** The two scrolling rows on Home and Services. */
   capabilities: { title: string; aside: string; rowOne: string[]; rowTwo: string[]; note: string };

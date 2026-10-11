@@ -371,6 +371,24 @@
    ],
    "patterns": [],
    "links": []
+  },
+  {
+   "id": "analytics-named",
+   "decided": "2026-10-11",
+   "reason": "Owner decision in the design & SEO review (@Arslan, 2026-10-11): the analytics are Google Analytics 4 and PostHog (US cloud), hosting is Vercel and content is Sanity; the privacy page names them and lists their cookies (draft for counsel).",
+   "strings": [
+    "(analytics, with consent). Each is bound by a data-processing agreement.",
+    "(content and form storage),",
+    ". The full list:",
+    "Essential cookies keep the site working and remember a choice you made. Analytics cookies are off until you accept them, and you can withdraw at any time from the cookie notice in the footer. The full list:",
+    "When you browse the site we collect the usual server logs (IP address, browser, pages requested) and, if you accept them, analytics cookies from",
+    "[ANALYTICS TOOL]",
+    "[CMS PROVIDER]",
+    "[COOKIE TABLE]",
+    "[HOSTING PROVIDER]"
+   ],
+   "patterns": [],
+   "links": []
   }
  ],
  "removed_routes": [
@@ -392,7 +410,11 @@
  "retired_placeholders": [
   "[ADDRESS]",
   "[AGENCY DISCOUNT]",
+  "[ANALYTICS TOOL]",
+  "[CMS PROVIDER]",
   "[COMPANY REG NO.]",
+  "[COOKIE TABLE]",
+  "[HOSTING PROVIDER]",
   "[LEGAL FORM]",
   "[MONTHLY]",
   "[OVERLAP WITH ET]",

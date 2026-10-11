@@ -7,7 +7,7 @@ import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsClass } from "@/components/JsClass";
-import { navigation, seo, seoTemplates } from "@/content";
+import { navigation, seo, seoTemplates, site } from "@/content";
 import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 import "./chrome.css";
@@ -19,6 +19,7 @@ import "./contact.css";
 import "./anim.css";
 import { SITE_URL } from "@/lib/seo";
 import { JsonLd, organizationLd } from "@/components/JsonLd";
+import { Analytics } from "@/components/Analytics";
 
 const grotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
           <Footer />
         </div>
+        <Analytics copy={site.consent} />
         <Suspense fallback={null}>
           <SanityTools />
         </Suspense>
