@@ -55,7 +55,7 @@ export const aiTransformationPage = {
       "Your engineers running it from week three, with us watching; a recorded walkthrough and a week of questions answered",
       "The same numbers after, in a review you sign; then widen it or stop",
     ],
-    priced: 'Engagement: Fixed scope, six weeks · NET 14 · <a href="/book">Book a consult →</a>',
+    priced: 'Engagement: Fixed scope, six weeks · NET 14 · <a href="/book">Ask about the six weeks →</a>',
     goodForTitle: "Good for",
     goodFor: [
       "A team of five to forty engineers with a roadmap longer than the year",

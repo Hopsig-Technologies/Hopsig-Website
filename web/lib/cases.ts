@@ -1,4 +1,5 @@
 import { stegaClean } from "next-sanity";
+import type { Href } from "@/content/routes";
 import type { CaseKey } from "@/content/types";
 import { cachedSanity, type FetchMode } from "@/sanity/lib/live";
 import { CASES_BY_KEY_QUERY } from "@/sanity/queries";
@@ -17,3 +18,9 @@ export async function casesByKey(keys: readonly CaseKey[], mode: FetchMode) {
     return c ? [c] : [];
   });
 }
+
+/** "Ask about this →": /book with the case title, which the consult form puts in its note (review R8). */
+export const askHref = (title: string | null | undefined): Href => {
+  const t = stegaClean(title ?? "").trim();
+  return t ? `/book?about=${encodeURIComponent(t)}` : "/book";
+};

@@ -234,6 +234,48 @@
    "now": "Hopsig engineering · written by the people who would do the work ·",
    "where": "note pages (byline)",
    "reason": "Organisational byline on Notes (owner decision 2026-10-11, rule 7 amended)."
+  },
+  {
+   "reference": "We integrate directly with your team to deliver high-stakes software and AI products from architecture to production launch.",
+   "now": "Senior engineers and data/AI people who join your team, or take the build end to end.",
+   "where": "home hero sub-line",
+   "reason": "Design & SEO review (R8, plan approved 2026-10-11): the site tagline goes directly under the H1"
+  },
+  {
+   "reference": "Embedded payments, wallets, KYC and the reporting finance teams trust",
+   "now": "Fintech and payments software development: embedded payments, wallets and KYC built under PCI-DSS, and the reporting finance teams trust.",
+   "where": "/industries row",
+   "reason": "Design & SEO review (R8, plan approved 2026-10-11): one keyword paragraph per industry, drafted from the industry's own intro"
+  },
+  {
+   "reference": "Storefronts, loyalty, personalisation, inventory and POS",
+   "now": "Retail and e-commerce software development: storefronts, loyalty, personalisation, inventory and POS, for retailers from one store to a hundred.",
+   "where": "/industries row",
+   "reason": "Design & SEO review (R8, plan approved 2026-10-11): one keyword paragraph per industry, drafted from the industry's own intro"
+  },
+  {
+   "reference": "Insurance platforms, telemedicine, surgical imaging, preclinical research data and care-home IoT",
+   "now": "Healthcare and life sciences software development: insurance platforms, telemedicine, surgical imaging, preclinical research data and care-home IoT, built to be supervised and audited.",
+   "where": "/industries row",
+   "reason": "Design & SEO review (R8, plan approved 2026-10-11): one keyword paragraph per industry, drafted from the industry's own intro"
+  },
+  {
+   "reference": "Dispatch boards, driver apps, vehicle marketplaces and travel products",
+   "now": "Logistics and marketplace software development: dispatch boards, driver apps, vehicle marketplaces and travel products, with three kinds of user sharing one system.",
+   "where": "/industries row",
+   "reason": "Design & SEO review (R8, plan approved 2026-10-11): one keyword paragraph per industry, drafted from the industry's own intro"
+  },
+  {
+   "reference": "Digital signage platforms, device telemetry and building intelligence",
+   "now": "IoT, digital signage and smart building software: offline-first players, fleet sync over MQTT, public APIs and telemetry dashboards for the people who run the estate.",
+   "where": "/industries row",
+   "reason": "Design & SEO review (R8, plan approved 2026-10-11): one keyword paragraph per industry, drafted from the industry's own intro"
+  },
+  {
+   "reference": "Multi-tenant SaaS, enterprise platforms, developer APIs and AI products",
+   "now": "SaaS and AI product development: multi-tenant platforms, enterprise systems, developer APIs and AI products, built on an agentic pipeline with the evaluation discipline to keep them right.",
+   "where": "/industries row",
+   "reason": "Design & SEO review (R8, plan approved 2026-10-11): one keyword paragraph per industry, drafted from the industry's own intro"
   }
  ],
  "removed": [

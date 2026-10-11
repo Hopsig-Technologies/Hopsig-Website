@@ -7,7 +7,8 @@ export const homePage = {
   hero: {
     eyebrow: "Senior software & AI engineering partner",
     title: "You think it.\nWe finish it.",
-    sub: "We integrate directly with your team to deliver high-stakes software and AI products from architecture to production launch.",
+    // Design & SEO review (R8): the site tagline directly under the H1 (deviations.json), and who we are in one line.
+    sub: "Senior engineers and data/AI people who join your team, or take the build end to end.",
     buttons: [
       {
         label: "Book a consult",
@@ -25,6 +26,7 @@ export const homePage = {
       { value: "10 days", label: "to deployment" },
       { value: "Flexible", label: "terms" },
     ],
+    location: "Hopsig Technologies LLC · Wyoming, USA · Delivery Centre: Lahore, Pakistan",
     beats: [
       {
         when: "Day 0",

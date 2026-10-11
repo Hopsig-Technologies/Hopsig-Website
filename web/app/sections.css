@@ -938,6 +938,21 @@
   line-height: 1.5;
   color: var(--sub);
 }
+.note-toc a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.note-toc a:hover,
+.note-toc a.on {
+  color: var(--text);
+}
+.note-toc a.on {
+  font-weight: 600;
+}
+.art h2 {
+  scroll-margin-top: 96px;
+}
 .note-offer {
   border-top: 1px solid var(--line);
   padding-top: 20px;
@@ -974,4 +989,59 @@
   .irow.note-row .c {
     display: none;
   }
+}
+
+/* ---------------------------------------------------------------- /work filters (chip style of the home case index) */
+.wf {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 56px;
+}
+.wf-row {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  align-items: baseline;
+  gap: 8px;
+}
+.wf-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.wf button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--dim);
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.wf button:hover {
+  color: var(--text);
+  border-color: var(--sub);
+}
+.wf button.on {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.wf-count {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* Without JS the filters cannot work: every case shows and the chips are not offered. */
+html:not(.js) .wf {
+  display: none;
 }

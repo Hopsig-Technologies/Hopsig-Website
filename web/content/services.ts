@@ -1,6 +1,7 @@
 // Converted once from the approved prototype (reference/site) by scripts/convert_content.mjs on 2026-10-10.
 // This file is now the source of truth for this copy: edit it by hand. Bracketed [PLACEHOLDERS] stay until the
 // founders replace them (CLAUDE.md rule 1). Run `pnpm check:content` after editing.
+// `ask`: the mid-page consult link (design & SEO review R8, 2026-10-11), new copy for owner approval.
 import type { Service } from "./types";
 
 export const services = [
@@ -10,6 +11,7 @@ export const services = [
     keyword: "Custom software development",
     n: 1,
     name: "Custom software",
+    ask: "Ask about your build →",
     oneLiner: "Products built end to end",
     description:
       "A written scope, a fixed first increment, working software in your cloud inside six weeks. Then we keep going, or we hand it over with a runbook.",
@@ -114,6 +116,7 @@ export const services = [
     keyword: "Staff augmentation",
     n: 2,
     name: "Team augmentation",
+    ask: "Ask about adding engineers →",
     oneLiner: "Senior engineers inside your team",
     description:
       "Named engineers in your standup from day one, on your repo and your board. We manage the person; you direct the work. Replacement inside ten working days if it is not working.",
@@ -210,6 +213,7 @@ export const services = [
     keyword: "Data engineering & analytics services",
     n: 3,
     name: "Data engineering & analytics",
+    ask: "Ask about your pipelines →",
     oneLiner: "Pipelines and reporting people stop arguing with",
     description:
       "Ingest, warehouse, models and dashboards that the in-house team can run after we leave. Measured before and after every increment.",
@@ -309,6 +313,7 @@ export const services = [
     keyword: "AI & machine learning development",
     n: 4,
     name: "AI & machine learning",
+    ask: "Ask about your AI feature →",
     oneLiner: "Features that have to be right, not impressive",
     description:
       "Retrieval, LLM features, classification and forecasting, each with an evaluation harness so you know when it got better and when it did not.",
@@ -415,6 +420,7 @@ export const services = [
     keyword: "Cloud & DevOps services",
     n: 5,
     name: "Cloud & DevOps",
+    ask: "Ask about your infrastructure →",
     oneLiner: "Deploys that are boring",
     description:
       "CI/CD, infrastructure as code, observability and cost control, set up so your team owns it afterwards and the on-call runbook is written before you need it.",
@@ -519,6 +525,7 @@ export const services = [
     keyword: "Legacy application modernisation",
     n: 6,
     name: "Legacy modernisation",
+    ask: "Ask about your migration →",
     oneLiner: "Rebuilds the in-house team can run",
     description:
       "Strangler-pattern migrations off the system nobody wants to touch, one bounded piece at a time, with the old and new running side by side until the numbers match.",
@@ -616,6 +623,7 @@ export const services = [
     keyword: "Mobile app development",
     n: 7,
     name: "Mobile",
+    ask: "Ask about your app →",
     oneLiner: "iOS and Android without two teams",
     description:
       "Cross-platform where it makes sense, native where it does not, with the release pipeline and crash reporting set up before the first store submission.",
@@ -714,6 +722,7 @@ export const services = [
     keyword: "QA & test automation services",
     n: 8,
     name: "QA & test automation",
+    ask: "Ask about your test suite →",
     oneLiner: "Suites that make deploys boring",
     description:
       "Unit, integration and end-to-end coverage that runs in CI in minutes, plus load testing before the launch rather than after the outage.",

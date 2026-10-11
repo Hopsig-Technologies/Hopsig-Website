@@ -24,21 +24,30 @@ async function CompareContent({ mode }: { mode: FetchMode }) {
       <Surface tone="l" seam>
         <div className="wrap" style={{ paddingTop: 100 }}>
           <HeadRow head={table.head} fill={fill} style={{ marginBottom: 28 }} />
-          <Rv className="cmp">
-            <div className="hd">
-              <span />
-              {table.columns.map((c) => (
-                <span key={c}>{c}</span>
-              ))}
-            </div>
-            {table.rows.map((r) => (
-              <div key={r.label}>
-                <span>{r.label}</span>
-                {r.cells.map((c, i) => (
-                  <span key={i}>{fill(c)}</span>
+          {/* A real table (column and row headers), laid out as the reference's grid rows. */}
+          <Rv>
+            <table className="cmp">
+              <thead>
+                <tr className="hd">
+                  <td />
+                  {table.columns.map((c) => (
+                    <th key={c} scope="col">
+                      {c}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {table.rows.map((r) => (
+                  <tr key={r.label}>
+                    <th scope="row">{r.label}</th>
+                    {r.cells.map((c, i) => (
+                      <td key={i}>{fill(c)}</td>
+                    ))}
+                  </tr>
                 ))}
-              </div>
-            ))}
+              </tbody>
+            </table>
           </Rv>
           <div style={{ height: 120 }} />
         </div>

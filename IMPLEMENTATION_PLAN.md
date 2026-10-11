@@ -124,7 +124,7 @@ Not done, or done differently (reasons in the plan): no invented commit-log tick
 | R5 Content depth | caseStudy fields + richer template; more case pages; metric placeholders list + launch switch; FAQs (founders approve) |
 | R6 Analytics + consent — DONE | banner, Consent Mode v2, GA4 + PostHog after consent, events, privacy copy for counsel |
 | R7 Booking + brief — brief DONE (Resend); booking waits for Cal.com | Cal.com embed, Resend to info@hopsig.com, pre-filled "Ask about this" |
-| R8 Functional improvements | /work filters + sort, real table on Why not just hire, linked legal TOC, Company toggle, fewer CTAs, home tagline + location, industries paragraphs |
+| R8 Functional improvements — BUILT on branch `review-r8` (new copy awaits owner approval on the preview) | /work filters (industry, service, with a number; no sort: the record has no reliable dates or comparable numbers), real table on Why not just hire, linked legal TOC with "Last updated" on top, Company toggle, note TOC (sticky, active section), home tagline under the H1 + legal-identity line, specific mid-page "Ask about …" links (hero buttons kept: on mobile the header CTA folds into the menu), industries keyword paragraphs + unit-bearing hub stats, "Ask about this →" pre-fills /book with the case title |
 | R9 v3 design brief | docs/design/v3-brief.md for Claude Design |
 | R10 Domain + launch | old P9: hopsig.com, redirects, Search Console, Lighthouse, 390px, production dataset, counsel |
 

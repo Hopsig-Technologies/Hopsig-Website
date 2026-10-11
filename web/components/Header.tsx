@@ -17,18 +17,27 @@ import { Wordmark } from "./Wordmark";
 export function Header({ nav }: { nav: Navigation }) {
   const pathname = usePathname();
   // Menu state belongs to the page it was opened on: navigating closes everything without an effect.
-  const [state, setState] = useState<{ path: string; open: number | null; mobile: boolean }>({ path: pathname, open: null, mobile: false });
-  const current = state.path === pathname ? state : { path: pathname, open: null, mobile: false };
+  const [state, setState] = useState<{
+    path: string;
+    open: number | null;
+    mobile: boolean;
+  }>({ path: pathname, open: null, mobile: false });
+  const current =
+    state.path === pathname
+      ? state
+      : { path: pathname, open: null, mobile: false };
   const { open, mobile } = current;
   const setOpen = (i: number | null) => setState({ ...current, open: i });
   const setMobile = (m: boolean) => setState({ ...current, mobile: m });
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setState((s) => ({ ...s, open: null, mobile: false }));
+      if (e.key === "Escape")
+        setState((s) => ({ ...s, open: null, mobile: false }));
     };
     const onClick = (e: MouseEvent) => {
-      if (!(e.target as Element).closest?.(".hdr .dd")) setState((s) => ({ ...s, open: null }));
+      if (!(e.target as Element).closest?.(".hdr .dd"))
+        setState((s) => ({ ...s, open: null }));
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("click", onClick);
@@ -40,40 +49,75 @@ export function Header({ nav }: { nav: Navigation }) {
 
   const isHome = pathname === "/";
   const inSection = (href: string, children?: { href: string }[]) =>
-    pathname === href || (href !== "/" && pathname.startsWith(href + "/")) || !!children?.some((c) => c.href === pathname);
+    pathname === href ||
+    (href !== "/" && pathname.startsWith(href + "/")) ||
+    !!children?.some((c) => c.href === pathname);
 
   return (
     <header id="hdr" className={`hdr${isHome ? "" : " always"}`}>
       <div className="wrap hdr-row">
-        <Link href="/" className="hdr-wm" aria-label="Hopsig Technologies, home">
+        <Link
+          href="/"
+          className="hdr-wm"
+          aria-label="Hopsig Technologies, home"
+        >
           <Wordmark size={26} />
         </Link>
         <nav className="hdr-nav" aria-label="Main">
           {nav.primary.map((item, i) =>
             item.children ? (
-              <div key={item.label} className={`dd${open === i ? " open" : ""}`}>
-                <Link
-                  href={item.href}
-                  className={`nl${inSection(item.href, item.children) ? " on" : ""}`}
-                  aria-haspopup="true"
-                  aria-expanded={open === i}
-                  onClick={(e) => {
-                    if (window.matchMedia("(hover: none)").matches && open !== i) {
-                      e.preventDefault();
-                      setOpen(i);
-                    }
-                  }}
+              <div
+                key={item.label}
+                className={`dd${open === i ? " open" : ""}`}
+              >
+                {item.toggle ? (
+                  <button
+                    type="button"
+                    className={`nl${inSection(item.href, item.children) ? " on" : ""}`}
+                    aria-haspopup="true"
+                    aria-expanded={open === i}
+                    onClick={() => setOpen(open === i ? null : i)}
+                  >
+                    {item.label}
+                    <span className="crt" aria-hidden="true">
+                      ▾
+                    </span>
+                  </button>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`nl${inSection(item.href, item.children) ? " on" : ""}`}
+                    aria-haspopup="true"
+                    aria-expanded={open === i}
+                    onClick={(e) => {
+                      if (
+                        window.matchMedia("(hover: none)").matches &&
+                        open !== i
+                      ) {
+                        e.preventDefault();
+                        setOpen(i);
+                      }
+                    }}
+                  >
+                    {item.label}
+                    <span className="crt" aria-hidden="true">
+                      ▾
+                    </span>
+                  </Link>
+                )}
+                <div
+                  className={`menu${item.children.length > 7 ? " wide" : ""}`}
                 >
-                  {item.label}
-                  <span className="crt" aria-hidden="true">
-                    ▾
-                  </span>
-                </Link>
-                <div className={`menu${item.children.length > 7 ? " wide" : ""}`}>
                   <div className="pnl">
                     {item.children.map((c, j) => (
-                      <Link key={c.href} href={c.href} className={`mi${pathname === c.href ? " on" : ""}`}>
-                        <span className="n">{String(j + 1).padStart(2, "0")}</span>
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className={`mi${pathname === c.href ? " on" : ""}`}
+                      >
+                        <span className="n">
+                          {String(j + 1).padStart(2, "0")}
+                        </span>
                         <span>
                           <b>{c.label}</b>
                           {c.desc ? <span className="d">{c.desc}</span> : null}
@@ -95,16 +139,33 @@ export function Header({ nav }: { nav: Navigation }) {
             ) : item.group === "ai" ? (
               // v2: consecutive AI links share one Lime capsule; the first renders it, the rest are inside.
               nav.primary[i - 1]?.group === "ai" ? null : (
-                <span key={item.label} className="ai" aria-label={nav.aiGroupLabel}>
-                  {nav.primary.slice(i).filter((x, j, rest) => rest.slice(0, j + 1).every((y) => y.group === "ai")).map((x) => (
-                    <Link key={x.label} href={x.href} className={`nl${pathname === x.href ? " on" : ""}`}>
-                      {x.label}
-                    </Link>
-                  ))}
+                <span
+                  key={item.label}
+                  className="ai"
+                  aria-label={nav.aiGroupLabel}
+                >
+                  {nav.primary
+                    .slice(i)
+                    .filter((x, j, rest) =>
+                      rest.slice(0, j + 1).every((y) => y.group === "ai"),
+                    )
+                    .map((x) => (
+                      <Link
+                        key={x.label}
+                        href={x.href}
+                        className={`nl${pathname === x.href ? " on" : ""}`}
+                      >
+                        {x.label}
+                      </Link>
+                    ))}
                 </span>
               )
             ) : (
-              <Link key={item.label} href={item.href} className={`nl${pathname === item.href ? " on" : ""}`}>
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`nl${pathname === item.href ? " on" : ""}`}
+              >
                 {item.label}
               </Link>
             ),
@@ -116,7 +177,13 @@ export function Header({ nav }: { nav: Navigation }) {
             </Link>
           )}
         </nav>
-        <button type="button" className="hdr-burger" aria-expanded={mobile} aria-controls="hdr-mobile" onClick={() => setMobile(!mobile)}>
+        <button
+          type="button"
+          className="hdr-burger"
+          aria-expanded={mobile}
+          aria-controls="hdr-mobile"
+          onClick={() => setMobile(!mobile)}
+        >
           {mobile ? "Close" : "Menu"}
         </button>
       </div>
@@ -129,7 +196,11 @@ export function Header({ nav }: { nav: Navigation }) {
                   {item.label}
                 </Link>
                 {item.children?.map((c) => (
-                  <Link key={c.href} href={c.href} className={`hm-item${pathname === c.href ? " on" : ""}`}>
+                  <Link
+                    key={c.href}
+                    href={c.href}
+                    className={`hm-item${pathname === c.href ? " on" : ""}`}
+                  >
                     {c.label}
                   </Link>
                 ))}

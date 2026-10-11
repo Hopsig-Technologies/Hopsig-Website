@@ -31,12 +31,11 @@ async function IndustriesContent({ mode }: { mode: FetchMode }) {
                   <span className="n">{nn(d.n)}</span>
                   <span>
                     <span className="t">{d.name}</span>
-                    {/* The row shows the intro up to its colon, as the reference does. */}
-                    <span className="s">{fill(d.sub.split(":")[0])}</span>
+                    <span className="s">{fill(d.hub.text)}</span>
                   </span>
                   <span className="m">
-                    <b>{fill(d.facts[0].value)}</b>
-                    {fill(d.facts[0].label)}
+                    <b>{fill(d.facts[d.hub.fact ?? 0].value)}</b>
+                    {fill(d.facts[d.hub.fact ?? 0].label)}
                   </span>
                   <span className="c">{tpl(templates.industriesIndexRow.count, { count: d.record.length })}</span>
                   <span className="r">→</span>

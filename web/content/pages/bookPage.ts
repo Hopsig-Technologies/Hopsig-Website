@@ -39,6 +39,8 @@ export const bookPage = {
     // reference; decided 2026-10-10: build now, connect later).
     notConnected: "Booking is not connected yet. Email [HELLO@HOPSIG.COM] and we will reply within one working day.",
     fieldPlaceholders: ["Your name", "Work email", "Company · team size", "The problem, in a sentence or two"],
+    // Review R8 (new copy, for owner approval): "Ask about this →" on a case card carries the case title here.
+    aboutNote: "About the case note “{title}”: ",
     submit: "Confirm the call",
     bookedLabel: "Booked",
     bookedTitle: "See you then.",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { templates, type FaqSection, type Step } from "@/content";
 import type { casesByKey } from "@/lib/cases";
+import { askHref } from "@/lib/cases";
 import { nn, tpl } from "@/lib/tpl";
 import { Faq } from "./Faq";
 import type { Fill } from "./Filled";
@@ -78,7 +79,7 @@ export function CaseCard({ c, n, fill, delay }: { c: CaseRow; n: number; fill: F
             {t.pageLink}
           </Link>
         ) : (
-          <Link href="/book" className="more">
+          <Link href={askHref(c.title)} className="more">
             {t.askLink}
           </Link>
         )}

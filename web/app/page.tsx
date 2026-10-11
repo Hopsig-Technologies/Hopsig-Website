@@ -20,6 +20,7 @@ import { getFill } from "@/lib/site";
 import { nn, tpl } from "@/lib/tpl";
 import { cachedSanity, type FetchMode } from "@/sanity/lib/live";
 import { CASE_COUNT_QUERY, CASES_FEATURED_QUERY, POSTS_QUERY } from "@/sanity/queries";
+import { askHref } from "@/lib/cases";
 import { pageMeta } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/seo";
@@ -62,7 +63,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
     link:
       c.hasPage && c.slug
         ? { href: `/work/${stegaClean(c.slug)}`, label: ci.pageLink }
-        : { href: "/book", label: ci.askLink },
+        : { href: askHref(c.title), label: ci.askLink },
   }));
   const filters = ci.filters.map((f) => ({
     key: f.key,
@@ -104,6 +105,7 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
               </Fragment>
             ))}
           </div>
+          <p className="hero-loc">{fill(hero.location)}</p>
         </HomeHero>
         {/* v2: the agentic band, between the hero sequence and the services file. */}
         <section className="wrap" style={{ padding: "120px 0" }}>

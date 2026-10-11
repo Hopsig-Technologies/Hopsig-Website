@@ -43,7 +43,7 @@ export type Site = {
 };
 
 export type NavLink = { label: string; desc?: string; href: Href };
-export type NavItem = { label: string; href: Href; children?: NavLink[]; menuFooter?: Cta[]; /** v2: sits in the Lime capsule. */ group?: "ai" };
+export type NavItem = { label: string; href: Href; children?: NavLink[]; menuFooter?: Cta[]; /** v2: sits in the Lime capsule. */ group?: "ai"; /** The trigger opens the menu only (no hub page behind it). */ toggle?: boolean };
 export type FooterColumn = { title: string; links: NavLink[] };
 export type Navigation = { primary: NavItem[]; cta: Cta; footer: FooterColumn[]; /** Accessible name of the AI capsule. */ aiGroupLabel: string };
 
@@ -138,6 +138,7 @@ export type Templates = {
     closingEyebrow: string;
     buttons: Cta[];
   };
+  workFilters: { all: string; industry: string; service: string; numbered: string; showing: string; none: string };
   legalPage: { contentsTitle: string };
 };
 
@@ -160,6 +161,8 @@ export type Service = {
   keyword: string;
   n: number;
   name: string;
+  /** The specific consult link under "What you get" (review R8: one in-context CTA mid-page). */
+  ask: string;
   oneLiner: string;
   description: string;
   tiles: { title: string; text: string }[];
@@ -184,6 +187,8 @@ export type Industry = {
   short: string;
   title: string;
   sub: string;
+  /** The /industries row: a keyword paragraph (review R8) and which of `facts` it shows (default 0). */
+  hub: { text: string; fact?: number };
   facts: Fact[];
   record: CaseKey[];
   /** How many of `record` show as full cards; the rest are compact rows. */
@@ -204,6 +209,8 @@ export type HomePage = {
     buttons: Cta[];
     /** The mono line under the buttons: `value` in the text colour, then `label`. */
     facts: Fact[];
+    /** The legal identity and delivery centre, one mono line under the facts (review R8). */
+    location: string;
     beats: Step[];
     scrollHint: string;
   };
@@ -305,6 +312,8 @@ export type BookPage = {
     emailFallback: string;
     notConnected: string;
     fieldPlaceholders: string[];
+    /** Pre-filled in the problem field when arriving from "Ask about this →" (`/book?about=…`); `{title}`. */
+    aboutNote: string;
     submit: string;
     bookedLabel: string;
     bookedTitle: string;

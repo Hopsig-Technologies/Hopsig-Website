@@ -1,6 +1,7 @@
 // Converted once from the approved prototype (reference/site) by scripts/convert_content.mjs on 2026-10-10.
 // This file is now the source of truth for this copy: edit it by hand. Bracketed [PLACEHOLDERS] stay until the
 // founders replace them (CLAUDE.md rule 1). Run `pnpm check:content` after editing.
+// `hub`: the /industries rows (design & SEO review R8, 2026-10-11): drafted from each `sub`, for owner approval.
 import type { Industry } from "./types";
 
 export const industries = [
@@ -13,6 +14,7 @@ export const industries = [
     short: "Fintech",
     title: "Payments that clear.\nBooks that balance.",
     sub: "Embedded payments, wallets, KYC and the reporting finance teams trust: built under PCI-DSS, measured by conversion and settlement rather than by features.",
+    hub: { text: "Fintech and payments software development: embedded payments, wallets and KYC built under PCI-DSS, and the reporting finance teams trust." },
     facts: [
       {
         value: "150+",
@@ -76,6 +78,7 @@ export const industries = [
     short: "Retail",
     title: "Checkouts that convert.\nStock that is where it says.",
     sub: "Storefronts, loyalty, personalisation, inventory and POS: for retailers from one store to a hundred, measured by repeat purchase and conversion.",
+    hub: { text: "Retail and e-commerce software development: storefronts, loyalty, personalisation, inventory and POS, for retailers from one store to a hundred." },
     facts: [
       {
         value: "5×",
@@ -139,6 +142,7 @@ export const industries = [
     short: "Healthcare",
     title: "Software a regulator\nwill sign off.",
     sub: "Insurance platforms, telemedicine, surgical imaging, preclinical research data and care-home IoT: built to be supervised, audited and still used.",
+    hub: { text: "Healthcare and life sciences software development: insurance platforms, telemedicine, surgical imaging, preclinical research data and care-home IoT, built to be supervised and audited." },
     facts: [
       {
         value: "60%",
@@ -202,6 +206,7 @@ export const industries = [
     short: "Logistics",
     title: "Real-time, on the road,\non a bad connection.",
     sub: "Dispatch boards, driver apps, vehicle marketplaces and travel products: three kinds of user sharing one system, and the data that keeps them honest.",
+    hub: { text: "Logistics and marketplace software development: dispatch boards, driver apps, vehicle marketplaces and travel products, with three kinds of user sharing one system.", fact: 2 },
     facts: [
       {
         value: "Real-time",
@@ -265,6 +270,7 @@ export const industries = [
     short: "IoT & signage",
     title: "Devices that keep working\nwhen the network does not.",
     sub: "Digital signage platforms, device telemetry and building intelligence: offline-first players, fleet sync, public APIs and dashboards for the people who run the estate.",
+    hub: { text: "IoT, digital signage and smart building software: offline-first players, fleet sync over MQTT, public APIs and telemetry dashboards for the people who run the estate." },
     facts: [
       {
         value: "200+",
@@ -328,6 +334,7 @@ export const industries = [
     short: "SaaS & AI",
     title: "Products that ship\nand keep shipping.",
     sub: "Multi-tenant SaaS, enterprise platforms, developer APIs and AI products: built with an agentic pipeline and the evaluation discipline to keep them right.",
+    hub: { text: "SaaS and AI product development: multi-tenant platforms, enterprise systems, developer APIs and AI products, built on an agentic pipeline with the evaluation discipline to keep them right.", fact: 1 },
     facts: [
       {
         value: "10",

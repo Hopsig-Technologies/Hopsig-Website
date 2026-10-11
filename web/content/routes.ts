@@ -54,6 +54,7 @@ export type Href =
   | `/industries/${IndustrySlug}`
   | `/work/${string}`
   | `/notes/${string}`
+  | `/book?about=${string}` // "Ask about this" with the case title (lib/cases.ts askHref)
   | `http://${string}`
   | `https://${string}`
   | `mailto:${string}`;

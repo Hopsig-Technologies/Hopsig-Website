@@ -14,6 +14,7 @@ import { getFill } from "@/lib/site";
 import { tpl } from "@/lib/tpl";
 import { cachedSanity, PUBLISHED, type FetchMode } from "@/sanity/lib/live";
 import { CASE_BY_SLUG_QUERY, CASE_SLUGS_QUERY, CASES_ALL_QUERY } from "@/sanity/queries";
+import { askHref } from "@/lib/cases";
 import { meta, SITE_URL } from "@/lib/seo";
 import { breadcrumbsLd, JsonLd, orgRef } from "@/components/JsonLd";
 import { TrackView } from "@/components/Analytics";
@@ -88,7 +89,7 @@ async function CaseContent({ mode, params }: { mode: FetchMode; params: Params }
             eyebrow: tpl(t.heroEyebrow, { domain }),
             title: c.title ?? "",
             sub: c.problem ?? "",
-            buttons: t.heroButtons,
+            buttons: t.heroButtons.map((b) => (b.href === "/book" ? { ...b, href: askHref(c.title) } : b)),
             facts: [
               metric ?? { value: t.missingMetricValue, label: t.missingMetricLabel },
               { value: shape, label: t.shapeTitle },
@@ -143,7 +144,7 @@ async function CaseContent({ mode, params }: { mode: FetchMode; params: Params }
                   </>,
                 ]}
               />
-              <Button href={t.askButton.href}>{t.askButton.label}</Button>
+              <Button href={askHref(c.title)}>{t.askButton.label}</Button>
             </div>
           </Rv>
         </div>

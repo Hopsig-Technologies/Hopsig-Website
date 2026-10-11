@@ -114,6 +114,15 @@ export const templates = {
       { label: "See our work", href: "/work", variant: "outline" },
     ],
   },
+  /** /work filters (design & SEO review, 2026-10-11). `{n}` of `{total}` case notes shown. */
+  workFilters: {
+    all: "All",
+    industry: "Industry",
+    service: "Service",
+    numbered: "With a number",
+    showing: "{n} of {total} case notes",
+    none: "No case notes match. Clear a filter.",
+  },
   legalPage: {
     contentsTitle: "Contents",
   },

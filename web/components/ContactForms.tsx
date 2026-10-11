@@ -68,6 +68,7 @@ export type CalendarCopy = {
   emailFallback: string;
   notConnected: string;
   fieldPlaceholders: string[];
+  aboutNote: string;
   submit: string;
   bookedLabel: string;
   bookedTitle: string;
@@ -79,7 +80,8 @@ export type CalendarCopy = {
  * /book: next week's five working days and eight half-hour slots (GMT), the four fields and Confirm. With a
  * booking tool set in Site settings, Confirm opens it; otherwise the request goes to /api/contact, and the
  * "Booked" card shows only when that succeeds (until an email provider is set up it shows `notConnected`).
- * The days depend on today, so they render after mount.
+ * The days depend on today, so they render after mount. Arriving from "Ask about this →" (`?about=<case title>`)
+ * pre-fills the problem field, and passes it on to the booking tool as its `notes`.
  */
 export function BookCalendar({ copy, bookingUrl }: { copy: CalendarCopy; bookingUrl: string | null }) {
   const [days, setDays] = useState<Date[]>([]);
@@ -92,10 +94,12 @@ export function BookCalendar({ copy, bookingUrl }: { copy: CalendarCopy; booking
   useEffect(() => {
     const d = new Date();
     d.setDate(d.getDate() + (((8 - d.getDay()) % 7) || 7)); // next Monday
-    // Browser-only (it depends on today): set once after mount.
+    // Browser-only (it depends on today and the URL): set once after mount.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setDays(Array.from({ length: 5 }, (_, i) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + i)));
-  }, []);
+    const about = new URLSearchParams(window.location.search).get("about")?.trim().slice(0, 200);
+    if (about) setF((x) => (x.problem ? x : { ...x, problem: put(copy.aboutNote, { title: about }) }));
+  }, [copy.aboutNote]);
 
   const picked = day !== null && time ? days[day] : null;
   const summary = picked
@@ -108,7 +112,15 @@ export function BookCalendar({ copy, bookingUrl }: { copy: CalendarCopy; booking
     if (!picked) return setNudge(true);
     if (bookingUrl) {
       track("consult_booked", { via: "booking-tool" });
-      window.location.href = bookingUrl;
+      let target = bookingUrl;
+      try {
+        const url = new URL(bookingUrl);
+        if (f.problem.trim()) url.searchParams.set("notes", f.problem.trim());
+        target = url.toString();
+      } catch {
+        // Not an absolute URL: open it as entered.
+      }
+      window.location.href = target;
       return;
     }
     setStatus("sending");

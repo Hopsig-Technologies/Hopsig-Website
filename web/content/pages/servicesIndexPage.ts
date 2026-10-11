@@ -51,7 +51,7 @@ export const servicesIndexPage = {
       priceTitle: "Monthly, per engineer",
       priceDetail: "3-month minimum · 30 days’ notice",
       link: {
-        label: "Book a consult →",
+        label: "Ask about adding engineers →",
         href: "/book",
         variant: "link",
       },
@@ -80,7 +80,7 @@ export const servicesIndexPage = {
       priceTitle: "Fixed scope, per increment",
       priceDetail: "Quoted after the call · NET 14 · IP yours on payment",
       link: {
-        label: "Book a consult →",
+        label: "Ask about a scoped build →",
         href: "/book",
         variant: "link",
       },
@@ -109,7 +109,7 @@ export const servicesIndexPage = {
       priceTitle: "Project or retained",
       priceDetail: "Scoped on the call · NET 14",
       link: {
-        label: "Book a consult →",
+        label: "Ask about your data systems →",
         href: "/book",
         variant: "link",
       },

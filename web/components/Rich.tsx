@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PortableText, type PortableTextBlock, type PortableTextComponents } from "next-sanity";
+import { anchorId } from "@/lib/anchor";
 import type { Fill } from "./Filled";
 
 const TOKEN = /(\[[A-Z][^\]\n<>"]{0,60}\])/g;
@@ -15,7 +16,20 @@ type Block = PortableTextBlock & { children?: Span[] };
 /** Any Portable Text array: Sanity query results (stega-typed) or lib/portable.ts output. */
 type Value = ReadonlyArray<{ _type: string; _key?: string }> | null | undefined;
 
-export function Rich({ value, fill, mark = "phx", inline = false }: { value: Value; fill: Fill; mark?: "phx" | "tok" | "none"; inline?: boolean }) {
+export function Rich({
+  value,
+  fill,
+  mark = "phx",
+  inline = false,
+  anchors = false,
+}: {
+  value: Value;
+  fill: Fill;
+  mark?: "phx" | "tok" | "none";
+  inline?: boolean;
+  /** Give each h2 an id (lib/anchor.ts) so a contents list can link to it. */
+  anchors?: boolean;
+}) {
   if (!value?.length) return null;
   const prepared = (value as unknown as Block[]).map((b) => {
     if (b._type !== "block" || !b.children) return b;
@@ -43,7 +57,15 @@ export function Rich({ value, fill, mark = "phx", inline = false }: { value: Val
     return { ...b, children };
   });
   const components: PortableTextComponents = {
-    block: inline ? { normal: ({ children }) => <>{children}</> } : undefined,
+    block: inline
+      ? { normal: ({ children }) => <>{children}</> }
+      : anchors
+        ? {
+            h2: ({ children, value: v }) => (
+              <h2 id={anchorId(((v as Block).children ?? []).map((c) => c.text ?? "").join(""))}>{children}</h2>
+            ),
+          }
+        : undefined,
     marks: {
       strong: ({ children }) => <b>{children}</b>,
       em: ({ children }) => <i>{children}</i>,

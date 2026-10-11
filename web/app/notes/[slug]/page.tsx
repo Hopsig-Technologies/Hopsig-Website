@@ -16,6 +16,8 @@ import { POST_BY_SLUG_QUERY, POST_SLUGS_QUERY, POSTS_QUERY } from "@/sanity/quer
 import { meta, SITE_URL } from "@/lib/seo";
 import { breadcrumbsLd, JsonLd, orgRef } from "@/components/JsonLd";
 import { longDate } from "@/lib/date";
+import { NoteToc } from "@/components/NoteToc";
+import { anchorId } from "@/lib/anchor";
 
 type Params = Promise<{ slug: string }>;
 
@@ -81,7 +83,7 @@ async function NoteContent({ mode, params }: { mode: FetchMode; params: Params }
       <Surface tone="l" seam>
         <div className="wrap note-body">
           <Rv as="article" className="art">
-            <Rich value={p.body} fill={fill} />
+            <Rich value={p.body} fill={fill} anchors />
             <div className="note-byline">
               {t.byline} {p.updatedAt ? `${tpl(t.updated, { date: longDate(p.updatedAt) })} ` : null}
               <MoreLink cta={t.allLink} />
@@ -89,16 +91,7 @@ async function NoteContent({ mode, params }: { mode: FetchMode; params: Params }
           </Rv>
           <Rv as="aside" delay={90}>
             <div className="note-aside">
-              {toc.length ? (
-                <div>
-                  <div className="lab">{t.tocTitle}</div>
-                  <div className="note-toc">
-                    {toc.map((h) => (
-                      <div key={h}>— {fill(h)}</div>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
+              {toc.length ? <NoteToc title={t.tocTitle} items={toc.map((h) => ({ id: anchorId(h), label: fill(h) }))} /> : null}
               {offer?.title ? (
                 <div className="note-offer">
                   <div className="lab">{t.offerTitle}</div>

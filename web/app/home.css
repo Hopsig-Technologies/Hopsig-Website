@@ -931,6 +931,14 @@ html:not(.js) .cidx .bars i {
   letter-spacing: 0.04em;
   color: var(--dim);
 }
+.hero-loc {
+  margin: 14px 0 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
 .hero-facts b {
   font-weight: 400;
   color: var(--text);

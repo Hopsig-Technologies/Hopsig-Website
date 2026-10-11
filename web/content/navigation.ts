@@ -116,6 +116,8 @@ export const navigation = {
     {
       label: "Company",
       href: "/approach",
+      // A menu, not a page: the trigger is a button (design & SEO review, 2026-10-11).
+      toggle: true,
       children: [
         {
           label: "Work",
