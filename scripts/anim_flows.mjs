@@ -38,10 +38,13 @@ async function press(re, keyboard) {
   await page.focus(`${sim} .frame`);
   for (let i = 0; i < 30; i++) {
     await page.keyboard.press("Tab");
-    const hit = await b.evaluate((el) => el === document.activeElement);
-    if (hit) {
-      const ring = await b.evaluate((el) => getComputedStyle(el).outline);
-      if (!/2px/.test(ring) || !/198, 242, 78/.test(ring)) check(false, `focus ring on "${re}" is ${ring}`);
+    // the focused element itself (buttons hide and show as the story moves, so do not re-resolve a locator)
+    const focused = await page.evaluate(() => {
+      const a = document.activeElement;
+      return a && a.closest(".ha-btns") ? { text: a.textContent, ring: getComputedStyle(a).outline } : null;
+    });
+    if (focused && re.test(focused.text)) {
+      if (!/2px/.test(focused.ring) || !/198, 242, 78/.test(focused.ring)) check(false, `focus ring on "${focused.text}" is ${focused.ring}`);
       return page.keyboard.press("Enter");
     }
   }

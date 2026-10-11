@@ -105,7 +105,7 @@ Header capsule on every page; animated figures on 17 pages (18 scenes on one eng
 | V3 Home band + service strip — DONE | band after the home hero; `agentic-strip` link between "How it runs." and the FAQ on 8 service pages | text diff 0 missing; figure shots at a seeked frame 0.05–0.08% (needed Space Grotesk 500, which the artboards use) |
 | V4 Hero scenes — DONE | `PageHero` figure slot; 8 service + 6 industry scenes | text diff 0 missing on 14; figures at their resolved frame 0.05–0.14%; full pages 0.06–0.09% at identical heights |
 | V5 Agentic flow — DONE | simulator in the hero, never-wall section, static SVG and never list removed, agents column 760 | `pnpm anim:flows`: full simulator path with mouse and keyboard-only (2px Lime ring), never wall responds; page 0.03% at identical height |
-| V6 AI transformation | `.scrub` 250vh, sticky at 96, `t = p × 7000`, week ticks → `inst.goto` | scroll 45% → t ≈ 3150; W3 → t ≈ 3000 |
+| V6 AI transformation — DONE | `.scrub` 250vh, sticky at 96, `t = p × 7000`, week ticks → `inst.goto` | `pnpm anim:flows`: 45% → t = 3149, W3 → t = 3001; page 0.04% at identical height |
 | V7 Audit + deploy | no console errors; pause off-screen / hidden tab; pause button; reduced motion; contrast; ≤ 25 KB gz; 60 fps at CPU ×4; < 768px; check_nojs; screenshots in `audit/v2/` | all green, deployed |
 
 ### P9 — Audit & launch
