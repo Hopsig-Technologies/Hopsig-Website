@@ -58,6 +58,33 @@
   background: var(--acc);
   border-radius: 2px;
 }
+/* v2: AI transformation and Agentic flow in a hairline capsule, Lime (CLAUDE.md rule 5 exception). The current
+   one keeps its Lime label (the reference sets the colour inline, which outranks .on); hover goes to --text. */
+.hdr .ai {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: border-color 0.2s;
+}
+.hdr .ai:hover,
+.hdr .ai:focus-within {
+  border-color: rgba(198, 242, 78, 0.5);
+}
+.hdr .ai .nl,
+.hdr .ai .nl.on {
+  color: var(--acc);
+  padding: 9px 0 7px;
+}
+.hdr .ai .nl:hover {
+  color: var(--text);
+}
+.hdr .ai .nl.on::after {
+  bottom: -1px;
+}
 .hdr .dd {
   position: relative;
   display: flex;

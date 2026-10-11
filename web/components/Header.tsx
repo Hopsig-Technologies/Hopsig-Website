@@ -92,6 +92,17 @@ export function Header({ nav }: { nav: Navigation }) {
                   </div>
                 </div>
               </div>
+            ) : item.group === "ai" ? (
+              // v2: consecutive AI links share one Lime capsule; the first renders it, the rest are inside.
+              nav.primary[i - 1]?.group === "ai" ? null : (
+                <span key={item.label} className="ai" aria-label={nav.aiGroupLabel}>
+                  {nav.primary.slice(i).filter((x, j, rest) => rest.slice(0, j + 1).every((y) => y.group === "ai")).map((x) => (
+                    <Link key={x.label} href={x.href} className={`nl${pathname === x.href ? " on" : ""}`}>
+                      {x.label}
+                    </Link>
+                  ))}
+                </span>
+              )
             ) : (
               <Link key={item.label} href={item.href} className={`nl${pathname === item.href ? " on" : ""}`}>
                 {item.label}

@@ -100,7 +100,7 @@ Header capsule on every page; animated figures on 17 pages (18 scenes on one eng
 | Phase | Scope | Gate |
 |---|---|---|
 | V0 Intake — DONE | `reference/site` = v2 design (`scripts/apply_v2_reference.py`); engine + 19 scene files in `web/components/anim/`; `web/content/animations.ts` (captions); new copy (home band, service strip label, agentic-flow edits, scrub labels); `placeholders.mjs` scans scenes (`[TO CONFIRM]`); CLAUDE.md v2 sections | check:content 0 uncovered against the v2 references |
-| V1 Header | `span.ai` capsule from `navigation.ts` (`group: "ai"`), CSS from CHANGES §1 | shots at 1440 / 1280 / 1180 |
+| V1 Header — DONE | `span.ai` capsule from `navigation.ts` (`group: "ai"`), CSS from CHANGES §1 | shots at 1440 / 1280 / 1180: 0.13–0.21% (anti-aliasing) |
 | V2 Engine wrapper | `HeroAnim` (server: figure, aspect-ratio frame, inlined static SVG, caption) + `AnimMount` (client: lazy engine + scene at rootMargin 200px, `HA.mount`/`unmount`); `anim.css` (+ font mapping, hide frames < 768px); `pnpm anim:static`, `pnpm anim:test`, CI | seam ≤ 10 px for every loop scene, no errors, zero layout shift, scene chunks ≤ 25 KB gz |
 | V3 Home band + service strip | band after the home hero; `agentic-strip` link between "How it runs." and the FAQ on 8 service pages | text diff + shots |
 | V4 Hero scenes | `PageHero` figure slot; 8 service + 6 industry scenes | text diff on 14, figure shots |

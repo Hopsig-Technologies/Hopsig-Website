@@ -4,6 +4,8 @@
 import type { Navigation } from "./types";
 
 export const navigation = {
+  // v2: AI transformation and Agentic flow sit together in a Lime capsule with this accessible name.
+  aiGroupLabel: "AI delivery",
   primary: [
     {
       label: "Services",
@@ -109,10 +111,12 @@ export const navigation = {
     {
       label: "AI transformation",
       href: "/ai-transformation",
+      group: "ai",
     },
     {
       label: "Agentic flow",
       href: "/agentic-flow",
+      group: "ai",
     },
     {
       label: "Company",

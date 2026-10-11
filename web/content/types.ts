@@ -42,9 +42,9 @@ export type Site = {
 };
 
 export type NavLink = { label: string; desc?: string; href: Href };
-export type NavItem = { label: string; href: Href; children?: NavLink[]; menuFooter?: Cta[] };
+export type NavItem = { label: string; href: Href; children?: NavLink[]; menuFooter?: Cta[]; /** v2: sits in the Lime capsule. */ group?: "ai" };
 export type FooterColumn = { title: string; links: NavLink[] };
-export type Navigation = { primary: NavItem[]; cta: Cta; footer: FooterColumn[] };
+export type Navigation = { primary: NavItem[]; cta: Cta; footer: FooterColumn[]; /** Accessible name of the AI capsule. */ aiGroupLabel: string };
 
 /** Words the detail templates put around collection data; {tokens} are filled from the document. */
 export type Templates = {
