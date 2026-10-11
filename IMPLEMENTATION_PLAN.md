@@ -125,7 +125,7 @@ Not done, or done differently (reasons in the plan): no invented commit-log tick
 | R6 Analytics + consent — DONE | banner, Consent Mode v2, GA4 + PostHog after consent, events, privacy copy for counsel |
 | R7 Booking + brief — brief DONE (Resend); booking waits for Cal.com | Cal.com embed, Resend to info@hopsig.com, pre-filled "Ask about this" |
 | R8 Functional improvements | /work filters + sort, real table on Why not just hire, linked legal TOC, Company toggle, fewer CTAs, home tagline + location, industries paragraphs |
-| R9 v3 design brief | docs/design/v3-brief.md for Claude Design |
+| R9 v3 design brief — DONE | `docs/design/v3-brief.md`: motifs (dossier card, before→after counter, SOW sheet, gate stamp), page pieces, mobile 360×640 artboards owed from v2, the accent-for-numbers question, and what was rejected |
 | R10 Domain + launch | old P9: hopsig.com, redirects, Search Console, Lighthouse, 390px, production dataset, counsel |
 
 ### P9 — Audit & launch
