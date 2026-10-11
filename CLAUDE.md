@@ -139,7 +139,7 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 
 ## Analytics and consent (review round R6, 2026-10-11)
 
-- GA4 (`G-D1Y3WDSLLJ`) and PostHog (project 658205, **US cloud** `https://us.i.posthog.com`) load only after "Accept" in the consent banner (`components/Analytics.tsx`, copy in `site.ts` `consent`); the choice lives in localStorage `hopsig-consent`; "Cookie settings" in the footer reopens it; Decline/withdraw stops both and clears `_ga*` / `ph_*` cookies. IDs in `lib/analytics.ts` (public client keys; `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST` override).
+- GA4 and PostHog (**US cloud**) load only after "Accept" in the consent banner (`components/Analytics.tsx`, copy in `site.ts` `consent`); the choice lives in localStorage `hopsig-consent`; "Cookie settings" in the footer reopens it; Decline/withdraw stops both and clears `_ga*` / `ph_*` cookies. IDs come only from environment variables (owner decision 2026-10-11: no keys in the code): `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST` in Vercel and `web/.env.local`; with none set the banner and the footer link do not appear.
 - Consent Mode v2: ads signals always denied. PostHog: `person_profiles: identified_only`, history-change pageviews, session recordings with every input masked.
 - Events (`track()` in `lib/analytics.ts`, nothing sent without consent): `consult_booked` (/book), `brief_sent` (/brief), `case_note_opened` (/work/<slug>), `email_clicked` (any mailto link).
 - The privacy page names them and lists their cookies; it stays a draft for counsel (UK/EU transfers to the US PostHog cloud need SCCs / IDTA).

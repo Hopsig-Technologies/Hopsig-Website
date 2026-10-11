@@ -38,7 +38,8 @@ async function FooterContent({ mode }: { mode: FetchMode }) {
             <Filled text={site.footer.legalLeft} fill={fill} />
           </span>
           <span>
-            <Filled text={site.footer.legalRight} fill={fill} /> · <CookieSettingsButton label={site.consent.settings} />
+            <Filled text={site.footer.legalRight} fill={fill} />
+            <CookieSettingsButton label={site.consent.settings} />
           </span>
         </div>
       </div>

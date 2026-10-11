@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { pageview, readConsent, startAnalytics, stopAnalytics, track, writeConsent, type Consent } from "@/lib/analytics";
+import { ANALYTICS_CONFIGURED, pageview, readConsent, startAnalytics, stopAnalytics, track, writeConsent, type Consent } from "@/lib/analytics";
 
 export type ConsentCopy = { text: string; accept: string; decline: string; privacy: string };
 
@@ -49,7 +49,8 @@ export function Analytics({ copy }: { copy: ConsentCopy }) {
     else stopAnalytics();
   };
 
-  if (consent !== null) return null;
+  // No analytics configured (no environment variables): nothing to ask about.
+  if (!ANALYTICS_CONFIGURED || consent !== null) return null;
   return (
     <div className="consent" role="region" aria-label="Cookie consent">
       <p className="consent-t">
@@ -70,12 +71,16 @@ export function Analytics({ copy }: { copy: ConsentCopy }) {
   );
 }
 
-/** Footer link that reopens the banner. */
+/** Footer link that reopens the banner (with its " · " separator); nothing when no analytics are configured. */
 export function CookieSettingsButton({ label }: { label: string }) {
+  if (!ANALYTICS_CONFIGURED) return null;
   return (
-    <button type="button" className="foot-cookie" onClick={() => window.dispatchEvent(new Event(CONSENT_OPEN_EVENT))}>
-      {label}
-    </button>
+    <>
+      {" · "}
+      <button type="button" className="foot-cookie" onClick={() => window.dispatchEvent(new Event(CONSENT_OPEN_EVENT))}>
+        {label}
+      </button>
+    </>
   );
 }
 

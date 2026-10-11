@@ -1,14 +1,19 @@
 "use client";
 
 /**
- * Analytics (owner decision 2026-10-11): Google Analytics 4 for acquisition and Search Console, PostHog (US
- * cloud) for funnels, heatmaps and session recordings. Nothing loads, and no analytics cookie is set, until the
- * visitor accepts in the consent banner (components/Analytics.tsx). The IDs are public client-side identifiers;
- * the env vars override them.
+ * Analytics (owner decision 2026-10-11): Google Analytics 4 for acquisition and Search Console, PostHog for funnels,
+ * heatmaps and session recordings. Nothing loads, and no analytics cookie is set, until the visitor accepts in the
+ * consent banner (components/Analytics.tsx).
+ *
+ * Every ID comes from the environment only (Vercel project settings; web/.env.local locally), never from the code.
+ * NEXT_PUBLIC_* values are inlined at build time, so a change needs a redeploy. With none set, the banner does not
+ * show and nothing loads.
  */
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-D1Y3WDSLLJ";
-export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY || "phc_qdoGS7kY7dP6PGYFD5rf6xNbVKdQ4onrGnvivvomG5Dq";
-export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
+export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY ?? "";
+export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "";
+/** True when at least one tool is configured: only then is there anything to ask consent for. */
+export const ANALYTICS_CONFIGURED = Boolean(GA_ID || (POSTHOG_KEY && POSTHOG_HOST));
 
 /** The site's key events (the review's names). */
 export type AnalyticsEvent = "consult_booked" | "brief_sent" | "case_note_opened" | "email_clicked";
@@ -56,10 +61,10 @@ export function track(event: AnalyticsEvent, props: Record<string, string | numb
 /** Start GA4 (Consent Mode v2: ads signals stay denied) and PostHog. Called only after consent. */
 export async function startAnalytics() {
   // Accepted again after a decline in this session: switch both back on.
-  (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = false;
+  if (GA_ID) (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = false;
   window.gtag?.("consent", "update", { analytics_storage: "granted" });
   window.__hopsigPosthog?.opt_in_capturing();
-  if (!window.gtag) {
+  if (GA_ID && !window.gtag) {
     window.dataLayer = window.dataLayer || [];
     // gtag must push the `arguments` object itself, as Google's snippet does.
     window.gtag = function gtag() {
@@ -74,7 +79,7 @@ export async function startAnalytics() {
     s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
     document.head.appendChild(s);
   }
-  if (!window.__hopsigPosthog) {
+  if (POSTHOG_KEY && POSTHOG_HOST && !window.__hopsigPosthog) {
     const posthog = (await import("posthog-js")).default;
     posthog.init(POSTHOG_KEY, {
       api_host: POSTHOG_HOST,
@@ -91,7 +96,7 @@ export async function startAnalytics() {
 
 /** Withdrawn consent: stop both tools and clear their identifiers. */
 export function stopAnalytics() {
-  (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = true;
+  if (GA_ID) (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = true;
   window.gtag?.("consent", "update", { analytics_storage: "denied" });
   window.__hopsigPosthog?.opt_out_capturing();
   window.__hopsigPosthog?.reset();
