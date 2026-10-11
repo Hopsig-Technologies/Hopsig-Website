@@ -118,7 +118,7 @@ Not done, or done differently (reasons in the plan): no invented commit-log tick
 |---|---|
 | R0 Rules and gates — DONE | CLAUDE.md rules 7, 13–15, legal identity, analytics; `deviations.json` decision groups (`removed`, `removed_routes`, `retired_placeholders`) honoured by check_pages / check_links / text_diff / placeholders |
 | R1 Launch blockers — DONE | legal identity + mailto email; remove rates (page → 308 /book, nav, sheets, Priced, estimators, rate card, Site settings fields); remove overlap/GMT; smaller copy fixes; drafts hidden |
-| R2 Team augmentation scene | new standup scene to BRIEF.md; seam test; owner reviews a frame sheet |
+| R2 Team augmentation scene — DONE (owner approved 2026-10-11) | new standup scene to BRIEF.md; seam test; owner reviews a frame sheet |
 | R3 SEO foundations | titles + metas (`seo.ts`), keyword in H1, h3s, robots, sitemap, RSS, canonical, OG images, JSON-LD, internal links |
 | R4 Notes | dates + byline (needs real dates), linked sticky TOC, offer in margin |
 | R5 Content depth | caseStudy fields + richer template; more case pages; metric placeholders list + launch switch; FAQs (founders approve) |
