@@ -41,11 +41,14 @@ export function PageHero({
   fill,
   size = 22,
   buttonRow = "buttons",
+  figure,
 }: {
   hero: PageHeroCopy;
   fill: Fill;
   size?: 22 | 26;
   buttonRow?: "buttons" | "chips";
+  /** v2: an animated figure at the end of the hero copy column (56px under the facts, from .anim's margin). */
+  figure?: ReactNode;
 }) {
   const buttons = hero.buttons?.filter((b) => b.variant !== "chip") ?? [];
   const chips = hero.buttons?.filter((b) => b.variant === "chip") ?? [];
@@ -77,6 +80,7 @@ export function PageHero({
           </div>
         ) : null}
         {hero.facts?.length ? <FactsRow facts={hero.facts} fill={fill} size={size} /> : null}
+        {figure}
       </div>
     </section>
   );

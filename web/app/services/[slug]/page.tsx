@@ -7,7 +7,7 @@ import { H2, HeadRow, MoreLink, PageHero, Tags } from "@/components/blocks";
 import { BulletList, CaseCard, FaqBlock, Steps } from "@/components/sections";
 import { Surface } from "@/components/Surface";
 import { HeroAnim } from "@/components/anim/HeroAnim";
-import { SERVICE_SLUGS, services, templates, type ServiceSlug } from "@/content";
+import { SERVICE_SLUGS, scenesFor, services, templates, type ServiceSlug } from "@/content";
 import { casesByKey } from "@/lib/cases";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
@@ -34,6 +34,8 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
   const fill = await getFill(mode);
   // The page shows at most four record cards (generator/site.py service_page: cases[:4]); the AI service lists six.
   const record = await casesByKey(s.record.slice(0, 4), mode);
+  // v2: the service scene under the hero facts; the second scene on the route is the agentic strip.
+  const heroScene = scenesFor(`/services/${s.id}`).find((x) => x.id !== "agentic-strip");
   return (
     <main>
       <Surface tone="d">
@@ -46,6 +48,7 @@ async function ServiceContent({ mode, params }: { mode: FetchMode; params: Param
             buttons: t.buttons,
             facts: [...s.tiles.map((x) => ({ value: x.title, label: x.text })), { value: t.pricedLabel, label: s.shape }],
           }}
+          figure={heroScene ? <HeroAnim id={heroScene.id} /> : undefined}
         />
       </Surface>
 

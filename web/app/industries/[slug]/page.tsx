@@ -6,7 +6,8 @@ import { Rv } from "@/components/Reveal";
 import { Eyebrow, H2, HeadRow, Ledger, MoreLink, PageHero, TwoCol } from "@/components/blocks";
 import { CaseCard, CaseRow } from "@/components/sections";
 import { Surface } from "@/components/Surface";
-import { INDUSTRY_SLUGS, industries, services, templates, type IndustrySlug } from "@/content";
+import { HeroAnim } from "@/components/anim/HeroAnim";
+import { INDUSTRY_SLUGS, industries, scenesFor, services, templates, type IndustrySlug } from "@/content";
 import { casesByKey } from "@/lib/cases";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
@@ -34,10 +35,17 @@ async function IndustryContent({ mode, params }: { mode: FetchMode; params: Para
   const record = await casesByKey(d.record, mode);
   const cards = record.slice(0, d.fullCards);
   const rows = record.slice(d.fullCards);
+  // v2: the industry scene under the hero facts (web/content/animations.ts).
+  const heroScene = scenesFor(`/industries/${d.id}`)[0];
   return (
     <main>
       <Surface tone="d">
-        <PageHero fill={fill} size={26} hero={{ eyebrow: tpl(t.heroEyebrow, { name: d.name }), title: d.title, sub: d.sub, buttons: t.buttons, facts: d.facts }} />
+        <PageHero
+          fill={fill}
+          size={26}
+          hero={{ eyebrow: tpl(t.heroEyebrow, { name: d.name }), title: d.title, sub: d.sub, buttons: t.buttons, facts: d.facts }}
+          figure={heroScene ? <HeroAnim id={heroScene.id} /> : undefined}
+        />
       </Surface>
 
       <Surface tone="l" seam>
