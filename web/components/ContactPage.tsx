@@ -32,8 +32,8 @@ export function ContactPage({
           <RingCanvas variant="drift" tone="d" />
           <div className="wrap book">
             <div className="book-l">
-              <div className="lab lab-acc">{fill(hero.eyebrow)}</div>
               <h1 className="book-h1">
+                <span className="lab lab-acc ph-kw">{fill(hero.eyebrow)}</span>
                 <Lines text={fill(hero.title)} />
               </h1>
               <p className="ph-sub" style={{ maxWidth: 520 }}>

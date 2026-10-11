@@ -11,8 +11,9 @@ import { getFill } from "@/lib/site";
 import { nn } from "@/lib/tpl";
 import { cachedSanity, type FetchMode } from "@/sanity/lib/live";
 import { JOBS_QUERY } from "@/sanity/queries";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Join" };
+export const metadata: Metadata = pageMeta("/join");
 
 async function JoinContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

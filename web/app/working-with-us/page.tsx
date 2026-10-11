@@ -6,8 +6,9 @@ import { workingWithUsPage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Working with us" };
+export const metadata: Metadata = pageMeta("/working-with-us");
 
 async function WorkingWithUsContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

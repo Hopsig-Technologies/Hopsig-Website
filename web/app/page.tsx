@@ -14,14 +14,17 @@ import { HeroAnim } from "@/components/anim/HeroAnim";
 import { ServiceFile } from "@/components/home/ServiceFile";
 import { Capabilities } from "@/components/more";
 import { Surface } from "@/components/Surface";
-import { homePage as page, services } from "@/content";
+import { homePage as page, seoTemplates, services } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import { nn, tpl } from "@/lib/tpl";
 import { cachedSanity, type FetchMode } from "@/sanity/lib/live";
 import { CASE_COUNT_QUERY, CASES_FEATURED_QUERY, POSTS_QUERY } from "@/sanity/queries";
+import { pageMeta } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Home" };
+export const metadata: Metadata = pageMeta("/");
 
 const TAB = 46;
 const TOP = 88;
@@ -75,10 +78,11 @@ async function HomeContent({ mode }: { mode: FetchMode }) {
 
   return (
     <main>
+      <JsonLd data={{ "@type": "WebSite", name: seoTemplates.siteName, url: SITE_URL }} />
       <Surface tone="d">
         <HomeHero beats={hero.beats.map((b) => ({ when: fill(b.when), title: fill(b.title), text: fill(b.text) }))} hint={hero.scrollHint}>
-          <Eyebrow acc={false}>{fill(hero.eyebrow)}</Eyebrow>
           <h1 className="hero-h1">
+            <span className="lab ph-kw">{fill(hero.eyebrow)}</span>
             <Lines text={fill(hero.title)} />
           </h1>
           <p className="hero-sub">{fill(hero.sub)}</p>

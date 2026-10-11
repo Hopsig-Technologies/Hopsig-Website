@@ -5,7 +5,7 @@ import type { BriefPage } from "../types";
 
 export const briefPage = {
   hero: {
-    eyebrow: "Send a brief",
+    eyebrow: "Send a project brief",
     title: "Prefer writing\nto talking?",
     sub: "Four paragraphs at eleven at night is a fine way to start. Tell us the problem the way you would tell a colleague; we will come back with a yes, a no, or three questions.",
   },

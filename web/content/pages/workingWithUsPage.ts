@@ -6,7 +6,7 @@ import type { WorkingWithUsPage } from "../types";
 export const workingWithUsPage = {
   hero: {
     title: "The paperwork,\nin one page.",
-    eyebrow: "Working with us",
+    eyebrow: "Contracts, IP, data & security",
     sub: "What procurement asks before the first invoice: contracts, IP, data, security, insurance, invoicing. Placeholders are marked; we would rather show a gap than a badge.",
     buttons: [
       {

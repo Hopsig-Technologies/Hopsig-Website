@@ -210,6 +210,17 @@
   gap: 72px;
   align-items: start;
 }
+/* Service page: links to the industries where the service does the most work. */
+.svc-fits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+  padding-top: 72px;
+}
+.svc-fits .lab {
+  margin-right: 4px;
+}
 .svc-priced {
   font-family: var(--font-mono);
   font-size: 12px;

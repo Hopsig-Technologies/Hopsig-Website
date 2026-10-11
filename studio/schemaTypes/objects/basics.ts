@@ -27,7 +27,7 @@ export const seo = defineType({
   type: 'object',
   options: {collapsible: true, collapsed: true},
   fields: [
-    defineField({name: 'title', type: 'string', description: 'Browser tab and search title. Defaults to "Hopsig — <title>".'}),
+    defineField({name: 'title', type: 'string', description: 'Search and share title. Empty = "<title> — Case Study | Hopsig" (case notes) or "<title> | Hopsig Notes" (notes).'}),
     defineField({name: 'description', type: 'text', rows: 3, description: 'Search and share description, ~150 characters.'}),
     defineField({name: 'ogImage', title: 'Share image', type: 'image'}),
   ],

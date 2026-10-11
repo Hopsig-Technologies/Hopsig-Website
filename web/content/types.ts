@@ -36,7 +36,7 @@ export type LegalSection = { heading: string; body: LegalBlock[] };
 
 export type Site = {
   footer: { tagline: string; legalLeft: string; legalRight: string };
-  defaultClosing: { eyebrow: string; title: string; sub: string; emailLine: string };
+  defaultClosing: { title: string; sub: string; emailLine: string };
   /** The two scrolling rows on Home and Services. */
   capabilities: { title: string; aside: string; rowOne: string[]; rowTwo: string[]; note: string };
 };
@@ -58,6 +58,8 @@ export type Templates = {
     askLink: string;
   };
   servicePage: {
+    industriesLabel: string;
+    crumb: string;
     stripLabel: string;
     heroEyebrow: string;
       stepsAside: string;
@@ -79,6 +81,7 @@ export type Templates = {
     buttons: Cta[];
   };
   industryPage: {
+    crumb: string;
     heroEyebrow: string;
     recordTitle: string;
     recordAside: string;
@@ -96,6 +99,7 @@ export type Templates = {
   };
   industriesIndexRow: { count: string };
   casePage: {
+    crumb: string;
     heroEyebrow: string;
     heroButtons: Cta[];
     shapeTitle: string;
@@ -120,6 +124,7 @@ export type Templates = {
     closingTitle: string;
   };
   notePage: {
+    crumb: string;
     heroEyebrow: string;
     byline: string;
     allLink: Cta;
@@ -149,6 +154,7 @@ export type EngagementPanel = {
 
 export type Service = {
   id: ServiceSlug;
+  keyword: string;
   n: number;
   name: string;
   oneLiner: string;
@@ -169,6 +175,7 @@ export type Service = {
 
 export type Industry = {
   id: IndustrySlug;
+  keyword: string;
   n: number;
   name: string;
   short: string;
@@ -423,3 +430,13 @@ export type AnimScene = {
   caption: string;
 };
 export type AnimPage = { route: string; scenes: AnimScene[] };
+
+// ---------------------------------------------------------------- SEO
+
+export type PageSeo = { title: string; description: string };
+export type SeoTemplates = {
+  caseNote: { title: string; description: string };
+  note: { title: string; description: string };
+  notFound: { title: string };
+  siteName: string;
+};

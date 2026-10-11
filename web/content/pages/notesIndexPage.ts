@@ -6,7 +6,7 @@ import type { NotesIndexPage } from "../types";
 export const notesIndexPage = {
   hero: {
     title: "Things we would say\non the call anyway.",
-    eyebrow: "Notes",
+    eyebrow: "Notes on software delivery and AI",
     sub: "Short and opinionated, written by the people doing the work. No newsletter, no pop-up, no reading time invented.",
     buttons: [
       {

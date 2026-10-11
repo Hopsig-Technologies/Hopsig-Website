@@ -12,18 +12,21 @@ export function Faq({ items }: { items: { question: string; answer: string }[] }
     <>
       {items.map((it, i) => (
         <Rv key={it.question} className={`item${open === i ? " on" : ""}`}>
-          <button
-            type="button"
-            className="t"
-            aria-expanded={open === i}
-            aria-controls={`${id}-${i}`}
-            onClick={() => setOpen(open === i ? null : i)}
-          >
-            <span>{it.question}</span>
-            <span className="pl" aria-hidden="true">
-              +
-            </span>
-          </button>
+          {/* Accordion pattern: the question is a heading that holds the button. */}
+          <h3>
+            <button
+              type="button"
+              className="t"
+              aria-expanded={open === i}
+              aria-controls={`${id}-${i}`}
+              onClick={() => setOpen(open === i ? null : i)}
+            >
+              <span>{it.question}</span>
+              <span className="pl" aria-hidden="true">
+                +
+              </span>
+            </button>
+          </h3>
           <div className="b" id={`${id}-${i}`}>
             {it.answer}
           </div>

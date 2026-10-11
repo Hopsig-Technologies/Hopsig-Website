@@ -6,7 +6,7 @@ import type { AgenticFlowPage } from "../types";
 export const agenticFlowPage = {
   hero: {
     title: "Six agents. One pipeline.\nA person at every gate.",
-    eyebrow: "Agentic flow · how a story becomes a pull request",
+    eyebrow: "Agentic software development on Claude Code",
     sub: "This is the delivery pipeline every Hopsig build runs on. Each stage is an agent with a defined input, output and guardrail; each handoff can be stopped by a person. Run a story; the detail is below.",
     buttons: [
       {

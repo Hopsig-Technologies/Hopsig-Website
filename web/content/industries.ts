@@ -6,6 +6,8 @@ import type { Industry } from "./types";
 export const industries = [
   {
     id: "fintech-payments",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Fintech & payments software development",
     n: 1,
     name: "Fintech & payments",
     short: "Fintech",
@@ -67,6 +69,8 @@ export const industries = [
   },
   {
     id: "retail-ecommerce",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Retail & e-commerce software development",
     n: 2,
     name: "Retail & e-commerce",
     short: "Retail",
@@ -128,6 +132,8 @@ export const industries = [
   },
   {
     id: "healthcare-life-sciences",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Healthcare & life sciences software development",
     n: 3,
     name: "Healthcare & life sciences",
     short: "Healthcare",
@@ -189,6 +195,8 @@ export const industries = [
   },
   {
     id: "logistics-travel-marketplaces",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Logistics & marketplace software development",
     n: 4,
     name: "Logistics, travel & marketplaces",
     short: "Logistics",
@@ -250,6 +258,8 @@ export const industries = [
   },
   {
     id: "iot-signage-built-environment",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "IoT, digital signage & smart building software",
     n: 5,
     name: "IoT, signage & the built environment",
     short: "IoT & signage",
@@ -311,6 +321,8 @@ export const industries = [
   },
   {
     id: "saas-platforms-ai-products",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "SaaS & AI product development",
     n: 6,
     name: "SaaS, platforms & AI products",
     short: "SaaS & AI",

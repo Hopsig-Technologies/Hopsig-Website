@@ -6,7 +6,7 @@ import type { ComparePage } from "../types";
 export const comparePage = {
   hero: {
     title: "Fair question.\nHere is the honest table.",
-    eyebrow: "Why not just hire?",
+    eyebrow: "Staff augmentation vs hiring vs outsourcing",
     sub: "Sometimes you should hire. Sometimes a freelancer is right. This page says when, including when it is not us.",
     buttons: [
       {

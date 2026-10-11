@@ -6,7 +6,7 @@ import type { WorkIndexPage } from "../types";
 export const workIndexPage = {
   hero: {
     title: "What we shipped.\nWhat it measured.",
-    eyebrow: "Work",
+    eyebrow: "Software case studies",
     sub: "Case notes, not case studies: the problem, what we did, and the number that moved. Client names are withheld throughout. Every system here was built, run or measured by us, and any of them can be walked through on the call.",
     buttons: [
       {

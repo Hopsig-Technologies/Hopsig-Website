@@ -14,9 +14,11 @@ export const templates = {
     askLink: "Ask about this →",
   },
   servicePage: {
+    industriesLabel: "Where we do this most",
+    crumb: "Services", // breadcrumb (structured data)
     // v2: the agentic-strip figure before the FAQ is one link to /agentic-flow; this is its accessible name.
     stripLabel: "Delivered on our agentic pipeline. Six agents, a person at every gate. See the pipeline.",
-    heroEyebrow: "Service {nn} · {name}",
+    heroEyebrow: "{keyword}",
     stepsAside: "The same loop as every engagement",
     othersTitle: "The other seven.",
     othersAside: "All eight end in something running",
@@ -41,7 +43,8 @@ export const templates = {
     ],
   },
   industryPage: {
-    heroEyebrow: "Industry · {name}",
+    crumb: "Industries", // breadcrumb (structured data)
+    heroEyebrow: "{keyword}",
     recordTitle: "What we have shipped here.",
     recordAside: "{count} case notes · client names withheld",
     asksTitle: "What this industry asks for",
@@ -63,6 +66,7 @@ export const templates = {
     count: "{count} notes",
   },
   casePage: {
+    crumb: "Work", // breadcrumb (structured data)
     heroEyebrow: "Case note · {domain}",
     heroButtons: [
       { label: "Ask about this", href: "/book", variant: "lime" },
@@ -91,6 +95,7 @@ export const templates = {
     closingTitle: "Ask about this one. We will say what we would do differently.",
   },
   notePage: {
+    crumb: "Notes", // breadcrumb (structured data)
     // The reference reads "Note · {category} · [DATE]"; the date is kept out (rule 7: no dates on Notes) until the
     // founders decide — recorded in content/deviations.json.
     heroEyebrow: "Note · {category}",

@@ -6,7 +6,7 @@ import type { JoinPage } from "../types";
 export const joinPage = {
   hero: {
     title: "Senior only\nmeans something.",
-    eyebrow: "Join · for engineers",
+    eyebrow: "Senior engineering jobs · Delivery Centre: Lahore, Pakistan",
     sub: "We put engineers inside clients' teams in the UK, US and EU, or build for them end to end. The bar is higher than most shops, the work is in production from day ten, and nobody is on a bench.",
     buttons: [
       {

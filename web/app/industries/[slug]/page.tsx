@@ -13,6 +13,8 @@ import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import { nn, tpl } from "@/lib/tpl";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
+import { breadcrumbsLd, JsonLd } from "@/components/JsonLd";
 
 type Params = Promise<{ slug: string }>;
 
@@ -24,7 +26,7 @@ const find = (slug: string) => industries.find((d) => d.id === (slug as Industry
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const d = find((await params).slug);
-  return { title: d ? `Hopsig — ${d.name}` : "Hopsig" };
+  return d ? pageMeta(`/industries/${d.id}`) : {};
 }
 
 async function IndustryContent({ mode, params }: { mode: FetchMode; params: Params }) {
@@ -39,11 +41,12 @@ async function IndustryContent({ mode, params }: { mode: FetchMode; params: Para
   const heroScene = scenesFor(`/industries/${d.id}`)[0];
   return (
     <main>
+      <JsonLd data={breadcrumbsLd([[templates.industryPage.crumb, "/industries"], [d.name, `/industries/${d.id}`]])} />
       <Surface tone="d">
         <PageHero
           fill={fill}
           size={26}
-          hero={{ eyebrow: tpl(t.heroEyebrow, { name: d.name }), title: d.title, sub: d.sub, buttons: t.buttons, facts: d.facts }}
+          hero={{ eyebrow: tpl(t.heroEyebrow, { keyword: d.keyword }), title: d.title, sub: d.sub, buttons: t.buttons, facts: d.facts }}
           figure={heroScene ? <HeroAnim id={heroScene.id} /> : undefined}
         />
       </Surface>

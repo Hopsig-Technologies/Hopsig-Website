@@ -8,8 +8,9 @@ import { approachPage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Approach" };
+export const metadata: Metadata = pageMeta("/approach");
 
 
 async function ApproachContent({ mode }: { mode: FetchMode }) {

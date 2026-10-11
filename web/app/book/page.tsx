@@ -6,8 +6,9 @@ import { withMode } from "@/lib/mode";
 import { getSettings } from "@/lib/site";
 import { makeFill } from "@/lib/tokens";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Book a call" };
+export const metadata: Metadata = pageMeta("/book");
 
 async function BookContent({ mode }: { mode: FetchMode }) {
   const settings = await getSettings(mode);

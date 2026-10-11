@@ -6,7 +6,7 @@ import type { AiTransformationPage } from "../types";
 export const aiTransformationPage = {
   hero: {
     title: "Your team, shipping with agents.\nMeasured by Friday.",
-    eyebrow: "AI transformation · a six-week engagement",
+    eyebrow: "AI transformation for engineering teams · six weeks",
     sub: "Not a transformation programme. One repository, a baseline taken in week one, our delivery pipeline installed inside your conventions, your team running it, and the same numbers measured after.",
     buttons: [
       {

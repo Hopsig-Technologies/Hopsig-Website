@@ -49,6 +49,17 @@ a.more,
   letter-spacing: -0.05em;
   max-width: 900px;
 }
+/* The hero eyebrow inside the H1: it keeps the eyebrow's look and the 24px the hero column put between them
+   (on the home hero the copy column's gap is 26px). */
+.ph-kw {
+  display: block;
+  margin-bottom: 24px;
+  font-weight: 400;
+  line-height: normal;
+}
+.hero-h1 .ph-kw {
+  margin-bottom: 26px;
+}
 .ph-sub {
   margin: 0;
   max-width: 640px;

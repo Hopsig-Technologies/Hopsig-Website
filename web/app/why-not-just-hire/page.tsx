@@ -8,8 +8,9 @@ import { comparePage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Why not just hire?" };
+export const metadata: Metadata = pageMeta("/why-not-just-hire");
 
 async function CompareContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

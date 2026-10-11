@@ -11,10 +11,12 @@ accepted on both sides. Exit 1 if anything is missing; extras are listed for rev
 Site settings legitimately differ).
 """
 import collections
+import json
 import os
 import re
 import sys
 import tempfile
+import urllib.parse
 import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -22,10 +24,30 @@ import check_pages  # noqa: E402
 from extract_pages import ROUTES, SITE  # noqa: E402
 
 REF_BY_ROUTE = {route: ref for ref, route in ROUTES.items()}
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_FILLED = None
+
+
+def site_values():
+    """[TOKEN] -> value for every Site settings field that is filled in the dataset (as the site substitutes them)."""
+    global _FILLED
+    if _FILLED is None:
+        tokens = dict(re.findall(r'(\w+): "(\[[^\]]+\])"', open(os.path.join(ROOT, 'web', 'lib', 'tokens.ts'), encoding='utf-8').read()))
+        q = urllib.parse.quote('*[_id == "siteSettings"][0]')
+        try:
+            doc = json.load(urllib.request.urlopen(f'https://e1ib49ry.apicdn.sanity.io/v2025-02-19/data/query/development?query={q}', timeout=30))['result'] or {}
+        except Exception:
+            doc = {}
+        _FILLED = {check_pages.norm(t): str(doc[k]) for k, t in tokens.items() if doc.get(k) not in (None, '')}
+    return _FILLED
+
+
+def ordered(path):
+    return [re.sub(r' →$', '', re.sub(r'^— ', '', check_pages.norm(s))) for s in check_pages.visible(path)]
 
 
 def texts(path):
-    return collections.Counter(re.sub(r' →$', '', re.sub(r'^— ', '', check_pages.norm(s))) for s in check_pages.visible(path))
+    return collections.Counter(ordered(path))
 
 
 def diff(base, route, ref=None):
@@ -38,12 +60,21 @@ def diff(base, route, ref=None):
     with tempfile.NamedTemporaryFile('wb', suffix='.html', delete=False) as f:
         f.write(body)
     try:
-        built = texts(f.name)
+        built_seq = ordered(f.name)
+        built = collections.Counter(built_seq)
     finally:
         os.unlink(f.name)
     want = texts(os.path.join(SITE, ref))
     dev = check_pages.deviations()  # owner-approved replacements (content/deviations.json)
-    missing = collections.Counter({k: v for k, v in (want - built).items() if not check_pages.removed(k)})
+    # A reference line counts as present if the page shows it split differently (a link now breaks it up) or with
+    # Site settings values filled in where the reference shows the token.
+    loose = lambda x: re.sub(r'\s+([;,.:])', r'\1', re.sub(r'\s+', ' ', x.replace('—', ' '))).strip()  # lines lose a leading "— " in texts()
+    joined = loose(' '.join(built_seq))
+    def shown(k):
+        for token, value in site_values().items():
+            k = k.replace(token, check_pages.norm(value))
+        return loose(k) in joined
+    missing = collections.Counter({k: v for k, v in (want - built).items() if not check_pages.removed(k) and not shown(k)})
     extra = collections.Counter({k: v for k, v in (built - want).items() if k not in dev['now']})
     print(f'{route}  vs  {ref}:  {sum(want.values())} reference strings, {len(missing)} missing, {len(extra)} extra')
     for s, n in sorted(missing.items()):

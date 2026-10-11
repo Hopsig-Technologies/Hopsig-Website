@@ -10,7 +10,6 @@ export const site = {
     legalRight: "© [YEAR] · hopsig.com · [HELLO@HOPSIG.COM]",
   },
   defaultClosing: {
-    eyebrow: "Fortnightly · your call",
     title: "Thirty minutes, and you will know whether we can help.",
     sub: "Bring the problem, not a brief. If it is outside what we do well, we will say which of our contacts to call instead.",
     emailLine: "Or email [HELLO@HOPSIG.COM] — reply within one working day.",

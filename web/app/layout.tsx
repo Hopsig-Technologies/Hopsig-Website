@@ -7,7 +7,7 @@ import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsClass } from "@/components/JsClass";
-import { navigation } from "@/content";
+import { navigation, seo, seoTemplates } from "@/content";
 import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 import "./chrome.css";
@@ -17,6 +17,8 @@ import "./home.css";
 import "./pages.css";
 import "./contact.css";
 import "./anim.css";
+import { SITE_URL } from "@/lib/seo";
+import { JsonLd, organizationLd } from "@/components/JsonLd";
 
 const grotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -34,8 +36,13 @@ const plexMono = IBM_Plex_Mono({
   adjustFontFallback: false,
 });
 
+// Defaults for every page; each page sets its own title, description and canonical (lib/seo.ts, web/content/seo.ts).
 export const metadata: Metadata = {
-  title: "Hopsig — You think it. We finish it.",
+  metadataBase: new URL(SITE_URL),
+  title: seo["/"].title,
+  description: seo["/"].description,
+  openGraph: { siteName: seoTemplates.siteName, type: "website", locale: "en_GB" },
+  twitter: { card: "summary_large_image" },
 };
 
 // Marks <html class="js"> before paint so reveal styles only hide content when JS will reveal it (rule 10).
@@ -63,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <noscript dangerouslySetInnerHTML={{ __html: noJs }} />
       </head>
       <body>
+        <JsonLd data={organizationLd()} />
         <JsClass />
         <div className="pg tone-d">
           <Header nav={navigation} />

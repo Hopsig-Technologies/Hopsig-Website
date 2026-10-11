@@ -129,6 +129,14 @@ Buttons: `lime` (Lime/Ink on dark → Ink/Paper on light via the variables), `ou
 - Booking tool for `/book` and email provider for `/brief` (and the booking request): not chosen. Both are stubbed so nothing pretends to work (`bookingUrl` in Site settings; `sendContact` in `web/lib/contact.ts`). The `notConnected` lines in `bookPage`/`briefPage` are new copy, to remove once connected.
 - The privacy page lists the CMS for "content and form storage"; brief submissions are emailed, not stored. For counsel's review.
 
+## SEO (review round R3, 2026-10-11)
+
+- Titles and meta descriptions: `web/content/seo.ts` (every number checked against the record); `lib/seo.ts` `pageMeta(path)` / `meta(...)` build title, description, canonical, Open Graph and Twitter tags; `metadataBase` = `NEXT_PUBLIC_SITE_URL` (the Vercel URL until hopsig.com is live). Case notes and notes use their Sanity `seo` fields, else `seoTemplates`.
+- One H1 per page, and it carries the page's plain search phrase: the hero eyebrow is a `span.ph-kw` inside the `<h1>` (same look). Services and industries take it from `keyword` in `services.ts` / `industries.ts`.
+- Share images: `opengraph-image.tsx` per route, all through `lib/og.tsx` (fonts in `lib/og/`); a metric only from the record, never a placeholder.
+- `app/robots.ts`, `app/sitemap.ts` (seo.ts paths + case notes with pages + published notes), `app/notes/rss.xml/route.ts`.
+- JSON-LD via `components/JsonLd.tsx`: Organization (layout), WebSite (home), Service + BreadcrumbList (services), BreadcrumbList (industries), Article (case notes), BlogPosting (notes), FAQPage (every `FaqBlock`). No prices in Service; JobPosting only for open roles; dates only once the notes have real ones.
+
 ## Header (v2)
 
 `AI transformation` and `Agentic flow` sit together in a hairline capsule (`span.ai`) between the Industries and Company dropdowns, coloured Lime (`var(--acc)`); the other links stay dim. Capsule border goes Lime at 50 % on hover/focus-within. No dot, no pulse, no extra nav item. The mobile menu is unchanged.

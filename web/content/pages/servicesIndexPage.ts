@@ -6,7 +6,7 @@ import type { ServicesIndexPage } from "../types";
 export const servicesIndexPage = {
   hero: {
     title: "Three ways we work.\nOne way we behave.",
-    eyebrow: "Services",
+    eyebrow: "Software development services",
     sub: "Whichever you pick, you get the same people, the same scope-first habit and the same fortnightly review. The detail below is the detail we would put in the SOW.",
     buttons: [
       {

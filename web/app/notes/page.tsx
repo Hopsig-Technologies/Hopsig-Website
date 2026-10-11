@@ -11,8 +11,12 @@ import { getFill } from "@/lib/site";
 import { nn } from "@/lib/tpl";
 import { cachedSanity, type FetchMode } from "@/sanity/lib/live";
 import { POSTS_QUERY } from "@/sanity/queries";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Notes" };
+export const metadata: Metadata = {
+  ...pageMeta("/notes"),
+  alternates: { canonical: "/notes", types: { "application/rss+xml": "/notes/rss.xml" } },
+};
 
 async function NotesContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

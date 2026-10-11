@@ -8,8 +8,9 @@ import { agenciesPage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — For agencies" };
+export const metadata: Metadata = pageMeta("/for-agencies");
 
 async function AgenciesContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

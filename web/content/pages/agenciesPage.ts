@@ -6,7 +6,7 @@ import type { AgenciesPage } from "../types";
 export const agenciesPage = {
   hero: {
     title: "Your brand on the SOW.\nOur engineers behind it.",
-    eyebrow: "For agencies · white-label delivery",
+    eyebrow: "White-label software development for agencies",
     sub: "Design and product agencies sell the work and own the client. We scope it with you, build it under your name, and hand it over the way you would have.",
     buttons: [
       {

@@ -5,7 +5,7 @@ import type { HomePage } from "../types";
 
 export const homePage = {
   hero: {
-    eyebrow: "Fractional engineering, data & AI teams",
+    eyebrow: "Senior software & AI engineering partner",
     title: "You think it.\nWe finish it.",
     sub: "We integrate directly with your team to deliver high-stakes software and AI products from architecture to production launch.",
     buttons: [
@@ -225,7 +225,6 @@ export const homePage = {
   closing: {
     title: "Thirty minutes, and you will know whether we can help.",
     showEmail: true,
-    eyebrow: "Fortnightly · your call",
     buttons: [
       {
         label: "Book a consult",

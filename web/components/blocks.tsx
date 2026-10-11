@@ -56,8 +56,9 @@ export function PageHero({
     <section className="ph">
       <RingCanvas variant="drift" tone="d" />
       <div className="wrap ph-c">
-        {hero.eyebrow ? <Eyebrow>{fill(hero.eyebrow)}</Eyebrow> : null}
+        {/* The eyebrow is the page's plain search phrase, so it sits inside the H1 (same look as before). */}
         <h1 className="ph-h1">
+          {hero.eyebrow ? <span className="lab lab-acc ph-kw">{fill(hero.eyebrow)}</span> : null}
           <Lines text={fill(hero.title)} />
         </h1>
         {hero.sub ? <p className="ph-sub">{fill(hero.sub)}</p> : null}

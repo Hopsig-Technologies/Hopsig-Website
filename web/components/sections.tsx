@@ -8,6 +8,7 @@ import type { Fill } from "./Filled";
 import { Rv } from "./Reveal";
 import { Rich } from "./Rich";
 import { H2, Tags } from "./blocks";
+import { JsonLd } from "./JsonLd";
 
 /** Larger reference blocks: bullet list, steps, case-study card, FAQ section. */
 
@@ -32,7 +33,7 @@ export function Steps({ steps, fill, on = 1 }: { steps: Step[]; fill: Fill; on?:
       {steps.map((s, i) => (
         <div key={s.when} className={i === on ? "on" : ""}>
           <div className={`lab${i === on ? " lab-acc" : ""}`}>{fill(s.when)}</div>
-          <div className="steps-t">{fill(s.title)}</div>
+          <h3 className="steps-t">{fill(s.title)}</h3>
           <div className="steps-x">{fill(s.text)}</div>
         </div>
       ))}
@@ -52,7 +53,7 @@ export function CaseCard({ c, n, fill, delay }: { c: CaseRow; n: number; fill: F
         <div className="lab lab-acc">{tpl(t.eyebrow, { nn: nn(n), domain: fill(c.domain) })}</div>
         <div className="lab">{fill(c.shape)}</div>
       </div>
-      <div className="case-title">{fill(c.title)}</div>
+      <h3 className="case-title">{fill(c.title)}</h3>
       <BulletList
         items={[
           <>
@@ -107,6 +108,12 @@ export function FaqBlock({ faq, fill, title }: { faq?: FaqSection; fill: Fill; t
   const items = faq?.items ?? [];
   return (
     <section className="faq" style={{ padding: "100px 0 0" }}>
+      <JsonLd
+        data={{
+          "@type": "FAQPage",
+          mainEntity: items.map((i) => ({ "@type": "Question", name: fill(i.question), acceptedAnswer: { "@type": "Answer", text: fill(i.answer) } })),
+        }}
+      />
       <Rv>
         <H2>{fill(title ?? faq?.title)}</H2>
       </Rv>

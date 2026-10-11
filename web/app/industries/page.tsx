@@ -9,8 +9,9 @@ import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import { nn, tpl } from "@/lib/tpl";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Industries" };
+export const metadata: Metadata = pageMeta("/industries");
 
 async function IndustriesContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

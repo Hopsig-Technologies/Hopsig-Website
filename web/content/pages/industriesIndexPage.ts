@@ -6,7 +6,7 @@ import type { IndustriesIndexPage } from "../types";
 export const industriesIndexPage = {
   hero: {
     title: "Six industries.\nThirty-two case notes.",
-    eyebrow: "Industries",
+    eyebrow: "Industries we build software for",
     sub: "Client names are withheld; the numbers are not. Pick the industry closest to yours and read what we shipped there, what it measured, and which of the eight services it took.",
     buttons: [
       {

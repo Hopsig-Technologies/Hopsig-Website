@@ -10,8 +10,9 @@ import { agenticFlowPage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Agentic flow" };
+export const metadata: Metadata = pageMeta("/agentic-flow");
 
 async function FlowContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

@@ -6,6 +6,8 @@ import type { Service } from "./types";
 export const services = [
   {
     id: "custom-software",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Custom software development",
     n: 1,
     name: "Custom software",
     oneLiner: "Products built end to end",
@@ -108,6 +110,8 @@ export const services = [
   },
   {
     id: "team-augmentation",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Staff augmentation",
     n: 2,
     name: "Team augmentation",
     oneLiner: "Senior engineers inside your team",
@@ -202,6 +206,8 @@ export const services = [
   },
   {
     id: "data-engineering",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Data engineering & analytics services",
     n: 3,
     name: "Data engineering & analytics",
     oneLiner: "Pipelines and reporting people stop arguing with",
@@ -299,6 +305,8 @@ export const services = [
   },
   {
     id: "ai-machine-learning",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "AI & machine learning development",
     n: 4,
     name: "AI & machine learning",
     oneLiner: "Features that have to be right, not impressive",
@@ -403,6 +411,8 @@ export const services = [
   },
   {
     id: "cloud-devops",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Cloud & DevOps services",
     n: 5,
     name: "Cloud & DevOps",
     oneLiner: "Deploys that are boring",
@@ -505,6 +515,8 @@ export const services = [
   },
   {
     id: "legacy-modernisation",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Legacy application modernisation",
     n: 6,
     name: "Legacy modernisation",
     oneLiner: "Rebuilds the in-house team can run",
@@ -600,6 +612,8 @@ export const services = [
   },
   {
     id: "mobile",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "Mobile app development",
     n: 7,
     name: "Mobile",
     oneLiner: "iOS and Android without two teams",
@@ -696,6 +710,8 @@ export const services = [
   },
   {
     id: "qa-test-automation",
+    // The plain search phrase for this page: shown as the hero eyebrow, inside the H1 (design & SEO review, 2026-10-11).
+    keyword: "QA & test automation services",
     n: 8,
     name: "QA & test automation",
     oneLiner: "Suites that make deploys boring",

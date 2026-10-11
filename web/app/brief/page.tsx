@@ -5,8 +5,9 @@ import { briefPage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Send a brief" };
+export const metadata: Metadata = pageMeta("/brief");
 
 async function BriefContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

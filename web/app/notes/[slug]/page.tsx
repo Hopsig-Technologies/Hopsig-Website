@@ -7,12 +7,14 @@ import { Rich } from "@/components/Rich";
 import { Rv } from "@/components/Reveal";
 import { Ledger, MoreLink, PageHero } from "@/components/blocks";
 import { Surface } from "@/components/Surface";
-import { templates } from "@/content";
+import { seoTemplates, templates } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import { tpl } from "@/lib/tpl";
 import { cachedSanity, PUBLISHED, type FetchMode } from "@/sanity/lib/live";
 import { POST_BY_SLUG_QUERY, POST_SLUGS_QUERY, POSTS_QUERY } from "@/sanity/queries";
+import { meta, SITE_URL } from "@/lib/seo";
+import { breadcrumbsLd, JsonLd, orgRef } from "@/components/JsonLd";
 
 type Params = Promise<{ slug: string }>;
 
@@ -24,7 +26,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
   const { data } = await cachedSanity({ query: POST_BY_SLUG_QUERY, params: { slug }, ...PUBLISHED });
-  return { title: data?.title ? `Hopsig — ${stegaClean(data.title)}` : "Hopsig — Notes" };
+  if (!data) return {};
+  const t = seoTemplates.note;
+  return meta(
+    `/notes/${slug}`,
+    stegaClean(data.seo?.title) || tpl(t.title, { title: stegaClean(data.title) ?? "" }),
+    stegaClean(data.seo?.description) || tpl(t.description, { excerpt: stegaClean(data.excerpt) ?? "" }),
+    "article",
+  );
 }
 
 type Span = { _type: string; text?: string };
@@ -50,6 +59,17 @@ async function NoteContent({ mode, params }: { mode: FetchMode; params: Params }
   const offer = p.offer;
   return (
     <main>
+      <JsonLd
+        data={{
+          "@type": "BlogPosting",
+          headline: stegaClean(p.title),
+          articleSection: stegaClean(p.category),
+          author: orgRef,
+          publisher: orgRef,
+          mainEntityOfPage: `${SITE_URL}/notes/${slug}`,
+        }}
+      />
+      <JsonLd data={breadcrumbsLd([[t.crumb, "/notes"], [stegaClean(p.title) ?? "", `/notes/${slug}`]])} />
       <Surface tone="d">
         {/* The reference breaks the title after its first full stop. */}
         <PageHero fill={fill} hero={{ eyebrow: tpl(t.heroEyebrow, { category: p.category ?? "" }), title: title.replace(". ", ".\n"), sub: p.excerpt ?? "" }} />

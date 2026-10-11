@@ -14,8 +14,9 @@ import { inlineToBlocks } from "@/lib/portable";
 import { getFill } from "@/lib/site";
 import { nn } from "@/lib/tpl";
 import type { FetchMode } from "@/sanity/lib/live";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — AI transformation" };
+export const metadata: Metadata = pageMeta("/ai-transformation");
 
 async function AiContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

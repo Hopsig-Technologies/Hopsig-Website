@@ -10,8 +10,9 @@ import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import { cachedSanity, type FetchMode } from "@/sanity/lib/live";
 import { CASES_ALL_QUERY } from "@/sanity/queries";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Hopsig — Work" };
+export const metadata: Metadata = pageMeta("/work");
 
 async function WorkContent({ mode }: { mode: FetchMode }) {
   const fill = await getFill(mode);

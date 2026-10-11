@@ -8,12 +8,14 @@ import { Rv } from "@/components/Reveal";
 import { MoreLink, PageHero, Tags } from "@/components/blocks";
 import { BulletList, CaseRow } from "@/components/sections";
 import { Surface } from "@/components/Surface";
-import { templates } from "@/content";
+import { seoTemplates, templates } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
 import { tpl } from "@/lib/tpl";
 import { cachedSanity, PUBLISHED, type FetchMode } from "@/sanity/lib/live";
 import { CASE_BY_SLUG_QUERY, CASE_SLUGS_QUERY, CASES_ALL_QUERY } from "@/sanity/queries";
+import { meta, SITE_URL } from "@/lib/seo";
+import { breadcrumbsLd, JsonLd, orgRef } from "@/components/JsonLd";
 
 type Params = Promise<{ slug: string }>;
 
@@ -26,7 +28,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { slug } = await params;
   // Same cached fetch as the page (uncached data in generateMetadata is an error under cacheComponents).
   const { data } = await cachedSanity({ query: CASE_BY_SLUG_QUERY, params: { slug }, ...PUBLISHED });
-  return { title: data?.title ? `Hopsig — ${stegaClean(data.title)}` : "Hopsig — Work" };
+  if (!data) return {};
+  // The document's own SEO fields win; otherwise "<title> — Case Study | Hopsig" and the problem as the description.
+  const t = seoTemplates.caseNote;
+  return meta(
+    `/work/${slug}`,
+    stegaClean(data.seo?.title) || tpl(t.title, { title: stegaClean(data.title) ?? "" }),
+    stegaClean(data.seo?.description) || tpl(t.description, { problem: stegaClean(data.problem) ?? "" }),
+    "article",
+  );
 }
 
 /** Record order of the generator (F0…F19, then C0…C11), which "More from the record" follows. */
@@ -58,6 +68,17 @@ async function CaseContent({ mode, params }: { mode: FetchMode; params: Params }
   const domain = c.domain ?? "";
   return (
     <main>
+      <JsonLd
+        data={{
+          "@type": "Article",
+          headline: stegaClean(c.title),
+          about: stegaClean(c.domain),
+          author: orgRef,
+          publisher: orgRef,
+          mainEntityOfPage: `${SITE_URL}/work/${slug}`,
+        }}
+      />
+      <JsonLd data={breadcrumbsLd([[t.crumb, "/work"], [stegaClean(c.title) ?? "", `/work/${slug}`]])} />
       <Surface tone="d">
         <PageHero
           fill={fill}

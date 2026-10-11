@@ -6,7 +6,7 @@ import type { ApproachPage } from "../types";
 export const approachPage = {
   hero: {
     title: "How we work.\nThe same way, every account.",
-    eyebrow: "Approach",
+    eyebrow: "How we work as a senior engineering partner",
     sub: "Scope before money. Senior only. Measured before we claim it improved. Easy to leave. Not values on a wall: clauses in the SOW, and habits you can check in the first fortnight.",
   },
   staffing: {
