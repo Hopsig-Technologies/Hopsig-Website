@@ -545,4 +545,8 @@
   html.menu-open body {
     overflow: hidden;
   }
+  /* Only there when analytics are configured (so not in a local build without the env vars). */
+  .foot-cookie {
+    padding: 15px 0;
+  }
 }
