@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { BookCalendar } from "@/components/ContactForms";
 import { ContactPage } from "@/components/ContactPage";
+import { Rich } from "@/components/Rich";
+import { inlineToBlocks } from "@/lib/portable";
 import { bookPage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getSettings } from "@/lib/site";
@@ -16,7 +18,7 @@ async function BookContent({ mode }: { mode: FetchMode }) {
   const cal = page.calendar;
   return (
     <ContactPage hero={page.hero} steps={page.steps} note={page.note} strip={page.strip} fill={fill}>
-      <BookCalendar copy={{ ...cal, notConnected: fill(cal.notConnected) }} />
+      <BookCalendar copy={{ ...cal, notConnected: fill(cal.notConnected) }} captchaNote={<Rich value={inlineToBlocks(cal.captchaNote)} fill={fill} inline />} />
     </ContactPage>
   );
 }

@@ -39,6 +39,9 @@ export const briefPage = {
     whenLabel: "When it needs to exist",
     whenOptions: ["This quarter", "Next quarter", "No date yet"],
     budgetLabel: "Rough budget, if you have one",
+    // Google requires this line when its reCAPTCHA badge is hidden (it is: app/contact.css).
+    captchaNote:
+      'Protected by reCAPTCHA; Google’s <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.',
     submit: "Send the brief",
     emailFallback: "[your email]",
     // Shown instead of the confirmation if the brief could not be sent (email delivery through Resend).

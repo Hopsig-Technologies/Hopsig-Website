@@ -38,10 +38,13 @@ export const bookPage = {
     // Shown instead of the confirmation when the request could not be emailed (not in the reference).
     notConnected: "That did not go through. Email [HELLO@HOPSIG.COM] and we will reply within one working day.",
     fieldPlaceholders: ["Your name", "Work email", "Company · team size", "The problem, in a sentence or two"],
-    // Review R8 (new copy, for owner approval): "Ask about this →" on a case card carries the case title here.
-    aboutNote: "About the case note “{title}”: ",
+    // "Ask about this →" on a case card carries the case title; shown above the problem field and sent as its own line.
+    aboutNote: "About the case note “{title}”",
     // No booking tool (owner decision 2026-10-11): the request is emailed and the invite is sent by hand, so the
     // button and the confirmation say "request", not "booked" (deviations.json).
+    // Google requires this line when its reCAPTCHA badge is hidden (it is: app/contact.css).
+    captchaNote:
+      'Protected by reCAPTCHA; Google’s <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.',
     submit: "Request the call",
     bookedLabel: "Requested",
     bookedTitle: "We will confirm the time.",

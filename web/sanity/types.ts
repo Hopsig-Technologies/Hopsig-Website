@@ -26,7 +26,6 @@ export type SiteSettings = {
   vatStatus?: string;
   bankCountry?: string;
   insurance?: string;
-  contactRecipients?: Array<string>;
 };
 
 export type JobListing = {

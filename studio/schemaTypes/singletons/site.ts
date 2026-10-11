@@ -27,15 +27,6 @@ export const siteSettings = defineType({
             : `Replaces ${t.token} everywhere it appears. Leave empty until it is real.`,
       }),
     ),
-    defineField({
-      name: 'contactRecipients',
-      title: 'Form recipients',
-      type: 'array',
-      of: [{type: 'string', validation: (r) => r.email()}],
-      description:
-        'Every /book consult request and /brief submission is emailed to each address here (reply-to is the visitor). Not shown on the site.',
-      validation: (r) => r.min(1).warning('With no address, the forms say they could not send.'),
-    }),
   ],
   preview: {prepare: () => ({title: 'Site settings'})},
 })

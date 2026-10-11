@@ -316,6 +316,8 @@ export type BookPage = {
     fieldPlaceholders: string[];
     /** Pre-filled in the problem field when arriving from "Ask about this →" (`/book?about=…`); `{title}`. */
     aboutNote: string;
+    /** The reCAPTCHA notice under the button (rich: links to Google's policies). */
+    captchaNote: Rich;
     submit: string;
     bookedLabel: string;
     bookedTitle: string;
@@ -337,6 +339,7 @@ export type BriefPage = {
     whenLabel: string;
     whenOptions: string[];
     budgetLabel: string;
+    captchaNote: Rich;
     submit: string;
     emailFallback: string;
     notConnected: string;
@@ -458,4 +461,18 @@ export type SeoTemplates = {
   note: { title: string; description: string };
   notFound: { title: string };
   siteName: string;
+};
+
+// ---------------------------------------------------------------- emails (lib/contact.ts)
+
+type EmailCopy = { subject: string; eyebrow: string; title: string; text: string };
+export type Emails = {
+  footer: string;
+  site: string;
+  labels: Record<"slot" | "timeZone" | "utc" | "name" | "email" | "company" | "about" | "problem" | "when" | "budget" | "link", string>;
+  /** `{title}`: the case note the visitor came from ("Ask about this →"). */
+  aboutCase: string;
+  team: { booking: EmailCopy; brief: EmailCopy };
+  /** The receipt to the visitor. Booking `text` has `{slot}` and `{timeZone}`. */
+  receipt: { sentLabel: string; booking: EmailCopy; brief: EmailCopy };
 };

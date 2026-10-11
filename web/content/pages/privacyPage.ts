@@ -42,6 +42,7 @@ export const privacyPage = {
           ul: [
             "Google Analytics 4: _ga (identifies a browser, 2 years) and _ga_<ID> (keeps the session, 2 years). Only after you accept.",
             "PostHog: ph_<project key>_posthog (identifies a browser and a session, 1 year). Only after you accept.",
+            "Google reCAPTCHA: _GRECAPTCHA (tells people from bots, 6 months). Set by Google when you start filling in a form; needed to send it.",
           ],
         },
       ],
@@ -50,7 +51,7 @@ export const privacyPage = {
       heading: "Who sees it",
       body: [
         {
-          p: "The people at Hopsig who would do the work. Our processors: Vercel (hosting), Sanity (site content), Resend (emailing what you send through the forms), Google (Google Analytics 4, with consent) and PostHog, US cloud (analytics and session recordings, with consent). Each is bound by a data-processing agreement.",
+          p: "The people at Hopsig who would do the work. Our processors: Vercel (hosting), Sanity (site content), Resend (emailing what you send through the forms, and your copy), Google (reCAPTCHA on the forms, to keep out spam; Google Analytics 4, with consent) and PostHog, US cloud (analytics and session recordings, with consent). Each is bound by a data-processing agreement.",
         },
       ],
     },

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { BriefForm } from "@/components/ContactForms";
 import { ContactPage } from "@/components/ContactPage";
+import { Rich } from "@/components/Rich";
+import { inlineToBlocks } from "@/lib/portable";
 import { briefPage as page } from "@/content";
 import { withMode } from "@/lib/mode";
 import { getFill } from "@/lib/site";
@@ -14,7 +16,7 @@ async function BriefContent({ mode }: { mode: FetchMode }) {
   const form = page.form;
   return (
     <ContactPage hero={page.hero} steps={page.steps} note={page.note} strip={page.strip} fill={fill}>
-      <BriefForm copy={{ ...form, notConnected: fill(form.notConnected) }} />
+      <BriefForm copy={{ ...form, notConnected: fill(form.notConnected) }} captchaNote={<Rich value={inlineToBlocks(form.captchaNote)} fill={fill} inline />} />
     </ContactPage>
   );
 }

@@ -290,3 +290,19 @@
     font-size: 40px;
   }
 }
+
+/* reCAPTCHA v3 (forms): Google's floating badge is hidden and its required notice sits under the button instead. */
+.grecaptcha-badge {
+  visibility: hidden;
+}
+.captcha-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--dim);
+}
+.captcha-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
