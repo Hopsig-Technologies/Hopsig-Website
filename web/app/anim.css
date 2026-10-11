@@ -1,16 +1,133 @@
-
-.anim{margin:56px 0 0;max-width:1200px;width:100%;position:relative}
-.anim .frame{position:relative;border:1px solid #262C34;border-radius:16px;overflow:hidden;background:#0E1116}
-.anim svg{display:block;width:100%;height:100%;position:relative;z-index:1}
-.anim .ha-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.anim figcaption{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#939A96;line-height:1.7;max-width:900px}
-.ha-pause{z-index:3}.ha-pause:focus-visible{outline:2px solid #C6F24E;outline-offset:2px;border-radius:50%}
-.ha-btns{position:absolute;inset:0;pointer-events:none;z-index:2}
-.ha-btns button{pointer-events:auto;position:absolute;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-radius:8px;cursor:pointer;padding:0}
-.ha-btns .lime{background:#C6F24E;color:#0E1116;border:0}.ha-btns .outline{background:transparent;color:#E7ECEF;border:1px solid #262C34}
-.ha-btns .pillb{background:transparent;color:#B9BFB6;border:1px solid #262C34;border-radius:18px;text-align:left;padding:0 14px}
-.ha-btns button:focus-visible{outline:2px solid #C6F24E;outline-offset:2px}
-a.strip{display:block;text-decoration:none;color:inherit}a.strip .frame{transition:border-color .16s}a.strip:hover .frame,a.strip:focus-visible .frame{border-color:rgba(198,242,78,.4)}
-a.strip:hover text:last-of-type{transform:translateX(3px)}
-.scrub{position:relative;height:250vh}.scrub .stick{position:sticky;top:96px}
-.scrub .weeks{display:flex;gap:8px;margin-top:16px}
+/* Animated figures (v2): from `v2 handover/anim/figure.css`, values unchanged. Every figure sits on a dark surface,
+   so the artboard colours are the dark tokens. The SVG text names its fonts ("Space Grotesk", "IBM Plex Mono");
+   next/font declares those family names, so they resolve to the site's webfonts. */
+.anim {
+  margin: 56px 0 0;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+}
+.anim .frame {
+  position: relative;
+  border: 1px solid #262c34;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0e1116;
+}
+.anim svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.anim .ha-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.anim figcaption {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #939a96;
+  line-height: 1.7;
+  max-width: 900px;
+}
+.ha-pause {
+  z-index: 3;
+}
+.ha-pause:focus-visible {
+  outline: 2px solid #c6f24e;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+.ha-btns {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.ha-btns button {
+  pointer-events: auto;
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+}
+.ha-btns .lime {
+  background: #c6f24e;
+  color: #0e1116;
+  border: 0;
+}
+.ha-btns .outline {
+  background: transparent;
+  color: #e7ecef;
+  border: 1px solid #262c34;
+}
+.ha-btns .pillb {
+  background: transparent;
+  color: #b9bfb6;
+  border: 1px solid #262c34;
+  border-radius: 18px;
+  text-align: left;
+  padding: 0 14px;
+}
+.ha-btns button:focus-visible {
+  outline: 2px solid #c6f24e;
+  outline-offset: 2px;
+}
+/* The service-page strip: the whole figure is one link to /agentic-flow. */
+a.strip {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+a.strip .frame {
+  transition: border-color 0.16s;
+}
+a.strip:hover .frame,
+a.strip:focus-visible .frame {
+  border-color: rgba(198, 242, 78, 0.4);
+}
+a.strip:hover text:last-of-type {
+  transform: translateX(3px);
+}
+/* /ai-transformation: scroll progress through the section scrubs the scene. */
+.scrub {
+  position: relative;
+  height: 250vh;
+}
+.scrub .stick {
+  position: sticky;
+  top: 96px;
+}
+.scrub .weeks {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+/* Mobile artboards are not designed yet: below 768px the figure's frame is hidden and the caption stays as copy. */
+@media (max-width: 767px) {
+  .anim .frame {
+    display: none;
+  }
+  .anim figcaption {
+    margin-top: 0;
+  }
+  .scrub {
+    height: auto;
+  }
+  .scrub .stick {
+    position: static;
+  }
+}

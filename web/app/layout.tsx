@@ -16,6 +16,7 @@ import "./sections.css";
 import "./home.css";
 import "./pages.css";
 import "./contact.css";
+import "./anim.css";
 
 const grotesk = Space_Grotesk({
   subsets: ["latin"],

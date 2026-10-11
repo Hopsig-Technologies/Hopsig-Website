@@ -23,6 +23,13 @@ jobs:
         run: pnpm check:content
       - name: Generated Sanity types are current
         run: pnpm --filter studio typegen && git diff --exit-code web/sanity/types.ts
+      - name: Chromium for the animation checks
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Animations (loop seams, no errors)
+        run: pnpm anim:test
+      - name: Static animation frames are current
+        # The SVGs are computed geometry and must match; the IoT canvas PNG is a raster and may differ by platform.
+        run: pnpm anim:static && git diff --exit-code -- 'web/public/anim/*.svg'
       - run: pnpm typecheck
       - run: pnpm lint
       - name: Build web
