@@ -41,9 +41,8 @@ export const briefPage = {
     budgetLabel: "Rough budget, if you have one",
     submit: "Send the brief",
     emailFallback: "[your email]",
-    // Shown instead of the confirmation while no email provider is connected (not in the reference; decided
-    // 2026-10-10: build now, connect later).
-    notConnected: "The brief form is not connected yet. Email it to [HELLO@HOPSIG.COM] and we will reply within one working day.",
+    // Shown instead of the confirmation if the brief could not be sent (email delivery through Resend).
+    notConnected: "That did not go through. Email it to [HELLO@HOPSIG.COM] and we will reply within one working day.",
     receivedLabel: "Received",
     receivedTitle: "We will read it today.",
     receivedText: "A reply goes to {email} inside one working day.\nIf we are not the right people, we will say who is.",

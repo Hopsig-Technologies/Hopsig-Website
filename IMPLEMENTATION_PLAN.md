@@ -123,7 +123,7 @@ Not done, or done differently (reasons in the plan): no invented commit-log tick
 | R4 Notes — DONE (dates; TOC and margin offer moved to R8) | owner-chosen publish dates (22 Jul and 16 Sep 2026) on note heroes, lists, home journal, RSS and BlogPosting; "Hopsig engineering" byline; optional `updatedAt` |
 | R5 Content depth | caseStudy fields + richer template; more case pages; metric placeholders list + launch switch; FAQs (founders approve) |
 | R6 Analytics + consent — DONE | banner, Consent Mode v2, GA4 + PostHog after consent, events, privacy copy for counsel |
-| R7 Booking + brief | Cal.com embed, Resend to info@hopsig.com, pre-filled "Ask about this" |
+| R7 Booking + brief — brief DONE (Resend); booking waits for Cal.com | Cal.com embed, Resend to info@hopsig.com, pre-filled "Ask about this" |
 | R8 Functional improvements | /work filters + sort, real table on Why not just hire, linked legal TOC, Company toggle, fewer CTAs, home tagline + location, industries paragraphs |
 | R9 v3 design brief | docs/design/v3-brief.md for Claude Design |
 | R10 Domain + launch | old P9: hopsig.com, redirects, Search Console, Lighthouse, 390px, production dataset, counsel |
