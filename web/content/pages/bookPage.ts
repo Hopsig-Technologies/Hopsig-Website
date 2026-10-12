@@ -25,15 +25,21 @@ export const bookPage = {
   ],
   note: 'Prefer writing? <a href="/brief">Send a brief →</a> — or email [HELLO@HOPSIG.COM]; reply within one working day.',
   calendar: {
-    title: "Next week · 30 minutes",
-    timezone: "",
-    prompt: "Pick a day and a time.",
-    // The calendar's own words (the reference's script): the week shown is next Monday to Friday.
-    pickFirst: "Pick a day and a time first.",
-    summary: "{day} {date} {month} · {time} · 30 min · with Hopsig",
+    // The form first, then optional times (owner decision 2026-10-12): the next five working days from tomorrow,
+    // three windows each, any number picked, in the visitor's own time. New copy, for owner review.
+    title: "A 30-minute call",
+    windowsTitle: "When suits you?",
+    windowsOptional: "Optional · pick any",
+    windowsHint: "Times are in your own time zone. We send the invite inside one of them.",
+    windows: [
+      { label: "Morning", from: 9, to: 12 },
+      { label: "Afternoon", from: 12, to: 15 },
+      { label: "Late afternoon", from: 15, to: 18 },
+    ],
+    windowsPicked: "{n} picked",
+    windowsNone: "None picked: we will propose a time.",
     dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    times: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"],
     emailFallback: "[your email]",
     // Shown instead of the confirmation when the request could not be emailed (not in the reference).
     notConnected: "That did not go through. Email [HELLO@HOPSIG.COM] and we will reply within one working day.",

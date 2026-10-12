@@ -6,9 +6,9 @@ export const emails = {
   footer: "Hopsig Technologies LLC · Wyoming, USA · Delivery Centre: Lahore, Pakistan",
   site: "hopsig.com",
   labels: {
-    slot: "Requested slot",
+    times: "Times that suit",
     timeZone: "Time zone",
-    utc: "Same moment in UTC",
+    utc: "The same in UTC",
     name: "Name",
     email: "Email",
     company: "Company · team size",
@@ -19,12 +19,13 @@ export const emails = {
     link: "Link",
   },
   aboutCase: "The case note “{title}”",
+  noTimes: "No preference given",
   team: {
     booking: {
       subject: "Consult request from {who}",
       eyebrow: "Website · consult request",
       title: "A consult request.",
-      text: "Send the calendar invite within one working day; the visitor was told it would come. Reply to this email to reach them.",
+      text: "Send a calendar invite inside one of the times below within one working day, or propose one if none is given; the visitor was told it would come. Reply to this email to reach them.",
     },
     brief: {
       subject: "Brief from {who}",
@@ -39,7 +40,9 @@ export const emails = {
       subject: "Your consult request · Hopsig",
       eyebrow: "Consult request",
       title: "We have your request.",
-      text: "You asked for {slot} ({timeZone}), thirty minutes. A calendar invite follows within one working day, and the people who would do the work will be on the call. If the time does not suit, reply to this email.",
+      text: "A calendar invite for thirty minutes follows within one working day, inside one of the times you picked, and the people who would do the work will be on the call. If none of them suits after all, reply to this email.",
+      textNoTimes:
+        "We will propose a time for a thirty-minute call within one working day, and the people who would do the work will be on it. If you would rather name a time, reply to this email.",
     },
     brief: {
       subject: "Your brief · Hopsig",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { track } from "@/lib/analytics";
 
 const put = (t: string, vars: Record<string, string | number>) => t.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
@@ -100,13 +100,14 @@ function Confirmation({ label, title, text, email, checklist }: { label: string;
 
 export type CalendarCopy = {
   title: string;
-  timezone: string;
-  prompt: string;
-  pickFirst: string;
-  summary: string;
+  windowsTitle: string;
+  windowsOptional: string;
+  windowsHint: string;
+  windows: { label: string; from: number; to: number }[];
+  windowsPicked: string;
+  windowsNone: string;
   dayNames: string[];
   monthNames: string[];
-  times: string[];
   emailFallback: string;
   notConnected: string;
   fieldPlaceholders: string[];
@@ -118,91 +119,138 @@ export type CalendarCopy = {
   checklist: string[];
 };
 
+/** The next `n` working days (Monday to Friday), starting tomorrow: never today, never a past date. */
+function nextWorkingDays(n: number) {
+  const days: Date[] = [];
+  const d = new Date();
+  while (days.length < n) {
+    d.setDate(d.getDate() + 1);
+    if (d.getDay() !== 0 && d.getDay() !== 6) days.push(new Date(d.getFullYear(), d.getMonth(), d.getDate()));
+  }
+  return days;
+}
+
+const hh = (h: number) => String(h).padStart(2, "0");
+
 /**
- * /book: next week's five working days and eight half-hour slots in the visitor's own time, the four fields and
- * the request button. The request is emailed to the form recipients (/api/contact) with the visitor's time zone;
- * the confirmation card shows only when that succeeds, otherwise `notConnected`. There is no booking tool (owner
- * decision 2026-10-11): someone sends the calendar invite by hand. The days depend on today, so they render after
- * mount. Arriving from "Ask about this →" (`?about=<case title>`) pre-fills the problem field.
+ * /book: the four fields, then optional times (owner decision 2026-10-12): the next five working days from
+ * tomorrow, three windows each, in the visitor's own time; any number can be picked, or none. The request is
+ * emailed (/api/contact) with the windows as instants and the visitor's time zone; someone sends the invite by
+ * hand (no booking tool). The confirmation card shows only when the send succeeds, otherwise `notConnected`. The
+ * days depend on today, so they render after mount. Arriving from "Ask about this →" (`?about=<case title>`)
+ * shows the case above the problem field and sends it as its own line.
  */
 export function BookCalendar({ copy, captchaNote }: { copy: CalendarCopy; captchaNote?: ReactNode }) {
   const [days, setDays] = useState<Date[]>([]);
+  const [picked, setPicked] = useState<Set<string>>(new Set());
   const [about, setAbout] = useState("");
   const email = useRef<HTMLInputElement>(null);
   const problem = useRef<HTMLTextAreaElement>(null);
   const captcha = useRecaptcha();
-  const [day, setDay] = useState<number | null>(null);
-  const [time, setTime] = useState<string | null>(null);
-  const [nudge, setNudge] = useState(false);
   const [f, setF] = useState({ name: "", email: "", company: "", problem: "", website: "" });
   const [status, setStatus] = useState<Status>("idle");
 
   useEffect(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + (((8 - d.getDay()) % 7) || 7)); // next Monday
     // Browser-only (it depends on today and the URL): set once after mount.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setDays(Array.from({ length: 5 }, (_, i) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + i)));
+    setDays(nextWorkingDays(5));
     // "Ask about this →" carries the case title; it travels as its own line, and the problem is still asked for.
     setAbout(new URLSearchParams(window.location.search).get("about")?.trim().slice(0, 200) ?? "");
   }, []);
 
-  const picked = day !== null && time ? days[day] : null;
-  const summary = picked
-    ? put(copy.summary, { day: copy.dayNames[picked.getDay()], date: picked.getDate(), month: copy.monthNames[picked.getMonth()], time: time! })
-    : nudge
-      ? copy.pickFirst
-      : copy.prompt;
+  const toggle = (key: string) =>
+    setPicked((s) => {
+      const n = new Set(s);
+      if (n.has(key)) n.delete(key);
+      else n.add(key);
+      return n;
+    });
 
   const confirm = async () => {
-    if (!picked) return setNudge(true);
     if (!EMAIL.test(f.email.trim())) return email.current?.focus();
     if (!f.problem.trim()) return problem.current?.focus();
-    const [h, m] = time!.split(":").map(Number);
-    const start = new Date(picked.getFullYear(), picked.getMonth(), picked.getDate(), h, m).toISOString();
+    const windows = days.flatMap((d, i) =>
+      copy.windows.flatMap((w, j) =>
+        picked.has(`${i}-${j}`)
+          ? [
+              {
+                start: new Date(d.getFullYear(), d.getMonth(), d.getDate(), w.from).toISOString(),
+                end: new Date(d.getFullYear(), d.getMonth(), d.getDate(), w.to).toISOString(),
+              },
+            ]
+          : [],
+      ),
+    );
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? "";
     setStatus("sending");
     const token = await captcha.token("booking");
-    const ok = await post({ kind: "booking", ...f, about, start, timeZone, token });
-    if (ok) track("consult_booked", { via: "request" });
+    const ok = await post({ kind: "booking", ...f, about, windows: JSON.stringify(windows), timeZone, token });
+    if (ok) track("consult_booked", { via: "request", windows: windows.length });
     setStatus(ok ? "done" : "failed");
   };
 
   const set = (k: keyof typeof f) => (e: { target: { value: string } }) => setF((x) => ({ ...x, [k]: e.target.value }));
   const [pName, pEmail, pCo, pWhat] = copy.fieldPlaceholders;
+  const dayLabel = (d: Date) => `${copy.dayNames[d.getDay()]} ${d.getDate()} ${copy.monthNames[d.getMonth()]}`;
   return (
     <div id="cal" className={`cal${status === "done" ? " done" : ""}`}>
-      <div className="live" style={{ gap: 18 }}>
+      <div className="live" style={{ gap: 18 }} onFocusCapture={captcha.load} onPointerDownCapture={captcha.load}>
         <div className="cal-top">
           <div className="lab">{copy.title}</div>
-          <div className="lab lab-acc">{copy.timezone}</div>
         </div>
-        <div className="days">
-          {days.map((d, i) => (
-            <button key={i} type="button" className={day === i ? "on" : undefined} aria-pressed={day === i} onClick={() => setDay(i)}>
-              {copy.dayNames[d.getDay()]}
-              <b>{d.getDate()}</b>
-              {copy.monthNames[d.getMonth()]}
-            </button>
-          ))}
-        </div>
-        <div className="slots">
-          {copy.times.map((t) => (
-            <button key={t} type="button" className={time === t ? "on" : undefined} aria-pressed={time === t} onClick={() => setTime(t)}>
-              {t}
-            </button>
-          ))}
-        </div>
-        <div className="cal-sum" aria-live="polite">
-          {summary}
-        </div>
-        <div className="f" onFocusCapture={captcha.load} onPointerDownCapture={captcha.load}>
+        <div className="f">
           <input aria-label={pName} placeholder={pName} value={f.name} onChange={set("name")} />
           <input ref={email} aria-label={pEmail} placeholder={pEmail} type="email" required value={f.email} onChange={set("email")} />
           <input aria-label={pCo} placeholder={pCo} value={f.company} onChange={set("company")} />
           {about ? <div className="lbl">{put(copy.aboutNote, { title: about })}</div> : null}
           <textarea ref={problem} aria-label={pWhat} placeholder={pWhat} required value={f.problem} onChange={set("problem")} />
           <Honeypot value={f.website} onChange={(v) => setF((x) => ({ ...x, website: v }))} />
+        </div>
+        <div className="wins" role="group" aria-labelledby="wins-t">
+          <div className="cal-top">
+            <div id="wins-t" className="lab lab-acc">
+              {copy.windowsTitle}
+            </div>
+            <div className="lab">{copy.windowsOptional}</div>
+          </div>
+          <div className="wins-grid">
+            <span />
+            {copy.windows.map((w) => (
+              <span key={w.label} className="wins-h">
+                {w.label}
+                <i>
+                  {hh(w.from)}–{hh(w.to)}
+                </i>
+              </span>
+            ))}
+            {days.map((d, i) => (
+              <Fragment key={i}>
+                <span className="wins-d">
+                  {copy.dayNames[d.getDay()]} <b>{d.getDate()}</b> {copy.monthNames[d.getMonth()]}
+                </span>
+                {copy.windows.map((w, j) => {
+                  const key = `${i}-${j}`;
+                  const on = picked.has(key);
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      className={on ? "on" : undefined}
+                      aria-pressed={on}
+                      aria-label={`${dayLabel(d)}, ${w.label}, ${hh(w.from)}:00 to ${hh(w.to)}:00`}
+                      onClick={() => toggle(key)}
+                    >
+                      {on ? "✓" : ""}
+                    </button>
+                  );
+                })}
+              </Fragment>
+            ))}
+          </div>
+          <div className="cal-sum" aria-live="polite">
+            {picked.size ? put(copy.windowsPicked, { n: picked.size }) : copy.windowsNone}
+            <span className="wins-hint">{copy.windowsHint}</span>
+          </div>
         </div>
         <button type="button" className="btnp" onClick={confirm} disabled={status === "sending"}>
           {copy.submit}

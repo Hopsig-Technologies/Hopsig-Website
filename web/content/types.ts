@@ -303,18 +303,20 @@ export type BookPage = {
   note: Rich;
   calendar: {
     title: string;
-    timezone: string;
-    prompt: string;
-    pickFirst: string;
-    /** `{day} {date} {month} · {time}`. */
-    summary: string;
+    windowsTitle: string;
+    windowsOptional: string;
+    windowsHint: string;
+    /** Time windows offered on each day, in the visitor's own time (hours, 24 h). */
+    windows: { label: string; from: number; to: number }[];
+    /** `{n}`: how many windows are picked. */
+    windowsPicked: string;
+    windowsNone: string;
     dayNames: string[];
     monthNames: string[];
-    times: string[];
     emailFallback: string;
     notConnected: string;
     fieldPlaceholders: string[];
-    /** Pre-filled in the problem field when arriving from "Ask about this →" (`/book?about=…`); `{title}`. */
+    /** Shown above the problem field when arriving from "Ask about this →" (`/book?about=…`); `{title}`. */
     aboutNote: string;
     /** The reCAPTCHA notice under the button (rich: links to Google's policies). */
     captchaNote: Rich;
@@ -465,14 +467,16 @@ export type SeoTemplates = {
 
 // ---------------------------------------------------------------- emails (lib/contact.ts)
 
-type EmailCopy = { subject: string; eyebrow: string; title: string; text: string };
+type EmailCopy = { subject: string; eyebrow: string; title: string; text: string; textNoTimes?: string };
 export type Emails = {
   footer: string;
   site: string;
-  labels: Record<"slot" | "timeZone" | "utc" | "name" | "email" | "company" | "about" | "problem" | "when" | "budget" | "link", string>;
+  labels: Record<"times" | "timeZone" | "utc" | "name" | "email" | "company" | "about" | "problem" | "when" | "budget" | "link", string>;
   /** `{title}`: the case note the visitor came from ("Ask about this →"). */
   aboutCase: string;
+  /** The times row when the visitor picked none. */
+  noTimes: string;
   team: { booking: EmailCopy; brief: EmailCopy };
-  /** The receipt to the visitor. Booking `text` has `{slot}` and `{timeZone}`. */
+  /** The receipt to the visitor. Booking has `text` (times picked) and `textNoTimes`. */
   receipt: { sentLabel: string; booking: EmailCopy; brief: EmailCopy };
 };

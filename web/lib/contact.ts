@@ -4,7 +4,10 @@ import { emails } from "@/content";
 /** What /book and /brief send. Nothing is stored: it is emailed. */
 export type ContactMessage =
   | { kind: "brief"; name: string; email: string; company: string; problem: string; about: string; when: string; budget: string; link: string }
-  | { kind: "booking"; name: string; email: string; company: string; problem: string; about: string; start: string; timeZone: string };
+  | { kind: "booking"; name: string; email: string; company: string; problem: string; about: string; windows: Window[]; timeZone: string };
+
+/** A time window the visitor picked (/book), as instants. */
+export type Window = { start: string; end: string };
 
 export type SendResult = { ok: true } | { ok: false; reason: "not-configured" | "failed" };
 
@@ -14,21 +17,27 @@ type Mail = { eyebrow: string; title: string; text: string; rowsTitle?: string; 
 const put = (t: string, vars: Record<string, string>) => t.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-/** The requested slot in the visitor's own time zone ("Tue 13 Oct, 09:00") and in UTC; empty if unreadable. */
-function slotIn(start: string, timeZone: string) {
-  const d = new Date(start);
-  if (Number.isNaN(d.getTime())) return { local: "", utc: "" };
-  const fmt = (tz: string) =>
-    new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: tz })
-      .format(d)
-      .replace(/^(\w+) (\d+ \w+),? /, "$1 $2, ");
-  let local = "";
+/** Picked windows as lines, in the visitor's own time zone ("Tue 13 Oct · 09:00–12:00") and in UTC. */
+function windowLines(windows: Window[], timeZone: string) {
+  const parts = (d: Date, tz: string) =>
+    Object.fromEntries(
+      new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: tz })
+        .formatToParts(d)
+        .map((p) => [p.type, p.value]),
+    );
+  const line = (w: Window, tz: string) => {
+    const a = parts(new Date(w.start), tz);
+    const b = parts(new Date(w.end), tz);
+    return `${a.weekday} ${a.day} ${a.month} · ${a.hour}:${a.minute}–${b.hour}:${b.minute}`;
+  };
+  let tz = timeZone || "UTC";
   try {
-    local = fmt(timeZone || "UTC");
+    new Intl.DateTimeFormat("en-GB", { timeZone: tz });
   } catch {
-    local = fmt("UTC");
+    tz = "UTC";
   }
-  return { local, utc: `${fmt("UTC")} UTC` };
+  const ok = windows.filter((w) => !Number.isNaN(new Date(w.start).getTime()) && !Number.isNaN(new Date(w.end).getTime()));
+  return { local: ok.map((w) => line(w, tz)).join("\n"), utc: ok.map((w) => `${line(w, "UTC")} UTC`).join("\n") };
 }
 
 /** Plain text and HTML of one email. The HTML is the site's light surface with the dark wordmark band. */
@@ -77,10 +86,11 @@ function compose(m: ContactMessage) {
   const who = `${m.name || m.email}${m.company ? ` (${m.company})` : ""}`;
   const about = m.about ? put(emails.aboutCase, { title: m.about }) : "";
   if (m.kind === "booking") {
-    const slot = slotIn(m.start, m.timeZone);
+    const times = windowLines(m.windows, m.timeZone);
+    const picked = !!times.local;
     const sent: Row[] = [
-      [L.slot, slot.local],
-      [L.timeZone, m.timeZone],
+      [L.times, picked ? times.local : emails.noTimes],
+      [L.timeZone, picked ? m.timeZone : ""],
       [L.name, m.name],
       [L.company, m.company],
       [L.about, about],
@@ -91,11 +101,11 @@ function compose(m: ContactMessage) {
     return {
       team: {
         subject: put(team.subject, { who }),
-        mail: { ...team, rows: [sent[0], sent[1], [L.utc, slot.utc] as Row, sent[2], [L.email, m.email] as Row, ...sent.slice(3)] },
+        mail: { ...team, rows: [sent[0], sent[1], [L.utc, times.utc] as Row, sent[2], [L.email, m.email] as Row, ...sent.slice(3)] },
       },
       receipt: {
         subject: receipt.subject,
-        mail: { ...receipt, text: put(receipt.text, { slot: slot.local, timeZone: m.timeZone || "UTC" }), rowsTitle: emails.receipt.sentLabel, rows: sent },
+        mail: { ...receipt, text: picked ? receipt.text : (receipt.textNoTimes ?? receipt.text), rowsTitle: emails.receipt.sentLabel, rows: sent },
       },
     };
   }
