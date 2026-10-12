@@ -25,7 +25,7 @@ export const emails = {
       subject: "Consult request from {who}",
       eyebrow: "Website · consult request",
       title: "A consult request.",
-      text: "Send a calendar invite inside one of the times below within one working day, or propose one if none is given; the visitor was told it would come. Reply to this email to reach them.",
+      text: "Send a calendar invite for one of the times below within one working day, or propose one if none is given; the visitor was told it would come. Reply to this email to reach them.",
     },
     brief: {
       subject: "Brief from {who}",
@@ -40,7 +40,7 @@ export const emails = {
       subject: "Your consult request · Hopsig",
       eyebrow: "Consult request",
       title: "We have your request.",
-      text: "A calendar invite for thirty minutes follows within one working day, inside one of the times you picked, and the people who would do the work will be on the call. If none of them suits after all, reply to this email.",
+      text: "A calendar invite for thirty minutes follows within one working day, for one of the times you picked, and the people who would do the work will be on the call. If none of them suits after all, reply to this email.",
       textNoTimes:
         "We will propose a time for a thirty-minute call within one working day, and the people who would do the work will be on it. If you would rather name a time, reply to this email.",
     },

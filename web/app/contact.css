@@ -103,65 +103,71 @@
   border-top: 1px solid var(--line);
   padding-top: 14px;
 }
-/* Optional times (/book): the next five working days from tomorrow, three windows each, any number picked. */
-.wins {
+/* Optional slots (/book): pick a day, then any number of its times; picks are kept across days. */
+.when {
   display: flex;
   flex-direction: column;
   gap: 12px;
   border-top: 1px solid var(--line);
   padding-top: 18px;
 }
-.wins-grid {
+.days {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(0, 1fr));
-  gap: 6px;
-  align-items: center;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
 }
-.wins-h,
-.wins-d {
+.slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 8px;
+}
+.days button,
+.slots button {
+  position: relative;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--sub);
-  line-height: 1.4;
-}
-.wins-h {
-  text-align: center;
-}
-.wins-h i {
-  display: block;
-  font-style: normal;
-  color: var(--dim);
-  letter-spacing: 0.04em;
-}
-.wins-d b {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  letter-spacing: 0;
-}
-.wins-grid button {
-  height: 40px;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--bg);
   background: transparent;
   border: 1px solid var(--line);
   border-radius: 8px;
+  padding: 12px 6px;
   cursor: pointer;
-  transition:
-    background 0.2s,
-    border-color 0.2s;
+  line-height: 1.4;
 }
-.wins-grid button:hover {
-  border-color: var(--dim);
+.days button b {
+  display: block;
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0;
 }
-.wins-grid button.on {
+/* The day being shown: outlined. A picked slot: filled. */
+.days button.on {
+  border-color: var(--text);
+  color: var(--text);
+}
+.days button .n {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0;
+  color: var(--acc);
+}
+.slots button.on {
   border-color: var(--acc);
+  color: var(--bg);
   background: var(--acc);
 }
-.wins-hint {
+.when-list {
+  display: block;
+  margin-top: 4px;
+  color: var(--text);
+}
+.when-hint {
   display: block;
   margin-top: 6px;
   color: var(--dim);
@@ -304,8 +310,8 @@
   .book-note a {
     padding: 12px 0;
   }
-  .wins-grid button {
-    height: 44px;
+  .slots button {
+    padding: 14px 6px;
   }
 }
 @media (max-width: 479px) {

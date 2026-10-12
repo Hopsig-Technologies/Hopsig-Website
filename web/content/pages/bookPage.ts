@@ -25,19 +25,16 @@ export const bookPage = {
   ],
   note: 'Prefer writing? <a href="/brief">Send a brief →</a> — or email [HELLO@HOPSIG.COM]; reply within one working day.',
   calendar: {
-    // The form first, then optional times (owner decision 2026-10-12): the next five working days from tomorrow,
-    // three windows each, any number picked, in the visitor's own time. New copy, for owner review.
+    // The form first, then optional slots (owner decision 2026-10-12): the next five working days from tomorrow,
+    // any number of slots on any number of days, in the visitor's own time. New copy, for owner review.
     title: "A 30-minute call",
-    windowsTitle: "When suits you?",
-    windowsOptional: "Optional · pick any",
-    windowsHint: "Times are in your own time zone. We send the invite inside one of them.",
-    windows: [
-      { label: "Morning", from: 9, to: 12 },
-      { label: "Afternoon", from: 12, to: 15 },
-      { label: "Late afternoon", from: 15, to: 18 },
-    ],
-    windowsPicked: "{n} picked",
-    windowsNone: "None picked: we will propose a time.",
+    slotsTitle: "When suits you?",
+    slotsOptional: "Optional · pick any",
+    slotsHint: "Times are in your own time zone. Pick as many as suit; we send the invite for one of them.",
+    // Start times offered on each day (30-minute calls).
+    times: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+    slotsPicked: "{n} picked:",
+    slotsNone: "None picked: we will propose a time.",
     dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     emailFallback: "[your email]",

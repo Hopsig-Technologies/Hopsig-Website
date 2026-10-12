@@ -303,14 +303,14 @@ export type BookPage = {
   note: Rich;
   calendar: {
     title: string;
-    windowsTitle: string;
-    windowsOptional: string;
-    windowsHint: string;
-    /** Time windows offered on each day, in the visitor's own time (hours, 24 h). */
-    windows: { label: string; from: number; to: number }[];
-    /** `{n}`: how many windows are picked. */
-    windowsPicked: string;
-    windowsNone: string;
+    slotsTitle: string;
+    slotsOptional: string;
+    slotsHint: string;
+    /** Start times offered on each day, in the visitor's own time ("09:00"); every call is 30 minutes. */
+    times: string[];
+    /** `{n}`: how many slots are picked (followed by the list). */
+    slotsPicked: string;
+    slotsNone: string;
     dayNames: string[];
     monthNames: string[];
     emailFallback: string;

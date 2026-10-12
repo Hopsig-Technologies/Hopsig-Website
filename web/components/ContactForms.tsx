@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { track } from "@/lib/analytics";
 
 const put = (t: string, vars: Record<string, string | number>) => t.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
@@ -100,12 +100,12 @@ function Confirmation({ label, title, text, email, checklist }: { label: string;
 
 export type CalendarCopy = {
   title: string;
-  windowsTitle: string;
-  windowsOptional: string;
-  windowsHint: string;
-  windows: { label: string; from: number; to: number }[];
-  windowsPicked: string;
-  windowsNone: string;
+  slotsTitle: string;
+  slotsOptional: string;
+  slotsHint: string;
+  times: string[];
+  slotsPicked: string;
+  slotsNone: string;
   dayNames: string[];
   monthNames: string[];
   emailFallback: string;
@@ -130,18 +130,20 @@ function nextWorkingDays(n: number) {
   return days;
 }
 
-const hh = (h: number) => String(h).padStart(2, "0");
+/** Thirty minutes, the length of the call. */
+const CALL_MS = 30 * 60 * 1000;
 
 /**
- * /book: the four fields, then optional times (owner decision 2026-10-12): the next five working days from
- * tomorrow, three windows each, in the visitor's own time; any number can be picked, or none. The request is
- * emailed (/api/contact) with the windows as instants and the visitor's time zone; someone sends the invite by
- * hand (no booking tool). The confirmation card shows only when the send succeeds, otherwise `notConnected`. The
- * days depend on today, so they render after mount. Arriving from "Ask about this →" (`?about=<case title>`)
- * shows the case above the problem field and sends it as its own line.
+ * /book: the four fields, then optional slots (owner decision 2026-10-12): the next five working days from
+ * tomorrow; pick a day to see its slots (in the visitor's own time), pick any number of slots on any number of
+ * days, or none. The request is emailed (/api/contact) with the slots as instants and the visitor's time zone;
+ * someone sends the invite by hand (no booking tool). The confirmation card shows only when the send succeeds,
+ * otherwise `notConnected`. The days depend on today, so they render after mount. Arriving from "Ask about this →"
+ * (`?about=<case title>`) shows the case above the problem field and sends it as its own line.
  */
 export function BookCalendar({ copy, captchaNote }: { copy: CalendarCopy; captchaNote?: ReactNode }) {
   const [days, setDays] = useState<Date[]>([]);
+  const [day, setDay] = useState(0);
   const [picked, setPicked] = useState<Set<string>>(new Set());
   const [about, setAbout] = useState("");
   const email = useRef<HTMLInputElement>(null);
@@ -158,6 +160,10 @@ export function BookCalendar({ copy, captchaNote }: { copy: CalendarCopy; captch
     setAbout(new URLSearchParams(window.location.search).get("about")?.trim().slice(0, 200) ?? "");
   }, []);
 
+  const at = (d: Date, time: string) => {
+    const [h, m] = time.split(":").map(Number);
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate(), h, m);
+  };
   const toggle = (key: string) =>
     setPicked((s) => {
       const n = new Set(s);
@@ -165,33 +171,25 @@ export function BookCalendar({ copy, captchaNote }: { copy: CalendarCopy; captch
       else n.add(key);
       return n;
     });
+  // Picked slots in calendar order, for the summary and the request.
+  const chosen = days.flatMap((d, i) => copy.times.flatMap((t, j) => (picked.has(`${i}-${j}`) ? [{ d, t, start: at(d, t) }] : [])));
+  const dayLabel = (d: Date) => `${copy.dayNames[d.getDay()]} ${d.getDate()} ${copy.monthNames[d.getMonth()]}`;
 
   const confirm = async () => {
     if (!EMAIL.test(f.email.trim())) return email.current?.focus();
     if (!f.problem.trim()) return problem.current?.focus();
-    const windows = days.flatMap((d, i) =>
-      copy.windows.flatMap((w, j) =>
-        picked.has(`${i}-${j}`)
-          ? [
-              {
-                start: new Date(d.getFullYear(), d.getMonth(), d.getDate(), w.from).toISOString(),
-                end: new Date(d.getFullYear(), d.getMonth(), d.getDate(), w.to).toISOString(),
-              },
-            ]
-          : [],
-      ),
-    );
+    const slots = chosen.map((c) => ({ start: c.start.toISOString(), end: new Date(c.start.getTime() + CALL_MS).toISOString() }));
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? "";
     setStatus("sending");
     const token = await captcha.token("booking");
-    const ok = await post({ kind: "booking", ...f, about, windows: JSON.stringify(windows), timeZone, token });
-    if (ok) track("consult_booked", { via: "request", windows: windows.length });
+    const ok = await post({ kind: "booking", ...f, about, slots: JSON.stringify(slots), timeZone, token });
+    if (ok) track("consult_booked", { via: "request", slots: slots.length });
     setStatus(ok ? "done" : "failed");
   };
 
   const set = (k: keyof typeof f) => (e: { target: { value: string } }) => setF((x) => ({ ...x, [k]: e.target.value }));
   const [pName, pEmail, pCo, pWhat] = copy.fieldPlaceholders;
-  const dayLabel = (d: Date) => `${copy.dayNames[d.getDay()]} ${d.getDate()} ${copy.monthNames[d.getMonth()]}`;
+  const active = days[day];
   return (
     <div id="cal" className={`cal${status === "done" ? " done" : ""}`}>
       <div className="live" style={{ gap: 18 }} onFocusCapture={captcha.load} onPointerDownCapture={captcha.load}>
@@ -206,50 +204,49 @@ export function BookCalendar({ copy, captchaNote }: { copy: CalendarCopy; captch
           <textarea ref={problem} aria-label={pWhat} placeholder={pWhat} required value={f.problem} onChange={set("problem")} />
           <Honeypot value={f.website} onChange={(v) => setF((x) => ({ ...x, website: v }))} />
         </div>
-        <div className="wins" role="group" aria-labelledby="wins-t">
+        <div className="when" role="group" aria-labelledby="when-t">
           <div className="cal-top">
-            <div id="wins-t" className="lab lab-acc">
-              {copy.windowsTitle}
+            <div id="when-t" className="lab lab-acc">
+              {copy.slotsTitle}
             </div>
-            <div className="lab">{copy.windowsOptional}</div>
+            <div className="lab">{copy.slotsOptional}</div>
           </div>
-          <div className="wins-grid">
-            <span />
-            {copy.windows.map((w) => (
-              <span key={w.label} className="wins-h">
-                {w.label}
-                <i>
-                  {hh(w.from)}–{hh(w.to)}
-                </i>
-              </span>
-            ))}
-            {days.map((d, i) => (
-              <Fragment key={i}>
-                <span className="wins-d">
-                  {copy.dayNames[d.getDay()]} <b>{d.getDate()}</b> {copy.monthNames[d.getMonth()]}
-                </span>
-                {copy.windows.map((w, j) => {
-                  const key = `${i}-${j}`;
-                  const on = picked.has(key);
-                  return (
-                    <button
-                      key={key}
-                      type="button"
-                      className={on ? "on" : undefined}
-                      aria-pressed={on}
-                      aria-label={`${dayLabel(d)}, ${w.label}, ${hh(w.from)}:00 to ${hh(w.to)}:00`}
-                      onClick={() => toggle(key)}
-                    >
-                      {on ? "✓" : ""}
-                    </button>
-                  );
-                })}
-              </Fragment>
-            ))}
+          <div className="days">
+            {days.map((d, i) => {
+              const n = copy.times.filter((_, j) => picked.has(`${i}-${j}`)).length;
+              return (
+                <button key={i} type="button" className={day === i ? "on" : undefined} aria-pressed={day === i} aria-label={`${dayLabel(d)}${n ? `, ${n}` : ""}`} onClick={() => setDay(i)}>
+                  {copy.dayNames[d.getDay()]}
+                  <b>{d.getDate()}</b>
+                  {copy.monthNames[d.getMonth()]}
+                  {n ? <i className="n">{n}</i> : null}
+                </button>
+              );
+            })}
           </div>
+          {active ? (
+            <div className="slots">
+              {copy.times.map((t, j) => {
+                const key = `${day}-${j}`;
+                const on = picked.has(key);
+                return (
+                  <button key={key} type="button" className={on ? "on" : undefined} aria-pressed={on} aria-label={`${dayLabel(active)}, ${t}`} onClick={() => toggle(key)}>
+                    {t}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
           <div className="cal-sum" aria-live="polite">
-            {picked.size ? put(copy.windowsPicked, { n: picked.size }) : copy.windowsNone}
-            <span className="wins-hint">{copy.windowsHint}</span>
+            {chosen.length ? (
+              <>
+                {put(copy.slotsPicked, { n: chosen.length })}
+                <span className="when-list">{chosen.map((c) => `${dayLabel(c.d)} · ${c.t}`).join("  ·  ")}</span>
+              </>
+            ) : (
+              copy.slotsNone
+            )}
+            <span className="when-hint">{copy.slotsHint}</span>
           </div>
         </div>
         <button type="button" className="btnp" onClick={confirm} disabled={status === "sending"}>

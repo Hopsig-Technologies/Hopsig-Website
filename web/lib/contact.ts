@@ -4,10 +4,10 @@ import { emails } from "@/content";
 /** What /book and /brief send. Nothing is stored: it is emailed. */
 export type ContactMessage =
   | { kind: "brief"; name: string; email: string; company: string; problem: string; about: string; when: string; budget: string; link: string }
-  | { kind: "booking"; name: string; email: string; company: string; problem: string; about: string; windows: Window[]; timeZone: string };
+  | { kind: "booking"; name: string; email: string; company: string; problem: string; about: string; slots: Slot[]; timeZone: string };
 
-/** A time window the visitor picked (/book), as instants. */
-export type Window = { start: string; end: string };
+/** A slot the visitor picked (/book), as instants (a 30-minute call). */
+export type Slot = { start: string; end: string };
 
 export type SendResult = { ok: true } | { ok: false; reason: "not-configured" | "failed" };
 
@@ -17,18 +17,15 @@ type Mail = { eyebrow: string; title: string; text: string; rowsTitle?: string; 
 const put = (t: string, vars: Record<string, string>) => t.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-/** Picked windows as lines, in the visitor's own time zone ("Tue 13 Oct · 09:00–12:00") and in UTC. */
-function windowLines(windows: Window[], timeZone: string) {
-  const parts = (d: Date, tz: string) =>
-    Object.fromEntries(
+/** Picked slots as lines, in the visitor's own time zone ("Tue 13 Oct · 09:00") and in UTC. */
+function slotLines(slots: Slot[], timeZone: string) {
+  const line = (iso: string, tz: string) => {
+    const p = Object.fromEntries(
       new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: tz })
-        .formatToParts(d)
-        .map((p) => [p.type, p.value]),
+        .formatToParts(new Date(iso))
+        .map((x) => [x.type, x.value]),
     );
-  const line = (w: Window, tz: string) => {
-    const a = parts(new Date(w.start), tz);
-    const b = parts(new Date(w.end), tz);
-    return `${a.weekday} ${a.day} ${a.month} · ${a.hour}:${a.minute}–${b.hour}:${b.minute}`;
+    return `${p.weekday} ${p.day} ${p.month} · ${p.hour}:${p.minute}`;
   };
   let tz = timeZone || "UTC";
   try {
@@ -36,8 +33,8 @@ function windowLines(windows: Window[], timeZone: string) {
   } catch {
     tz = "UTC";
   }
-  const ok = windows.filter((w) => !Number.isNaN(new Date(w.start).getTime()) && !Number.isNaN(new Date(w.end).getTime()));
-  return { local: ok.map((w) => line(w, tz)).join("\n"), utc: ok.map((w) => `${line(w, "UTC")} UTC`).join("\n") };
+  const ok = slots.filter((x) => !Number.isNaN(new Date(x.start).getTime()));
+  return { local: ok.map((x) => line(x.start, tz)).join("\n"), utc: ok.map((x) => `${line(x.start, "UTC")} UTC`).join("\n") };
 }
 
 /** Plain text and HTML of one email. The HTML is the site's light surface with the dark wordmark band. */
@@ -86,7 +83,7 @@ function compose(m: ContactMessage) {
   const who = `${m.name || m.email}${m.company ? ` (${m.company})` : ""}`;
   const about = m.about ? put(emails.aboutCase, { title: m.about }) : "";
   if (m.kind === "booking") {
-    const times = windowLines(m.windows, m.timeZone);
+    const times = slotLines(m.slots, m.timeZone);
     const picked = !!times.local;
     const sent: Row[] = [
       [L.times, picked ? times.local : emails.noTimes],
