@@ -47,3 +47,14 @@ export const POST_SLUGS_QUERY = defineQuery(`*[_type == "post" && defined(publis
 export const JOBS_QUERY = defineQuery(`*[_type == "jobListing" && status != "closed"] | order(order asc){
   _id, title, text, status
 }`);
+
+/** /llms-full.txt: published notes with their bodies. */
+export const LLMS_POSTS_QUERY = defineQuery(`*[_type == "post" && defined(publishedAt)] | order(publishedAt desc){
+  title, "slug": slug.current, excerpt, publishedAt, body
+}`);
+
+/** Sitemap: case notes with a page and published notes, with when they last changed. */
+export const SITEMAP_DOCS_QUERY = defineQuery(`{
+  "cases": *[_type == "caseStudy" && hasPage == true]{ "slug": slug.current, _updatedAt },
+  "notes": *[_type == "post" && defined(publishedAt)]{ "slug": slug.current, publishedAt, updatedAt, _updatedAt }
+}`);

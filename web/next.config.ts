@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
   // The Rates page is gone (CLAUDE.md rule 13); shared and indexed links land on the consult page.
+  // Only hopsig.com should rank: the Vercel alias serves the same pages, so it asks not to be indexed. (Studio's
+  // Presentation preview still uses it.) Vercel's preview deployments are noindex already.
+  async headers() {
+    return [{ source: "/:path*", has: [{ type: "host", value: "hopsig-website.vercel.app" }], headers: [{ key: "X-Robots-Tag", value: "noindex" }] }];
+  },
   async redirects() {
     return [{ source: "/rates", destination: "/book", permanent: true }];
   },

@@ -484,6 +484,33 @@ export type JOBS_QUERY_RESULT = Array<{
   status: "closed" | "open" | "pipeline" | null;
 }>;
 
+// Source: ../web/sanity/queries.ts
+// Variable: LLMS_POSTS_QUERY
+// Query: *[_type == "post" && defined(publishedAt)] | order(publishedAt desc){  title, "slug": slug.current, excerpt, publishedAt, body}
+export type LLMS_POSTS_QUERY_RESULT = Array<{
+  title: string;
+  slug: string;
+  excerpt: string;
+  publishedAt: string;
+  body: RichBody | null;
+}>;
+
+// Source: ../web/sanity/queries.ts
+// Variable: SITEMAP_DOCS_QUERY
+// Query: {  "cases": *[_type == "caseStudy" && hasPage == true]{ "slug": slug.current, _updatedAt },  "notes": *[_type == "post" && defined(publishedAt)]{ "slug": slug.current, publishedAt, updatedAt, _updatedAt }}
+export type SITEMAP_DOCS_QUERY_RESULT = {
+  cases: Array<{
+    slug: string;
+    _updatedAt: string;
+  }>;
+  notes: Array<{
+    slug: string;
+    publishedAt: string;
+    updatedAt: string | null;
+    _updatedAt: string;
+  }>;
+};
+
 // Query TypeMap
 declare global {
   interface SanityQueries {
@@ -498,6 +525,8 @@ declare global {
     '*[_type == "post" && defined(publishedAt) && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, category, excerpt, publishedAt, updatedAt, body, offer, closing, seo\n}': POST_BY_SLUG_QUERY_RESULT;
     '*[_type == "post" && defined(publishedAt)].slug.current': POST_SLUGS_QUERY_RESULT;
     '*[_type == "jobListing" && status != "closed"] | order(order asc){\n  _id, title, text, status\n}': JOBS_QUERY_RESULT;
+    '*[_type == "post" && defined(publishedAt)] | order(publishedAt desc){\n  title, "slug": slug.current, excerpt, publishedAt, body\n}': LLMS_POSTS_QUERY_RESULT;
+    '{\n  "cases": *[_type == "caseStudy" && hasPage == true]{ "slug": slug.current, _updatedAt },\n  "notes": *[_type == "post" && defined(publishedAt)]{ "slug": slug.current, publishedAt, updatedAt, _updatedAt }\n}': SITEMAP_DOCS_QUERY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too

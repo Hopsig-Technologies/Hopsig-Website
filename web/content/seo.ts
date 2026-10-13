@@ -7,7 +7,7 @@ import type { PageSeo, SeoTemplates } from "./types";
 
 export const seo = {
   "/": {
-    title: "Software & AI Development Partner | Hopsig",
+    title: "Custom Software & AI Development Partner | Hopsig",
     description:
       "We scope, build and run software and AI products end to end, or embed engineers in your team. A two-page scope in 3 days; first release by week 6. US company, Lahore Delivery Centre.",
   },

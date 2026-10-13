@@ -5,7 +5,7 @@ import type { HomePage } from "../types";
 
 export const homePage = {
   hero: {
-    eyebrow: "Software & AI development partner",
+    eyebrow: "Custom software & AI development partner",
     title: "You think it.\nWe finish it.",
     // Design & SEO review (R8): the site tagline directly under the H1 (deviations.json), and who we are in one line.
     sub: "We scope, build and run software and AI products end to end, or put engineers inside the team you already have.",

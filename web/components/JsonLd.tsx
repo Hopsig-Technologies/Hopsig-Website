@@ -1,4 +1,4 @@
-import { organization } from "@/content";
+import { homePage, industries, organization, services, site } from "@/content";
 import { SITE_URL } from "@/lib/seo";
 
 /** One schema.org block as JSON-LD (server-rendered; `<` escaped so text can never close the script). */
@@ -18,6 +18,19 @@ export const organizationLd = () => ({
   address: { "@type": "PostalAddress", ...organization.address },
   location: { "@type": "Place", name: organization.location.name, address: { "@type": "PostalAddress", addressLocality: organization.location.addressLocality, addressCountry: organization.location.addressCountry } },
   areaServed: organization.areaServed,
+  description: site.footer.tagline,
+  slogan: homePage.hero.title.split("\n").join(" "),
+  logo: `${SITE_URL}/apple-icon`,
+  // What search engines and assistants should connect the company with: the services and industries, by keyword.
+  knowsAbout: [...services.map((s) => s.keyword), ...industries.map((d) => d.keyword)],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Software development services",
+    itemListElement: services.map((s) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: s.keyword, url: `${SITE_URL}/services/${s.id}` },
+    })),
+  },
 });
 
 /** Home › Section › Page, as BreadcrumbList. `trail` is [name, path] pairs after Home. */
